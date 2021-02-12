@@ -161,8 +161,8 @@ class ChunkMaker(object):
 ZSTD_COMPRESSION_LEVEL = 3
 
 
-def compress(data):
-    return zstd.ZSTD_compress(data, ZSTD_COMPRESSION_LEVEL)
+def compress(data, compression_level=ZSTD_COMPRESSION_LEVEL):
+    return zstd.ZSTD_compress(data, compression_level)
 
 
 def decompress(data):
@@ -181,16 +181,19 @@ def decrypt(data, key):
     return cipher.decrypt_and_verify(cipher_text, mac)
 
 
-def compress_encrypt(data, password):
-    return encrypt(compress(data), password)
+def compress_encrypt(data, password, compression_level=ZSTD_COMPRESSION_LEVEL):
+    return encrypt(compress(data, compression_level), password)
 
 
 def decrypt_decompress(data, password):
     return decompress(decrypt(data, password))
 
 
-def compress_encrypt_obj(data, password):
-    return compress_encrypt(json.dumps(data).encode(), password)
+def compress_encrypt_obj(data,
+                         password,
+                         compression_level=ZSTD_COMPRESSION_LEVEL):
+    return compress_encrypt(
+        json.dumps(data).encode(), password, compression_level)
 
 
 def decrypt_decompress_obj(data, password):
@@ -402,8 +405,9 @@ class Repo(object):
 
         snapshot_id = get_current_time_string()
         snapshot_path = f"snapshots/{snapshot_id}"
-        self.backend.write(snapshot_path,
-                           compress_encrypt_obj(snapshot_obj, master))
+        self.backend.write(
+            snapshot_path,
+            compress_encrypt_obj(snapshot_obj, master, self.compression_level))
 
         self.logger.info(f"Saved snapshot {snapshot_id}")
 
@@ -568,7 +572,7 @@ class Repo(object):
             return None
         if self.backend.exists(chunk_path):
             return None
-        echunk = compress_encrypt(chunk, master)
+        echunk = compress_encrypt(chunk, master, self.compression_level)
         self.write_size_lock.acquire()
         self.write_size += len(echunk)
         self.write_size_lock.release()
