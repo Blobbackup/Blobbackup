@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'backup_settings.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.1
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -332,30 +332,6 @@ class Ui_BackupSettingsDialog(object):
 
         self.verticalLayout_6.addLayout(self.horizontalLayout_7)
 
-        self.horizontalLayout_8 = QHBoxLayout()
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.label_6 = QLabel(self.tabWidgetPage5)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setMinimumSize(QSize(140, 0))
-        self.label_6.setMaximumSize(QSize(140, 16777215))
-
-        self.horizontalLayout_8.addWidget(self.label_6)
-
-        self.upload_blob_size_spin_box = QSpinBox(self.tabWidgetPage5)
-        self.upload_blob_size_spin_box.setObjectName(u"upload_blob_size_spin_box")
-        self.upload_blob_size_spin_box.setMinimum(1)
-        self.upload_blob_size_spin_box.setMaximum(999999999)
-
-        self.horizontalLayout_8.addWidget(self.upload_blob_size_spin_box)
-
-        self.label_10 = QLabel(self.tabWidgetPage5)
-        self.label_10.setObjectName(u"label_10")
-
-        self.horizontalLayout_8.addWidget(self.label_10)
-
-
-        self.verticalLayout_6.addLayout(self.horizontalLayout_8)
-
         self.horizontalLayout_14 = QHBoxLayout()
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
         self.label_7 = QLabel(self.tabWidgetPage5)
@@ -379,95 +355,6 @@ class Ui_BackupSettingsDialog(object):
 
 
         self.verticalLayout_6.addLayout(self.horizontalLayout_14)
-
-        self.horizontalLayout_15 = QHBoxLayout()
-        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.label_8 = QLabel(self.tabWidgetPage5)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setMinimumSize(QSize(140, 0))
-        self.label_8.setMaximumSize(QSize(140, 16777215))
-
-        self.horizontalLayout_15.addWidget(self.label_8)
-
-        self.upload_speed_limit_spin_box = QSpinBox(self.tabWidgetPage5)
-        self.upload_speed_limit_spin_box.setObjectName(u"upload_speed_limit_spin_box")
-        self.upload_speed_limit_spin_box.setMaximum(999999999)
-
-        self.horizontalLayout_15.addWidget(self.upload_speed_limit_spin_box)
-
-        self.label_12 = QLabel(self.tabWidgetPage5)
-        self.label_12.setObjectName(u"label_12")
-
-        self.horizontalLayout_15.addWidget(self.label_12)
-
-
-        self.verticalLayout_6.addLayout(self.horizontalLayout_15)
-
-        self.horizontalLayout_12 = QHBoxLayout()
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.label_13 = QLabel(self.tabWidgetPage5)
-        self.label_13.setObjectName(u"label_13")
-        self.label_13.setMinimumSize(QSize(140, 0))
-        self.label_13.setMaximumSize(QSize(140, 16777215))
-
-        self.horizontalLayout_12.addWidget(self.label_13)
-
-        self.variable_checkbox = QCheckBox(self.tabWidgetPage5)
-        self.variable_checkbox.setObjectName(u"variable_checkbox")
-
-        self.horizontalLayout_12.addWidget(self.variable_checkbox)
-
-
-        self.verticalLayout_6.addLayout(self.horizontalLayout_12)
-
-        self.horizontalLayout_13 = QHBoxLayout()
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.label_14 = QLabel(self.tabWidgetPage5)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setMinimumSize(QSize(140, 0))
-        self.label_14.setMaximumSize(QSize(140, 16777215))
-
-        self.horizontalLayout_13.addWidget(self.label_14)
-
-        self.min_blob_size_combo_box = QComboBox(self.tabWidgetPage5)
-        self.min_blob_size_combo_box.addItem("")
-        self.min_blob_size_combo_box.addItem("")
-        self.min_blob_size_combo_box.addItem("")
-        self.min_blob_size_combo_box.addItem("")
-        self.min_blob_size_combo_box.addItem("")
-        self.min_blob_size_combo_box.addItem("")
-        self.min_blob_size_combo_box.addItem("")
-        self.min_blob_size_combo_box.addItem("")
-        self.min_blob_size_combo_box.setObjectName(u"min_blob_size_combo_box")
-
-        self.horizontalLayout_13.addWidget(self.min_blob_size_combo_box)
-
-
-        self.verticalLayout_6.addLayout(self.horizontalLayout_13)
-
-        self.horizontalLayout_16 = QHBoxLayout()
-        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.label_15 = QLabel(self.tabWidgetPage5)
-        self.label_15.setObjectName(u"label_15")
-        self.label_15.setMinimumSize(QSize(140, 0))
-        self.label_15.setMaximumSize(QSize(140, 16777215))
-
-        self.horizontalLayout_16.addWidget(self.label_15)
-
-        self.max_blob_size_combo_box = QComboBox(self.tabWidgetPage5)
-        self.max_blob_size_combo_box.addItem("")
-        self.max_blob_size_combo_box.addItem("")
-        self.max_blob_size_combo_box.addItem("")
-        self.max_blob_size_combo_box.addItem("")
-        self.max_blob_size_combo_box.addItem("")
-        self.max_blob_size_combo_box.addItem("")
-        self.max_blob_size_combo_box.addItem("")
-        self.max_blob_size_combo_box.setObjectName(u"max_blob_size_combo_box")
-
-        self.horizontalLayout_16.addWidget(self.max_blob_size_combo_box)
-
-
-        self.verticalLayout_6.addLayout(self.horizontalLayout_16)
 
         self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -534,33 +421,8 @@ class Ui_BackupSettingsDialog(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage4), QCoreApplication.translate("BackupSettingsDialog", u"Retention", None))
         self.label_5.setText(QCoreApplication.translate("BackupSettingsDialog", u"Thread count: ", None))
         self.label_9.setText(QCoreApplication.translate("BackupSettingsDialog", u"Threads", None))
-        self.label_6.setText(QCoreApplication.translate("BackupSettingsDialog", u"Blob size (fixed): ", None))
-        self.label_10.setText(QCoreApplication.translate("BackupSettingsDialog", u"KB", None))
         self.label_7.setText(QCoreApplication.translate("BackupSettingsDialog", u"Compression level:", None))
         self.label_11.setText(QCoreApplication.translate("BackupSettingsDialog", u"Zstandard level", None))
-        self.label_8.setText(QCoreApplication.translate("BackupSettingsDialog", u"Upload speed limit:", None))
-        self.label_12.setText(QCoreApplication.translate("BackupSettingsDialog", u"Kbps (0 = None)", None))
-        self.label_13.setText(QCoreApplication.translate("BackupSettingsDialog", u"Variable chunking:", None))
-        self.variable_checkbox.setText(QCoreApplication.translate("BackupSettingsDialog", u"Enable (experimental)", None))
-        self.label_14.setText(QCoreApplication.translate("BackupSettingsDialog", u"Min blob size (var):", None))
-        self.min_blob_size_combo_box.setItemText(0, QCoreApplication.translate("BackupSettingsDialog", u"64 KB", None))
-        self.min_blob_size_combo_box.setItemText(1, QCoreApplication.translate("BackupSettingsDialog", u"128 KB", None))
-        self.min_blob_size_combo_box.setItemText(2, QCoreApplication.translate("BackupSettingsDialog", u"256 KB", None))
-        self.min_blob_size_combo_box.setItemText(3, QCoreApplication.translate("BackupSettingsDialog", u"512 KB", None))
-        self.min_blob_size_combo_box.setItemText(4, QCoreApplication.translate("BackupSettingsDialog", u"1 MB", None))
-        self.min_blob_size_combo_box.setItemText(5, QCoreApplication.translate("BackupSettingsDialog", u"2 MB", None))
-        self.min_blob_size_combo_box.setItemText(6, QCoreApplication.translate("BackupSettingsDialog", u"4 MB", None))
-        self.min_blob_size_combo_box.setItemText(7, QCoreApplication.translate("BackupSettingsDialog", u"8 MB", None))
-
-        self.label_15.setText(QCoreApplication.translate("BackupSettingsDialog", u"Max blob size (var):", None))
-        self.max_blob_size_combo_box.setItemText(0, QCoreApplication.translate("BackupSettingsDialog", u"2 MB", None))
-        self.max_blob_size_combo_box.setItemText(1, QCoreApplication.translate("BackupSettingsDialog", u"4 MB", None))
-        self.max_blob_size_combo_box.setItemText(2, QCoreApplication.translate("BackupSettingsDialog", u"8 MB", None))
-        self.max_blob_size_combo_box.setItemText(3, QCoreApplication.translate("BackupSettingsDialog", u"16 MB", None))
-        self.max_blob_size_combo_box.setItemText(4, QCoreApplication.translate("BackupSettingsDialog", u"32 MB", None))
-        self.max_blob_size_combo_box.setItemText(5, QCoreApplication.translate("BackupSettingsDialog", u"64 MB", None))
-        self.max_blob_size_combo_box.setItemText(6, QCoreApplication.translate("BackupSettingsDialog", u"128 MB", None))
-
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage5), QCoreApplication.translate("BackupSettingsDialog", u"Advanced", None))
         self.activation_label.setText(QCoreApplication.translate("BackupSettingsDialog", u"Note: Some feature are only available after activation.", None))
     # retranslateUi

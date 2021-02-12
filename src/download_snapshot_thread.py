@@ -1,5 +1,5 @@
 from PySide2.QtCore import QThread, Signal
-from repo import Repo
+from repo2 import Repo
 from models import Utils
 
 

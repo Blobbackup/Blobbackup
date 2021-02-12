@@ -1,6 +1,6 @@
 import os
 from models import Backups, Utils
-from repo import Repo
+from repo2 import Repo
 
 
 class Validator(object):

@@ -3,47 +3,11 @@ from ui_backup_settings import Ui_BackupSettingsDialog
 from models import (Backups, Utils, DEFAULT_COMPRESSION_LEVEL,
                     DEFAULT_THREAD_COUNT, DEFAULT_UPLOAD_BLOB_SIZE,
                     DEFAULT_UPLOAD_SPEED_LIMIT)
-from repo import Repo
+from repo2 import Repo
 from command_thread import CommandThread
 
 import sys
 import os
-
-
-def label_to_exp(label):
-    mp = {
-        "64 KB": 16,
-        "128 KB": 17,
-        "256 KB": 18,
-        "512 KB": 19,
-        "1 MB": 20,
-        "2 MB": 21,
-        "4 MB": 22,
-        "8 MB": 23,
-        "16 MB": 24,
-        "32 MB": 25,
-        "64 MB": 26,
-        "128 MB": 27
-    }
-    return mp[label]
-
-
-def exp_to_label(exp):
-    mp = {
-        16: "64 KB",
-        17: "128 KB",
-        18: "256 KB",
-        19: "512 KB",
-        20: "1 MB",
-        21: "2 MB",
-        22: "4 MB",
-        23: "8 MB",
-        24: "16 MB",
-        25: "32 MB",
-        26: "64 MB",
-        27: "128 MB"
-    }
-    return mp[exp]
 
 
 class BackupSettings(QDialog, Ui_BackupSettingsDialog):
@@ -123,9 +87,7 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
         self.setWindowTitle(window_title)
 
         self.thread_count_spin_box.setValue(DEFAULT_THREAD_COUNT)
-        self.upload_blob_size_spin_box.setValue(DEFAULT_UPLOAD_BLOB_SIZE)
         self.compression_level_spin_box.setValue(DEFAULT_COMPRESSION_LEVEL)
-        self.upload_speed_limit_spin_box.setValue(DEFAULT_UPLOAD_SPEED_LIMIT)
 
         self.populate()
 
@@ -200,18 +162,9 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
                 self.map[day].setChecked(True)
 
         self.thread_count_spin_box.setValue(self.backup.thread_count)
-        self.upload_blob_size_spin_box.setValue(self.backup.upload_blob_size)
         self.compression_level_spin_box.setValue(self.backup.compression_level)
-        self.upload_speed_limit_spin_box.setValue(
-            self.backup.upload_speed_limit)
 
         self.follow_symlinks_checkbox.setChecked(self.backup.follow_symlinks)
-        self.variable_checkbox.setChecked(self.backup.enable_variable)
-        self.min_blob_size_combo_box.setCurrentText(
-            exp_to_label(self.backup.min_variable_exp))
-        self.max_blob_size_combo_box.setCurrentText(
-            exp_to_label(self.backup.max_variable_exp))
-
         self.include_hidden_checkbox.setChecked(self.backup.include_hidden)
 
     def reload_exclude_rules(self):
@@ -304,22 +257,8 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
         self.backup.every_min = None if not self.backup_every_radio_button.isChecked(
         ) else self.mins_spinbox.value()
         self.backup.thread_count = self.thread_count_spin_box.value()
-        self.backup.upload_blob_size = self.upload_blob_size_spin_box.value()
         self.backup.compression_level = self.compression_level_spin_box.value()
-        self.backup.upload_speed_limit = self.upload_speed_limit_spin_box.value(
-        )
         self.backup.follow_symlinks = self.follow_symlinks_checkbox.isChecked()
-        self.backup.enable_variable = self.variable_checkbox.isChecked()
-        self.backup.min_variable_exp = label_to_exp(
-            self.min_blob_size_combo_box.currentText())
-        self.backup.max_variable_exp = label_to_exp(
-            self.max_blob_size_combo_box.currentText())
-
-        if self.backup.min_variable_exp > self.backup.max_variable_exp:
-            QMessageBox.warning(
-                self.window, "Invalid details",
-                "Min blob size must be greater than max blob size")
-            return
 
         if self.backup.backup_days == "":
             QMessageBox.warning(self.window, "Invalid details",

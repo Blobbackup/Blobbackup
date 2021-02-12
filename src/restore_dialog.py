@@ -2,7 +2,8 @@ from PySide2.QtWidgets import QDialog, QTreeWidgetItem, QFileDialog, QMessageBox
 from PySide2.QtCore import Qt, QThread, Signal
 from PySide2.QtGui import QIcon
 from ui_restore_dialog import Ui_RestoreDialog
-from repo import Repo, get_datetime_obj
+from repo2 import Repo
+from repo import get_datetime_obj
 from models import Utils, get_resource_path
 from download_snapshot_thread import DownloadSnapshotThread
 
@@ -31,8 +32,7 @@ class GetPathsThread(QThread):
                 | Qt.MatchRecursive) if item.checkState(0) == Qt.Checked
         ]
         paths = set()
-        node_paths = [node["path"] for node in self.snapshot]
-        for path in node_paths:
+        for path in self.snapshot["snapshot"]:
             should_include = sum(
                 1 for selected_path in selected_paths if
                 (selected_path in self.dirs and f"{selected_path}/" in path) or
@@ -51,11 +51,11 @@ class PopulateDirsThread(QThread):
 
     def run(self):
         dirs = {}
-        for node in self.snapshot:
-            dirname = os.path.dirname(node["path"])
+        for path in self.snapshot["snapshot"]:
+            dirname = os.path.dirname(path)
             if dirname not in dirs:
                 dirs[dirname] = set()
-            dirs[dirname].add(node["path"])
+            dirs[dirname].add(path)
         self.result.emit(dirs)
 
 
