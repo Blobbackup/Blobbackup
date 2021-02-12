@@ -517,7 +517,7 @@ class Repo(object):
             days_since = (current_datetime - snapshot_datetime).days
             if days_since > retention:
                 pool.submit(self._delete, snapshot_id)
-        spool.shutdown()
+        pool.shutdown()
 
     def _ref_count_snapshot_nodes(self, ref_count, snapshot_obj):
         self.logger.debug("Repo._ref_count_snapshot_nodes()")
