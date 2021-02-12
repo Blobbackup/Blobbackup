@@ -164,7 +164,6 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
         self.thread_count_spin_box.setValue(self.backup.thread_count)
         self.compression_level_spin_box.setValue(self.backup.compression_level)
 
-        self.follow_symlinks_checkbox.setChecked(self.backup.follow_symlinks)
         self.include_hidden_checkbox.setChecked(self.backup.include_hidden)
 
     def reload_exclude_rules(self):
@@ -258,7 +257,6 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
         ) else self.mins_spinbox.value()
         self.backup.thread_count = self.thread_count_spin_box.value()
         self.backup.compression_level = self.compression_level_spin_box.value()
-        self.backup.follow_symlinks = self.follow_symlinks_checkbox.isChecked()
 
         if self.backup.backup_days == "":
             QMessageBox.warning(self.window, "Invalid details",

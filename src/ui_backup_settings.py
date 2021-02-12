@@ -72,11 +72,6 @@ class Ui_BackupSettingsDialog(object):
 
         self.horizontalLayout_17 = QHBoxLayout()
         self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
-        self.follow_symlinks_checkbox = QCheckBox(self.tabWidgetPage1)
-        self.follow_symlinks_checkbox.setObjectName(u"follow_symlinks_checkbox")
-
-        self.horizontalLayout_17.addWidget(self.follow_symlinks_checkbox)
-
         self.include_hidden_checkbox = QCheckBox(self.tabWidgetPage1)
         self.include_hidden_checkbox.setObjectName(u"include_hidden_checkbox")
 
@@ -393,7 +388,6 @@ class Ui_BackupSettingsDialog(object):
         self.add_button.setText(QCoreApplication.translate("BackupSettingsDialog", u"Add Folder", None))
         self.add_file_button.setText(QCoreApplication.translate("BackupSettingsDialog", u"Add File", None))
         self.remove_button.setText(QCoreApplication.translate("BackupSettingsDialog", u"Remove", None))
-        self.follow_symlinks_checkbox.setText(QCoreApplication.translate("BackupSettingsDialog", u"Follow symlinks", None))
         self.include_hidden_checkbox.setText(QCoreApplication.translate("BackupSettingsDialog", u"Include Hidden Files", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage1), QCoreApplication.translate("BackupSettingsDialog", u"Include", None))
         self.label_4.setText(QCoreApplication.translate("BackupSettingsDialog", u"Exclude Rules", None))

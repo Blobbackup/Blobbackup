@@ -83,13 +83,6 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_17">
          <item>
-          <widget class="QCheckBox" name="follow_symlinks_checkbox">
-           <property name="text">
-            <string>Follow symlinks</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QCheckBox" name="include_hidden_checkbox">
            <property name="text">
             <string>Include Hidden Files</string>
