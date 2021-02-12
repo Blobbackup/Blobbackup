@@ -508,8 +508,7 @@ class Repo(object):
             return None
         self.logger.debug(f"Repo.keep({retention} days)")
         current_datetime = datetime.datetime.now()
-        self.snapshot_ids = self.get_snapshot_ids(
-        ) if self.snapshot_ids is None else self.snapshot_ids
+        self.snapshot_ids = self.get_snapshot_ids()
         pool = BoundedThreadPoolExecutor(self.max_thread_queue_size,
                                          self.thread_count)
         for snapshot_id in self.snapshot_ids:
