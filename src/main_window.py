@@ -14,7 +14,6 @@ from config_azure_dialog import ConfigAzureDialog
 from config_gcp_dialog import ConfigGcpDialog
 from config_s3_dialog import ConfigS3Dialog
 from config_sftp_dialog import ConfigSFTPDialog
-from config_gdrive_dialog import ConfigGDriveDialog
 
 from backup_settings import BackupSettings
 from restore_dialog import RestoreDialog
@@ -99,8 +98,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.run_s3_action.triggered.connect(
             lambda: self.run_all("S3 Storage"))
         self.run_sftp_only.triggered.connect(lambda: self.run_all("SFTP"))
-        self.run_gdrive_action.triggered.connect(
-            lambda: self.run_all("Google Drive"))
 
         self.add_one_to_start_button.pressed.connect(
             self.add_new_backup_action.trigger)
@@ -333,7 +330,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.run_b2_action.setEnabled(status)
         self.run_s3_action.setEnabled(status)
         self.run_sftp_only.setEnabled(status)
-        self.run_gdrive_action.setEnabled(status)
         self.debug_mode_action.setEnabled(status)
 
     def check_reset_sensitive_actions(self):
@@ -495,8 +491,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.config_storage(ConfigS3Dialog(self, just_save))
             if dialog.location == "SFTP":
                 self.config_storage(ConfigSFTPDialog(self, just_save))
-            if dialog.location == "Google Drive":
-                self.config_storage(ConfigGDriveDialog(self, just_save))
 
     def connect_backup(self):
         self.add_new_backup(True)
