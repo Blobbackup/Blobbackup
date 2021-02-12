@@ -356,8 +356,9 @@ class Repo(object):
 
         sha, master = self.backend.read("keys/sha-key"), self._get_master_key(
             password)
-        snapshot, start_time, read_size, self.write_size = {}, time.time(
-        ), 0, 0
+        snapshot, start_time, read_size = {}, time.time(), 0
+        self.write_size, self.processed_size, self.write_size_lock = 0, 0, Lock(
+        )
         prev_snapshot, chunks = self._get_prev_snapshot(master)
         pool = BoundedThreadPoolExecutor(self.max_thread_queue_size,
                                          self.thread_count)
@@ -381,8 +382,6 @@ class Repo(object):
             chunks.append(chunk_hash)
             for args in paths:
                 self._add_file_to_snapshot(snapshot, *args)
-            self.callback(
-                f"{pretty_bytes(self.write_size)} / {pretty_bytes(read_size)}")
         pool.shutdown()
 
         if self.cancel:
@@ -395,7 +394,10 @@ class Repo(object):
         }
 
         self.logger.info(
-            f"Processed {pretty_bytes(self.write_size)} ({self.write_size:,} bytes)"
+            f"Processed {pretty_bytes(self.processed_size)} ({self.processed_size:,} bytes)"
+        )
+        self.logger.info(
+            f"Wrote {pretty_bytes(self.write_size)} ({self.write_size:,} bytes)"
         )
 
         snapshot_id = get_current_time_string()
@@ -564,10 +566,12 @@ class Repo(object):
             f"Repo._backup_chunk(blob={len(chunk)} bytes, path={chunk_path})")
         if self.cancel:
             return None
-        self.write_size += len(chunk)
         if self.backend.exists(chunk_path):
             return None
         echunk = compress_encrypt(chunk, master)
+        self.write_size_lock.acquire()
+        self.write_size += len(echunk)
+        self.write_size_lock.release()
         self.backend.write(chunk_path, echunk)
 
     def _add_link_to_snapshot(self, snapshot, path):
@@ -612,6 +616,14 @@ class Repo(object):
             elif os.path.isdir(path):
                 self._add_dir_to_snapshot(snapshot, path)
             elif os.path.isfile(path):
+                self.processed_size += os.path.getsize(path)
+                if self.cancel:
+                    self.callback("Stopping backup")
+                    return None
+                else:
+                    self.callback(
+                        f"{pretty_bytes(self.write_size)} / {pretty_bytes(self.processed_size)}"
+                    )
                 if path in prev_snapshot and prev_snapshot[path][
                         "mtime"] == os.path.getmtime(path):
                     snapshot[path] = prev_snapshot[path]
