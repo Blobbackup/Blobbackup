@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'select_storage_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.1
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -70,12 +70,6 @@ class Ui_SelectStorageDialog(object):
 
         self.gridLayout.addWidget(self.sftp_button, 3, 0, 1, 1)
 
-        self.gdrive_button = QPushButton(SelectStorageDialog)
-        self.gdrive_button.setObjectName(u"gdrive_button")
-        self.gdrive_button.setMinimumSize(QSize(0, 100))
-
-        self.gridLayout.addWidget(self.gdrive_button, 3, 1, 1, 1)
-
 
         self.verticalLayout.addLayout(self.gridLayout)
 
@@ -95,6 +89,5 @@ class Ui_SelectStorageDialog(object):
         self.google_cloud_button.setText(QCoreApplication.translate("SelectStorageDialog", u"Google Cloud", None))
         self.backblaze_b2_button.setText(QCoreApplication.translate("SelectStorageDialog", u"Backblaze B2", None))
         self.sftp_button.setText(QCoreApplication.translate("SelectStorageDialog", u"SFTP", None))
-        self.gdrive_button.setText(QCoreApplication.translate("SelectStorageDialog", u"Google Drive", None))
     # retranslateUi
 

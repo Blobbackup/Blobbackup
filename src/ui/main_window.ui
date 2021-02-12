@@ -258,7 +258,6 @@
      <addaction name="run_b2_action"/>
      <addaction name="run_s3_action"/>
      <addaction name="run_sftp_only"/>
-     <addaction name="run_gdrive_action"/>
     </widget>
     <addaction name="run_all_action"/>
     <addaction name="menuRun_only"/>
@@ -405,11 +404,6 @@
   <action name="run_sftp_only">
    <property name="text">
     <string>SFTP</string>
-   </property>
-  </action>
-  <action name="run_gdrive_action">
-   <property name="text">
-    <string>Google Drive</string>
    </property>
   </action>
   <action name="debug_mode_action">

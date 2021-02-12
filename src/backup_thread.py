@@ -1,6 +1,6 @@
 from PySide2.QtCore import QThread, QObject, Signal
 from models import Utils, BLOBBACKUP_DIR, get_log_file_path, Settings
-from repo import Repo
+from repo2 import Repo
 from logging.handlers import RotatingFileHandler
 
 import os

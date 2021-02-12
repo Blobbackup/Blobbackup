@@ -19,7 +19,6 @@ from azure_backend import AzureBackend
 from gcp_backend import GcpBackend
 from b2_backend import B2Backend
 from sftp_backend import SftpBackend
-from gdrive_backend import GDriveBackend
 
 from Crypto.Cipher import AES
 
@@ -123,9 +122,6 @@ class Backup(object):
     sftp_password = None
     sftp_private_key = None
 
-    gdrive_creds_path = None
-    gdrive_folder_name = None
-
     def __init__(self):
         pass
 
@@ -159,9 +155,6 @@ class Utils(object):
                                backup.cloud_prefix,
                                password=backup.sftp_password,
                                rsa_path=backup.sftp_private_key)
-        if backup.location == "Google Drive":
-            return GDriveBackend(backup.gdrive_creds_path,
-                                 backup.gdrive_folder_name)
 
 
 BLOBBACKUP_DIR = os.path.join(os.path.expanduser("~"), ".blobbackup")

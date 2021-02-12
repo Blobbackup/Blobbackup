@@ -1,5 +1,5 @@
 from PySide2.QtCore import QThread, QObject, Signal
-from repo import Repo
+from repo2 import Repo
 from backup_thread import setup_logger
 from models import Utils, get_log_file_path, Settings
 
