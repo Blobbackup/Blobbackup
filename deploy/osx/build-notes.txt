@@ -1,0 +1,6 @@
+Mac
+
+- Make sure to add <key>LSUIElement</key><string>1</string> to info.plist
+- Make sure to add <key>NSHighResolutionCapable</key><string>True</string> to info.plist
+
+create-dmg --app-drop-link 300 0 --icon ~/repos/blobbackup/images/logo.icns 0 0  BlobBackup Installer.dmg  BlobBackup.app

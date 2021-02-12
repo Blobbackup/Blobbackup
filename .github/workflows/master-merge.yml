@@ -1,0 +1,89 @@
+name: Tests for master merge
+
+on:
+  push:
+    branches: [ master, build ]
+  pull_request:
+    branches: [ master, build ]
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 16 
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        python chunker_setup.py build_ext --inplace
+    - name: Install windows dependencies
+      if: matrix.os == 'windows-latest'
+      run: |
+        pip install pywin32
+    - name: Build executable (windows)
+      if: matrix.os == 'windows-latest'
+      shell: powershell
+      run: |
+        Invoke-WebRequest -Method Get -Uri https://go.microsoft.com/fwlink/p/?LinkId=323507 -OutFile sdksetup.exe -UseBasicParsing
+        Start-Process -Wait sdksetup.exe -ArgumentList "/q", "/norestart", "/features", "OptionId.WindowsDesktopSoftwareDevelopmentKit", "OptionId.NetFxSoftwareDevelopmentKit"
+        ./build.ps1
+        cp "C:/Program Files (x86)/Windows Kits/10/bin/10.0.17763.0/x86/signtool.exe" signtool.exe
+        ./signtool.exe sign /f creds/cert.pfx /p "blobbackup" dist/BlobBackup/BlobBackup.exe
+        compress-archive -path dist/BlobBackup -destinationpath BlobBackup_windows.zip
+        python upload_to_gcp.py BlobBackup_windows.zip
+    - name: Build executable (macos)
+      if: matrix.os == 'macos-latest'
+      run: |
+        source build.sh
+        # security create-keychain -p password build.keychain
+        # security unlock-keychain -p password build.keychain
+        # security default-keychain -s build.keychain
+        # security import creds/cert.pfx -k build.keychain -P blobbackup
+        # codesign -s "BlobBackup, LLC" dist/BlobBackup.app
+        cp creds/Info.plist dist/BlobBackup.app/Contents/Info.plist
+        zip -r BlobBackup_osx.zip dist/BlobBackup.app
+        python upload_to_gcp.py BlobBackup_osx.zip
+    - name: Build executable (linux)
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get install --reinstall libxcb-xinerama0
+        source build-linux.sh
+        zip BlobBackup_linux.zip dist/BlobBackup
+        python upload_to_gcp.py BlobBackup_linux.zip
+    - name: Repo
+      run: | 
+        python repo_test.py --verbose
+    - name: Memory Backend
+      run: |
+        python memory_backend_test.py --verbose
+        python gen_round_trip_test.py 10 memory
+    - name: Local Backend
+      run: |
+        python local_backend_test.py --verbose
+        python gen_round_trip_test.py 10 local
+    - name: AWS Backend
+      run: | 
+        python aws_backend_test.py --verbose
+        python gen_round_trip_test.py 10 aws 
+    - name: GCP Backend
+      run: |
+        python gcp_backend_test.py --verbose
+        python gen_round_trip_test.py 10 gcp
+    - name: Azure Backend
+      run: | 
+        python azure_backend_test.py --verbose
+        python gen_round_trip_test.py 10 azure
+    - name: SFTP Backend
+      run: | 
+        python sftp_backend_test.py --verbose
+        python gen_round_trip_test.py 10 sftp
+
+        

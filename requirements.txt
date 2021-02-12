@@ -1,0 +1,17 @@
+pyside2
+azure-storage-blob
+google-cloud-storage
+boto3 
+zstd
+pycryptodome
+retry
+b2sdk
+apscheduler
+pyinstaller
+keyring
+pysftp
+fs
+google-api-python-client==1.8
+fs.googledrivefs
+google-auth-oauthlib
+cython

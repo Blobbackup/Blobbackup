@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>469</width>
+    <height>308</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>1</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QTreeWidget" name="backups_tree_widget">
+      <property name="rootIsDecorated">
+       <bool>false</bool>
+      </property>
+      <property name="allColumnsShowFocus">
+       <bool>true</bool>
+      </property>
+      <property name="columnCount">
+       <number>4</number>
+      </property>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Storage</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Status</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Schedule</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="welcome_widget" native="true">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>No backups found.</string>
+         </property>
+         <property name="margin">
+          <number>6</number>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QPushButton" name="add_one_to_start_button">
+         <property name="text">
+          <string>Add new</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>6</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>6</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Log Level: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="show_everything_radio_button">
+        <property name="text">
+         <string>Show Everything</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="only_errors_radio_button">
+        <property name="text">
+         <string>Only Errors</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="full_log_button">
+        <property name="text">
+         <string>Full Log</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPlainTextEdit" name="log_text_edit">
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>469</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>false</bool>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="add_new_backup_action"/>
+    <addaction name="connect_to_existing_backup_action"/>
+    <addaction name="exit_action"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="website_action"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="debug_mode_action"/>
+   </widget>
+   <widget class="QMenu" name="menuRun">
+    <property name="title">
+     <string>Run</string>
+    </property>
+    <widget class="QMenu" name="menuRun_only">
+     <property name="title">
+      <string>Run only</string>
+     </property>
+     <addaction name="run_local_action"/>
+     <addaction name="run_aws_action"/>
+     <addaction name="run_gcp_action"/>
+     <addaction name="run_azure_action"/>
+     <addaction name="run_b2_action"/>
+     <addaction name="run_s3_action"/>
+     <addaction name="run_sftp_only"/>
+     <addaction name="run_gdrive_action"/>
+    </widget>
+    <addaction name="run_all_action"/>
+    <addaction name="menuRun_only"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuRun"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="tool_bar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="go_action"/>
+   <addaction name="stop_action"/>
+   <addaction name="separator"/>
+   <addaction name="edit_action"/>
+   <addaction name="delete_action"/>
+   <addaction name="separator"/>
+   <addaction name="view_action"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QStatusBar" name="status_bar"/>
+  <action name="add_new_backup_action">
+   <property name="text">
+    <string>Add new backup</string>
+   </property>
+  </action>
+  <action name="connect_to_existing_backup_action">
+   <property name="text">
+    <string>Connect existing backup</string>
+   </property>
+  </action>
+  <action name="exit_action">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="go_action">
+   <property name="text">
+    <string>Run</string>
+   </property>
+  </action>
+  <action name="stop_action">
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="view_action">
+   <property name="text">
+    <string>Restore</string>
+   </property>
+   <property name="toolTip">
+    <string>View</string>
+   </property>
+  </action>
+  <action name="delete_action">
+   <property name="text">
+    <string>Delete</string>
+   </property>
+  </action>
+  <action name="edit_action">
+   <property name="text">
+    <string>Edit</string>
+   </property>
+  </action>
+  <action name="actionWebsite">
+   <property name="text">
+    <string>Website</string>
+   </property>
+  </action>
+  <action name="actionFeedback">
+   <property name="text">
+    <string>Feedback</string>
+   </property>
+  </action>
+  <action name="website_action">
+   <property name="text">
+    <string>Documentation</string>
+   </property>
+  </action>
+  <action name="set_thread_count_action">
+   <property name="text">
+    <string>Set thread count</string>
+   </property>
+  </action>
+  <action name="set_upload_blob_size_action">
+   <property name="text">
+    <string>Set upload blob size</string>
+   </property>
+  </action>
+  <action name="run_all_action">
+   <property name="text">
+    <string>Run all</string>
+   </property>
+  </action>
+  <action name="run_local_action">
+   <property name="text">
+    <string>Local Directory</string>
+   </property>
+  </action>
+  <action name="run_aws_action">
+   <property name="text">
+    <string>Amazon AWS</string>
+   </property>
+  </action>
+  <action name="run_gcp_action">
+   <property name="text">
+    <string>Google Cloud</string>
+   </property>
+  </action>
+  <action name="run_azure_action">
+   <property name="text">
+    <string>Microsoft Azure</string>
+   </property>
+  </action>
+  <action name="run_b2_action">
+   <property name="text">
+    <string>Backblaze B2</string>
+   </property>
+  </action>
+  <action name="run_s3_action">
+   <property name="text">
+    <string>S3 Storage</string>
+   </property>
+  </action>
+  <action name="set_upload_speed_limit_action">
+   <property name="text">
+    <string>Set upload speed limit</string>
+   </property>
+  </action>
+  <action name="run_sftp_only">
+   <property name="text">
+    <string>SFTP</string>
+   </property>
+  </action>
+  <action name="run_gdrive_action">
+   <property name="text">
+    <string>Google Drive</string>
+   </property>
+  </action>
+  <action name="debug_mode_action">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Debug mode</string>
+   </property>
+  </action>
+  <action name="set_compression_level_action">
+   <property name="text">
+    <string>Set compression level</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
