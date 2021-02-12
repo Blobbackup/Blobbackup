@@ -10,8 +10,6 @@ apscheduler
 pyinstaller
 keyring
 pysftp
-fs
 google-api-python-client==1.8
-fs.googledrivefs
 google-auth-oauthlib
 cython
