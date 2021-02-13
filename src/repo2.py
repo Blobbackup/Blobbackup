@@ -324,19 +324,22 @@ class Repo(object):
                include_hidden=False):
         if exclude_rules is None:
             exclude_rules = set()
+        exclude_rules.add(f"{BLOBBACKUP_DIR}*")
         self.backup_start_time = time.time()
 
-        exclude_rules.add(f"{BLOBBACKUP_DIR}*")
         self.logger.info("----------------------------------------------")
         time.sleep(0.5)
         self.logger.info("Backup started")
         self.callback("Backing up")
 
-        sha, master = self.backend.read("keys/sha-key"), self._get_master_key(
-            password)
-        snapshot, start_time, read_size = {}, time.time(), 0
-        self.write_size, self.processed_size, self.write_size_lock = 0, 0, Lock(
-        )
+        master = self._get_master_key(password)
+        sha = decrypt(self.backend.read("keys/sha-key"), master)
+
+        snapshot = {}
+        self.write_size = 0
+        self.processed_size = 0
+        self.write_size_lock = Lock()
+
         prev_snapshot, chunks = self._get_prev_snapshot(master)
         pool = BoundedThreadPoolExecutor(self.max_thread_queue_size,
                                          self.thread_count)
@@ -353,7 +356,6 @@ class Repo(object):
             chunk, paths = chunk_maker.get_chunk()
             if len(chunk) is 0:
                 break
-            read_size += len(chunk)
             chunk_hash = hmac.new(sha, chunk, hashlib.sha256).hexdigest()
             chunk_path = f"chunks/{chunk_hash}"
             pool.submit(self._backup_chunk, chunk_path, chunk, master)
@@ -445,8 +447,6 @@ class Repo(object):
         return snapshot_ids
 
     def prune(self, password):
-        if self.backup_start_time is None:
-            self.backup_start_time = time.time()
         self.logger.info("Prune started")
         if self.cancel:
             self.logger.info("Stopping")
