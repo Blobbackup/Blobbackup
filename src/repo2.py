@@ -381,7 +381,7 @@ class Repo(object):
                 break
             read_size += len(chunk)
             chunk_hash = hmac.new(sha, chunk, hashlib.sha256).hexdigest()
-            chunk_path = f"chunks/{chunk_hash[:2]}/{chunk_hash}"
+            chunk_path = f"chunks/{chunk_hash}"
             pool.submit(self._backup_chunk, chunk_path, chunk, master)
             chunks.append(chunk_hash)
             for args in paths:
@@ -447,7 +447,7 @@ class Repo(object):
             start, ostart, end, oend = data["range"]
             with open(restore_path, "wb") as f:
                 for i in range(start, end + 1):
-                    chunk_path = f"chunks/{chunks[i][:2]}/{chunks[i]}"
+                    chunk_path = f"chunks/{chunks[i]}"
                     chunk = self._get_chunk(chunk_path, master)
                     s = ostart if i == start else 0
                     e = oend if i == end else len(chunk)
@@ -545,7 +545,7 @@ class Repo(object):
                 return None
             if count is 0:
                 deleted += 1
-                blob_path = f"chunks/{blob_hash[:2]}/{blob_hash}"
+                blob_path = f"chunks/{blob_hash}"
                 pool.submit(self._rm_blob, blob_path, deleted)
         pool.shutdown()
         return deleted
