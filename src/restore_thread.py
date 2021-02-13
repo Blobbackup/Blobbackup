@@ -23,8 +23,6 @@ class RestoreThread(QThread):
             self.repo = Repo(Utils.get_backend(backup),
                              callback=self.updated.emit,
                              thread_count=self.backup.thread_count,
-                             blob_size_kb=self.backup.upload_blob_size,
-                             upload_speed_limit=self.backup.upload_speed_limit,
                              compression_level=self.backup.compression_level,
                              logger=setup_logger(
                                  backup.name, get_log_file_path(backup.name),

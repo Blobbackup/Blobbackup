@@ -39,11 +39,7 @@ class BackupThread(QThread):
                 Utils.get_backend(backup),
                 callback=lambda message: self.updated.emit(self.item, message),
                 thread_count=backup.thread_count,
-                blob_size_kb=backup.upload_blob_size,
-                upload_speed_limit=backup.upload_speed_limit,
                 compression_level=backup.compression_level,
-                follow_symlinks=backup.follow_symlinks,
-                enable_variable=backup.enable_variable,
                 logger=setup_logger(self.backup.name,
                                     get_log_file_path(self.backup.name),
                                     logging.DEBUG if debug else logging.INFO))

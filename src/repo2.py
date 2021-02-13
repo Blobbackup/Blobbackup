@@ -267,43 +267,19 @@ class Repo(object):
                  backend,
                  callback=print,
                  thread_count=None,
-                 blob_size_kb=None,
-                 upload_speed_limit=None,
                  compression_level=None,
-                 enable_variable=None,
-                 follow_symlinks=None,
-                 min_variable_exp=None,
-                 max_variable_exp=None,
                  logger=None):
         if logger is None:
             logger = logging.getLogger("test")
         if thread_count is None:
             thread_count = DEFAULT_THREAD_COUNT
-        if blob_size_kb is None:
-            blob_size_kb = 0
-        if upload_speed_limit is None:
-            upload_speed_limit = 0
         if compression_level is None:
             compression_level = ZSTD_COMPRESSION_LEVEL
-        if follow_symlinks is None:
-            follow_symlinks = False
-        if enable_variable is None:
-            enable_variable = False
-        if min_variable_exp is None:
-            min_variable_exp = CHUNKER_MIN_LOG
-        if max_variable_exp is None:
-            max_variable_exp = CHUNKER_MAX_LOG
 
         self.backend = backend
         self.callback = callback
         self.thread_count = thread_count
-        self.blob_size = blob_size_kb * 1024
-        self.upload_speed_limit = upload_speed_limit
         self.compression_level = compression_level
-        self.follow_symlinks = follow_symlinks
-        self.enable_variable = enable_variable
-        self.min_variable_exp = min_variable_exp
-        self.max_variable_exp = max_variable_exp
         self.logger = logger
         self.max_thread_queue_size = thread_count * 10
         self.cancel = False
