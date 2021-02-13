@@ -132,14 +132,14 @@ class Repo2Test(TestCase):
         print("Seed:", seed)
         tempdir = tempfile.TemporaryDirectory().name
         randomfiletree.core.iterative_gaussian_tree(tempdir,
-                                                    nfiles=3.0,
-                                                    nfolders=1.0,
+                                                    nfiles=4.0,
+                                                    nfolders=1.5,
                                                     maxdepth=5,
                                                     repeat=4)
         for root, _, files in os.walk(tempdir):
             for f in files:
                 path = os.path.join(root, f)
-                size = random.randint(0, 2**25)
+                size = random.randint(0, 2**24 + 100)
                 with open(path, "wb") as f:
                     f.write(os.urandom(size))
                 print(f"Generated {pretty_bytes(size)} bytes at {path}")
