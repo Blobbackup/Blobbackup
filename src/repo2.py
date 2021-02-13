@@ -601,6 +601,8 @@ class Repo(object):
                     snapshot[path] = prev_snapshot[path]
                     continue
                 yield path
+            else:
+                self.logger.error(f"Skipped path {path}")
 
     def _gen_paths(self, include_paths):
         for include_path in include_paths:
