@@ -6,7 +6,7 @@ import filecmp
 
 from unittest import TestCase, main
 from memory_backend import MemoryBackend
-from repo2 import Repo, decrypt
+from repo2 import Repo, decrypt, compress, generate_key
 from pathlib import Path
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
@@ -29,6 +29,10 @@ class Repo2Test(TestCase):
 
         master = self.repo._get_master_key(b"password")
         decrypt(self.backend.read("keys/sha-key"), master)
+
+        key = generate_key(self.backend.read("keys/key-salt"), b"password")
+        self.assertEqual(decrypt(self.backend.read("keys/master-key"), key),
+                         master)
 
     def test_backup_format(self):
         self.repo.init(b"password")
@@ -109,6 +113,14 @@ class Repo2Test(TestCase):
             if os.path.isfile(dir_path):
                 self.assertTrue(filecmp.cmp(dir_path, restore_path))
             print(os.path.basename(restore_path), "OK")
+
+    def test_files_encrypted(self):
+        self.repo.init(b"password")
+        self.repo.backup(b"password", [os.path.abspath(".")])
+        for path, data in self.backend.files.items():
+            entropy = len(compress(data)) / len(data)
+            self.assertGreater(entropy, 0.9)
+            print(f"{path} entropy: {entropy} OK")
 
 
 if __name__ == "__main__":
