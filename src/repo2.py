@@ -288,6 +288,7 @@ class Repo(object):
         self.logger = logger
         self.max_thread_queue_size = thread_count * 10
         self.cancel = False
+        self.backup_start_time = None
         self.logger.debug(
             f"Repo (threads={thread_count}, compression_level={compression_level})"
         )
@@ -447,6 +448,8 @@ class Repo(object):
         return snapshot_ids
 
     def prune(self, password):
+        if self.backup_start_time is None:
+            self.backup_start_time = time.time()
         self.logger.info("Prune started")
         if self.cancel:
             self.logger.info("Stopping")
