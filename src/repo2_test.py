@@ -126,7 +126,7 @@ class Repo2Test(TestCase):
     def test_round_trip_current_dir(self):
         self._test_round_trip(".")
 
-    def test_round_trip_random_dir(self):
+    def test_round_trip_random(self):
         seed = int(time.time())
         random.seed(seed)
         print("Seed:", seed)
@@ -144,6 +144,14 @@ class Repo2Test(TestCase):
                     f.write(os.urandom(size))
                 print(f"Generated {pretty_bytes(size)} bytes at {path}")
         self._test_round_trip(tempdir)
+
+        before_data = {k: v for k, v in self.backend.files.items()}
+        self.repo.prune(b"password")
+        self.assertEqual(before_data, self.backend.files)
+
+        self.backend.rm(self.backend.ls("snapshots")[0])
+        self.repo.prune(b"password")
+        self.assertEqual(len(self.backend.ls("chunks")), 0)
 
     def test_files_encrypted(self):
         self.repo.init(b"password")
