@@ -84,6 +84,7 @@ class Repo2Test(TestCase):
         self.repo.restore(b"password", snapshot_id, tempdir)
 
         dir_paths = []
+        dir_size = 0
         for root, dirs, files in os.walk("."):
             for d in dirs:
                 path = os.path.join(root, d)
@@ -91,7 +92,9 @@ class Repo2Test(TestCase):
             for f in files:
                 path = os.path.join(root, f)
                 dir_paths.append(path)
+                dir_size += os.path.getsize(path)
         restore_paths = []
+        restore_size = 0
         for root, dirs, files in os.walk(
                 os.path.join(tempdir,
                              os.path.abspath(".")[1:])):
@@ -101,9 +104,11 @@ class Repo2Test(TestCase):
             for f in files:
                 path = os.path.join(root, f)
                 restore_paths.append(path)
+                restore_size += os.path.getsize(path)
         dir_paths.sort()
         restore_paths.sort()
 
+        self.assertEqual(dir_size, restore_size)
         self.assertEqual(len(dir_paths), len(restore_paths))
         for dir_path, restore_path in zip(dir_paths, restore_paths):
             self.assertEqual(os.path.basename(dir_path),
@@ -112,7 +117,7 @@ class Repo2Test(TestCase):
                              os.path.isfile(restore_path))
             if os.path.isfile(dir_path):
                 self.assertTrue(filecmp.cmp(dir_path, restore_path))
-            print(os.path.basename(restore_path), "OK")
+            print(f"Restore test: {dir_path} OK")
 
     def test_files_encrypted(self):
         self.repo.init(b"password")
