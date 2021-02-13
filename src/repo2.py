@@ -275,7 +275,6 @@ class Repo(object):
             thread_count = DEFAULT_THREAD_COUNT
         if compression_level is None:
             compression_level = ZSTD_COMPRESSION_LEVEL
-
         self.backend = backend
         self.callback = callback
         self.thread_count = thread_count
@@ -283,9 +282,8 @@ class Repo(object):
         self.logger = logger
         self.max_thread_queue_size = thread_count * 10
         self.cancel = False
-
         self.logger.debug(
-            f"Repo (threads={thread_count}, compression_level={compression_level}, blob={blob_size_kb}, kbs={upload_speed_limit})"
+            f"Repo (threads={thread_count}, compression_level={compression_level}, blob={blob_size_kb})"
         )
 
     def is_initialized(self):

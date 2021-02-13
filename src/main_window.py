@@ -320,8 +320,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.exit_action.setEnabled(status)
         self.set_thread_count_action.setEnabled(status)
         self.set_compression_level_action.setEnabled(status)
-        self.set_upload_blob_size_action.setEnabled(status)
-        self.set_upload_speed_limit_action.setEnabled(status)
         self.run_all_action.setEnabled(status)
         self.run_local_action.setEnabled(status)
         self.run_aws_action.setEnabled(status)

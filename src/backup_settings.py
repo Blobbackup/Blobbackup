@@ -1,8 +1,7 @@
 from PySide2.QtWidgets import QDialog, QFileDialog, QButtonGroup, QMessageBox, QInputDialog
 from ui_backup_settings import Ui_BackupSettingsDialog
 from models import (Backups, Utils, DEFAULT_COMPRESSION_LEVEL,
-                    DEFAULT_THREAD_COUNT, DEFAULT_UPLOAD_BLOB_SIZE,
-                    DEFAULT_UPLOAD_SPEED_LIMIT)
+                    DEFAULT_THREAD_COUNT)
 from repo2 import Repo
 from command_thread import CommandThread
 

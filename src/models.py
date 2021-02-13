@@ -58,8 +58,6 @@ def get_resource_path(path):
 
 DEFAULT_THREAD_COUNT = 4
 DEFAULT_COMPRESSION_LEVEL = 3
-DEFAULT_UPLOAD_BLOB_SIZE = 1024
-DEFAULT_UPLOAD_SPEED_LIMIT = 0
 
 CHUNK_MIN_EXP = 19
 CHUNK_MAX_EXP = 23
@@ -81,8 +79,6 @@ class Backup(object):
 
     thread_count = DEFAULT_THREAD_COUNT
     compression_level = DEFAULT_COMPRESSION_LEVEL
-    upload_blob_size = DEFAULT_UPLOAD_BLOB_SIZE
-    upload_speed_limit = DEFAULT_UPLOAD_SPEED_LIMIT
     enable_variable = False
     min_variable_exp = CHUNK_MIN_EXP
     max_variable_exp = CHUNK_MAX_EXP

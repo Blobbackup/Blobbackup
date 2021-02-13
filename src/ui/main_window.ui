@@ -336,29 +336,9 @@
     <string>Edit</string>
    </property>
   </action>
-  <action name="actionWebsite">
-   <property name="text">
-    <string>Website</string>
-   </property>
-  </action>
-  <action name="actionFeedback">
-   <property name="text">
-    <string>Feedback</string>
-   </property>
-  </action>
   <action name="website_action">
    <property name="text">
     <string>Documentation</string>
-   </property>
-  </action>
-  <action name="set_thread_count_action">
-   <property name="text">
-    <string>Set thread count</string>
-   </property>
-  </action>
-  <action name="set_upload_blob_size_action">
-   <property name="text">
-    <string>Set upload blob size</string>
    </property>
   </action>
   <action name="run_all_action">
@@ -396,11 +376,6 @@
     <string>S3 Storage</string>
    </property>
   </action>
-  <action name="set_upload_speed_limit_action">
-   <property name="text">
-    <string>Set upload speed limit</string>
-   </property>
-  </action>
   <action name="run_sftp_only">
    <property name="text">
     <string>SFTP</string>
@@ -412,11 +387,6 @@
    </property>
    <property name="text">
     <string>Debug mode</string>
-   </property>
-  </action>
-  <action name="set_compression_level_action">
-   <property name="text">
-    <string>Set compression level</string>
    </property>
   </action>
  </widget>
