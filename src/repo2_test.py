@@ -77,15 +77,16 @@ class Repo2Test(TestCase):
         self.assertFalse(self.repo.check_password(b"notpassword"))
         self.assertTrue(self.repo.check_password(b"password"))
 
-    def test_round_trip(self):
+    def _test_round_trip(self, test_dir):
         tempdir = tempfile.TemporaryDirectory().name
         self.repo.init(b"password")
-        snapshot_id, _ = self.repo.backup(b"password", [os.path.abspath(".")])
+        snapshot_id, _ = self.repo.backup(b"password",
+                                          [os.path.abspath(test_dir)])
         self.repo.restore(b"password", snapshot_id, tempdir)
 
         dir_paths = []
         dir_size = 0
-        for root, dirs, files in os.walk("."):
+        for root, dirs, files in os.walk(test_dir):
             for d in dirs:
                 path = os.path.join(root, d)
                 dir_paths.append(path)
@@ -97,7 +98,7 @@ class Repo2Test(TestCase):
         restore_size = 0
         for root, dirs, files in os.walk(
                 os.path.join(tempdir,
-                             os.path.abspath(".")[1:])):
+                             os.path.abspath(test_dir)[1:])):
             for d in dirs:
                 path = os.path.join(root, d)
                 restore_paths.append(path)
@@ -118,6 +119,9 @@ class Repo2Test(TestCase):
             if os.path.isfile(dir_path):
                 self.assertTrue(filecmp.cmp(dir_path, restore_path))
             print(f"Restore test: {dir_path} OK")
+
+    def test_round_trip_current_dir(self):
+        self._test_round_trip(".")
 
     def test_files_encrypted(self):
         self.repo.init(b"password")
