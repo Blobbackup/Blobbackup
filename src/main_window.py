@@ -20,7 +20,6 @@ from restore_dialog import RestoreDialog
 from models import (Backups, get_resource_path, get_log_file_path, Settings,
                     BLOBBACKUP_DIR, NB_DAYS_IN_TRIAL)
 from scheduler import Scheduler
-from repo import MAX_BLOB_SIZE_KB
 
 from backup_thread import BackupThread
 from restore_thread import RestoreThread
@@ -318,8 +317,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.add_new_backup_action.setEnabled(status)
         self.connect_to_existing_backup_action.setEnabled(status)
         self.exit_action.setEnabled(status)
-        self.set_thread_count_action.setEnabled(status)
-        self.set_compression_level_action.setEnabled(status)
         self.run_all_action.setEnabled(status)
         self.run_local_action.setEnabled(status)
         self.run_aws_action.setEnabled(status)

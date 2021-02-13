@@ -20,9 +20,11 @@ from Crypto.Cipher import AES
 from Crypto.Protocol.KDF import scrypt
 from pathlib import Path
 from functools import lru_cache
+from models import BLOBBACKUP_DIR
 
-from repo import (AlreadyInitialized, CorruptSnapshot, BLOBBACKUP_DIR,
-                  get_datetime_obj)
+
+class CorruptSnapshot(Exception):
+    pass
 
 
 class ConcatBytesIO(object):
@@ -209,6 +211,10 @@ def get_current_time_string():
     return datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
 
 
+def get_datetime_obj(datetime_string):
+    return datetime.datetime.strptime(datetime_string, "%Y-%m-%d-%H-%M-%S")
+
+
 def pretty_bytes(num, suffix='B'):
     for unit in ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z']:
         if abs(num) < 1024.0:
@@ -283,7 +289,7 @@ class Repo(object):
         self.max_thread_queue_size = thread_count * 10
         self.cancel = False
         self.logger.debug(
-            f"Repo (threads={thread_count}, compression_level={compression_level}, blob={blob_size_kb})"
+            f"Repo (threads={thread_count}, compression_level={compression_level})"
         )
 
     def is_initialized(self):
@@ -307,9 +313,6 @@ class Repo(object):
 
     def init(self, password):
         self.logger.debug(f"Repo.init()")
-
-        if self.is_initialized():
-            raise AlreadyInitialized()
 
         salt, master, sha = os.urandom(16), os.urandom(32), os.urandom(32)
         key = generate_key(salt, password)

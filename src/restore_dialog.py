@@ -2,8 +2,7 @@ from PySide2.QtWidgets import QDialog, QTreeWidgetItem, QFileDialog, QMessageBox
 from PySide2.QtCore import Qt, QThread, Signal
 from PySide2.QtGui import QIcon
 from ui_restore_dialog import Ui_RestoreDialog
-from repo2 import Repo
-from repo import get_datetime_obj
+from repo2 import Repo, get_datetime_obj
 from models import Utils, get_resource_path
 from download_snapshot_thread import DownloadSnapshotThread
 
