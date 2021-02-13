@@ -420,9 +420,6 @@ class Repo(object):
                 os.makedirs(restore_path, exist_ok=True)
                 continue
             os.makedirs(os.path.dirname(restore_path), exist_ok=True)
-            if data["type"] == "link":
-                os.symlink(data["target"], restore_path)
-                continue
             start, ostart, end, oend = data["range"]
             with open(restore_path, "wb") as f:
                 for i in range(start, end + 1):
@@ -555,10 +552,6 @@ class Repo(object):
         self.write_size_lock.release()
         self.backend.write(chunk_path, echunk)
 
-    def _add_link_to_snapshot(self, snapshot, path):
-        self.logger.debug(f"Repo._add_link_to_snapshot({path})")
-        snapshot[path] = {"type": "link", "target": os.readlink(path)}
-
     def _add_dir_to_snapshot(self, snapshot, path):
         self.logger.debug(f"Repo._add_dir_to_snapshot({path})")
         snapshot[path] = {"type": "dir", "mtime": os.path.getmtime(path)}
@@ -592,8 +585,6 @@ class Repo(object):
         for path in self._gen_paths(include_paths):
             if fn_matches(path, exclude_rules):
                 continue
-            elif os.path.islink(path):
-                self._add_link_to_snapshot(snapshot, path)
             elif os.path.isdir(path):
                 self._add_dir_to_snapshot(snapshot, path)
             elif os.path.isfile(path):
