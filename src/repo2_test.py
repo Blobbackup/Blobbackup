@@ -3,10 +3,13 @@ import sys
 import os
 import tempfile
 import filecmp
+import randomfiletree
+import random
+import time
 
 from unittest import TestCase, main
 from memory_backend import MemoryBackend
-from repo2 import Repo, decrypt, compress, generate_key
+from repo2 import Repo, decrypt, compress, generate_key, pretty_bytes
 from pathlib import Path
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
@@ -122,6 +125,25 @@ class Repo2Test(TestCase):
 
     def test_round_trip_current_dir(self):
         self._test_round_trip(".")
+
+    def test_round_trip_random_dir(self):
+        seed = int(time.time())
+        random.seed(seed)
+        print("Seed:", seed)
+        tempdir = tempfile.TemporaryDirectory().name
+        randomfiletree.core.iterative_gaussian_tree(tempdir,
+                                                    nfiles=3.0,
+                                                    nfolders=1.0,
+                                                    maxdepth=5,
+                                                    repeat=4)
+        for root, _, files in os.walk(tempdir):
+            for f in files:
+                path = os.path.join(root, f)
+                size = random.randint(0, 2**25)
+                with open(path, "wb") as f:
+                    f.write(os.urandom(size))
+                print(f"Generated {pretty_bytes(size)} bytes at {path}")
+        self._test_round_trip(tempdir)
 
     def test_files_encrypted(self):
         self.repo.init(b"password")
