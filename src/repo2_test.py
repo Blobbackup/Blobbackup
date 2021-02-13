@@ -1,6 +1,8 @@
 import logging
 import sys
 import os
+import tempfile
+import filecmp
 
 from unittest import TestCase, main
 from memory_backend import MemoryBackend
@@ -59,17 +61,55 @@ class Repo2Test(TestCase):
                 for i in range(start, end + 1):
                     referenced_chunk_ids.add(i)
                     chunk_hash = snapshot_obj["chunks"][i]
-                    self.assertTrue(self.backend.exists(f"chunks/{chunk_hash}"))
+                    self.assertTrue(
+                        self.backend.exists(f"chunks/{chunk_hash}"))
             elif node["type"] == "dir":
                 self.assertIn("mtime", node)
         self.assertEqual(sorted(referenced_chunk_ids),
                          list(range(len(snapshot_obj["chunks"]))))
-        
+
     def test_check_password(self):
         self.repo.init(b"password")
         self.assertFalse(self.repo.check_password(b"notpassword"))
         self.assertTrue(self.repo.check_password(b"password"))
-        
+
+    def test_round_trip(self):
+        tempdir = tempfile.TemporaryDirectory().name
+        self.repo.init(b"password")
+        snapshot_id, _ = self.repo.backup(b"password", [os.path.abspath(".")])
+        self.repo.restore(b"password", snapshot_id, tempdir)
+
+        dir_paths = []
+        for root, dirs, files in os.walk("."):
+            for d in dirs:
+                path = os.path.join(root, d)
+                dir_paths.append(path)
+            for f in files:
+                path = os.path.join(root, f)
+                dir_paths.append(path)
+        restore_paths = []
+        for root, dirs, files in os.walk(
+                os.path.join(tempdir,
+                             os.path.abspath(".")[1:])):
+            for d in dirs:
+                path = os.path.join(root, d)
+                restore_paths.append(path)
+            for f in files:
+                path = os.path.join(root, f)
+                restore_paths.append(path)
+        dir_paths.sort()
+        restore_paths.sort()
+
+        self.assertEqual(len(dir_paths), len(restore_paths))
+        for dir_path, restore_path in zip(dir_paths, restore_paths):
+            self.assertEqual(os.path.basename(dir_path),
+                             os.path.basename(restore_path))
+            self.assertEqual(os.path.isfile(dir_path),
+                             os.path.isfile(restore_path))
+            if os.path.isfile(dir_path):
+                self.assertTrue(filecmp.cmp(dir_path, restore_path))
+            print(os.path.basename(restore_path), "OK")
+
 
 if __name__ == "__main__":
     main()
