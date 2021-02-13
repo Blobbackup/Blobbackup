@@ -47,10 +47,6 @@ def decrypt(data, key):
     return cipher.decrypt_and_verify(cipher_text, mac)
 
 
-class ActivationFailed(Exception):
-    pass
-
-
 def get_resource_path(path):
     try:
         base_path = sys._MEIPASS
