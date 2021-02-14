@@ -1,3 +1,5 @@
+/* From https://github.com/borgbackup/borg */
+
 #include <Python.h>
 #include <fcntl.h>
 
