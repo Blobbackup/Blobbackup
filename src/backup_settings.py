@@ -38,6 +38,9 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
         prefix = self.backup.cloud_prefix if self.backup.cloud_prefix is not None else self.backup.local_directory
         window_title = f"{self.backup.location} ({prefix})"
 
+        # Hiding unsupported add file button for now
+        self.add_file_button.hide()
+
         self.add_button.pressed.connect(self.add_folder)
         self.add_file_button.pressed.connect(self.add_file)
         self.remove_button.pressed.connect(self.remove_folder)
