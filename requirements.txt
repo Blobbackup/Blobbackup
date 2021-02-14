@@ -14,3 +14,4 @@ google-api-python-client==1.8
 google-auth-oauthlib
 cython
 randomFileTree
+mkdocs
