@@ -1,6 +1,6 @@
-<p align="center"><img src="docs/docs/images/logo.png" width="64px"/></p>
+<p align="center"><img src="docs/docs/images/logo.png" width="48px"/></p>
 
-<p align="center"><img src="docs/docs/images/gui.png"/></p>
+<p align="center"><img src="docs/docs/images/gui.png" width="500px"/></p>
 
 **BlobBackup** is a minimalistic backup utility for your Windows,
 Mac or Linux computer. With an excellent engine, extensive storage support,
