@@ -1,0 +1,5 @@
+site_name: BlobBackup Documentation
+nav: 
+  - Introduction: index.md
+  - Data Format: format.md
+theme: readthedocs
