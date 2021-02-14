@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/docs/images/logo.png" width="64px"/></p>
+
 <p align="center"><img src="docs/docs/images/gui.png"/></p>
 
 **BlobBackup** is a minimalistic backup utility for your Windows,
