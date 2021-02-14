@@ -8,3 +8,5 @@ lots of :heart:
 
 Detailed documentation can be found [here](https://readthedocs.com). 
 Download the latest stable version [here](https://github.com).
+
+![Gui](docs/docs/images/gui.jpg)
