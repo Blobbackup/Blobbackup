@@ -1,0 +1,302 @@
+/* ============================= 
+    COMMON CSS
+================================ */
+html {    
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $body-font;
+    color: $body-color;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    @include transition(.3s);
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+button {
+    @include transition(.3s);
+}
+
+.container {
+    @media #{$xs} {
+        padding: 0 30px;
+    }
+}
+
+
+/* ============ scroll-top =============== */
+.scroll-top {
+    width: 45px;
+    height: 45px;
+    background: $primary-color;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: $white;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9;
+    cursor: pointer;
+    @include transition(.3s);
+
+    &:hover {
+        color: $white;
+        background: rgba($primary-color, .8);
+    }
+}
+
+
+/* ============================= 
+    PRELOADER CSS
+================================ */
+
+.preloader {
+    /* Body Overlay */
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: table;
+    height: 100%;
+    width: 100%;
+    /* Change Background Color */
+    background: $white;
+    z-index: 99999;
+
+    & .loader {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+
+        & .spinner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 64px;
+            margin-left: -32px;
+            z-index: 18;
+            pointer-events: none;
+
+            & .spinner-container {
+                pointer-events: none;
+                position: absolute;
+                width: 100%;
+                padding-bottom: 100%;
+                top: 50%;
+                left: 50%;
+                margin-top: -50%;
+                margin-left: -50%;
+                @include animation(spinner-linspin 1568.23529647ms linear infinite);
+
+                & .spinner-rotator {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    @include animation(spinner-easespin 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both);
+
+                    & .spinner-left {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        overflow: hidden;
+                        right: 50%;
+                    }
+
+                    & .spinner-right {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        overflow: hidden;
+                        left: 50%;
+                    }
+                }
+            }
+        }
+
+        & .spinner-circle {
+            box-sizing: border-box;
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            border-style: solid;
+            /* Spinner Color */
+            border-color: $primary-color $primary-color $border-color;
+            border-radius: 50%;
+            border-width: 6px;
+        }
+
+        & .spinner-left {
+            & .spinner-circle {
+                left: 0;
+                right: -100%;
+                border-right-color: $border-color;
+                @include animation(spinner-left-spin 1333ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both);
+            }
+        }
+
+        & .spinner-right {
+            & .spinner-circle {
+                left: -100%;
+                right: 0;
+                border-left-color: $border-color;
+                @include animation(right-spin 1333ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both);
+            }
+        }
+    }
+}
+
+/* Preloader Animations */
+
+@-webkit-keyframes spinner-linspin {
+    to {
+        @include transform(rotate(360deg));
+    }
+}
+
+@keyframes spinner-linspin {
+    to {
+        @include transform(rotate(360deg));
+    }
+}
+
+@-webkit-keyframes spinner-easespin {
+    12.5% {
+        @include transform(rotate(135deg));
+    }
+
+    25% {
+        @include transform(rotate(270deg));
+    }
+
+    37.5% {
+        @include transform(rotate(405deg));
+    }
+
+    50% {
+        @include transform(rotate(540deg));
+    }
+
+    62.5% {
+        @include transform(rotate(675deg));
+    }
+
+    75% {
+        @include transform(rotate(810deg));
+    }
+
+    87.5% {
+        @include transform(rotate(945deg));
+    }
+
+    to {
+        @include transform(rotate(1080deg));
+    }
+}
+
+@keyframes spinner-easespin {
+    12.5% {
+        @include transform(rotate(135deg));
+    }
+
+    25% {
+        @include transform(rotate(270deg));
+    }
+
+    37.5% {
+        @include transform(rotate(405deg));
+    }
+
+    50% {
+        @include transform(rotate(540deg));
+    }
+
+    62.5% {
+        @include transform(rotate(675deg));
+    }
+
+    75% {
+        @include transform(rotate(810deg));
+    }
+
+    87.5% {
+        @include transform(rotate(945deg));
+    }
+
+    to {
+        @include transform(rotate(1080deg));
+    }
+}
+
+@-webkit-keyframes spinner-left-spin {
+    0% {
+        @include transform(rotate(130deg));
+    }
+
+    50% {
+        @include transform(rotate(-5deg));
+    }
+
+    to {
+        @include transform(rotate(130deg));
+    }
+}
+
+@keyframes spinner-left-spin {
+    0% {
+        @include transform(rotate(130deg));
+    }
+
+    50% {
+        @include transform(rotate(-5deg));
+    }
+
+    to {
+        @include transform(rotate(130deg));
+    }
+}
+
+@-webkit-keyframes right-spin {
+    0% {
+        @include transform(rotate(-130deg));
+    }
+
+    50% {
+        @include transform(rotate(5deg));
+    }
+
+    to {
+        @include transform(rotate(-130deg));
+    }
+}
+
+@keyframes right-spin {
+    0% {
+        @include transform(rotate(-130deg));
+    }
+
+    50% {
+        @include transform(rotate(5deg));
+    }
+
+    to {
+        @include transform(rotate(-130deg));
+    }
+}
+
+
