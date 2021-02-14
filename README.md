@@ -10,3 +10,5 @@ lots of :heart:
 
 Detailed documentation can be found [here](https://readthedocs.com). 
 Download the latest stable version [here](https://github.com).
+New releases for each operating system will be uploaded on Github and 
+announced on our [subreddit](https://reddit.com/r/blobbackup).
