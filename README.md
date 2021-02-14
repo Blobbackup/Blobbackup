@@ -1,8 +1,6 @@
-![Logo](docs/docs/images/logo.png)
+<p align="center"><img src="docs/docs/images/logo.png"/></p>
 
-# BlobBackup
+**BlobBackup** is a fast, secure, and efficient backup tool 
+for your Windows, Mac, or Linux computer. Made with lots of :heart:
 
-A fast, secure, and efficient backup tool for your Windows,
-Mac, or Linux computer. Made with lots of :heart:!
-
-![Gui](docs/docs/images/gui.png)
+<p align="center"><img src="docs/docs/images/gui.png"/></p>
