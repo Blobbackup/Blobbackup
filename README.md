@@ -1,4 +1,4 @@
-<p align="center"><img src="docs/docs/images/gui.png"/></p>
+<p align="center"><img src="docs/docs/images/logo.png"/></p>
 
 **BlobBackup** is a minimalistic backup utility for your Windows,
 Mac or Linux computer. With an excellent engine, extensive storage support,
@@ -7,6 +7,4 @@ sleep better at night knowing your precious data is protected! Made with
 lots of :heart:
 
 Detailed documentation can be found [here](https://readthedocs.com). 
-Download the latest stable version from [here](https://github.com).
-
-<p align="center"><img src="docs/docs/images/gui.png"/></p>
+Download the latest stable version [here](https://github.com).
