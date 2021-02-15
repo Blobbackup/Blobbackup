@@ -15,6 +15,7 @@ build_linux:
 		--name "BlobBackup"
 	cd src/dist && zip -r ../../BlobBackup_linux.zip BlobBackup
 	cd src && rm -rf BlobBackup.spec dist build chunker.cpython* chunker.c
+	zip BlobBackup.zip BlobBackup
 
 build_osx:
 	cd src && python chunker_setup.py build_ext --inplace
