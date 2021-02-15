@@ -13,7 +13,7 @@ build_linux:
 		--add-data="images/delete.png:." \
 		--add-data="images/view.png:." \
 		--name "BlobBackup"
-	cd src/dist && zip -r ../../BlobBackup.zip BlobBackup
+	mv src/dist/BlobBackup .
 	cd src && rm -rf BlobBackup.spec dist build chunker.cpython* chunker.c
 
 build_osx:
