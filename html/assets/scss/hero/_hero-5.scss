@@ -1,0 +1,137 @@
+/* ============================= 
+    HERO-5 CSS
+================================ */
+
+.hero-section-wrapper-5 {
+  background: $white;
+  position: relative;
+
+  .header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: transparent;
+
+    &.sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+      background: $white;
+      @include box-shadow(0px 0px 5px rgba(0, 0, 0, .1));
+    }
+  }
+
+  .hero-style-5 {
+    position: relative;
+    z-index: 1;
+    padding: 270px 0 140px;
+
+    @media #{$laptop} {
+      padding: 120px 0 50px;
+    }
+    @media #{$lg} {
+      padding: 120px 0 50px;
+    }
+    @media #{$md} {
+      padding: 70px 0 30px;
+    }
+    @media #{$xs} {
+      padding: 50px 0 0px;
+    }
+
+    .hero-content-wrapper {
+      padding: 100px 0;
+
+      @media #{$md} {
+        padding-bottom: 50px;
+      }
+      @media #{$xs} {
+        padding-bottom: 50px;
+      }
+
+      h2 {
+        margin-bottom: 30px;
+
+        @media #{$laptop} {
+          font-size: 55px;
+          line-height: 65px;
+        }
+        @media #{$lg} {
+          font-size: 47px;
+          line-height: 58px;
+        }
+        @media #{$xs} {
+          font-size: 40px;
+          line-height: 50px;
+        }
+        @media #{$sm} {
+          font-size: 47px;
+          line-height: 58px;
+        }
+      }
+
+      p {
+        @media #{$desktop} {
+          padding-right: 100px;
+        }
+        @media #{$laptop} {
+          padding-right: 100px;
+        }
+        @media #{$lg} {
+          padding-right: 30px;
+        }
+        @media #{$md} {
+          padding-right: 100px;
+        }
+      }
+
+    }
+
+    .hero-image {
+      margin-bottom: 100px;
+      position: relative;
+
+      img {
+        @media #{$laptop} {
+          max-width: 100%;
+        }
+        @media #{$lg} {
+          max-width: 100%;
+        }
+        @media #{$md} {
+          max-width: 100%;
+        }
+        @media #{$xs} {
+          max-width: 100%;
+        }
+      }
+    }
+
+    .shapes {
+
+      .shape {
+        position: absolute;
+        z-index: -1;
+
+        &.shape-1 {
+          top: 0;
+          right: 0;
+        }
+        &.shape-2 {
+          top: 25%;
+          left: 10%;
+        }
+        &.shape-3 {
+          left: 0;
+          bottom: 0;
+        }
+      }
+    }
+
+  }
+  
+}

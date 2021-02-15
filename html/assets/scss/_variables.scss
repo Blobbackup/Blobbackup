@@ -1,0 +1,70 @@
+
+//================= typography
+// Font Family
+$heading-font: 'Fira Sans', sans-serif;
+$body-font: 'Heebo', sans-serif;
+
+// Font Weight
+$font-weight-300: 300;
+$font-weight-400: 400;
+$font-weight-500: 500;
+$font-weight-600: 600;
+$font-weight-700: 700;
+$font-weight-800: 800;
+$font-weight-900: 900;
+
+// Font Size
+$h1-font-size: 80px;
+$h2-font-size: 60px;
+$h3-font-size: 40px;
+$h4-font-size: 30px;
+$h5-font-size: 24px;
+$h6-font-size: 20px;
+
+$body-font-size: 16px;
+
+$caption-font-size: 14px;
+
+
+// Colors
+$white: #fff;
+$black: #222;
+$gray: #F3FDFF;
+$rating: #E96A20;
+
+
+// colors 
+
+$white: #ffffff;
+$black: #000000;
+$heading-color: #323450;
+$body-color: #585978;
+$primary-color: #2F80ED;
+$border-color: #E9E9E9;
+
+
+// box-shadow
+$box-shadow: 0px 5px 25px rgba(218, 211, 211, 0.3);
+$box-shadow-2: 0px 5px 25px rgba(47, 128, 237, 0.3);
+
+
+// border-radius 
+
+$radius-3: 3px;
+$radius-10: 10px;
+$radius-30: 30px;
+$radius-50: 50px;
+$radius-full: 50%;
+$radius-10-0: 10px 0px;
+
+
+
+// Responsive Variables
+$desktop: 'only screen and (min-width: 1400px)';
+$laptop: 'only screen and (min-width: 1200px) and (max-width: 1399px)';
+$lg : 'only screen and (min-width: 992px) and (max-width: 1199px)';
+$md:'only screen and (min-width: 768px) and (max-width: 991px)';
+$xs:'(max-width: 767px)';
+$sm: 'only screen and (min-width: 575px) and (max-width: 767px)';
+
+

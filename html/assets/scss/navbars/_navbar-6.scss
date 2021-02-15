@@ -1,0 +1,257 @@
+/* ============================= 
+    HEADER-6 CSS
+================================ */
+
+.header {
+    background: $white;
+
+    &.header-6 {
+
+        .header-action {
+
+            @media #{$md} {
+                position: absolute;
+                right: 60px;
+            }
+            @media #{$xs} {
+                position: absolute;
+                right: 60px;
+            }
+
+            a {
+                font-size: 16px;
+                color: $body-color;
+                padding: 12px;
+            }
+        }
+
+        .navbar {
+            padding: 20px 0;
+            border-radius: 0px;
+            position: relative;
+            @include transition(0.3s);
+            
+            @media #{$md} {
+                padding: 17px 0;
+            }
+            @media #{$xs} {
+                padding: 17px 0;
+            }
+        }
+        
+        .navbar-brand {
+            padding: 0;
+            img{
+                max-width: 180px;
+            }
+        }
+        
+        
+        .navbar-toggler {
+            padding: 0;
+        
+            &:focus {
+                outline: none;
+                @include box-shadow(none);
+            }
+        
+            & .toggler-icon {
+                width: 30px;
+                height: 2px;
+                background-color: $heading-color;
+                display: block;
+                margin: 5px 0;
+                position: relative;
+                @include transition(0.3s);
+            }
+        
+            &.active {
+                & .toggler-icon {
+                    &:nth-of-type(1) {
+                        @include transform(rotate(45deg));
+                        top: 7px;
+                    }
+        
+                    &:nth-of-type(2) {
+                        opacity: 0;
+                    }
+        
+                    &:nth-of-type(3) {
+                        @include transform(rotate(135deg));
+                        top: -7px;
+                    }
+                }
+            }
+        }
+        
+        
+        .navbar-collapse {
+            @media #{$md} {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: $white;
+                z-index: 9;
+                @include box-shadow (0px 15px 20px 0px rgba(0, 0, 0, 0.1));
+                padding: 5px 12px;
+            }
+        
+            @media #{$xs} {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: $white;
+                z-index: 9;
+                @include box-shadow (0px 15px 20px 0px rgba($heading-color, 0.1));
+                padding: 5px 12px;
+            }
+        }
+        
+        
+        .navbar-nav {
+
+            & .nav-item {
+                position: relative;
+        
+                & a {
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: $body-color;
+                    @include transition(0.3s);
+                    padding: 7px 15px;
+                    position: relative;
+                    display: inline-block;
+                    z-index: 1;
+                    border: 1px solid transparent;
+                    border-radius: $radius-30;
+        
+                    @media #{$md} {
+                        display: inline-block;
+                        padding: 6px 20px;
+                        color: $heading-color;
+                    }
+        
+                    @media #{$xs} {
+                        display: inline-block;
+                        padding: 6px 20px;
+                        color: $heading-color;
+                    }
+        
+                    &:hover,
+                    &.active {
+                        color: $primary-color;
+                        border-color: $primary-color;
+                    }
+        
+                        
+                }
+        
+                &:hover {
+                    & .sub-menu {
+                        top: 100%;
+                        opacity: 1;
+                        visibility: visible;
+        
+                        @media #{$md} {
+                            top: 0;
+                        }
+        
+                        @media #{$xs} {
+                            top: 0;
+                        }
+                    }
+                }
+        
+                & .sub-menu {
+                    width: 200px;
+                    background-color: $white;
+                    @include box-shadow (0px 0px 20px 0px rgba(0, 0, 0, 0.1));
+                    position: absolute;
+                    top: 110%;
+                    left: 0;
+                    opacity: 0;
+                    visibility: hidden;
+                    @include transition(0.3s);
+        
+                    @media #{$md} {
+                        position: relative;
+                        width: 100%;
+                        top: 0;
+                        display: none;
+                        opacity: 1;
+                        visibility: visible;
+                    }
+        
+                    @media #{$xs} {
+                        position: relative;
+                        width: 100%;
+                        top: 0;
+                        display: none;
+                        opacity: 1;
+                        visibility: visible;
+                    }
+        
+                    & li {
+                        display: block;
+        
+                        & a {
+                            display: block;
+                            padding: 8px 20px;
+                            color: $black;
+        
+                            &.active,
+                            &:hover {
+                                padding-left: 25px;
+                                color: $primary-color;
+                            }
+                        }
+                    }
+                }
+            }
+        
+            & .sub-nav-toggler {
+                display: none;
+        
+                @media #{$md} {
+                    display: block;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    background: none;
+                    color: $black;
+                    font-size: 18px;
+                    border: 0;
+                    width: 30px;
+                    height: 30px;
+                }
+        
+                @media #{$xs} {
+                    display: block;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    background: none;
+                    color: $black;
+                    font-size: 18px;
+                    border: 0;
+                    width: 30px;
+                    height: 30px;
+                }
+        
+                & span {
+                    width: 8px;
+                    height: 8px;
+                    border-left: 1px solid $black;
+                    border-bottom: 1px solid $black;
+                    @include transform(rotate(-45deg));
+                    position: relative;
+                    top: -5px;
+                }
+            }
+        }
+        
+    }
+}
+

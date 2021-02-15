@@ -1,0 +1,72 @@
+/* ============================= 
+    TYPOGRAPHY CSS
+================================ */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: $font-weight-700;
+  color: $heading-color;
+  margin-bottom: 0;
+  font-family: $heading-font;
+}
+
+h1, .h1 {
+  font-size: $h1-font-size;
+  letter-spacing: .7px;
+}
+h2, .h2 {
+  font-size: $h2-font-size;
+  letter-spacing: .7px;
+}
+h3, .h3 {
+  font-size: $h3-font-size;
+  letter-spacing: .4px;
+}
+h4, .h4 {
+  font-size: $h4-font-size;
+  letter-spacing: .35px;
+}
+h5, .h5 {
+  font-size: $h5-font-size;
+}
+h6, .h6 {
+  font-size: $h6-font-size;
+}
+
+.font-weight-bold {
+  font-weight: $font-weight-700;
+}
+.font-weight-semi-bold {
+  font-weight: $font-weight-600;
+}
+.font-weight-medium {
+  font-weight: $font-weight-500;
+}
+.font-weight-regular {
+  font-weight: $font-weight-400;
+}
+.font-weight-light {
+  font-weight: $font-weight-300;
+}
+
+.body-font-size {
+  font-size: $body-font-size;
+}
+
+.font-size-sm {
+  font-size: $caption-font-size;
+}
+.font-size-xs {
+  font-size: 12px;
+}
+
+
+.caption-font-size {
+  font-size: $caption-font-size;
+}
+
+p {
+  font-size: $body-font-size;
+  line-height: 24px;
+  margin-bottom: 0px;
+}

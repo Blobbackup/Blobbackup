@@ -1,0 +1,172 @@
+/* ============================= 
+    FOOTER-4 CSS
+================================ */
+
+.footer-style-4 {
+  background: #F3F3F3;
+  padding-top: 80px;
+
+  .widget-wrapper {
+
+    .footer-widget {
+      margin-bottom: 50px;
+
+      .logo {
+        margin-bottom: 30px;
+      }
+
+      p.desc {
+        margin-bottom: 30px;
+      }
+
+      .socials {
+        justify-content: flex-start;
+
+        li {
+          a {
+            background: rgba($primary-color, .4);
+            margin: 0;
+            margin-right: 10px;
+            width: 44px;
+            height: 44px;
+            font-size: 20px;
+
+            &:hover {
+              background: $primary-color;
+            }
+          }
+        }
+      }
+
+      h6 {
+        font-weight: 600;
+        color: $body-color;
+        margin-bottom: 35px;
+        margin-top: 10px;
+      }
+
+      .links {
+
+        li {
+
+          a {
+            font-size: 16px;
+            line-height: 32px;
+            color: $body-color;
+
+
+            &:hover {
+              color: $primary-color;
+            }
+          }
+        }
+      }
+
+      .download-app {
+
+        li {
+
+          a {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 18px;
+            border-radius: 5px;
+            background: $white;
+            max-width: 200px;
+            width: 100%;
+            margin-bottom: 12px;
+
+            .icon {
+              font-size: 35px;
+              color: $heading-color;
+              margin-right: 12px;
+            }
+
+            .text {
+              font-size: 14px;
+              font-weight: 500;
+              color: $body-color;
+
+              b {
+                display: block;
+                font-size: 20px;
+                font-weight: 700;
+                font-family: $heading-font;
+                color: $heading-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .copyright-wrapper {
+    border-top: 1px solid rgba($body-color, .4);
+    padding: 20px 0;
+
+    p {
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      color: rgba($body-color, .6);
+
+      a {
+        color: inherit;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  &.footer-dark {
+    background: $heading-color;
+
+    .widget-wrapper {
+
+      .footer-widget {
+
+        p {
+          color: $white;
+        }
+
+        h6 {
+          color: $white;
+        }
+
+        .socials {
+
+          li {
+            a {
+              background: rgba($white, .1);
+
+              &:hover {
+                background: $primary-color;
+              }
+            }
+          }
+        }
+        .links {
+
+          li {
+            a {
+              color: $white;
+
+              &:hover {
+                color: $primary-color;
+              }
+            }
+          }
+        }
+      }
+    }
+    .copyright-wrapper {
+
+      p {
+        color: rgba($white, .8);
+      }
+    }
+  }
+}

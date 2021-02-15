@@ -1,0 +1,50 @@
+/* ============================= 
+    FEATURE-5 CSS
+================================ */
+
+.feature-style-5 {
+  background: $white;
+  padding: 100px 0 50px;
+
+  .single-feature {
+    padding: 60px 35px;
+    border-radius: 30px;
+    margin-bottom: 50px;
+    @include box-shadow($box-shadow);
+    text-align: center;
+    border-bottom: 5px solid #585978;
+    @include transition(.3s);
+
+    &:hover {
+      border-color: $primary-color;
+      @include box-shadow(0px 8px 25px rgba(47, 128, 237, 0.35));
+    }
+
+    .icon {
+      color: $primary-color;
+      font-size: 45px;
+      @include flex-center;
+      margin: auto;
+      margin-bottom: 20px;
+      position: relative;
+      width: 110px;
+      height: 100px;
+      z-index: 1;
+
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+    }
+
+    .content {
+
+      h5 {
+        font-weight: 600;
+        margin-bottom: 25px;
+      }
+    }
+  }
+}

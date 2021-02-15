@@ -21,9 +21,6 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
         self.paths = set()
         self.exclude_rules = set()
 
-        if sys.platform != "win32" and sys.platform != "win64":
-            self.include_hidden_checkbox.hide()
-
         self.map = {
             "mon": self.mon_checkbox,
             "tue": self.tue_checkbox,
@@ -166,8 +163,6 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
         self.thread_count_spin_box.setValue(self.backup.thread_count)
         self.compression_level_spin_box.setValue(self.backup.compression_level)
 
-        self.include_hidden_checkbox.setChecked(self.backup.include_hidden)
-
     def reload_exclude_rules(self):
         self.exclude_rules_list_widget.clear()
         for rule in self.exclude_rules:
@@ -245,7 +240,6 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
 
     def accept(self):
         self.backup.paths = self.paths
-        self.backup.include_hidden = self.include_hidden_checkbox.isChecked()
         self.backup.exclude_rules = self.exclude_rules
         self.backup.retention = None if self.forever_radio_button.isChecked(
         ) else self.days_spin_box.value()

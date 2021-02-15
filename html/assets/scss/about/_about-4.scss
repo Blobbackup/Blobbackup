@@ -1,0 +1,43 @@
+/* ============================= 
+    ABOUT-4 CSS
+================================ */
+
+.about-style-4 {
+  background: #F3F3F3;
+  padding: 100px 0 50px;
+  position: relative;
+  z-index: 1;
+
+
+  .about-content-wrapper {
+
+    ul {
+      padding-bottom: 25px;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+
+        i {
+          width: 16px;
+          height: 16px;
+          margin-right: 15px;
+          margin-top: 4px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .about-image {
+    margin-top: 30px;
+
+    img {
+      @media #{$lg, $xs} {
+        width: 100%;
+      }
+    }
+  }
+
+}
