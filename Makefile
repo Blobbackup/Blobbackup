@@ -13,8 +13,6 @@ build_linux:
 		--add-data="images/delete.png:." \
 		--add-data="images/view.png:." \
 		--name "BlobBackup"
-	mv src/dist/BlobBackup .
-	cd src && rm -rf BlobBackup.spec dist build chunker.cpython* chunker.c
 
 build_osx:
 	cd src && python chunker_setup.py build_ext --inplace
@@ -34,6 +32,5 @@ build_osx:
 		--name "BlobBackup"
 	cp deploy/Info.plist src/dist/BlobBackup.app/Contents/Info.plist
 	cp -r src/dist/BlobBackup.app .
-	cd src && rm -rf BlobBackup.spec dist build chunker.cpython* chunker.c
 	create-dmg --app-drop-link 0 25 BlobBackup.dmg BlobBackup.app
 
