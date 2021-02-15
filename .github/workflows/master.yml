@@ -7,7 +7,7 @@ on:
     branches: [ master, build, dev]
 
 jobs:
-  tests:
+  build:
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 16
