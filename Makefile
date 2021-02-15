@@ -33,6 +33,7 @@ build_osx:
 		--windowed \
 		--name "BlobBackup"
 	cp deploy/Info.plist src/dist/BlobBackup.app/Contents/Info.plist
-	cd src/dist && zip -r ../../BlobBackup_osx.zip BlobBackup.app
+	cp -r src/dist/BlobBackup.app .
 	cd src && rm -rf BlobBackup.spec dist build chunker.cpython* chunker.c
+	create-dmg --app-drop-link 0 25 BlobBackup.dmg BlobBackup.app
 
