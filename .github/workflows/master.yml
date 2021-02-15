@@ -1,4 +1,4 @@
-name: Tests for master merge
+name: Build binaries
 
 on:
   push:
