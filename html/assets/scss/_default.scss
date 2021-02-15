@@ -1,0 +1,144 @@
+/* ============================= 
+    DEFAULT CSS
+================================ */
+
+// background-image 
+.img-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+// socials 
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  li {
+
+    a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: $primary-color;
+      color: $white;
+      @include flex-center;
+      margin: 3px 8px;
+    }
+  }
+}
+
+// forms
+
+input, textarea, button {
+  @include transition(.3s);
+
+  &:focus {
+    outline: none;
+    @include box-shadow(none);
+  }
+}
+
+
+// border-radius
+.radius-3 {
+  border-radius: $radius-3;
+}
+.radius-10 {
+  border-radius: $radius-10;
+}
+.radius-30 {
+  border-radius: $radius-30;
+}
+.radius-50 {
+  border-radius: $radius-50;
+}
+.radius-full {
+  border-radius: $radius-full;
+}
+.radius-10-0 {
+  border-radius: $radius-10-0;
+}
+
+/* ====== MARGIN PADDING ======= */
+
+// Margin-top
+.mt-6 {
+  margin-top: 6px;
+}
+@for $i from 1 through 45 {
+  .mt-#{5 * $i} {
+      margin-top: 5px * $i;
+  }
+}
+
+// Margin-bottom
+.mb-6 {
+  margin-bottom: 6px;
+}
+@for $i from 1 through 45 {
+  .mb-#{5 * $i} {
+      margin-bottom: 5px * $i;
+  }
+}
+
+// Margin-left
+.ml-6 {
+  margin-left: 6px;
+}
+@for $i from 1 through 20 {
+  .ml-#{5 * $i} {
+      margin-left: 5px * $i;
+  }
+}
+
+// Margin-right
+.mr-6 {
+  margin-right: 6px;
+}
+@for $i from 1 through 20 {
+  .mr-#{5 * $i} {
+      margin-right: 5px * $i;
+  }
+}
+
+// Padding-top
+.pt-6 {
+  padding-top: 6px;
+}
+@for $i from 1 through 45 {
+  .pt-#{5 * $i} {
+      padding-top: 5px * $i;
+  }
+}
+
+// Padding-bottom
+.pb-6 {
+  padding-bottom: 6px;
+}
+@for $i from 1 through 45 {
+  .pb-#{5 * $i} {
+      padding-bottom: 5px * $i;
+  }
+}
+
+// Padding-left
+.pl-6 {
+  padding-left: 6px;
+}
+@for $i from 1 through 20 {
+  .pl-#{5 * $i} {
+      padding-left: 5px * $i;
+  }
+}
+
+// Padding-right
+.pr-6 {
+  padding-right: 6px;
+}
+@for $i from 1 through 20 {
+  .pr-#{5 * $i} {
+      padding-right: 5px * $i;
+  }
+}

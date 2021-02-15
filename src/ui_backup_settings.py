@@ -70,20 +70,6 @@ class Ui_BackupSettingsDialog(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_5)
 
-        self.horizontalLayout_17 = QHBoxLayout()
-        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
-        self.include_hidden_checkbox = QCheckBox(self.tabWidgetPage1)
-        self.include_hidden_checkbox.setObjectName(u"include_hidden_checkbox")
-
-        self.horizontalLayout_17.addWidget(self.include_hidden_checkbox)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_17.addItem(self.horizontalSpacer_2)
-
-
-        self.verticalLayout_2.addLayout(self.horizontalLayout_17)
-
         self.tabWidget.addTab(self.tabWidgetPage1, "")
         self.tabWidgetPage2 = QWidget()
         self.tabWidgetPage2.setObjectName(u"tabWidgetPage2")
@@ -388,7 +374,6 @@ class Ui_BackupSettingsDialog(object):
         self.add_button.setText(QCoreApplication.translate("BackupSettingsDialog", u"Add Folder", None))
         self.add_file_button.setText(QCoreApplication.translate("BackupSettingsDialog", u"Add File", None))
         self.remove_button.setText(QCoreApplication.translate("BackupSettingsDialog", u"Remove", None))
-        self.include_hidden_checkbox.setText(QCoreApplication.translate("BackupSettingsDialog", u"Include Hidden Files", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage1), QCoreApplication.translate("BackupSettingsDialog", u"Include", None))
         self.label_4.setText(QCoreApplication.translate("BackupSettingsDialog", u"Exclude Rules", None))
         self.add_exclude_rule.setText(QCoreApplication.translate("BackupSettingsDialog", u"Add", None))

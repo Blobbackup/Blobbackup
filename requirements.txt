@@ -3,7 +3,7 @@ azure-storage-blob
 google-cloud-storage
 boto3 
 zstd
-pycryptodome
+pycryptodome==3.9.7
 retry
 b2sdk
 apscheduler

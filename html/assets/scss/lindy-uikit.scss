@@ -1,0 +1,68 @@
+
+/* =========== GOOGLE FONTS ========= */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700;800;900&family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+
+
+@import 'variables';
+@import 'mixin';
+@import 'common';
+
+
+// =================== typography
+@import 'typography/typography';
+
+
+// ================== buttons
+@import 'buttons/buttons';
+
+
+// ================= navbar 
+@import 'navbars/navbar-6';
+
+
+
+// ================ hero
+@import 'hero/hero-5';
+
+
+
+// ================ feature
+@import 'feature/feature-5';
+
+
+
+// ============== team
+@import 'team/team-4';
+
+
+
+// ================= pricing
+@import 'pricing/pricing-4';
+
+
+
+// ============ about
+@import 'about/about-4';
+
+
+
+// ============== gallery
+@import 'gallery/gallery-4';
+
+
+
+// ============= testimonial 
+@import 'testimonial/testimonial-4';
+
+
+// =========== contact
+@import 'contact/contact-3';
+
+
+// =========== footer
+@import 'footer/footer-4';
+
+
+
+// =================== default css
+@import 'default';

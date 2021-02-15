@@ -1,0 +1,72 @@
+/* ============================= 
+    BUTTONS CSS
+================================ */
+
+.button {
+  height: 44px;
+  font-size: 18px;
+  font-weight: $font-weight-500;
+  box-sizing: border-box;
+  line-height: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: $primary-color;
+  color: $white;
+  border: 1px solid transparent;
+  position: relative;
+  z-index: 1;
+  padding: 0 25px;
+  overflow: hidden;
+
+  i {
+    padding-left: 20px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    padding: 50%;
+    border-radius: 50%;
+    margin: auto;
+    background: rgba(0, 0, 0, .1);
+    z-index: -1;
+    transition: all .4s linear;
+    transform: translate3d(-50%, -50%, 0) scale(0);
+  }
+
+
+  &:hover {
+    color: $white;
+
+    &::before {
+      transform: translate3d(-50%, -50%, 0) scale(1.5);
+    }
+  }
+
+  &.border-button {
+    background: transparent;
+    color: $primary-color;
+    border-color: $primary-color;
+
+    &::before {
+      background: rgba($primary-color, .16);
+    }
+  }
+}
+
+
+.button-lg {
+  height: 64px;
+}
+
+
+.button-sm {
+  height: 34px;
+  font-size: 16px;
+  font-weight: $font-weight-400;
+}

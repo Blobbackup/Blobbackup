@@ -1,0 +1,76 @@
+/* ============================= 
+    TESTIMONIAL-4 CSS
+================================ */
+
+.testimonial-style-4 {
+  padding: 100px 0;
+
+
+  .single-testimonial {
+
+    &:hover {
+      .content-wrapper {
+        @include box-shadow($box-shadow);
+      }
+    }
+
+    .content-wrapper {
+      background: $white;
+      border: 1px solid #F5F4F4;
+      border-radius: 10px;
+      padding: 35px 24px;
+      @include transition(.3s);
+      text-align: center;
+      margin-bottom: 30px;
+
+      .content {
+        position: relative;
+        z-index: 1;
+
+        p {
+          font-size: 20px;
+          line-height: 30px;
+        }
+
+        .quote {
+          position: absolute;
+          width: 120px;
+          height: 120px;
+          top: -35px;
+          right: 0;
+          left: 0;
+          margin: auto;
+          font-size: 120px;
+          line-height: 1;
+          color: rgba($body-color, .05);
+          z-index: -1;
+        }
+      }
+
+      .info {
+        margin-bottom: 25px;
+
+        .image{
+          max-width: 48px;
+          width: 100%;
+          height: 48px;
+          border-radius: 50%;
+          margin: auto;
+          margin-bottom: 15px;
+          overflow: hidden;
+
+          img{
+            width: 100%;
+          }
+        }
+
+        .text {
+
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
