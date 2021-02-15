@@ -47,7 +47,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       if: matrix.os == 'windows-latest'
       with:
-        name: BlobBackup_windows_v1.0.1.zip
+        name: BlobBackup_windows_v1.0.1
         path: src/dist/BlobBackup/
     - uses: actions/upload-artifact@v2
       if: matrix.os == 'macos-latest'
@@ -57,5 +57,5 @@ jobs:
     - uses: actions/upload-artifact@v2
       if: matrix.os == 'ubuntu-latest'
       with:
-        name: BlobBackup_linux_v1.0.1.zip
+        name: BlobBackup_linux_v1.0.1
         path: src/dist/BlobBackup/
