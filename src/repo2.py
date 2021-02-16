@@ -315,6 +315,10 @@ class Repo(object):
     def init(self, password):
         self.logger.debug(f"Repo.init()")
 
+        self.backend.makedirs("keys")
+        self.backend.makedirs("snapshots")
+        self.backend.makedirs("chunks")
+
         salt, master, sha = os.urandom(16), os.urandom(32), os.urandom(32)
         key = generate_key(salt, password)
         self.backend.write("keys/key-salt", salt)
