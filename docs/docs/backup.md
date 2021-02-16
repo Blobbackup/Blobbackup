@@ -46,6 +46,29 @@ soon:)
 ## Google Cloud Storage
 ## Microsoft Azure Blob
 ## Backblaze B2
+
+You can use BlobBackup to create backups to Backblaze B2 buckets. 
+Before you configure BlobBackup with B2, you will have to create your 
+bucket first. You can do this from the B2 web portal.
+
+Note: Make sure to set the lifecycle settings for B2 to "keep only
+the last version". BlobBackup will handle versioning for you so 
+this is unnecessary.
+
+![](images/backblaze-b2-1.png)
+
+* Backup Name: Something informative to help you remember your backup 
+by.
+* Password: The password that is used to encrypt all your data. Keep 
+this somewhere safe like a password manager or a secure notebook. If you
+lose this password, your data is gone! 
+* B2 key Id: Your B2 master key id or application key id.
+* B2 app key: You B2 master key or application key.
+* Bucket name: the name of your bucket on B2.
+* Prefix: the path inside your bucket where backups will go. This is required.
+If you are creating multiple backups to the same bucket, just set this 
+field to something unique for each backup.
+
 ## Generic S3 Compatible Storage
 ## SFTP 
 
