@@ -1,6 +1,7 @@
 site_name: BlobBackup Documentation
 nav: 
   - Introduction: index.md
+  - Installation: install.md
   - Data Format: format.md
   - Backup: backup.md
 theme: readthedocs
