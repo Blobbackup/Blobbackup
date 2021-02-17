@@ -4,4 +4,5 @@ nav:
   - Installation: install.md
   - Data Format: format.md
   - Backup: backup.md
+  - Restore: restore.md
 theme: readthedocs
