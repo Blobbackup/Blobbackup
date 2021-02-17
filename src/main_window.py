@@ -301,6 +301,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.thread.error.connect(self.restore_thread_error)
             self.set_sensitive_actions_status(False)
             self.set_control_actions_status(False)
+            if backup.name in self.threads and self.threads[backup.name] is not None:
+                self.app.notify(
+                    f"Restore skipped because this backup is running."
+                )
+                return
             self.thread.start()
             self.app.notify("Restore started")
 
@@ -385,6 +390,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 webbrowser.open(file_path)
 
     def go_backup(self, status=False, backup_name=None):
+        if self.thread is not None:
+            self.app.notify(
+                f"Scheduled backup {backup_name} skipped because a restore is running."
+            )
+            return
         if backup_name is None:
             current_item = self.backups_tree_widget.currentItem()
             if current_item is None:
