@@ -72,6 +72,23 @@ field to something unique for each backup.
 ## Generic S3 Compatible Storage
 ## SFTP 
 
+![](images/sftp-1.png)
+
+* Backup name: Something informative to help you remember your backup 
+by.
+* Password: The password that is used to encrypt all your data. Keep 
+this somewhere safe like a password manager or a secure notebook. If you
+lose this password, your data is gone! 
+* Private key: The path to your private RSA key. If you leave this blank,
+BlobBackup will try to use your user's default ssh private key located at 
+~/.ssh/id_rsa
+* Password: The password (if you're using password based login) for your 
+server. If this is left blank, BlobBackup will assume ssh key based 
+authentication.
+* Server: The url of your server.
+* Prefix: The full path inside your server where you want your backups to
+go. This folder must already be created ahead of time.
+
 ## Configuring your Backup Parameters
 
 The backup configuration window has 5 tabs: Include, Exclude, Schedule, 
