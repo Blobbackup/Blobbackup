@@ -143,7 +143,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
 
     def add_dir(self, dir_path, parent):
         sorted_list = sorted(self.list_dir(dir_path),
-                             key=lambda x: x not in self.dirs)
+                             key=lambda x: (x not in self.dirs, x.lower()))
         for path in sorted_list:
             basename = os.path.basename(path)
             if len(basename) == 0:
