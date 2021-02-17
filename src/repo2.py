@@ -315,6 +315,10 @@ class Repo(object):
     def init(self, password):
         self.logger.debug(f"Repo.init()")
 
+        self.backend.makedirs("keys")
+        self.backend.makedirs("snapshots")
+        self.backend.makedirs("chunks")
+
         salt, master, sha = os.urandom(16), os.urandom(32), os.urandom(32)
         key = generate_key(salt, password)
         self.backend.write("keys/key-salt", salt)
@@ -464,13 +468,15 @@ class Repo(object):
         ref_count = {}
         for blob_hash in blob_hashes:
             ref_count[blob_hash] = 0
+        master = self._get_master_key(password)
         for snapshot_id in self.snapshot_ids:
             if self.cancel:
                 self.logger.info("Stopping")
                 return None
             self.callback(f"Checking: {snapshot_id}")
             self.logger.debug(f"Pruning {snapshot_id}")
-            snapshot_obj = self.get_snapshot_obj(password, snapshot_id)
+            snapshot_obj = decrypt_decompress_obj(
+                self.backend.read(f"snapshots/{snapshot_id}"), master)
             try:
                 self._ref_count_snapshot_nodes(ref_count, snapshot_obj)
             except KeyError:
