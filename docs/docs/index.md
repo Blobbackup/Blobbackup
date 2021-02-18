@@ -20,7 +20,7 @@ data de-duplication, compression, end to end encryption, file history
 and much more. Everything you need to sleep better at night knowing 
 your data is protected is packaged into one neat, minimalist app.
 
-## Other Backups Programs
+## Other Backup Programs
 
 BlobBackup takes inspiration from a number of other wonderful backup
 tools and hopes to combine many of their best aspects. Backup 

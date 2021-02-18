@@ -32,7 +32,7 @@ if you see this. The binary has not been code signed.
 # After unzipping the downloaded version
 
 chmod +x BlobBackup/BlobBackup
-BlobBackup/BlobBAckup
+BlobBackup/BlobBackup
 
 # Or alternatively if you want BlobBackup to run in the background
 BlobBackup/BlobBackup&
