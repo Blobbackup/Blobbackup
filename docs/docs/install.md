@@ -68,6 +68,10 @@ pip install -r requirements.txt
 
 # on windows, also install this
 pip install pywin32
+
+# Compile the chunker
+cd src
+python chunker_setup.py build_ext --inplace
 ```
 
 Run the application.
