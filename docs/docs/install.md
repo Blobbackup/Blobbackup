@@ -18,6 +18,13 @@ have to right click > open the application if you're using
 BlobBackup for the first time as the binary has not been 
 code signed.
 
+If you're running BlobBackup for the first time, you should grant 
+the app full disk access from your Mac settings. Otherwise
+BlobBackup will prompt you for permission when it encounters a
+protected folder.
+
+![](images/install-mac-1.png)
+
 ### Windows
 
 Once you download the Windows version, just open the executable 
