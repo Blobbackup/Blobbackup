@@ -5,4 +5,5 @@ nav:
   - Data Format: format.md
   - Backup: backup.md
   - Restore: restore.md
+  - Backup Strategy: strategy.md
 theme: readthedocs
