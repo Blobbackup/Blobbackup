@@ -68,27 +68,27 @@ First clone the repo.
 git clone https://github.com/bimbashrestha/blobbackup
 ```
 
-Install the dependencies.
+Install the application 
 
 ```
-pip install -r requirements.txt
-
-# on windows, also install this
-pip install pywin32
-
-# Compile the chunker
-cd src
-python chunker_setup.py build_ext --inplace
+pip install .
 ```
 
-Run the application.
+Or if you're developing
 
 ```
-cd src
-python application.py
+python setup.py develop
 ```
 
-Currently, there is no way to install BlobBackup as a pip package 
-on your python environment. We package all releases with pyinstaller 
-anyway so this hasn't been a priority to set up. 
+Run it
+
+```
+blobbackup
+```
+
+Uninstall the application
+
+```
+pip uninstall blobbackup
+```
 
