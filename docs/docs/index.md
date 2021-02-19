@@ -47,3 +47,13 @@ BlobBackup supports Local, Network and most major cloud storage providers. You
 can check out the [backup page](backup.md) to see what is currently suported. 
 New storages will be added based on user demand and I'm looking into an 
 [Rclone](https://rclone.org) integration as well. 
+
+### Are Concurrent Backups Supported?
+
+So BlobBackup runs a `prune` operation after every backup operation to clean 
+up any orphan chunks in the repository. This means that for concurrent backups
+to work, backups and deletions should be allowed to run concurrently. 
+
+While the data format lends itself well to lock free operations, lock free 
+deletion has not been implemented yet. So for the time being, concurrent 
+backups are not possible.
