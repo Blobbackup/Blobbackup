@@ -1,6 +1,5 @@
 build_linux:
-	cd src && python chunker_setup.py build_ext --inplace
-	cd src && pyinstaller application.py \
+	cd blobbackup && pyinstaller application.py \
 		--noconfirm \
 		--onedir \
 		--icon images/logo.ico \
@@ -15,8 +14,7 @@ build_linux:
 		--name "BlobBackup"
 
 build_osx:
-	cd src && python chunker_setup.py build_ext --inplace
-	cd src && pyinstaller application.py \
+	cd blobbackup && pyinstaller application.py \
 		--noconfirm \
 		--icon images/logo.icns \
 		--hidden-import=pkg_resources.py2_warn \
@@ -30,7 +28,7 @@ build_osx:
 		--add-data="images/view.png:." \
 		--windowed \
 		--name "BlobBackup"
-	cp deploy/Info.plist src/dist/BlobBackup.app/Contents/Info.plist
-	cp -r src/dist/BlobBackup.app .
+	cp deploy/Info.plist blobbackup/dist/BlobBackup.app/Contents/Info.plist
+	cp -r blobbackup/dist/BlobBackup.app .
 	create-dmg --app-drop-link 0 25 BlobBackup.dmg BlobBackup.app
 
