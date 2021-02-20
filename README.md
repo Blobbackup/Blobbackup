@@ -29,6 +29,8 @@ it's to use pip.
 # Installations have only been tested with python 3.7 but it 
 # will likely work just fine on all 3.X versions
 
-pip install git+https://github.com/bimbashrestha/blobbackup
+git clone https://github.com/bimbashrestha/blobbackup
+cd blobbackup
+pip install .
 blobbackup
 ```
