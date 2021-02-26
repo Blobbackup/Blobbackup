@@ -81,7 +81,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.backups_tree_widget.itemClicked.connect(self.set_go_action)
         self.website_action.triggered.connect(
-            lambda: webbrowser.open("https://blobbackup.com/docs.php"))
+            lambda: webbrowser.open("https://blobbackup.readthedocs.io"))
 
         self.run_all_action.triggered.connect(lambda: self.run_all(None))
         self.run_local_action.triggered.connect(
