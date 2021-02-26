@@ -38,10 +38,11 @@ class Ui_RestoreDialog(object):
 
         self.snapshot_tree_widget = QTreeWidget(RestoreDialog)
         __qtreewidgetitem = QTreeWidgetItem()
-        __qtreewidgetitem.setText(0, u"1");
+        __qtreewidgetitem.setText(0, u"Name");
         self.snapshot_tree_widget.setHeaderItem(__qtreewidgetitem)
         self.snapshot_tree_widget.setObjectName(u"snapshot_tree_widget")
-        self.snapshot_tree_widget.setHeaderHidden(True)
+        self.snapshot_tree_widget.setHeaderHidden(False)
+        self.snapshot_tree_widget.setColumnCount(2)
 
         self.verticalLayout.addWidget(self.snapshot_tree_widget)
 
@@ -73,6 +74,8 @@ class Ui_RestoreDialog(object):
     def retranslateUi(self, RestoreDialog):
         RestoreDialog.setWindowTitle(QCoreApplication.translate("RestoreDialog", u"View Snapshots", None))
         self.label.setText(QCoreApplication.translate("RestoreDialog", u"Snapshots:", None))
+        ___qtreewidgetitem = self.snapshot_tree_widget.headerItem()
+        ___qtreewidgetitem.setText(1, QCoreApplication.translate("RestoreDialog", u"Last Modified", None));
         self.status_label.setText("")
         self.restore_button.setText(QCoreApplication.translate("RestoreDialog", u"Restore To", None))
     # retranslateUi

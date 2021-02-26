@@ -7,6 +7,7 @@ from blobbackup.models import Utils, get_resource_path
 from blobbackup.download_snapshot_thread import DownloadSnapshotThread
 
 import os
+import time
 
 
 def pretty_time(snapshot_id):
@@ -54,7 +55,7 @@ class PopulateDirsThread(QThread):
             dirname = os.path.dirname(path)
             if dirname not in dirs:
                 dirs[dirname] = set()
-            dirs[dirname].add(path)
+            dirs[dirname].add((path, self.snapshot["snapshot"][path]["mtime"]))
         self.result.emit(dirs)
 
 
@@ -77,6 +78,8 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
             self.populate_snapshot)
         self.snapshot_tree_widget.itemExpanded.connect(self.item_clicked)
         self.restore_button.pressed.connect(self.restore_start)
+
+        self.snapshot_tree_widget.setColumnWidth(0, 300)
 
         self.reset_tree()
 
@@ -143,8 +146,8 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
 
     def add_dir(self, dir_path, parent):
         sorted_list = sorted(self.list_dir(dir_path),
-                             key=lambda x: (x not in self.dirs, x.lower()))
-        for path in sorted_list:
+                             key=lambda x: (x[0] not in self.dirs, x[0].lower()))
+        for path, mtime in sorted_list:
             basename = os.path.basename(path)
             if len(basename) == 0:
                 continue
@@ -158,6 +161,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
                 0, Qt.Checked
                 if parent.checkState(0) == Qt.Checked else Qt.Unchecked)
             parent.addChild(item)
+            item.setText(1, time.strftime("%b %d %Y %I:%M:%S %p", time.localtime(mtime)))
             if path in self.dirs and len(self.list_dir(path)) != 0:
                 sub_item = QTreeWidgetItem()
                 self.hidden[item] = sub_item
