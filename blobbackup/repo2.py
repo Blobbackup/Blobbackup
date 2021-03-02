@@ -423,6 +423,7 @@ class Repo(object):
                 restore_path = os.path.join(restore_dir, path[1:])
             if data["type"] == "dir":
                 os.makedirs(restore_path, exist_ok=True)
+                os.utime(restore_path, (data["mtime"], data["mtime"]))
                 continue
             os.makedirs(os.path.dirname(restore_path), exist_ok=True)
             start, ostart, end, oend = data["range"]
@@ -434,6 +435,7 @@ class Repo(object):
                     e = oend if i == end else len(chunk)
                     f.write(chunk[s:e])
                     write_size += e - s
+            os.utime(restore_path, (data["mtime"], data["mtime"]))
             self.callback(
                 f"Restoring: {pretty_bytes(write_size)} / {self._time_str_since_start()}"
             )

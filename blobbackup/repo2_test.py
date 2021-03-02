@@ -120,6 +120,8 @@ class Repo2Test(TestCase):
             self.assertEqual(os.path.isfile(dir_path),
                              os.path.isfile(restore_path))
             if os.path.isfile(dir_path):
+                self.assertEqual(os.path.getmtime(dir_path),
+                             os.path.getmtime(restore_path))
                 self.assertTrue(filecmp.cmp(dir_path, restore_path))
             print(f"Restore test: {dir_path} OK")
 
