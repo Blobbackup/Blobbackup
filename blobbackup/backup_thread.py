@@ -1,5 +1,6 @@
 from PySide2.QtCore import QThread, QObject, Signal
 from blobbackup.models import Utils, BLOBBACKUP_DIR, get_log_file_path, Settings
+from blobbackup.logger_wrapper import LoggerWrapper
 from blobbackup.repo2 import Repo
 from logging.handlers import RotatingFileHandler
 
@@ -19,7 +20,7 @@ def setup_logger(name, log_file, level=logging.INFO):
     if len(logger.handlers) is 0:
         logger.addHandler(handler)
 
-    return logger
+    return LoggerWrapper(logger)
 
 
 class BackupThread(QThread):

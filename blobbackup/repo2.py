@@ -336,7 +336,6 @@ class Repo(object):
         self.backup_start_time = time.time()
 
         self.logger.info("----------------------------------------------")
-        time.sleep(0.5)
         self.logger.info("Backup started")
         self.callback("Backing up")
 
@@ -400,7 +399,6 @@ class Repo(object):
 
     def restore(self, password, snapshot_id, restore_dir, restore_paths=None):
         self.logger.info("----------------------------------------------")
-        time.sleep(0.5)
         self.logger.info(f"Restore started {snapshot_id}")
         self.callback("Restoring")
 
@@ -411,6 +409,7 @@ class Repo(object):
         snapshot, chunks = snapshot_obj["snapshot"], snapshot_obj["chunks"]
         write_size = 0
 
+        self.logger.info(f"Processing snapshot {snapshot_id}")
         self.logger.info("Downloaded metadata")
 
         for path, data in snapshot.items():
@@ -466,6 +465,7 @@ class Repo(object):
             os.path.basename(path)
             for path in self.backend.ls("chunks")
         }
+        self.logger.info(f"Found {len(blob_hashes):,} blobs")
         self.logger.info("Downloaded metadata")
         ref_count = {}
         for blob_hash in blob_hashes:
@@ -616,8 +616,9 @@ class Repo(object):
                 self.logger.error(f"Skipped path {path}")
 
     def _gen_paths(self, include_paths):
-        for include_path in include_paths:
-            self.logger.info(f"Processing {os.path.basename(include_path)}")
+        for i, include_path in enumerate(include_paths):
+            self.logger.info(f"Processing {i} / {len(include_paths)} include paths")
+            self.logger.info(include_path)
             for root, dirs, files in os.walk(include_path):
                 for d in dirs:
                     path = Path(os.path.join(root, d)).as_posix()
