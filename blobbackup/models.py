@@ -3,6 +3,7 @@ import pickle
 from keyring import get_password, delete_password, set_password, set_keyring
 
 import sys
+import site
 
 if sys.platform == "win32" or sys.platform == "win64":
     import keyring.backends.Windows
@@ -56,7 +57,12 @@ def get_resource_path(path):
         first_path = os.path.join(base_path, path)
         if os.path.exists(first_path):
             return first_path
-        return os.path.join(base_path, "blobbackup", path)
+        second_path = os.path.join(base_path, "blobbackup", path)
+        if os.path.exists(second_path):
+            return second_path
+        third_path = os.path.join(site.getsitepackages()[0], "blobbackup",
+                                  path)
+        return third_path
 
 
 DEFAULT_THREAD_COUNT = 4
