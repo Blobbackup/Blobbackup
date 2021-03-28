@@ -36,7 +36,7 @@ class ConcatBytesIO(object):
     it were one long file with the contents of each 
     individual file concatenated.
     """
-    def __init__(self, paths, file_finished_callback):
+    def __init__(self, paths, file_finished_callback, logger):
         """
         :param paths: iterator of file paths
         :param file_finished_callback: function to call when a 
@@ -45,6 +45,7 @@ class ConcatBytesIO(object):
         """
         self.paths = paths
         self.file_finished_callback = file_finished_callback
+        self.logger = logger
         self.path = None
         self.file = None
         self.consumed = 0
@@ -77,7 +78,11 @@ class ConcatBytesIO(object):
                     break
                 if self.file is not None:
                     self.file.close()
-                self.file = open(self.path, "rb")
+                try:
+                    self.file = open(self.path, "rb")
+                except IOError:
+                    self.file = None
+                    self.logger.error(f"Skipped path {self.path}")
                 continue
             buffer.write(read_bytes)
             self.consumed += len(read_bytes)
@@ -102,7 +107,7 @@ class ChunkMaker(object):
     allow for sequential reading of chunks and the files 
     within them.
     """
-    def __init__(self, paths, start_chunk_idx=0):
+    def __init__(self, paths, logger, start_chunk_idx=0):
         """
         :param paths: iterator of file paths
         :param start_chunk_idx: the starting point for chunk
@@ -111,7 +116,8 @@ class ChunkMaker(object):
         """
         self.paths = paths
         self.chunk_idx = start_chunk_idx
-        self.concat_bytes_io = ConcatBytesIO(self.paths, self._processed)
+        self.concat_bytes_io = ConcatBytesIO(self.paths, self._processed,
+                                             logger)
         self.chunks = chunker.get_chunker(CHUNKER_ALGORITHM,
                                           CHUNKER_MIN_LOG,
                                           CHUNKER_MAX_LOG,
@@ -352,6 +358,7 @@ class Repo(object):
                                          self.thread_count)
         chunk_maker = ChunkMaker(self._gen_paths_and_populate(
             include_paths, prev_snapshot, snapshot, exclude_rules),
+                                 logger=self.logger,
                                  start_chunk_idx=len(chunks))
         self.logger.info("Downloaded metadata")
 
@@ -617,7 +624,8 @@ class Repo(object):
 
     def _gen_paths(self, include_paths):
         for i, include_path in enumerate(include_paths):
-            self.logger.info(f"Processing {i} / {len(include_paths)} include paths")
+            self.logger.info(
+                f"Processing {i} / {len(include_paths)} include paths")
             self.logger.info(include_path)
             for root, dirs, files in os.walk(include_path):
                 for d in dirs:

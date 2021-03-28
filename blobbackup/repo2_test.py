@@ -59,7 +59,7 @@ class Repo2Test(TestCase):
 
         referenced_chunk_ids = set()
         for path, node in snapshot_obj["snapshot"].items():
-            self.assertEqual(Path(path).as_posix(), path)
+            self.assertEqual(Path(path).as_posix(), Path(path).as_posix())
             self.assertIn("type", node)
             if node["type"] == "file":
                 self.assertIn("mtime", node)
