@@ -92,3 +92,9 @@ Uninstall the application
 pip uninstall blobbackup
 ```
 
+## Open BlobBackup Minimized
+
+You might want to open BlobBackup without opening the main window. For 
+example, if you are adding BlobBackup to your startup script or something 
+similiar and don't want to close the window every time. You can do 
+this by passing the `--open-minimized` flag to the BlobBackup executable.
