@@ -2,6 +2,7 @@ from PySide2.QtWidgets import *
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 
+import argparse
 import time
 import sys
 import os
@@ -18,7 +19,7 @@ class Application:
     """
     Taken from https://gist.github.com/hogelog/5338905
     """
-    def __init__(self):
+    def __init__(self, open_minimized):
         self.app = QSingleApplication("BlobBackup", sys.argv)
         self.app.setQuitOnLastWindowClosed(False)
         self.app.setStyle("Fusion")
@@ -51,7 +52,8 @@ class Application:
 
         self.tray.activated.connect(self.tray_activated)
 
-        self.show_window()
+        if not open_minimized:
+            self.show_window()
 
     def tray_activated(self, reason):
         if reason == QSystemTrayIcon.DoubleClick:
@@ -80,7 +82,15 @@ class Application:
     def notify(self, message):
         self.tray.showMessage("BlobBackup", message)
 
+
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--open-minimized",
+                        action="store_true",
+                        dest="open_minimized",
+                        help="Open BlobBackup without opening the main window")
+    args = parser.parse_args()
+
     os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
     os.environ["QT_MAC_WANTS_LAYER"] = "1"
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling,
@@ -88,8 +98,9 @@ def main():
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps,
                               True)  #use highdpi icons
 
-    app = Application()
+    app = Application(args.open_minimized)
     app.run()
+
 
 if __name__ == "__main__":
     main()
