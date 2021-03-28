@@ -614,9 +614,13 @@ class Repo(object):
                     self.callback(
                         f"{pretty_bytes(self.write_size)} / {pretty_bytes(self.processed_size)}"
                     )
-                if path in prev_snapshot and prev_snapshot[path][
-                        "mtime"] == os.path.getmtime(path):
-                    snapshot[path] = prev_snapshot[path]
+                try:
+                    if path in prev_snapshot and prev_snapshot[path][
+                            "mtime"] == os.path.getmtime(path):
+                        snapshot[path] = prev_snapshot[path]
+                        continue
+                except PermissionError:
+                    self.logger.error(f"Skipped path {path}")
                     continue
                 yield path
             else:
