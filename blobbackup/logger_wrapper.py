@@ -8,6 +8,10 @@ class LoggerWrapper(object):
     def debug(self, message):
         self.logger.debug(message)
 
+    def error(self, message):
+        self.logger.error(message)
+        time.sleep(0.5)
+
     def info(self, message):
         self.logger.info(message)
         time.sleep(0.5)
