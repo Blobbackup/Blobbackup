@@ -80,7 +80,7 @@ class ConcatBytesIO(object):
                     self.file.close()
                 try:
                     self.file = open(self.path, "rb")
-                except IOError:
+                except (IOError, PermissionError):
                     self.file = None
                     self.logger.error(f"Skipped path {self.path}")
                 continue
@@ -599,31 +599,33 @@ class Repo(object):
     def _gen_paths_and_populate(self, include_paths, prev_snapshot, snapshot,
                                 exclude_rules):
         for path in self._get_prefix_paths(include_paths) + include_paths:
-            self._add_dir_to_snapshot(snapshot, path)
-        for path in self._gen_paths(include_paths):
-            if fn_matches(path, exclude_rules):
-                continue
-            elif os.path.isdir(path):
+            try:
                 self._add_dir_to_snapshot(snapshot, path)
-            elif os.path.isfile(path):
-                self.processed_size += os.path.getsize(path)
-                if self.cancel:
-                    self.callback("Stopping backup")
-                    return None
-                else:
-                    self.callback(
-                        f"{pretty_bytes(self.write_size)} / {pretty_bytes(self.processed_size)}"
-                    )
-                try:
+            except PermissionError:
+                self.logger.error(f"Skipped path {path}")
+        for path in self._gen_paths(include_paths):
+            try:
+                if fn_matches(path, exclude_rules):
+                    continue
+                elif os.path.isdir(path):
+                    self._add_dir_to_snapshot(snapshot, path)
+                elif os.path.isfile(path):
+                    self.processed_size += os.path.getsize(path)
+                    if self.cancel:
+                        self.callback("Stopping backup")
+                        return None
+                    else:
+                        self.callback(
+                            f"{pretty_bytes(self.write_size)} / {pretty_bytes(self.processed_size)}"
+                        )
                     if path in prev_snapshot and prev_snapshot[path][
                             "mtime"] == os.path.getmtime(path):
                         snapshot[path] = prev_snapshot[path]
                         continue
-                except PermissionError:
+                    yield path
+                else:
                     self.logger.error(f"Skipped path {path}")
-                    continue
-                yield path
-            else:
+            except PermissionError:
                 self.logger.error(f"Skipped path {path}")
 
     def _gen_paths(self, include_paths):
