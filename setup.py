@@ -24,6 +24,7 @@ setup(
         'pyside2', 'azure-storage-blob', 'google-cloud-storage', 'boto3 ',
         'zstd', 'pycryptodome==3.9.7', 'retry', 'b2sdk', 'apscheduler',
         'pyinstaller', 'keyring', 'pysftp', 'google-api-python-client==1.8',
-        'google-auth-oauthlib', 'cython', 'randomFileTree', 'mkdocs'
+        'google-auth-oauthlib', 'cython', 'randomFileTree', 'mkdocs',
+        'pywin32 ; platform_system=="Windows"'
     ],
 )
