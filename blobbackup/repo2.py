@@ -27,6 +27,15 @@ class CorruptSnapshot(Exception):
     pass
 
 
+def can_read(path):
+    try:
+        with open(path, "rb") as f:
+            f.read(1)
+            return True
+    except:
+        return False
+
+
 class ConcatBytesIO(object):
     """
     We want the chunker to treat all the files in our 
@@ -78,9 +87,9 @@ class ConcatBytesIO(object):
                     break
                 if self.file is not None:
                     self.file.close()
-                try:
+                if can_read(self.path):
                     self.file = open(self.path, "rb")
-                except (IOError, PermissionError):
+                else:
                     self.file = None
                     self.logger.error(f"Skipped path {self.path}")
                 continue
