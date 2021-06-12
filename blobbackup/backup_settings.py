@@ -1,7 +1,7 @@
 from PySide2.QtWidgets import QDialog, QFileDialog, QButtonGroup, QMessageBox, QInputDialog
 from blobbackup.ui_backup_settings import Ui_BackupSettingsDialog
 from blobbackup.models import (Backups, Utils, DEFAULT_COMPRESSION_LEVEL,
-                    DEFAULT_THREAD_COUNT)
+                               DEFAULT_THREAD_COUNT)
 from blobbackup.repo2 import Repo
 from blobbackup.command_thread import CommandThread
 
@@ -16,6 +16,7 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
 
         self.setupUi(self)
         self.backup = backup
+        self.original_backup_name = self.backup.name
         self.window = window
         self.edit = edit
         self.paths = set()
@@ -160,6 +161,7 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
                 self.days_checked.add(day)
                 self.map[day].setChecked(True)
 
+        self.backup_name_line_edit.setText(self.backup.name)
         self.thread_count_spin_box.setValue(self.backup.thread_count)
         self.compression_level_spin_box.setValue(self.backup.compression_level)
 
@@ -233,12 +235,15 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
                 f"Backup {self.backup.name} has not been initialized")
             return
         Backups.save(self.backup)
+        if self.backup.name != self.original_backup_name:
+            Backups.change_name(self.original_backup_name, self.backup.name)
 
         self.window.app.scheduler.reload()
 
         super().accept()
 
     def accept(self):
+        self.backup.name = self.backup_name_line_edit.text().strip()
         self.backup.paths = self.paths
         self.backup.exclude_rules = self.exclude_rules
         self.backup.retention = None if self.forever_radio_button.isChecked(
@@ -253,6 +258,11 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
         ) else self.mins_spinbox.value()
         self.backup.thread_count = self.thread_count_spin_box.value()
         self.backup.compression_level = self.compression_level_spin_box.value()
+
+        if self.backup.name == "":
+            QMessageBox.warning(self.window, "Invalid details",
+                                "Please provide a backup name")
+            return
 
         if self.backup.backup_days == "":
             QMessageBox.warning(self.window, "Invalid details",

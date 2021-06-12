@@ -281,3 +281,12 @@ class Backups(object):
         del plans[name]
         with open(MODEL_PATH, "wb") as f:
             f.write(set_object(plans))
+
+    @staticmethod
+    def change_name(old_name, new_name):
+        plans = Backups.load_all()
+        plans[new_name] = plans[old_name]
+        plans[new_name].name = new_name
+        del plans[old_name]
+        with open(MODEL_PATH, "wb") as f:
+            f.write(set_object(plans))
