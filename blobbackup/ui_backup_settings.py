@@ -289,6 +289,22 @@ class Ui_BackupSettingsDialog(object):
         self.tabWidgetPage5.setObjectName(u"tabWidgetPage5")
         self.verticalLayout_6 = QVBoxLayout(self.tabWidgetPage5)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.label_6 = QLabel(self.tabWidgetPage5)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setMinimumSize(QSize(140, 0))
+
+        self.horizontalLayout_8.addWidget(self.label_6)
+
+        self.backup_name_line_edit = QLineEdit(self.tabWidgetPage5)
+        self.backup_name_line_edit.setObjectName(u"backup_name_line_edit")
+
+        self.horizontalLayout_8.addWidget(self.backup_name_line_edit)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_8)
+
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.label_5 = QLabel(self.tabWidgetPage5)
@@ -398,6 +414,7 @@ class Ui_BackupSettingsDialog(object):
 #endif // QT_CONFIG(tooltip)
         self.keep_last_radio_button.setText(QCoreApplication.translate("BackupSettingsDialog", u"Keep last (days): ", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage4), QCoreApplication.translate("BackupSettingsDialog", u"Retention", None))
+        self.label_6.setText(QCoreApplication.translate("BackupSettingsDialog", u"Backup name:", None))
         self.label_5.setText(QCoreApplication.translate("BackupSettingsDialog", u"Thread count: ", None))
         self.label_9.setText(QCoreApplication.translate("BackupSettingsDialog", u"Threads", None))
         self.label_7.setText(QCoreApplication.translate("BackupSettingsDialog", u"Compression level:", None))
