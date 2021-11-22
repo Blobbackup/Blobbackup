@@ -34,7 +34,7 @@ up.
 ### Mounted Storage
 
 Network storage like a NAS or another computer will have to be accessible
-in your file system for BlobBackup to write to them. mounting your 
+in your file system for BlobBackup to write to them. Mounting your 
 external storage on your file system is a good way to do this.
 
 ```
@@ -43,8 +43,55 @@ soon:)
 ```
 
 ## Amazon AWS S3
+
+![](images/amazon-aws-s3-1.png)
+
+* Backup Name: Something informative to help you remember your backup 
+by.
+* Password: The password that is used to encrypt all your data. Keep 
+this somewhere safe like a password manager or a secure notebook. If you
+lose this password, your data is gone! 
+* AWS Key Id: The AWS Access Key Id for your bucket.
+* AWS Key: The AWS Secret Access Key for your bucket.
+* Bucket name: The name of the S3 Bucket that you would like your backups 
+to go to. It must already exist. BlobBackup will not create buckets for you.
+* Prefix: The path that will be added before every object that BlobBackup 
+uploads. This is required.
+If you are creating multiple backups to the same bucket, just set this 
+field to something unique for each backup.
+
 ## Google Cloud Storage
+
+![](images/google-cloud-storage-1.png)
+
+* Backup Name: Something informative to help you remember your backup 
+by.
+* Password: The password that is used to encrypt all your data. Keep 
+this somewhere safe like a password manager or a secure notebook. If you
+lose this password, your data is gone! 
+* Credentials: The Service Account json file with read/write access to your 
+bucket. Can be downloaded from the Google Cloud Console.
+* Project Id: The project Id or name that contains your bucket. Can be found in 
+the Google Cloud Console.
+* Bucket Name: The name of your Google Cloud Storage bucket. It must already 
+exist. BlobBackup will not create buckets for you.
+* Prefix: The path that will be added before every object that BlobBackup uploads.
+
 ## Microsoft Azure Blob
+
+![](images/microsoft-azure-blob-1.png)
+
+* Backup Name: Something informative to help you remember your backup 
+by.
+* Password: The password that is used to encrypt all your data. Keep 
+this somewhere safe like a password manager or a secure notebook. If you
+lose this password, your data is gone! 
+* Connection: The connection string for your container. This can be found in the 
+Azure web portal.
+* Container: The name of your storage container on Azure. It must already exist. 
+BlobBackup will not create containers for you.
+* Prefix: The path that will be added before every object that BlobBackup uploads.
+
 ## Backblaze B2
 
 You can use BlobBackup to create backups to Backblaze B2 buckets. 
@@ -64,13 +111,31 @@ this somewhere safe like a password manager or a secure notebook. If you
 lose this password, your data is gone! 
 * B2 key Id: Your B2 master key id or application key id.
 * B2 app key: You B2 master key or application key.
-* Bucket name: the name of your bucket on B2.
-* Prefix: the path inside your bucket where backups will go. This is required.
+* Bucket name: The name of your bucket on B2.
+* Prefix: The path inside your bucket where backups will go. This is required.
 If you are creating multiple backups to the same bucket, just set this 
 field to something unique for each backup.
 
 ## Generic S3 Compatible Storage
-## SFTP 
+
+![](images/generic-s3-compatible-storage-1.png)
+
+* Backup Name: Something informative to help you remember your backup 
+by.
+* Password: The password that is used to encrypt all your data. Keep 
+this somewhere safe like a password manager or a secure notebook. If you
+lose this password, your data is gone! 
+* S3 URL: The endpoint URL of the S3 compatible storage.
+* Key Id: Your S3 compatible storage Access Key Id.
+* Key: S3 compatible storage Secret Access Key.
+* Bucket name: Your S3 compatible storage bucket. It must already exist. 
+BlobBackup will not create buckets for you.
+* Prefix: The path that will be added before every object that BlobBackup 
+uploads. This is required.
+If you are creating multiple backups to the same bucket, just set this 
+field to something unique for each backup.
+
+## SFTP
 
 ![](images/sftp-1.png)
 

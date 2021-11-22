@@ -112,7 +112,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Credentials File:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The Service Account json file with read/write acccess to your bucket. Can be downloaded from the Google Cloud Console.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Credentials File:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The Service Account json file with read/write access to your bucket. Can be downloaded from the Google Cloud Console.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Credentials:</string>
