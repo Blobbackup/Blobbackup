@@ -34,7 +34,7 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
         self.days_checked = set()
 
         prefix = self.backup.cloud_prefix if self.backup.cloud_prefix is not None else self.backup.local_directory
-        window_title = f"{self.backup.location} ({prefix})"
+        window_title = f"{self.backup.location}: {self.backup.name} ({prefix})"
 
         # Hiding unsupported add file button for now
         self.add_file_button.hide()
