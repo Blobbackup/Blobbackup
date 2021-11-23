@@ -54,8 +54,9 @@ class Validator(object):
         try:
             if not Utils.get_backend(backup).check_connection():
                 return False, f"Cannot connect to {backup.location} backend"
-        except:
-            return False, f"Cannot connect to {backup.location} backend"
+        except Exception as e:
+            exception_type = e.__class__.__name__
+            return False, f"Cannot connect to {backup.location} backend. Error: {exception_type}"
         return True, None
 
     @staticmethod
