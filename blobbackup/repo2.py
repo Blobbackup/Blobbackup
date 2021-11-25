@@ -80,13 +80,12 @@ class ConcatBytesIO(object):
             if len(read_bytes) is 0:
                 if self.file is not None:
                     self.file_finished_callback(self.path, self.consumed)
+                    self.file.close()
                 try:
                     self.path = next(self.paths)
                 except StopIteration:
                     self.done = True
                     break
-                if self.file is not None:
-                    self.file.close()
                 if can_read(self.path):
                     self.file = open(self.path, "rb")
                 else:
