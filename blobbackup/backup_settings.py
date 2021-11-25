@@ -269,6 +269,11 @@ class BackupSettings(QDialog, Ui_BackupSettingsDialog):
                                 "Please select some days of the week")
             return
 
+        if self.backup.location == "Local Directory" and not os.path.isdir(self.backup.local_directory):
+            QMessageBox.warning(self.window, "Invalid details",
+                                f"The backup source '{self.backup.local_directory}' does not exists.\nPlease mount or plug the drive.")
+            return
+
         self.setEnabled(False)
         self.thread = CommandThread(self.worker, {})
         self.thread.result.connect(self.command_done)
