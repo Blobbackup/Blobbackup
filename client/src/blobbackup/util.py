@@ -60,7 +60,7 @@ if is_windows():
 elif is_mac():
     RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup"))
 
-HOME_PATH = os.path.expanduser("~/.bb")
+HOME_PATH = os.path.join(os.path.expanduser("~"), ".bb")
 os.makedirs(HOME_PATH, exist_ok=True)
 
 LOGS_PATH = os.path.join(HOME_PATH, "logs")
