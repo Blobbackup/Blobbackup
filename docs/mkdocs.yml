@@ -1,9 +1,0 @@
-site_name: BlobBackup Documentation
-nav: 
-  - Introduction: index.md
-  - Installation: install.md
-  - Data Format: format.md
-  - Backup: backup.md
-  - Restore: restore.md
-  - Backup Strategy: strategy.md
-theme: readthedocs
