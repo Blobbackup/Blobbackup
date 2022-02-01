@@ -222,6 +222,7 @@ def initialize_win_keep_alive():
             "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe",
             "/sc",
             "HOURLY",
+            "/f",
         ]
     )
 
