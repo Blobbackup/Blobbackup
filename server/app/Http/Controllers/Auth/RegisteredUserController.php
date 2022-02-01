@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $user->createAsCustomer([
-            'trial_ends_at' => now()->addDays(30)
+            'trial_ends_at' => now()->addDays(29)
         ]);
 
         event(new Registered($user));
