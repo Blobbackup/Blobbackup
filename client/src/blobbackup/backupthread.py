@@ -73,7 +73,7 @@ class BackupThread(QThread):
         password, computer = self.pre_backup()
 
         log_file = os.path.join(LOGS_PATH, f"backup-{datetime.date.today()}.txt")
-        files_done, bytes_done = None, None
+        files_done, bytes_done, backup_finished = None, None, False
         with open(log_file, "a") as log_f:
             if is_windows():
                 self.process = subprocess.Popen(
@@ -95,11 +95,11 @@ class BackupThread(QThread):
                 if not line:
                     break
                 message = json.loads(line)
-                files_done, bytes_done = self.handle_backup_output(
+                files_done, bytes_done, backup_finished = self.handle_backup_output(
                     message, files_done, bytes_done
                 )
 
-        self.post_backup(files_done, bytes_done)
+        self.post_backup(files_done, bytes_done, backup_finished)
 
     def pre_backup(self):
         self.process = None
@@ -117,14 +117,13 @@ class BackupThread(QThread):
 
         return password, computer
 
-    def post_backup(self, files_done, bytes_done):
+    def post_backup(self, files_done, bytes_done, backup_finished):
         self.update_status(current_status="Idle")
         if (
             files_done
             and bytes_done
             and not self.backup_terminated
-            and self.process
-            and self.process.poll() == 0
+            and backup_finished
         ):
             time_format = "%I:%M %p on %b %d %Y"
             current_pretty_time = datetime.datetime.now().strftime(time_format)
@@ -155,7 +154,7 @@ class BackupThread(QThread):
         if time.time() - self.status_updated_at > HEARTBEAT_SECONDS or backup_finished:
             self.update_status(selected, status)
             self.status_updated_at = time.time()
-        return files_done, bytes_done
+        return files_done, bytes_done, backup_finished
 
     def write_inclusion_exclusion_files(self):
         with open(INCLUSIONS_FILE_PATH, "w") as f:
