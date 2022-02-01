@@ -138,7 +138,7 @@ class BackupThread(QThread):
         return f"{num} / {den}"
 
     def handle_backup_output(self, message, files_done, bytes_done):
-        selected, status, force_update = None, None, False
+        selected, status, backup_finished = None, None, False
         if "files_done" in message and "bytes_done" in message:
             files_done = int(message["files_done"])
             bytes_done = int(message["bytes_done"])
@@ -151,8 +151,8 @@ class BackupThread(QThread):
             files_done = int(message["total_files_processed"])
             bytes_done = int(message["total_bytes_processed"])
             selected = self.format_selected_files(files_done, bytes_done)
-            force_update = True
-        if time.time() - self.status_updated_at > HEARTBEAT_SECONDS or force_update:
+            backup_finished = True
+        if time.time() - self.status_updated_at > HEARTBEAT_SECONDS or backup_finished:
             self.update_status(selected, status)
             self.status_updated_at = time.time()
         return files_done, bytes_done
