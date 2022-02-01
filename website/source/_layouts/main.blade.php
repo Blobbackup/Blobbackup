@@ -17,7 +17,7 @@
                     <a href="/features" class="ml-4">Features</a>
                     <a href="/pricing" class="ml-4">Pricing</a>
                     <a href="/company" class="ml-4">Company</a>
-                    <a href="https://github.com/blobbackup/blobbackup" class="ml-4">Github</a>
+                    <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="ml-4">Github</a>
                     <a href="/blog" class="ml-4">Blog</a>
                     <a href="https://app.blobbackup.com/login" class="ml-4">Sign in</a>
                     <a href="https://app.blobbackup.com/register" class="ml-4 text-white bg-blue-500 rounded-full px-4 py-2">Try it Free</a>
@@ -47,7 +47,7 @@
                         <a href="/features" class="block underline mt-4">Features</a>
                         <a href="/pricing" class="block underline mt-4">Pricing</a>
                         <a href="/company" class="block underline mt-4">Company</a>
-                        <a href="https://github.com/blobbackup/blobbackup" class="block underline mt-4">Github</a>
+                        <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="block underline mt-4">Github</a>
                         <a href="/blog" class="block underline mt-4">Blog</a>
                         <a href="https://app.blobbackup.com/login" class="block underline mt-4">Sign in</a>
                         <a href="https://app.blobbackup.com/register" class="block mt-4 text-center text-white bg-blue-500 rounded-full px-4 py-2">Try it free</a>
