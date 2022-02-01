@@ -1,0 +1,75 @@
+name: Build binaries
+
+on:
+  push:
+    branches: [build]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 16
+      matrix:
+        os: [windows-2016, macos-10.15]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      working-directory: ./client
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller
+        pip install 'pyqt5<=5.15.3'
+        pip install .
+    - name: Install windows dependencies
+      working-directory: ./client
+      if: matrix.os == 'windows-2016'
+      run: |
+        pip install pywin32
+    - name: Install osx dependencies
+      working-directory: ./client
+      if: matrix.os == 'macos-10.15'
+      run: |
+        brew install create-dmg
+    - name: Build executable (windows)
+      working-directory: ./client
+      if: matrix.os == 'windows-2016'
+      shell: powershell
+      run: |
+        ./src/blobbackup/scripts/buildwin.ps1
+    - name: Build executable (macos)
+      working-directory: ./client
+      if: matrix.os == 'macos-10.15'
+      run: |
+        ./src/blobbackup/scripts/buildosx.sh
+    - name: Code sign (macos)
+      working-directory: ./client/dist
+      if: matrix.os == 'macos-latest' # TODO: remove
+      env:
+        MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+        MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
+        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME }}
+        APPLE_ID_USER: ${{ secrets.APPLE_ID_USER }}
+        APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+      run: |
+        echo $MACOS_CERTIFICATE | base64 --decode > certificate.p12
+        security create-keychain -p 123 build.keychain
+        security default-keychain -s build.keychain
+        security unlock-keychain -p 123 build.keychain
+        security import certificate.p12 -k build.keychain -A -P $MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
+        security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k 123 build.keychain
+        python ../package/fix_qt_for_codesign.py Blobbackup.app
+        sh ../package/macos-package-app.sh
+    - uses: actions/upload-artifact@v2
+      if: matrix.os == 'windows-2016'
+      with:
+        name: blobbackup-win
+        path: client/dist
+    - uses: actions/upload-artifact@v2
+      if: matrix.os == 'macos-latest' # TODO: remove
+      with:
+        name: blobbackup-osx
+        path: client/dist/Blobbackup.dmg
