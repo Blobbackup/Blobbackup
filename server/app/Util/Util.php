@@ -20,9 +20,9 @@ class Util
     public static function timeDelta(\DateTime $from, \DateTime $now)
     {
         $delta = $from->diff($now);
-        if ($delta->d > 1)
-            return $delta->d . ' days';
-        elseif ($delta->d == 1)
+        if ($delta->days > 1)
+            return $delta->days . ' days';
+        elseif ($delta->days == 1)
             return '1 day';
         elseif ($delta->h > 1)
             return $delta->h . ' hours';
