@@ -2,7 +2,7 @@
 
 git checkout gh-pages
 rm -rf **
-git checkout cloud -- website
+git checkout master -- website
 cp -r website/build_production/** .
 rm -rf website
 git add .
