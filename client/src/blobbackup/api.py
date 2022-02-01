@@ -52,14 +52,11 @@ def update_computer(email, password, computer_id, fields):
 def get_computer(email, password, computer_id):
     url = BASE_API_URL + "/computers/" + str(computer_id)
     hashed_password = hash_password(password, email)
-    try:
-        response = requests.get(url, auth=(email, hashed_password))
-        if response.status_code != 200:
-            return None
-        computer = response.json()
-        return computer
-    except requests.exceptions.ConnectionError:
+    response = requests.get(url, auth=(email, hashed_password))
+    if response.status_code != 200:
         return None
+    computer = response.json()
+    return computer
 
 
 def get_computers(email, password):

@@ -3,6 +3,7 @@ import time
 import json
 import datetime
 import subprocess
+import requests
 
 from PyQt5.QtCore import QThread, pyqtSignal
 
@@ -56,6 +57,9 @@ class BackupThread(QThread):
             except ApiError:
                 self.update_status(current_status="Idle")
                 self.api_error.emit()
+            except requests.exceptions.ConnectionError:
+                self.update_status(current_status="Idle")
+                pass
             self.force_run = False
             time.sleep(SLEEP_SECONDS)
 
