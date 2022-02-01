@@ -1,3 +1,6 @@
+@section('title')
+    {{ $page->title }}
+@endsection
 @extends('_layouts.main')
 
 @section('body')

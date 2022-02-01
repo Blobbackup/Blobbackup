@@ -1,3 +1,6 @@
+@section('title')
+    Pricing
+@endsection
 @extends('_layouts.main')
 
 @section('body')

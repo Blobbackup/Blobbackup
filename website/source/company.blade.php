@@ -1,3 +1,6 @@
+@section('title')
+    Company
+@endsection
 @extends('_layouts.main')
 
 @section('body')

@@ -1,3 +1,6 @@
+@section('title')
+    Blog
+@endsection
 @extends('_layouts.main')
 
 @section('body')
