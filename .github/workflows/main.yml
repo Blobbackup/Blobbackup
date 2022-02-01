@@ -47,7 +47,7 @@ jobs:
         ./src/blobbackup/scripts/buildosx.sh
     - name: Code sign (macos)
       working-directory: ./client/dist
-      if: matrix.os == 'macos-10.15'
+      if: matrix.os == 'macos-latest' # TODO: remove
       env:
         MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
         MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
@@ -69,7 +69,7 @@ jobs:
         name: blobbackup-win
         path: client/dist
     - uses: actions/upload-artifact@v2
-      if: matrix.os == 'macos-10.15'
+      if: matrix.os == 'macos-latest' # TODO: remove
       with:
         name: blobbackup-osx
         path: client/dist/Blobbackup.dmg
