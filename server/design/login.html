@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign In - Blobbackup</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/jpg" href="img/logo.png"/>
+    </head>
+    <body>
+        <div class="flex h-screen">
+            <div class="m-auto max-w-xs w-full">
+                <div class="text-center">
+                    <img src="img/logo.png" class="inline-block w-8 h-8" />
+                    <h1 class="text-2xl font-bold mt-2">Blobbackup</h1>
+                    <h2 class="text-gray-600 mt-2">Sign in to your account.</h2>
+                </div>
+                <div class="mt-4">
+                    <form method="POST" action="dashboard.html">
+                        <input type="email" name="email" placeholder="Email" class="w-full border border-gray-400 rounded-full px-4 py-1" required />
+                        <input type="password" name="password" placeholder="Password" class="w-full border border-gray-400 rounded-full px-4 py-1 mt-4" required />
+                        <button type="submit" class="bg-gray-200 rounded-full w-full py-2 font-bold mt-4">Sign In</button>
+                    </form>
+                </div>
+                <div class="mt-4 text-center">
+                    <a href="register.html" class="text-blue-600 underline">Don't have an account yet?</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

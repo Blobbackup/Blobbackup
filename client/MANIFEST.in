@@ -1,0 +1,3 @@
+graft src/blobbackup/img
+graft src/blobbackup/bin
+graft src/blobbackup/misc

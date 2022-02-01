@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Private, Secure Computer Backups - Blobbackup</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/jpg" href="img/logo.png"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header class="shadow-lg p-6 bg-white sticky top-0 z-50">
+            <div class="mx-auto flex max-w-7xl">
+                <a href="index.html" class="flex-initial font-bold text-2xl block">
+                    <img src="img/logo.png" class="w-8 h-8 -mt-1 mr-1 inline-block"/>
+                    Blobbackup
+                </a>
+                <div class="flex-1 text-right font-bold text-lg mt-1 hidden md:block">
+                    <a href="features.html" class="ml-4">Features</a>
+                    <a href="pricing.html" class="ml-4">Pricing</a>
+                    <a href="about.html" class="ml-4">Company</a>
+                    <a href="https://github.com/blobbackup" class="ml-4">Github</a>
+                    <a href="blog.html" class="ml-4">Blog</a>
+                    <a href="#" class="ml-4">Sign in</a>
+                    <a href="#" class="ml-4 text-white bg-blue-500 rounded-full px-4 py-2">Try it free</a>
+                </div>
+                <div class="flex-1 text-right mt-1 block md:hidden">
+                    <a id="responsive-open" href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <div id="responsive-menu" class="hidden absolute top-0 left-0 w-full h-screen p-6 bg-white">
+                    <div class="flex">
+                        <a href="index.html" class="flex-initial font-bold text-2xl block">
+                            <img src="img/logo.png" class="w-8 h-8 -mt-1 mr-1 inline-block"/>
+                            Blobbackup
+                        </a>
+                        <div class="flex-1 text-right">
+                            <a href="" id="responsive-close">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="font-bold text-xl mt-8">
+                        <a href="features.html" class="block underline mt-4">Features</a>
+                        <a href="pricing.html" class="block underline mt-4">Pricing</a>
+                        <a href="about.html" class="block underline mt-4">Company</a>
+                        <a href="https://github.com/blobbackup" class="block underline mt-4">Github</a>
+                        <a href="blog.html" class="block underline mt-4">Blog</a>
+                        <a href="#" class="block underline mt-4">Sign in</a>
+                        <a href="#" class="block mt-4 text-center text-white bg-blue-500 rounded-full px-4 py-2">Try it free</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="mx-auto max-w-5xl p-4">
+            <section class="md:flex mt-4 md:mt-8">
+                <div class="md:w-2/5 px-16 py-8 md:mt-0">
+                    <div class="rounded-full overflow-hidden">
+                        <img src="img/bimba.jpeg"/>
+                    </div>
+                </div>
+                <div class="md:w-3/5 px-4 md:px-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mt-0 md:mt-10 text-center md:text-left">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Emoji_u1f44b.svg/1200px-Emoji_u1f44b.svg.png" class="w-16 h-16 -mt-3 mr-1 inline-block"/>
+                        Hi there!
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-8">
+                        I'm Bimba, founder of Blobbackup.
+                    </p>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4">
+                        It's just me right now. One guy who cares about computer backups, kind of doing everything.
+                    </p>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4">
+                        If that concerns you a little, I don't blame you.
+                    </p>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4">
+                        You might ask: should I trust you with my computer data? What if something happens to you? Will this company be around next year?
+                    </p>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4">
+                        Those are very good questions.
+                    </p>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4">
+                        In some ways, there is no getting around it. It's risky to trust any new, small company (in general but especially when it comes to backups).
+                    </p>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4">
+                        All I can say is that I don't take my responsibility to protect your data lightly.
+                    </p>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4">
+                        I've taken great pains to make offsite computer backups as easy, reliable and private as possible.
+                        You can read my <a href="#" class="text-blue-600 underline">blog post</a> for the full picture but in short:
+                    </p>
+                    <ul class="text-xl md:text-2xl text-gray-600 list-disc ml-8 mt-4">
+                        <li>
+                            Blobbackup is end to end <strong>encrypted</strong> so your privacy won't be compromised.
+                        </li>
+                        <li>
+                            Blobbackup is <strong>open source</strong> so
+                            the public can analyze the code and more importantly, retain access to their data if the company
+                            disappears.
+                        </li>
+                        <li>
+                            And Blobbackup is extremely <strong>simple</strong> and so easy to use.
+                        </li>
+                    </ul>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4">
+                        Computer backups are an essential part of good digital hygiene. I had trouble finding a service
+                        that matched my needs so I decided to build one myself. 
+                    </p>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4">
+                        Blobbackup has already saved me a few times from some data loss tragedies and I hope that it'll be able to
+                        do the same for some of you.
+                    </p>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4">
+                        - Bimba
+                    </p>
+                </div>
+            </section>
+        </main>
+        <footer class="p-4 py-8 text-center">
+            <div class="font-bold text-lg mt-1">
+                <a href="#" class="mx-2">Privacy</a>
+                <a href="#" class="mx-2">Terms</a>
+                <a href="#" class="mx-2">Payment</a> 
+            </div>
+            <div class="mt-2">
+                &copy; Blobbackup 2021. All rights reserved.
+            </div>
+        </footer>
+        <script>
+            document.getElementById("responsive-open").onclick = () => {
+                document.getElementById("responsive-menu").classList.remove("hidden");
+                return false;
+            };
+            document.getElementById("responsive-close").onclick = () => {
+                document.getElementById("responsive-menu").classList.add("hidden");
+                return false;
+            };
+        </script>
+    </body>
+</html>

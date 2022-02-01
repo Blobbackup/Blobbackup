@@ -1,0 +1,9 @@
+/src/blobbackup/__pycache__
+/src/blobbackup/ui/__pycache__
+/src/blobbackup.egg-info
+/src/blobbackup/.DS_Store
+/.vscode
+/dist
+/build
+/.DS_Store
+/Blobbackup.app
