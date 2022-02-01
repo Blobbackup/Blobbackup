@@ -124,7 +124,7 @@ class BackupThread(QThread):
             and bytes_done
             and not self.backup_terminated
             and self.process
-            and self.process.returncode == 0
+            and self.process.poll() == 0
         ):
             time_format = "%I:%M %p on %b %d %Y"
             current_pretty_time = datetime.datetime.now().strftime(time_format)
