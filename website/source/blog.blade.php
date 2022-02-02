@@ -5,7 +5,7 @@
 
 @section('body')
 <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">Blobbackup Blog</h1>
-<h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">Digital hygiene, stories and product news.</h2>
+<h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">Digital Hygiene, Stories and Product News.</h2>
 <section class="grid md:grid-cols-2 gap-8 mt-8 md:mt-16">
     @foreach($posts as $post)
     <div>
