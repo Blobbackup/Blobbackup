@@ -9,3 +9,4 @@ git add .
 git commit -m "Build for production"
 git pull --commit
 git push origin gh-pages
+git checkout master
