@@ -3,6 +3,7 @@ import time
 import json
 import datetime
 import subprocess
+import requests
 
 from PyQt5.QtCore import QThread, pyqtSignal
 
@@ -56,6 +57,9 @@ class BackupThread(QThread):
             except ApiError:
                 self.update_status(current_status="Idle")
                 self.api_error.emit()
+            except requests.exceptions.ConnectionError:
+                self.update_status(current_status="Idle")
+                pass
             self.force_run = False
             time.sleep(SLEEP_SECONDS)
 
@@ -73,7 +77,7 @@ class BackupThread(QThread):
         password, computer = self.pre_backup()
 
         log_file = os.path.join(LOGS_PATH, f"backup-{datetime.date.today()}.txt")
-        files_done, bytes_done = None, None
+        files_done, bytes_done, backup_finished = None, None, False
         with open(log_file, "a") as log_f:
             if is_windows():
                 self.process = subprocess.Popen(
@@ -95,11 +99,11 @@ class BackupThread(QThread):
                 if not line:
                     break
                 message = json.loads(line)
-                files_done, bytes_done = self.handle_backup_output(
+                files_done, bytes_done, backup_finished = self.handle_backup_output(
                     message, files_done, bytes_done
                 )
 
-        self.post_backup(files_done, bytes_done)
+        self.post_backup(files_done, bytes_done, backup_finished)
 
     def pre_backup(self):
         self.process = None
@@ -117,14 +121,13 @@ class BackupThread(QThread):
 
         return password, computer
 
-    def post_backup(self, files_done, bytes_done):
+    def post_backup(self, files_done, bytes_done, backup_finished):
         self.update_status(current_status="Idle")
         if (
             files_done
             and bytes_done
             and not self.backup_terminated
-            and self.process
-            and self.process.returncode == 0
+            and backup_finished
         ):
             time_format = "%I:%M %p on %b %d %Y"
             current_pretty_time = datetime.datetime.now().strftime(time_format)
@@ -138,7 +141,7 @@ class BackupThread(QThread):
         return f"{num} / {den}"
 
     def handle_backup_output(self, message, files_done, bytes_done):
-        selected, status, force_update = None, None, False
+        selected, status, backup_finished = None, None, False
         if "files_done" in message and "bytes_done" in message:
             files_done = int(message["files_done"])
             bytes_done = int(message["bytes_done"])
@@ -151,11 +154,11 @@ class BackupThread(QThread):
             files_done = int(message["total_files_processed"])
             bytes_done = int(message["total_bytes_processed"])
             selected = self.format_selected_files(files_done, bytes_done)
-            force_update = True
-        if time.time() - self.status_updated_at > HEARTBEAT_SECONDS or force_update:
+            backup_finished = True
+        if time.time() - self.status_updated_at > HEARTBEAT_SECONDS or backup_finished:
             self.update_status(selected, status)
             self.status_updated_at = time.time()
-        return files_done, bytes_done
+        return files_done, bytes_done, backup_finished
 
     def write_inclusion_exclusion_files(self):
         with open(INCLUSIONS_FILE_PATH, "w") as f:

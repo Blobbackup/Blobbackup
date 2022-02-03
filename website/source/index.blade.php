@@ -1,3 +1,6 @@
+@section('title')
+    Private, Secure Computer Backups
+@endsection
 @extends('_layouts.main')
 
 @section('body')

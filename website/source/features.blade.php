@@ -1,3 +1,6 @@
+@section('title')
+    Features
+@endsection
 @extends('_layouts.main')
 
 @section('body')
