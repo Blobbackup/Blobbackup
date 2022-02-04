@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
                     $subscription->newModifier($amount)->create();
                 }
             }
-        })->daily();
+        })->hourly();
         $schedule->call(function () {
             foreach (Computer::all() as $computer) {
                 $last_backed_up = $computer->last_backed_up_at;
