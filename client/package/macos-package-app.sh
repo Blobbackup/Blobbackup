@@ -11,7 +11,7 @@ APP_BUNDLE="Blobbackup"
 # APPLE_ID_PASSWORD=""
 
 find $APP_BUNDLE.app/Contents/Resources/ \
-    -type f \( -name \*.so -or -name \*.dylib -or -name blobbackup.exe -or -name blobbackup -or -name Python \) \
+    -type f \( -name \*.so -or -name \*.dylib -or -name blobbackup-win* -or -name blobbackup-darwin* -or -name Python \) \
     -exec codesign --verbose --force --timestamp --deep --sign "${CERTIFICATE_NAME}" \
     --entitlements ../package/entitlements.plist  --options runtime {} \;
 
