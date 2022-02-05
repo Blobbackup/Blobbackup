@@ -2,6 +2,7 @@ import os
 import sys
 import hashlib
 import base64
+import platform
 
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Hash import SHA256
@@ -15,6 +16,10 @@ def is_windows():
 
 def is_mac():
     return sys.platform == "darwin"
+
+
+def is_arm():
+    return "arm64" in platform.platform()
 
 
 if is_windows():
@@ -56,9 +61,12 @@ KEEP_ALIVE_PLIST_DEST_PATH = os.path.join(
 )
 
 if is_windows():
-    RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup.exe"))
+    RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup-win.exe"))
 elif is_mac():
-    RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup"))
+    if is_arm():
+        RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup-darwin-arm"))
+    else:
+        RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup-darwin-amd"))
 
 HOME_PATH = os.path.join(os.path.expanduser("~"), ".bb")
 os.makedirs(HOME_PATH, exist_ok=True)
