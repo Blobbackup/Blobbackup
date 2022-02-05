@@ -4,7 +4,7 @@ import socket
 import platform
 import shutil
 
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt6.QtCore import QThread, pyqtSignal
 
 from blobbackup.api import create_new_computer
 from blobbackup.config import config, save_config

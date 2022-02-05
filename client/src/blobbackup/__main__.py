@@ -1,8 +1,8 @@
 import os
 import sys
 
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtCore import Qt
+from PyQt6.QtWidgets import QApplication
+from PyQt6.QtCore import Qt
 
 from blobbackup.application import Application
 from blobbackup.logindialog import LoginDialog
@@ -22,12 +22,12 @@ def main():
         if not client_initialized():
             first_time = True
             login_dialog = LoginDialog()
-            login_successful = login_dialog.exec_()
+            login_successful = login_dialog.exec()
             if not login_successful:
                 sys.exit()
 
             welcome_dialog = WelcomeDialog(login_dialog.email, login_dialog.password)
-            accepted_terms = welcome_dialog.exec_()
+            accepted_terms = welcome_dialog.exec()
             if not accepted_terms:
                 sys.exit()
 
@@ -37,7 +37,7 @@ def main():
         tray = SystemTrayIcon(main_window)
         tray.setVisible(True)
 
-        application.exec_()
+        application.exec()
 
 
 def client_initialized():
@@ -45,10 +45,7 @@ def client_initialized():
 
 
 def init_application_properties():
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
     os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
-    os.environ["QT_MAC_WANTS_LAYER"] = "1"
 
 
 if __name__ == "__main__":

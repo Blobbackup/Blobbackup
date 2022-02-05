@@ -2,9 +2,9 @@ import os
 
 from collections import defaultdict
 
-from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QIcon
+from PyQt6.QtWidgets import QTreeWidget, QTreeWidgetItem
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QIcon
 
 from blobbackup.util import FOLDER_PATH
 
@@ -28,8 +28,8 @@ def prepare_lazy_tree(nodes):
 
 def get_selected_nodes(tree_widget):
     selected_nodes = []
-    for item in tree_widget.findItems("", Qt.MatchContains | Qt.MatchRecursive):
-        if item.checkState(0) == Qt.Checked:
+    for item in tree_widget.findItems("", Qt.MatchFlag.MatchContains | Qt.MatchFlag.MatchRecursive):
+        if item.checkState(0) == Qt.CheckState.Checked:
             node = item.whatsThis(0)
             selected_nodes.append(node)
     return selected_nodes
@@ -58,15 +58,15 @@ class QLazyTreeWidget(QTreeWidget):
     def _populate_children(self, parent_item, parent_node):
         self.loaded_nodes.add(parent_node)
         parent_item.setFlags(
-            parent_item.flags() | Qt.ItemIsTristate | Qt.ItemIsUserCheckable
+            parent_item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable
         )
         for node in sorted(self.tree[parent_node], key=lambda n: n not in self.tree):
             item = QTreeWidgetItem([os.path.basename(node)])
             item.setWhatsThis(0, node)
-            item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
+            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
             item.setCheckState(
                 0,
-                Qt.Checked if parent_item.checkState(0) == Qt.Checked else Qt.Unchecked,
+                Qt.CheckState.Checked if parent_item.checkState(0) == Qt.CheckState.Checked else Qt.CheckState.Unchecked,
             )
             parent_item.addChild(item)
             if node in self.tree:

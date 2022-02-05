@@ -1,7 +1,7 @@
 import webbrowser
 
-from PyQt5.QtWidgets import QDialog
-from PyQt5.QtGui import QIcon
+from PyQt6.QtWidgets import QDialog
+from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.welcomedialog import Ui_WelcomeDialog
 from blobbackup.util import BASE_URL, LOGO_PATH, get_pixmap
@@ -44,7 +44,7 @@ class WelcomeDialog(QDialog, Ui_WelcomeDialog):
 
     def restore_files(self):
         choose_computer_dialog = ChooseComputerDialog(self.email, self.password)
-        if choose_computer_dialog.exec_():
+        if choose_computer_dialog.exec():
             computer_id = choose_computer_dialog.computer_id
             dialog = RestoreDialog(self.email, self.password, computer_id)
-            dialog.exec_()
+            dialog.exec()

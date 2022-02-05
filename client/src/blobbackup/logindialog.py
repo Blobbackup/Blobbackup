@@ -1,8 +1,8 @@
 import sys
 import webbrowser
 
-from PyQt5.QtWidgets import QDialog, QMessageBox
-from PyQt5.QtGui import QIcon
+from PyQt6.QtWidgets import QDialog, QMessageBox
+from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.logindialog import Ui_LoginDialog
 from blobbackup.util import LOGO_PATH, BASE_APP_URL, get_pixmap

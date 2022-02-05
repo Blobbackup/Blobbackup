@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QDialog, QFileDialog, QInputDialog
-from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import Qt
+from PyQt6.QtWidgets import QDialog, QFileDialog, QInputDialog
+from PyQt6.QtGui import QIcon
+from PyQt6.QtCore import Qt
 
 from blobbackup.ui.settingsdialog import Ui_SettingsDialog
 from blobbackup.config import config, save_config
@@ -40,7 +40,7 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
 
     def inclusions_add(self):
         path = QFileDialog.getExistingDirectory()
-        if path and not self.inclusions_list_widget.findItems(path, Qt.MatchExactly):
+        if path and not self.inclusions_list_widget.findItems(path, Qt.MatchFlag.MatchExactly):
             self.inclusions_list_widget.addItem(path)
 
     def inclusions_remove(self):
@@ -51,7 +51,7 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
 
     def exclusions_add(self):
         exclusion, okay = QInputDialog.getText(self, "Add exclusion", "Path or pattern")
-        exists = self.exclusions_list_widget.findItems(exclusion, Qt.MatchExactly)
+        exists = self.exclusions_list_widget.findItems(exclusion, Qt.MatchFlag.MatchExactly)
         if okay and exclusion and not exists:
             self.exclusions_list_widget.addItem(exclusion)
 

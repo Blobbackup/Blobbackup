@@ -2,7 +2,7 @@ import os
 import datetime
 import subprocess
 
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt6.QtCore import QThread, pyqtSignal
 
 from blobbackup.qlazytreewidget import get_selected_nodes
 from blobbackup.api import get_computer

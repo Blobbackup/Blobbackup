@@ -1,7 +1,7 @@
 import datetime
 
-from PyQt5.QtWidgets import QDialog, QFileDialog, QMessageBox
-from PyQt5.QtGui import QIcon
+from PyQt6.QtWidgets import QDialog, QFileDialog, QMessageBox
+from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.restoredialog import Ui_RestoreDialog
 from blobbackup.snapshotsthread import SnapshotsThread
@@ -70,10 +70,10 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
                 self,
                 "Start Restore?",
                 f"You are about to restore to {path}. Blobbackup will OVERWRITE any conflicting files. Continue?",
-                QMessageBox.Yes | QMessageBox.No,
-                QMessageBox.No,
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                QMessageBox.StandardButton.No,
             )
-            if reply == QMessageBox.Yes:
+            if reply == QMessageBox.StandardButton.Yes:
                 snapshot_id = self.snapshots_combo_box.currentData()
                 self.setEnabled(False)
                 self.setWindowTitle("Restoring. Please Wait...")

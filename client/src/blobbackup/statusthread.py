@@ -1,6 +1,6 @@
 import time
 
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt6.QtCore import QThread, pyqtSignal
 
 from blobbackup.util import HEARTBEAT_SECONDS
 

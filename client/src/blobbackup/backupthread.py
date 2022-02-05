@@ -5,7 +5,7 @@ import datetime
 import subprocess
 import requests
 
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt6.QtCore import QThread, pyqtSignal
 
 from blobbackup.api import get_computer, update_computer
 from blobbackup.util import (

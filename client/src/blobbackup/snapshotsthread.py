@@ -1,7 +1,7 @@
 import json
 import subprocess
 
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt6.QtCore import QThread, pyqtSignal
 
 from blobbackup.api import get_computer
 from blobbackup.util import (

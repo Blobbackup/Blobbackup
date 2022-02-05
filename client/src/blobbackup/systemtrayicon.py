@@ -1,7 +1,7 @@
-from PyQt5.QtGui import QIcon
+from PyQt6.QtGui import QIcon
 import sys
 
-from PyQt5.QtWidgets import QSystemTrayIcon, QMenu
+from PyQt6.QtWidgets import QSystemTrayIcon, QMenu
 
 from blobbackup.util import LOGO_PADDED_PATH
 

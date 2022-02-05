@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QDialog
-from PyQt5.QtGui import QIcon
+from PyQt6.QtWidgets import QDialog
+from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.choosecomputerdialog import Ui_ChooseComputerDialog
 from blobbackup.util import LOGO_PATH

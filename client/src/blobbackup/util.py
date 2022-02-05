@@ -6,7 +6,7 @@ import base64
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Hash import SHA256
 from keyring import get_password, set_password, set_keyring
-from PyQt5.QtGui import QPixmap
+from PyQt6.QtGui import QPixmap
 
 
 def is_windows():

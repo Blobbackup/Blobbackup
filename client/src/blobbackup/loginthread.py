@@ -3,7 +3,7 @@ import json
 import subprocess
 import tempfile
 
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt6.QtCore import QThread, pyqtSignal
 
 from blobbackup.api import login, get_computer
 from blobbackup.config import config, save_config

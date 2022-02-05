@@ -1,8 +1,8 @@
 import sys
 import webbrowser
 
-from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtGui import QIcon
+from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.mainwindow import Ui_MainWindow
 
@@ -54,11 +54,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         if first_time:
             dialog = BackupStartedDialog()
-            dialog.exec_()
+            dialog.exec()
 
     def open_settings(self):
         dialog = SettingDialog()
-        dialog.exec_()
+        dialog.exec()
 
     def toggle_backup(self):
         if self.backup_thread.backup_running():
@@ -72,7 +72,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         password = get_password_from_keyring()
         computer_id = config["meta"]["computer_id"]
         dialog = RestoreDialog(email, password, computer_id)
-        dialog.exec_()
+        dialog.exec()
 
     def launch_status_thread(self):
         self.status_thread = StatusThread()
@@ -99,5 +99,5 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def api_error(self):
         dialog = LoginDialog(reauth=True)
-        if not dialog.exec_():
+        if not dialog.exec():
             sys.exit()
