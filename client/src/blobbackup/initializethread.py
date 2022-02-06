@@ -23,6 +23,7 @@ from blobbackup.util import (
     save_password_in_keyring,
     get_restic_env,
     get_restic_init_command,
+    posix_path,
 )
 
 DEFAULT_MAC_INCLUSIONS = ",".join(["/"])
@@ -80,7 +81,7 @@ DEFAULT_MAC_EXCLUSIONS = ",".join(
         "*.mem",
         "*.nvram",
         "*.hdd",
-        HOME_PATH,
+        posix_path(HOME_PATH),
     ]
 )
 DEFAULT_WIN_INCLUSIONS = ",".join(["C:/"])
@@ -135,7 +136,7 @@ DEFAULT_WIN_EXCLUSIONS = ",".join(
         "*.mem",
         "*.nvram",
         "*.hdd",
-        HOME_PATH,
+        posix_path(HOME_PATH),
     ]
 )
 

@@ -3,6 +3,7 @@ import sys
 import hashlib
 import base64
 import platform
+import pathlib
 
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Hash import SHA256
@@ -191,3 +192,7 @@ def pretty_bytes(num, suffix="B"):
             return "%3.2f %s%s" % (num, unit, suffix)
         num /= 1024.0
     return "%.2f %s%s" % (num, "Y", suffix)
+
+
+def posix_path(path):
+    return pathlib.Path(path).as_posix()
