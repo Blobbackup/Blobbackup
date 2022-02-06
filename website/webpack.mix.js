@@ -14,3 +14,6 @@ mix.jigsaw()
         processCssUrls: false,
     })
     .version();
+
+mix.disableNotifications();
+
