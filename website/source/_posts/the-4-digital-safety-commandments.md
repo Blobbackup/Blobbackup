@@ -15,13 +15,13 @@ Keep these 4 commandments and you’ll ward off most digital threats.
 
 Do you use the same (or similar) password on all your online accounts? If you’re like most people, you probably do. If even one of those accounts is compromised, your entire life could be turned upside down.
 
-You should use a unique password for every account. Doing this yourself is hard because you can’t remember fifty passwords. But doing this with a password manager (eg: Bitwarden, 1Password, LastPass) is extremely easy. Don’t let that sketchy and insecure website you signed up for (you know the one) ruin you. Use a password manager.
+You should use a unique password for every account. Doing this yourself is hard because you can’t remember fifty passwords. But doing this with a password manager (eg: [Bitwarden](https://bitwarden.com), [1Password](https://1password.com), [LastPass](https://lastpass.com)) is extremely easy. Don’t let that sketchy and insecure website you signed up for (you know the one) ruin you. Use a password manager.
 
 # 2. Thou Shall Backup Your Computer
 
 When was the last time you backed up all your important files? Last month? Last year? Never? Losing your data is not fun. Your precious photos, financial records or homework could disappear forever in an instant without a good backup. 
 
-Setting up a good backup system might seem time-consuming and intimidating. But thanks to tools (eg: Blobbackup, Backblaze, Crashplan), it’s not. You could have your entire computer securely backing up to the cloud within 5 minutes. Do it before it’s too late.
+Setting up a good backup system might seem time-consuming and intimidating. But thanks to tools (eg: [Blobbackup](/), [Backblaze](https://backblaze.com), [Crashplan](https://crashplan.com)), it’s not. You could have your entire computer securely backing up to the cloud within 5 minutes. Do it before it’s too late.
 
 # 3. Thou Shall Use 2 Factor Authentication
 

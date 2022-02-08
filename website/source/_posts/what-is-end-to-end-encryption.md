@@ -39,4 +39,4 @@ At first, Shared-E2E might sound like it provides no additional privacy over SSL
 
 Shared-E2E is the most common position taken by online backup companies. For some people, it might be sufficiently private. 
 
-But not for us. We believe companies should only have access to the data they absolutely need for service. Blobbackup uses E2E. Unlike online banking, whether or not we can see your data has little to do with our ability to provide a robust computer backup service. The data in this case are the files on your computer and the key is your login [password](http://password.No). No one, not our employees nor hackers can see your computer data without your password.
+But not for us. We believe companies should only have access to the data they absolutely need for service. [Blobbackup](/) uses E2E. Unlike online banking, whether or not we can see your data has little to do with our ability to provide a robust computer backup service. The data in this case are the files on your computer and the key is your login password. No one, not our employees nor hackers can see your computer data without your password.

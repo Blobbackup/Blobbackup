@@ -18,6 +18,10 @@
     list-style-type: disc;
     margin-left: 2rem;
 }
+#content a {
+    color: rgb(37 99 235);
+    text-decoration: underline;
+}
 </style>
 <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">{{ $page->title }}</h1>
 <h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">{{ date('F j, Y', $page->date) }} by {{ $page->author }}</h2>
