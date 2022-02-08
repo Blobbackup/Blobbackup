@@ -1,3 +1,3 @@
 src/blobbackup/scripts/generateui.sh
 pip install .
-blobbackup
+python src/blobbackup/__main__.py

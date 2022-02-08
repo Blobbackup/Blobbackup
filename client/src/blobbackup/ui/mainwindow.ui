@@ -36,12 +36,6 @@
        </item>
        <item>
         <widget class="QLabel" name="label_2">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
          <property name="text">
           <string>Blobbackup</string>
          </property>
@@ -78,12 +72,6 @@
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QLabel" name="last_backed_up_label">
-         <property name="font">
-          <font>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
          <property name="text">
           <string>You are backed up as of 5:30 pm on Jan 21, 2021</string>
          </property>
@@ -217,12 +205,6 @@
                <height>16777215</height>
               </size>
              </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
              <property name="text">
               <string>Selected Files:</string>
              </property>
@@ -256,12 +238,6 @@
                <height>16777215</height>
               </size>
              </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
              <property name="text">
               <string>Schedule:</string>
              </property>
@@ -294,12 +270,6 @@
                <width>110</width>
                <height>16777215</height>
               </size>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
              </property>
              <property name="text">
               <string>Current Status:</string>
