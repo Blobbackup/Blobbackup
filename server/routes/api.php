@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['auth.basic', 'verified'])->group(function () {
+Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
     Route::get('/login', function () {
         $user = auth()->user();
         return [
