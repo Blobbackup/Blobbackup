@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Active
 {
@@ -19,6 +20,8 @@ class Active
         $user = auth()->user();
         if ($user->status == 'active')
             return $next($request);
+        if (Str::contains($request->url(), '/api'))
+            return response('Invalid credentials', 400);
         return back()->withErrors('Invalid credentials');
     }
 }
