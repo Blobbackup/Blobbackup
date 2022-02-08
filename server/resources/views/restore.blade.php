@@ -8,7 +8,7 @@
         <div class="mt-4">
             Just click the Restore Files button on the control panel.
         </div>
-        <div>
+        <div class="w-1/2">
             <img src="{{ asset('img/restore-installed.png') }}" />
         </div>
         <h2 class="font-bold">Option 2: Restore to a Computer Where You Don’t Have Blobbackup Installed</h2>
@@ -24,7 +24,7 @@
         <div class="mt-4">
             Step 3: Sign in and click the Restore Files button.
         </div>
-        <div>
+        <div class="w-1/2">
             <img src="{{ asset('img/restore-uninstalled.png') }}" />
         </div>
     </div>
