@@ -6,9 +6,9 @@
     <div class="shadow-lg my-8 p-6">
         <div>
             Step 1: Download Blobbackup:
-            <a href="{{ asset('bin/blobbackup-darwin-amd-1.0.1.dmg') }}" class="text-blue-600 underline">Intel Mac</a> |
-            <a href="{{ asset('bin/blobbackup-darwin-arm-1.0.1.dmg') }}" class="text-blue-600 underline">M1 Mac</a> |
-            <a href="{{ asset('bin/blobbackup-win-1.0.1.exe') }}" class="text-blue-600 underline">Windows</a>.
+            <a href="{{ asset('bin/blobbackup-darwin-amd-1.0.2.dmg') }}" class="text-blue-600 underline">Intel Mac</a> |
+            <a href="{{ asset('bin/blobbackup-darwin-arm-1.0.2.dmg') }}" class="text-blue-600 underline">M1 Mac</a> |
+            <a href="{{ asset('bin/blobbackup-win-1.0.2.exe') }}" class="text-blue-600 underline">Windows</a>.
         </div>
         <div class="mt-4">
             Step 2: Install Blobbackup on your computer (<a href="/help" class="text-blue-600 underline">Need help with this?</a>).
