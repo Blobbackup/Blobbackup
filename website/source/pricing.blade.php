@@ -4,7 +4,7 @@
 @extends('_layouts.main')
 
 @section('body')
-<h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">$10 / Month</h1>
+<h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">$9 / Month</h1>
 <h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">Per computer. All features included.</h2>
 <div class="text-center"><a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for 30 Days</a></div>
 <p class="text-center text-gray-600 text-sm mt-2">No card required. Cancel anytime.</p>
