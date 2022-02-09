@@ -17,6 +17,9 @@
             </div>
         @else
             <div class="text-gray-600">
+                You will be billed ${{ auth()->user()->computers->count() * Util::$perComputerPrice }} / month (computers: {{ auth()->user()->computers->count() }}).
+            </div>
+            <div class="text-gray-600 mt-2">
                 @if (auth()->user()->subscription()->paymentMethod() == 'card')
                     Your current payment method is a {{ auth()->user()->subscription()->cardBrand() }} card ending in {{ auth()->user()->subscription()->cardLastFour() }}
                     that expires on {{ auth()->user()->subscription()->cardExpirationDate() }}.

@@ -20,11 +20,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $price = 10.00;
             foreach (User::all() as $user) {
                 if ($user->subscribed()) {
                     $subscription = $user->subscription();
-                    $amount = $price * $user->computers->count();
+                    $amount = Util::$perComputerPrice * $user->computers->count();
                     foreach ($subscription->modifiers() as $modifier)
                         $modifier->delete();
                     $subscription->newModifier($amount)->create();
