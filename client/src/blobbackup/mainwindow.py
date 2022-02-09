@@ -60,6 +60,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         dialog = SettingDialog()
         dialog.exec()
 
+    def quit_application(self):
+        if self.backup_thread.backup_running():
+            self.backup_thread.stop_backup()
+        sys.exit()
+
     def toggle_backup(self):
         if self.backup_thread.backup_running():
             self.backup_thread.stop_backup()

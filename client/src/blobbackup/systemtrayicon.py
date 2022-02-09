@@ -1,6 +1,4 @@
 from PyQt6.QtGui import QIcon
-import sys
-
 from PyQt6.QtWidgets import QSystemTrayIcon, QMenu
 
 from blobbackup.util import LOGO_PADDED_PATH
@@ -22,7 +20,9 @@ class SystemTrayIcon(QSystemTrayIcon):
         self.settings_action = self.menu.addAction(
             "Settings", self.main_window.open_settings
         )
-        self.quit_action = self.menu.addAction("Quit", sys.exit)
+        self.quit_action = self.menu.addAction(
+            "Quit", self.main_window.quit_application
+        )
         self.setContextMenu(self.menu)
 
     def show_main_window(self):
