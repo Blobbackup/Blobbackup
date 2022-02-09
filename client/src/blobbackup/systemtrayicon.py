@@ -4,6 +4,7 @@ import sys
 from PyQt6.QtWidgets import QSystemTrayIcon, QMenu
 
 from blobbackup.util import LOGO_PADDED_PATH
+from blobbackup._version import __version__
 
 
 class SystemTrayIcon(QSystemTrayIcon):
@@ -15,6 +16,8 @@ class SystemTrayIcon(QSystemTrayIcon):
 
     def initialize_context_menu(self):
         self.menu = QMenu()
+        self.version_action = self.menu.addAction(f"Version {__version__}")
+        self.version_action.setEnabled(False)
         self.open_action = self.menu.addAction("Open", self.show_main_window)
         self.settings_action = self.menu.addAction(
             "Settings", self.main_window.open_settings
