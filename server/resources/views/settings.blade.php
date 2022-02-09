@@ -34,6 +34,14 @@
             <button type="submit" class="bg-gray-200 rounded-full px-4 py-2 font-bold mt-4">Change</button>
         </form>
     </div>
+    <div class="shadow-lg mt-8 p-6">
+        <div class="text-gray-600">Delete Account</div>
+        <div class="text-gray-600 mt-4">
+            WARNING: This will cancel your subscription and delete all your account data (including all backups)
+            immediately. Your data will be permanently deleted and cannot be recovered!
+        </div>
+        <a href="/deleteaccount" class="bg-gray-200 rounded-full px-4 py-2 font-bold mt-4 inline-block">Delete Account</button>
+    </div>
     <script>
         $("#changeemailform").submit(() => {
             let newEmail = $("#changeemailemail").val();

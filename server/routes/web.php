@@ -100,6 +100,26 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         return back()->with('message', 'Password changed.');
     });
 
+    Route::get('/deleteaccount', function () {
+        return view('deleteaccount');
+    })->name('deleteaccount');
+
+    Route::post('/deleteaccount', function () {
+        $user = auth()->user();
+        if ($user->subscribed()) {
+            $user->subscription()->cancelNow();
+            $user->subscription()->delete();
+            foreach ($user->receipts as $receipt)
+                $receipt->delete();
+        }
+        foreach ($user->computers as $computer)
+            $computer->delete();
+        $user->customer()->delete();
+        $user->delete();
+        auth()->logout();
+        return redirect('/login')->withErrors('Your account has been deleted.');
+    });
+
     Route::get('/help', function () {
         return view('help');
     })->name('help');
