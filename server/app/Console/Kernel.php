@@ -46,7 +46,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             foreach (Computer::onlyTrashed()->get() as $computer) {
                 $delta = $computer->deleted_at->diff(new \DateTime());
-                if ($delta->days > 30) {
+                if (!$computer->user || $delta->days > 30) {
                     $path = 'b2:' . env('B2_BUCKET_NAME') . '/' . $computer->uuid;
                     $process = new Process(['rclone', 'purge', $path]);
                     $process->run();
