@@ -11,16 +11,9 @@
             <a href="{{ asset('bin/blobbackup-win-1.0.3.exe') }}" class="text-blue-600 underline">Windows</a>.
         </div>
         <div class="mt-4">
-            Step 2: Install Blobbackup on your computer (<a href="/help" class="text-blue-600 underline">Need help with this?</a>).
-        </div>
-        <div class="mt-4 ml-4">
-            Note: Blobbackup on Mac requires full disk access. Make sure to provide this from your System Preferences.
-        </div>
-        <div class="w-1/2">
-            <img src="{{ asset('img/mac-plus.png') }}"/>
-        </div>
-        <div class="ml-4">
-            Note: Blobbackup on Windows is not code signed yet so you might see a warning when installing.
+            Step 2: Install Blobbackup on your computer. Step by step instructions:
+            <a href="https://blobbackup.com/support/how-to-install-blobbackup-on-mac" class="text-blue-600 underline" target="_blank">Mac</a> |
+            <a href="https://blobbackup.com/support/how-to-install-blobbackup-on-windows" class="text-blue-600 underline" target="_blank">Windows</a>.
         </div>
         <div class="w-1/2">
             <img src="{{ asset('img/win-defender.png') }}"/>
