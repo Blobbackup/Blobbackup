@@ -53,7 +53,7 @@
     </div>
 </section>
 <h1 class="text-4xl md:text-5xl font-bold mt-8 md:mt-16 text-center">Common Questions</h1>
-<section class="mt-8 md:mt-16 text-center grid gap-8">
+<section class="mt-8 max-w-2xl mx-auto md:mt-16 text-center grid gap-8">
     <div>
         <h1 class="text-xl md:text-2xl font-bold mt-2">
             Will I be charged when my trial is up?
@@ -72,18 +72,29 @@
     </div>
     <div>
         <h1 class="text-xl md:text-2xl font-bold mt-2">
-            Do you offer discounts?
+            Can I pay yearly? What are the payment options?
         </h1>
         <p class="text-lg text-gray-600 mt-2">
-            Yes, we offer free accounts for teachers & students, and discounts for non-profits. Contact <a href="/support" class="text-blue-600 underline">support</a> for details.
+            We only offer montly biling at this time. We will bill you $9 per computer every month after your trial ends. 
+            We accept payment via credit card, debit card and PayPal. We don't accept orders, checks, ACH/wire or 
+            cryptocurrency.
         </p>
     </div>
     <div>
         <h1 class="text-xl md:text-2xl font-bold mt-2">
-            What files do you backup?
+            Are taxes included in the price?
         </h1>
         <p class="text-lg text-gray-600 mt-2">
-            By default, we backup everything on your computer but you can change this if you want.
+            No. Any taxes we collect are in addition to the per computer price. Whether or not we collect tax and how much
+            depends on your juristiction.
+        </p>
+    </div>
+    <div>
+        <h1 class="text-xl md:text-2xl font-bold mt-2">
+            Do you offer discounts?
+        </h1>
+        <p class="text-lg text-gray-600 mt-2">
+            Yes, we offer free accounts for teachers & students, and discounts for non-profits. Contact <a href="/support" class="text-blue-600 underline">support</a> for details.
         </p>
     </div>
     <div>
