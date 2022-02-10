@@ -15,10 +15,7 @@
             <a href="https://blobbackup.com/support/how-to-install-blobbackup-on-mac" class="text-blue-600 underline" target="_blank">Mac</a> |
             <a href="https://blobbackup.com/support/how-to-install-blobbackup-on-windows" class="text-blue-600 underline" target="_blank">Windows</a>.
         </div>
-        <div class="w-1/2">
-            <img src="{{ asset('img/win-defender.png') }}"/>
-        </div>
-        <div>
+        <div class="mt-4">
             Step 3: Open Blobbackup and sign in to start backing up!
         </div>
         <div class="w-1/2">
