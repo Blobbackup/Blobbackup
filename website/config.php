@@ -9,6 +9,10 @@ return [
         'posts' => [
             'path' => '/blog/{filename}',
             'sort' => '-date'
+        ],
+        'support' => [
+            'path' => '/support/{filename}',
+            'sort' => '-date'
         ]
     ],
 ];
