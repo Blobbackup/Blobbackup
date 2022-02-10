@@ -1,3 +1,7 @@
+# Original
+
+This is the original Blobbackup app that doesn't have it's own storage. It's still maintained but I'll be prioritizing the new offering.
+
 <p align="center"><img src="docs/docs/images/logo.png" width="48px"/></p>
 
 <p align="center"><img src="docs/docs/images/gui.png" width="500px"/></p>
