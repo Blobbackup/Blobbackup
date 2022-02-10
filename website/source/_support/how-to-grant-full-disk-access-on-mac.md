@@ -2,7 +2,7 @@
 extends: _layouts.support
 title: How to Grant Full Disk Access on Mac
 author: Bimba Shrestha
-date: 2022-02-01
+date: 2022-02-10
 section: content
 ---
 

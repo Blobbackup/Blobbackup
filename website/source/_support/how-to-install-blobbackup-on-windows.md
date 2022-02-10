@@ -2,7 +2,7 @@
 extends: _layouts.support
 title: How to Install Blobbackup on Windows
 author: Bimba Shrestha
-date: 2022-02-01
+date: 2022-02-10
 section: content
 ---
 
