@@ -38,7 +38,7 @@
         </p>
         <p class="text-xl md:text-2xl text-gray-600 mt-4">
             I've taken great pains to make offsite computer backups as easy, reliable and private as possible.
-            You can read my <a href="#" class="text-blue-600 underline">blog post</a> for the full picture but in short:
+            You can read the <a href="/blog" class="text-blue-600 underline">blog</a> for the details but in short:
         </p>
         <ul class="text-xl md:text-2xl text-gray-600 list-disc ml-8 mt-4">
             <li>
