@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>    Company
+        <title>    Open Source Software vs. Development
  - Blobbackup</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
@@ -57,68 +57,60 @@
             </div>
         </header>
         <main class="mx-auto max-w-5xl p-4">
-            <section class="md:flex mt-4 md:mt-8">
-    <div class="md:w-2/5 px-16 py-8 md:mt-0">
-        <div class="rounded-full overflow-hidden">
-            <img src="/assets/images/bimba.jpeg"/>
-        </div>
-    </div>
-    <div class="md:w-3/5 px-4 md:px-0">
-        <h1 class="text-4xl md:text-5xl font-bold mt-0 md:mt-10 text-center md:text-left">
-            <img src="/assets/images/wave.png" class="w-16 h-16 -mt-3 mr-1 inline-block"/>
-            Hi There!
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-600 mt-8">
-            I'm Bimba, founder of Blobbackup.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            It's just me right now. One guy who cares about computer backups, kind of doing everything.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            If that concerns you a little, I don't blame you.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            You might ask: should I trust you with my computer data? What if something happens to you? Will this company be around next year?
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            Those are very good questions.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            In some ways, there is no getting around it. It's risky to trust any new, small company (in general but especially when it comes to backups).
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            All I can say is that I don't take my responsibility to protect your data lightly.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            I've taken great pains to make offsite computer backups as easy, reliable and private as possible.
-            You can read my full <a href="/blog/getting-started-with-blobbackup" class="text-blue-600 underline">blog post</a> for details but in short:
-        </p>
-        <ul class="text-xl md:text-2xl text-gray-600 list-disc ml-8 mt-4">
-            <li>
-                Blobbackup is end to end <a href="/blog/what-is-end-to-end-encryption" class="text-blue-600 underline">encrypted</a> so your privacy won't be compromised.
-            </li>
-            <li>
-                Blobbackup is <a href="/blog/open-source-software-vs-open-source-development" class="text-blue-600 underline">open source</a> so
-                the public can analyze the code and more importantly, retain access to their data if the company
-                disappears.
-            </li>
-            <li>
-                Blobbackup is extremely <a href="/blog/getting-started-with-blobbackup" class="text-blue-600 underline">simple</a> and easy to use.
-            </li>
-        </ul>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            Computer backups are an essential part of good digital hygiene. I had trouble finding a service
-            that matched my needs so I decided to build one myself. 
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            Blobbackup has already saved me a few times from some data loss tragedies and I hope that it'll be able to
-            do the same for some of you.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            - Bimba
-        </p>
-    </div>
-</section>
+            <style>
+#content p {
+    margin-top: 1rem;
+}
+#content h1 {
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+#content li {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+#content a {
+    color: rgb(37 99 235);
+    text-decoration: underline;
+}
+</style>
+<h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">Open Source Software vs. Development</h1>
+<h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">February 13, 2022 by Bimba Shrestha</h2>
+<div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
+    <p>Open source software is not automatically better than closed source software. It's the quality of the underlying code that matters. And bad code can be written in public just as easily as it can behind closed doors.</p>
+
+<p>So why do we still stand behind open source?</p>
+
+<h1>Open Source Software vs. Open Source Development</h1>
+
+<p>Let's first distinguish between open source software and open source development. Open source software is any software whose code is available online. Open source development is a philosophy.</p>
+
+<p>Publishing poor code to the internet does not magically make it not poor (even if you slap a GPL license on it). Browse through Github or Bitbucket, and you'll see thousands of open source software that are unreliable, unmaintained, or painful to use.</p>
+
+<p>Open source development is a way of creating software publically. It's the culture that enables strangers on the internet (programmers and regular users alike) to shape software together.</p>
+
+<p>Open source development results in open source software but not all open source software comes from open source development.</p>
+
+<h1>Open Source Development is What Matters</h1>
+
+<p>Simply publishing code to Github does have some benefits. For one, it provides transparency. Does this software do what it says it does? Now people can verify this themselves by looking at the code.</p>
+
+<p>But transparency alone is often not enough. Bad code is bad code. Whether it's publically available or not doesn't change that.</p>
+
+<p>Projects that leverage open source development have an engaged community actively seeking to identify/fix bugs, patch security vulnerabilities, suggest useful features, and generally improve the overall quality of the software.</p>
+
+<p>When you have lots of engaged eyes on a project, it's hard for glaring bugs to make it into users' hands.</p>
+
+<h1>Open Source is an Antidote to Companies Going Bust</h1>
+
+<p>Everyone hates to see it but good companies with solid products disappear all the time. When that happens, their users suffer.</p>
+
+<p>Open source development is the only reliable antidote to this. Even if a company goes bust, if they're open source, not all is lost. Their code is still available (and likely forked several times), there is still community support and most importantly, you can still use their software!</p>
+
+<p>Using openly developed software is a way of not putting all your eggs in one basket.</p>
+</div>
         </main>
         <footer class="p-4 py-8 text-center">
             <div class="font-bold text-lg mt-1">

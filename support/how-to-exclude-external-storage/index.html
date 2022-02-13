@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>    Company
+        <title>    How to Exclude External Storage on Mac?
  - Blobbackup</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
@@ -57,68 +57,84 @@
             </div>
         </header>
         <main class="mx-auto max-w-5xl p-4">
-            <section class="md:flex mt-4 md:mt-8">
-    <div class="md:w-2/5 px-16 py-8 md:mt-0">
-        <div class="rounded-full overflow-hidden">
-            <img src="/assets/images/bimba.jpeg"/>
-        </div>
-    </div>
-    <div class="md:w-3/5 px-4 md:px-0">
-        <h1 class="text-4xl md:text-5xl font-bold mt-0 md:mt-10 text-center md:text-left">
-            <img src="/assets/images/wave.png" class="w-16 h-16 -mt-3 mr-1 inline-block"/>
-            Hi There!
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-600 mt-8">
-            I'm Bimba, founder of Blobbackup.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            It's just me right now. One guy who cares about computer backups, kind of doing everything.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            If that concerns you a little, I don't blame you.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            You might ask: should I trust you with my computer data? What if something happens to you? Will this company be around next year?
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            Those are very good questions.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            In some ways, there is no getting around it. It's risky to trust any new, small company (in general but especially when it comes to backups).
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            All I can say is that I don't take my responsibility to protect your data lightly.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            I've taken great pains to make offsite computer backups as easy, reliable and private as possible.
-            You can read my full <a href="/blog/getting-started-with-blobbackup" class="text-blue-600 underline">blog post</a> for details but in short:
-        </p>
-        <ul class="text-xl md:text-2xl text-gray-600 list-disc ml-8 mt-4">
-            <li>
-                Blobbackup is end to end <a href="/blog/what-is-end-to-end-encryption" class="text-blue-600 underline">encrypted</a> so your privacy won't be compromised.
-            </li>
-            <li>
-                Blobbackup is <a href="/blog/open-source-software-vs-open-source-development" class="text-blue-600 underline">open source</a> so
-                the public can analyze the code and more importantly, retain access to their data if the company
-                disappears.
-            </li>
-            <li>
-                Blobbackup is extremely <a href="/blog/getting-started-with-blobbackup" class="text-blue-600 underline">simple</a> and easy to use.
-            </li>
-        </ul>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            Computer backups are an essential part of good digital hygiene. I had trouble finding a service
-            that matched my needs so I decided to build one myself. 
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            Blobbackup has already saved me a few times from some data loss tragedies and I hope that it'll be able to
-            do the same for some of you.
-        </p>
-        <p class="text-xl md:text-2xl text-gray-600 mt-4">
-            - Bimba
-        </p>
-    </div>
-</section>
+            <style>
+#content p {
+    margin-top: 1rem;
+}
+#content h1 {
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+#content li {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+#content a {
+    color: rgb(37 99 235);
+    text-decoration: underline;
+}
+</style>
+<h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">How to Exclude External Storage on Mac?</h1>
+<h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">February 10, 2022 by Bimba Shrestha</h2>
+<div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
+    <p>If you have a NAS or external drives connected to your Mac and you DON'T want them backed up, this page shows you how to exclude them.</p>
+
+<h1>Exclude All External Storage</h1>
+
+<p>Open the Settings window:</p>
+
+<p><img src="/assets/images/mac-settings-click.png" alt="" /></p>
+
+<p>Under the exclusions tab, click add:</p>
+
+<p><img src="/assets/images/mac-exclusions-add.png" alt="" /></p>
+
+<p>Type the exclusion "/Volumes" and click Ok.</p>
+
+<p><img src="/assets/images/mac-exclusions-add-dialog.png" alt="" /></p>
+
+<p>Save your exclusions.</p>
+
+<p><img src="/assets/images/mac-exclusions-save.png" alt="" /></p>
+
+<p>You'll have to restart your backup (if it's currently taking place) for the changes to take effect. To do this, click the Stop Backup button.</p>
+
+<p><img src="/assets/images/mac-stop-backup.png" alt="" /></p>
+
+<p>That same button will turn into the Backup Now button. Click that to restart your backup.</p>
+
+<p><img src="/assets/images/mac-start-backup.png" alt="" /></p>
+
+<h1>Don't Exclude All Volumes</h1>
+
+<p>Excluding "/Volumes" might mean some mounted folders on your computer (ie: Dropbox, Google Drive, Sync.com) get excluded too. The easiest way to make sure those mounted folders don't get excluded is to manually include them. Here is how:</p>
+
+<p>Open the Settings window:</p>
+
+<p><img src="/assets/images/mac-settings-click.png" alt="" /></p>
+
+<p>Under the inclusions tab, click Add Folder:</p>
+
+<p><img src="/assets/images/mac-inclusions-add.png" alt="" /></p>
+
+<p>Find and open the folder that you want to manually include (this will override any higher level exclusions). I've selected a folder on my NAS for example:</p>
+
+<p><img src="/assets/images/mac-inclusions-add-dialog.png" alt="" /></p>
+
+<p>Save your settings:</p>
+
+<p><img src="/assets/images/mac-inclusions-save.png" alt="" /></p>
+
+<p>You'll have to restart your backup (if it's currently taking place) for the changes to take effect. To do this, click the Stop Backup button.</p>
+
+<p><img src="/assets/images/mac-stop-backup.png" alt="" /></p>
+
+<p>That same button will turn into the Backup Now button. Click that to restart your backup.</p>
+
+<p><img src="/assets/images/mac-start-backup.png" alt="" /></p>
+</div>
         </main>
         <footer class="p-4 py-8 text-center">
             <div class="font-bold text-lg mt-1">
