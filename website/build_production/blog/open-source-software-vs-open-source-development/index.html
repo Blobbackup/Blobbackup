@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>    Blog
+        <title>    Open Source Software vs. Development
  - Blobbackup</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
@@ -57,45 +57,60 @@
             </div>
         </header>
         <main class="mx-auto max-w-5xl p-4">
-            <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">Blobbackup Blog</h1>
-<h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">Digital Hygiene, Stories and Product News.</h2>
-<section class="grid md:grid-cols-2 gap-8 mt-8 md:mt-16">
-        <div>
-        <h4 class="text-xl font-bold"><a href="/blog/open-source-software-vs-open-source-development">Open Source Software vs. Development</a></h4>
-        <h5 class="text-gray-600 mt-2 text-sm">February 13, 2022 by Bimba Shrestha</h5>
-        <p class="text-gray-600 mt-2 text-lg">
-            Open source software is not automatically better than closed source software. It&#039;s the quality of the underlying code that matters. And bad code can be written in public just as easily as it can behind closed doors.
-        </p>
-    </div>
-        <div>
-        <h4 class="text-xl font-bold"><a href="/blog/getting-started-with-blobbackup">Getting Started With Blobbackup</a></h4>
-        <h5 class="text-gray-600 mt-2 text-sm">February 10, 2022 by Bimba Shrestha</h5>
-        <p class="text-gray-600 mt-2 text-lg">
-            What is Blobbackup? Blobbackup is a tool for backing up your computer. For $9 / month, Blobbackup will backup all user-created data on your Mac or Windows device. Blobbackup creates a mirror clone of the current...
-        </p>
-    </div>
-        <div>
-        <h4 class="text-xl font-bold"><a href="/blog/the-4-digital-safety-commandments">The 4 Digital Safety Commandments</a></h4>
-        <h5 class="text-gray-600 mt-2 text-sm">February 6, 2022 by Bimba Shrestha</h5>
-        <p class="text-gray-600 mt-2 text-lg">
-            Digital safety is not just a concern for businesses and governments. Anyone who cares about their data should take precautions to protect it. Thankfully, you don’t need to be a computer whiz to build some good digital habits.
-        </p>
-    </div>
-        <div>
-        <h4 class="text-xl font-bold"><a href="/blog/what-is-end-to-end-encryption">What is End to End Encryption?</a></h4>
-        <h5 class="text-gray-600 mt-2 text-sm">February 2, 2022 by Bimba Shrestha</h5>
-        <p class="text-gray-600 mt-2 text-lg">
-            End to end encryption (E2E) is a phrase that gets thrown around often. Look through the website of any company that handles sensitive data and you’ll see it. But what does end to end encryption actually mean?
-        </p>
-    </div>
-        <div>
-        <h4 class="text-xl font-bold"><a href="/blog/blobbackup1.0.0-for-mac-and-windows">Blobbackup 1.0.0 for Mac and Windows</a></h4>
-        <h5 class="text-gray-600 mt-2 text-sm">February 1, 2022 by Bimba Shrestha</h5>
-        <p class="text-gray-600 mt-2 text-lg">
-            We are excited to launch Blobbackup for Mac and Windows. Backup your entire computer to the cloud for $9 / month. Blobbackup is built with privacy in mind and completely open source.
-        </p>
-    </div>
-    </section>
+            <style>
+#content p {
+    margin-top: 1rem;
+}
+#content h1 {
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+#content li {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+#content a {
+    color: rgb(37 99 235);
+    text-decoration: underline;
+}
+</style>
+<h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">Open Source Software vs. Development</h1>
+<h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">February 13, 2022 by Bimba Shrestha</h2>
+<div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
+    <p>Open source software is not automatically better than closed source software. It's the quality of the underlying code that matters. And bad code can be written in public just as easily as it can behind closed doors.</p>
+
+<p>So why do we still stand behind open source?</p>
+
+<h1>Open Source Software vs. Open Source Development</h1>
+
+<p>Let's first distinguish between open source software and open source development. Open source software is any software whose code is available online. Open source development is a philosophy.</p>
+
+<p>Publishing poor code to the internet does not magically make it not poor (even if you slap a GPL license on it). Browse through Github or Bitbucket, and you'll see thousands of open source software that are unreliable, unmaintained, or painful to use.</p>
+
+<p>Open source development is a way of creating software publically. It's the culture that enables strangers on the internet (programmers and regular users alike) to shape software together.</p>
+
+<p>Open source development results in open source software but not all open source software comes from open source development.</p>
+
+<h1>Open Source Development is What Matters</h1>
+
+<p>Simply publishing code to Github does have some benefits. For one, it provides transparency. Does this software do what it says it does? Now people can verify this themselves by looking at the code.</p>
+
+<p>But transparency alone is often not enough. Bad code is bad code. Whether it's publically available or not doesn't change that.</p>
+
+<p>Projects that leverage open source development have an engaged community actively seeking to identify/fix bugs, patch security vulnerabilities, suggest useful features, and generally improve the overall quality of the software.</p>
+
+<p>When you have lots of engaged eyes on a project, it's hard for glaring bugs to make it into users' hands.</p>
+
+<h1>Open Source is an Antidote to Companies Going Bust</h1>
+
+<p>Everyone hates to see it but good companies with solid products disappear all the time. When that happens, their users suffer.</p>
+
+<p>Open source development is the only reliable antidote to this. Even if a company goes bust, if they're open source, not all is lost. Their code is still available (and likely forked several times), there is still community support and most importantly, you can still use their software!</p>
+
+<p>Using openly developed software is a way of not putting all your eggs in one basket.</p>
+</div>
         </main>
         <footer class="p-4 py-8 text-center">
             <div class="font-bold text-lg mt-1">
