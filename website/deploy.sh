@@ -10,4 +10,5 @@ git add .
 git commit -m "Build for production"
 git pull --commit
 git push origin gh-pages -f
+git reset --hard HEAD
 git checkout master
