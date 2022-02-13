@@ -20,7 +20,7 @@ Type the exclusion "/Volumes" and click Ok.
 
 ![](/assets/images/mac-exclusions-add-dialog.png)
 
-Save you exclusions.
+Save your exclusions.
 
 ![](/assets/images/mac-exclusions-save.png)
 
@@ -28,6 +28,6 @@ You'll have to restart your backup (if it's currently taking place) for the chan
 
 ![](/assets/images/mac-stop-backup.png)
 
-That same button will turn into the Backup Now button. Click that to restart you backup.
+That same button will turn into the Backup Now button. Click that to restart your backup.
 
 ![](/assets/images/mac-start-backup.png)
