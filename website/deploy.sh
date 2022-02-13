@@ -8,5 +8,5 @@ rm -rf website
 git add .
 git commit -m "Build for production"
 git pull --commit
-git push origin gh-pages
+git push origin gh-pages -f
 git checkout master
