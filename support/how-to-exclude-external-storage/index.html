@@ -81,6 +81,8 @@
 <div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
     <p>If you have a NAS or external drives connected to your Mac and you DON'T want them backed up, this page shows you how to exclude them.</p>
 
+<h1>Exclude All External Storage</h1>
+
 <p>Open the Settings window:</p>
 
 <p><img src="/assets/images/mac-settings-click.png" alt="" /></p>
@@ -96,6 +98,34 @@
 <p>Save your exclusions.</p>
 
 <p><img src="/assets/images/mac-exclusions-save.png" alt="" /></p>
+
+<p>You'll have to restart your backup (if it's currently taking place) for the changes to take effect. To do this, click the Stop Backup button.</p>
+
+<p><img src="/assets/images/mac-stop-backup.png" alt="" /></p>
+
+<p>That same button will turn into the Backup Now button. Click that to restart your backup.</p>
+
+<p><img src="/assets/images/mac-start-backup.png" alt="" /></p>
+
+<h1>Don't Exclude All Volumes</h1>
+
+<p>Excluding "/Volumes" might mean some mounted folders on your computer (ie: Dropbox, Google Drive, Sync.com) get excluded too. The easiest way to make sure those mounted folders don't get excluded is to manually include them. Here is how:</p>
+
+<p>Open the Settings window:</p>
+
+<p><img src="/assets/images/mac-settings-click.png" alt="" /></p>
+
+<p>Under the inclusions tab, click Add Folder:</p>
+
+<p><img src="/assets/images/mac-inclusions-add.png" alt="" /></p>
+
+<p>Find and open the folder that you want to manually include (this will override any higher level exclusions). I've selected a folder on my NAS for example:</p>
+
+<p><img src="/assets/images/mac-inclusions-add-dialog.png" alt="" /></p>
+
+<p>Save your settings:</p>
+
+<p><img src="/assets/images/mac-inclusions-save.png" alt="" /></p>
 
 <p>You'll have to restart your backup (if it's currently taking place) for the changes to take effect. To do this, click the Stop Backup button.</p>
 
