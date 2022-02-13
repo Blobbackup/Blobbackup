@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>    How to Install Blobbackup on Mac
+        <title>    How to Exclude External Storage on Mac?
  - Blobbackup</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
@@ -76,42 +76,34 @@
     text-decoration: underline;
 }
 </style>
-<h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">How to Install Blobbackup on Mac</h1>
+<h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">How to Exclude External Storage on Mac?</h1>
 <h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">February 10, 2022 by Bimba Shrestha</h2>
 <div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
-    <p>Open the Blobbackup installer you downloaded (a file ending in .dmg).</p>
+    <p>If you have a NAS or external drives connected to your Mac and you DON'T want them backed up, this page shows you how to exclude them.</p>
 
-<p><img src="/assets/images/mac-installer.png" class="md:w-1/2"></p>
+<p>Open the Settings window:</p>
 
-<p>Drag the Blobbackup app into the Applications folder.</p>
+<p><img src="/assets/images/mac-settings-click.png" alt="" /></p>
 
-<p><img src="/assets/images/mac-drag.png" class="md:w-1/2"></p>
+<p>Under the exclusions tab, click add:</p>
 
-<p><a href="/support/how-to-grant-full-disk-access-on-mac" target="_blank">Grant Full Disk Access to Blobbackup</a> then open Blobbackup from your Applications folder.</p>
+<p><img src="/assets/images/mac-exclusions-add.png" alt="" /></p>
 
-<p><img src="/assets/images/mac-applications.png" alt="" /></p>
+<p>Type the exclusion "/Volumes" and click Ok.</p>
 
-<p>If you see a pop up like this, click open.</p>
+<p><img src="/assets/images/mac-exclusions-add-dialog.png" alt="" /></p>
 
-<p><img src="/assets/images/mac-code-sign-open.png" class="md:w-1/2"></p>
+<p>Save you exclusions.</p>
 
-<p>Sign in to your Blobbackup account.</p>
+<p><img src="/assets/images/mac-exclusions-save.png" alt="" /></p>
 
-<p><img src="/assets/images/mac-login.png" alt="" /></p>
+<p>You'll have to restart your backup (if it's currently taking place) for the changes to take effect. To do this, click the Stop Backup button.</p>
 
-<p>Click Start Backing Up.</p>
+<p><img src="/assets/images/mac-stop-backup.png" alt="" /></p>
 
-<p><img src="/assets/images/mac-welcome.png" alt="" /></p>
+<p>That same button will turn into the Backup Now button. Click that to restart you backup.</p>
 
-<p>Click Close.</p>
-
-<p><img src="/assets/images/mac-started.png" alt="" /></p>
-
-<p>Finished! Blobbackup will now backup your entire computer to the cloud in the background.</p>
-
-<p><img src="/assets/images/mac-main.png" alt="" /></p>
-
-<p>Note: if you have external drives or a NAS connected that you don't want backed up, follow this <a href="/support/how-to-exclude-external-storage">guide</a>.</p>
+<p><img src="/assets/images/mac-start-backup.png" alt="" /></p>
 </div>
         </main>
         <footer class="p-4 py-8 text-center">
