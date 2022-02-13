@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>    Blog
+        <title>    Getting Started With Blobbackup
  - Blobbackup</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
@@ -57,38 +57,58 @@
             </div>
         </header>
         <main class="mx-auto max-w-5xl p-4">
-            <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">Blobbackup Blog</h1>
-<h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">Digital Hygiene, Stories and Product News.</h2>
-<section class="grid md:grid-cols-2 gap-8 mt-8 md:mt-16">
-        <div>
-        <h4 class="text-xl font-bold"><a href="/blog/getting-started-with-blobbackup">Getting Started With Blobbackup</a></h4>
-        <h5 class="text-gray-600 mt-2 text-sm">February 10, 2022 by Bimba Shrestha</h5>
-        <p class="text-gray-600 mt-2 text-lg">
-            What is Blobbackup? Blobbackup is a tool for backing up your computer. For $9 / month, Blobbackup will backup all user-created data on your Mac or Windows device. Blobbackup creates a mirror clone of the current...
-        </p>
-    </div>
-        <div>
-        <h4 class="text-xl font-bold"><a href="/blog/the-4-digital-safety-commandments">The 4 Digital Safety Commandments</a></h4>
-        <h5 class="text-gray-600 mt-2 text-sm">February 6, 2022 by Bimba Shrestha</h5>
-        <p class="text-gray-600 mt-2 text-lg">
-            Digital safety is not just a concern for businesses and governments. Anyone who cares about their data should take precautions to protect it. Thankfully, you don’t need to be a computer whiz to build some good digital habits.
-        </p>
-    </div>
-        <div>
-        <h4 class="text-xl font-bold"><a href="/blog/what-is-end-to-end-encryption">What is End to End Encryption?</a></h4>
-        <h5 class="text-gray-600 mt-2 text-sm">February 2, 2022 by Bimba Shrestha</h5>
-        <p class="text-gray-600 mt-2 text-lg">
-            End to end encryption (E2E) is a phrase that gets thrown around often. Look through the website of any company that handles sensitive data and you’ll see it. But what does end to end encryption actually mean?
-        </p>
-    </div>
-        <div>
-        <h4 class="text-xl font-bold"><a href="/blog/blobbackup1.0.0-for-mac-and-windows">Blobbackup 1.0.0 for Mac and Windows</a></h4>
-        <h5 class="text-gray-600 mt-2 text-sm">February 1, 2022 by Bimba Shrestha</h5>
-        <p class="text-gray-600 mt-2 text-lg">
-            We are excited to launch Blobbackup for Mac and Windows. Backup your entire computer to the cloud for $9 / month. Blobbackup is built with privacy in mind and completely open source.
-        </p>
-    </div>
-    </section>
+            <style>
+#content p {
+    margin-top: 1rem;
+}
+#content h1 {
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+#content li {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+#content a {
+    color: rgb(37 99 235);
+    text-decoration: underline;
+}
+</style>
+<h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">Getting Started With Blobbackup</h1>
+<h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">February 10, 2022 by Bimba Shrestha</h2>
+<div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
+    <h1>What is Blobbackup?</h1>
+
+<p>Blobbackup is a tool for backing up your computer. For $9 / month, Blobbackup will backup all user-created data on your Mac or Windows device. (Please note that there is a 2 TB limit per computer; we’ve found that this limit is well above what most people need).</p>
+
+<p>Blobbackup creates a mirror clone of the current state of your computer every hour (we call this a snapshot). Snapshots are kept for a year. This means that you can recover deleted files or old versions of files going back as far as 1 year.</p>
+
+<h1>How Do I Start Backing Up?</h1>
+
+<p>After <a href="https://app.blobbackup.com/register">signing up</a> for an account with us, you’ll have to download and install Blobbackup on your computer. You can follow our operating system specific guides here: <a href="/support/how-to-install-blobbackup-on-mac">Mac</a>, <a href="/support/how-to-install-blobbackup-on-windows">Windows</a>. (Please note that Blobbackup has not been <a href="/support/windows-codesign-warnings">code signed</a> yet on Windows so you might see pop up warnings when installing or running the app).</p>
+
+<p>By default, Blobbackup will backup all user-created data on your computer after installation. If you want to change what gets backed up, you can do so from the app Settings.</p>
+
+<h1>How Do I Restore My Data?</h1>
+
+<p>Your data can be restored directly from the Blobbackup app. If you’re trying to restore data to a new or formatted computer, you’ll have to first install Blobbackup. You can follow the restore instructions <a href="https://app.blobbackup.com/restore">here</a> for details (requires signing in).</p>
+
+<p>Because Blobbackup is <a href="/blog/what-is-end-to-end-encryption">end to end encrypted</a> with your account password, restores are only possible through the app. We don’t offer restores from the website or via physical hard drive shipment.</p>
+
+<h1>How Do I Transfer My Service to Another Computer?</h1>
+
+<p>To transfer service from computer A to computer B, first, restore files from computer A to computer B (using Blobbackup; or other means if computer A hasn’t been compromised). Then install Blobbackup on computer B and start a fresh backup. Finally, delete computer A from your account dashboard so that we don’t bill you for it.</p>
+
+<p>(Please note that doing this will not preserve computer A’s backup history; we’re currently working on making backup histories transferable too).</p>
+
+<h1>How Can I Trust Blobbackup With My Data?</h1>
+
+<p>We’ve done a few things to make us more trustable: 1) we’re an <a href="https://github.com/blobbackup/blobbackup">open source</a> company; all of the code behind our software is available to the public for analysis and audit, 2) we’re <a href="/blog/what-is-end-to-end-encryption">end to end encrypted</a>; we encrypt all computer data with your password so we couldn’t see your data even if we wanted to and 3) we’re simple; we don’t provide unnecessary features or complicated services (we backup your computer securely and that’s it).</p>
+
+<p>If you have more questions, we’d be happy to <a href="/support">answer them</a>.</p>
+</div>
         </main>
         <footer class="p-4 py-8 text-center">
             <div class="font-bold text-lg mt-1">
