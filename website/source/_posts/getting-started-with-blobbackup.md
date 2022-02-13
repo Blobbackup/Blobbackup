@@ -1,5 +1,5 @@
 ---
-extends: _layouts.support
+extends: _layouts.post
 title: Getting Started With Blobbackup
 author: Bimba Shrestha
 date: 2022-02-10
