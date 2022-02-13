@@ -67,7 +67,7 @@
             Can your employees see my files?
         </h1>
         <p class="text-lg text-gray-600 mt-2">
-            No. All your files are encrypted before it leaves your computer with your password. Your password is never stored (or even sent) to our servers and we use state of the art encryption algorithms.
+            No. All your files are <a href="/blog/what-is-end-to-end-encryption" class="text-blue-600 underline">encrypted</a> before it leaves your computer with your password. Your password is never stored (or even sent) to our servers and we use state of the art encryption algorithms.
         </p>
     </div>
     <div>

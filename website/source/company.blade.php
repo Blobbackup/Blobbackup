@@ -42,15 +42,15 @@
         </p>
         <ul class="text-xl md:text-2xl text-gray-600 list-disc ml-8 mt-4">
             <li>
-                Blobbackup is end to end <strong>encrypted</strong> so your privacy won't be compromised.
+                Blobbackup is end to end <a href="/blog/what-is-end-to-end-encryption" class="text-blue-600 underline">encrypted</a> so your privacy won't be compromised.
             </li>
             <li>
-                Blobbackup is <strong>open source</strong> so
+                Blobbackup is <a href="/blog/open-source-software-vs-open-source-development" class="text-blue-600 underline">open source</a> so
                 the public can analyze the code and more importantly, retain access to their data if the company
                 disappears.
             </li>
             <li>
-                Blobbackup is extremely <strong>simple</strong> and easy to use.
+                Blobbackup is extremely <a href="/blog/getting-started-with-blobbackup" class="text-blue-600 underline">simple</a> and easy to use.
             </li>
         </ul>
         <p class="text-xl md:text-2xl text-gray-600 mt-4">
