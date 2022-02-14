@@ -24,6 +24,12 @@ If you WANT all of these mounted volumes backed up by Blobbackup, you don't have
 
 If you DON'T WANT some of these mounted volumes backed up by Blobbackup, you can exclude them by adding an exclusion from the app Settings (see below).
 
+To figure out the path you should be using in your exclusions, right click on your volume from the Finder window (shown above) and click Get Info. For example, I clicked Get Info on my Google Drive Volume and saw this. 
+
+![](/assets/images/mac-google-drive-get-info.png)
+
+Note the circled "Name & Extension". In my case, it's "GoogleDrive". The path I should add to Blobbackup if I want to exclude a volume will be "/Volumes/(Whatever you see under Name & Extension)" (in my case /Volumes/GoogleDrive).
+
 # Exclude a Mounted Volume
 
 Open the Settings window:
