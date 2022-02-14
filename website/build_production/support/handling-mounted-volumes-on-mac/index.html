@@ -6,7 +6,7 @@
         <meta name="keywords" content="online backup, backup software, cloud backup, backup online, best backup software, online backup services, data backup, best online backup, offsite backup, online data backup"/>
         <meta name="description" content="Blobbackup is a private, open source and secure cloud computer backup service. Personal backup without compromising any privacy for $9 per month."/>
         <meta name="author" content="Blobbackup, LLC">
-        <title>    How to Exclude External Storage on Mac?
+        <title>    Handling Mounted Volumes on Mac
  - Blobbackup</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
@@ -81,12 +81,30 @@
 }
 </style>
 <div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl md:text-4xl font-bold mt-4 md:mt-16 text-center">How to Exclude External Storage on Mac?</h1>
-    <h2 class="text-lg md:text-xl text-gray-600 mt-2 text-center">February 10, 2022 by Bimba Shrestha</h2>
+    <h1 class="text-3xl md:text-4xl font-bold mt-4 md:mt-16 text-center">Handling Mounted Volumes on Mac</h1>
+    <h2 class="text-lg md:text-xl text-gray-600 mt-2 text-center">February 13, 2022 by Bimba Shrestha</h2>
     <div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
-        <p>If you have a NAS or external drives connected to your Mac and you DON'T want them backed up, this page shows you how to exclude them.</p>
+        <p>By default, Blobbackup backs up everything on your Mac AND everything on any mounted volumes. For example:</p>
 
-<h1>Exclude All External Storage</h1>
+<ul>
+<li>Sync services like Google Drive, Dropbox or Sync.com</li>
+<li>External HDDs and SSDs</li>
+<li>Mounted NAS</li>
+</ul>
+
+<p>To see what volumes are currently mounted, open Finder and press Cmd + Shift + G together. You'll see a dialog box appear. Type "/Volumes" into that dialog box and click Go.</p>
+
+<p><img src="/assets/images/mac-finder-volumes.png" alt="" /></p>
+
+<p>You will then see what volumes you currently have mounted on your Mac. For example, I have 3 volumes: Macintosh HD (the primary volume on every Mac), my Google Drive, and a NAS (home).</p>
+
+<p><img src="/assets/images/mac-finder-volumes-show.png" alt="" /></p>
+
+<p>If you WANT all of these mounted volumes backed up by Blobbackup, you don't have to do anything.</p>
+
+<p>If you DON'T WANT some of these mounted volumes backed up by Blobbackup, you can exclude them by adding an exclusion from the app Settings (see below).</p>
+
+<h1>Exclude a Mounted Volume</h1>
 
 <p>Open the Settings window:</p>
 
@@ -96,41 +114,13 @@
 
 <p><img src="/assets/images/mac-exclusions-add.png" alt="" /></p>
 
-<p>Type the exclusion "/Volumes" and click Ok.</p>
+<p>Type the exclusion path you want. For example, I'd like to exclude my NAS (/Volumes/home) so I'll type that and click Ok.</p>
 
 <p><img src="/assets/images/mac-exclusions-add-dialog.png" alt="" /></p>
 
 <p>Save your exclusions.</p>
 
 <p><img src="/assets/images/mac-exclusions-save.png" alt="" /></p>
-
-<p>You'll have to restart your backup (if it's currently taking place) for the changes to take effect. To do this, click the Stop Backup button.</p>
-
-<p><img src="/assets/images/mac-stop-backup.png" alt="" /></p>
-
-<p>That same button will turn into the Backup Now button. Click that to restart your backup.</p>
-
-<p><img src="/assets/images/mac-start-backup.png" alt="" /></p>
-
-<h1>Don't Exclude All Volumes</h1>
-
-<p>Excluding "/Volumes" might mean some mounted folders on your computer (ie: Dropbox, Google Drive, Sync.com) get excluded too. The easiest way to make sure those mounted folders don't get excluded is to manually include them. Here is how:</p>
-
-<p>Open the Settings window:</p>
-
-<p><img src="/assets/images/mac-settings-click.png" alt="" /></p>
-
-<p>Under the inclusions tab, click Add Folder:</p>
-
-<p><img src="/assets/images/mac-inclusions-add.png" alt="" /></p>
-
-<p>Find and open the folder that you want to manually include (this will override any higher level exclusions). I've selected a folder on my NAS for example:</p>
-
-<p><img src="/assets/images/mac-inclusions-add-dialog.png" alt="" /></p>
-
-<p>Save your settings:</p>
-
-<p><img src="/assets/images/mac-inclusions-save.png" alt="" /></p>
 
 <p>You'll have to restart your backup (if it's currently taking place) for the changes to take effect. To do this, click the Stop Backup button.</p>
 
