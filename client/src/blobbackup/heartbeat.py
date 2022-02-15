@@ -14,6 +14,10 @@ def heartbeat():
 def is_alive():
     if not os.path.exists(HEARTBEAT_PATH):
         return False
-    with open(HEARTBEAT_PATH, "r") as f:
-        delta_seconds = time.time() - float(f.read())
+    try:
+        with open(HEARTBEAT_PATH, "r") as f:
+            delta_seconds = time.time() - float(f.read())
+    except ValueError:
+        heartbeat()
+        return True
     return delta_seconds < (HEARTBEAT_SECONDS * 2)
