@@ -38,4 +38,4 @@ Finished! Blobbackup will now backup your entire computer to the cloud in the ba
 
 ![](/assets/images/mac-main.png)
 
-Note: if you have external drives or a NAS connected that you don't want backed up, follow this [guide](/support/how-to-exclude-external-storage).
+Note: if you have external drives or a NAS connected that you don't want backed up, follow this [guide](/support/handling-mounted-volumes-on-mac).
