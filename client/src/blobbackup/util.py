@@ -78,6 +78,9 @@ os.makedirs(LOGS_PATH, exist_ok=True)
 CACHE_PATH = os.path.join(HOME_PATH, "cache")
 os.makedirs(CACHE_PATH, exist_ok=True)
 
+TMP_PATH = os.path.join(HOME_PATH, "tmp")
+os.makedirs(TMP_PATH, exist_ok=True)
+
 os.makedirs(os.path.dirname(KEEP_ALIVE_PLIST_DEST_PATH), exist_ok=True)
 
 INCLUSIONS_FILE_PATH = os.path.join(HOME_PATH, "inclusions.txt")
@@ -177,12 +180,17 @@ def get_restic_env(computer, password):
         env.update(
             {
                 "SYSTEMROOT": os.environ["SYSTEMROOT"],
-                "TMP": os.environ["TMP"],
-                "TEMP": os.environ["TEMP"],
+                "TMP": TMP_PATH,
+                "TEMP": TMP_PATH,
             }
         )
     elif is_mac():
-        env.update({"HOME": os.environ["HOME"]})
+        env.update(
+            {
+                "HOME": os.environ["HOME"],
+                "TMPDIR": TMP_PATH,
+            }
+        )
     return env
 
 
