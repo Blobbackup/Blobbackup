@@ -8,6 +8,7 @@ from blobbackup.util import BASE_URL, LOGO_PATH, get_pixmap
 from blobbackup.initializethread import InitializeThread
 from blobbackup.choosecomputerdialog import ChooseComputerDialog
 from blobbackup.restoredialog import RestoreDialog
+from blobbackup.logger import get_logger
 
 
 TERMS_URL = BASE_URL + "/terms"
@@ -21,6 +22,7 @@ class WelcomeDialog(QDialog, Ui_WelcomeDialog):
 
         self.email = email
         self.password = password
+        self.logger = get_logger()
 
         self.setWindowIcon(QIcon(LOGO_PATH))
 
@@ -36,6 +38,8 @@ class WelcomeDialog(QDialog, Ui_WelcomeDialog):
             lambda: webbrowser.open(TERMS_URL)
         )
         self.restore_files_label.linkActivated.connect(self.restore_files)
+
+        self.logger.info("Welcome dialog displayed.")
 
     def initialize(self):
         self.setEnabled(False)

@@ -15,7 +15,7 @@ def main():
     logger = get_logger()
 
     if not is_alive():
-        logger.info("application started")
+        logger.info("Application started.")
         init_application_properties()
         application = Application()
 
@@ -40,7 +40,7 @@ def main():
 
         application.exec()
     else:
-        logger.info("application already running")
+        logger.info("Application not started (already running).")
 
 
 def client_initialized():

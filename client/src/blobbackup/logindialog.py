@@ -7,6 +7,7 @@ from PyQt6.QtGui import QIcon
 from blobbackup.ui.logindialog import Ui_LoginDialog
 from blobbackup.util import LOGO_PATH, BASE_APP_URL, get_pixmap
 from blobbackup.loginthread import LoginThread
+from blobbackup.logger import get_logger
 
 REGISTER_URL = BASE_APP_URL + "/register"
 
@@ -19,6 +20,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.email = None
         self.password = None
         self.reauth = reauth
+        self.logger = get_logger()
 
         self.setupUi(self)
 
@@ -31,6 +33,8 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         )
 
         self.sign_in_button.pressed.connect(self.login)
+
+        self.logger.info("Login dialog displayed.")
 
     def login(self):
         self.setEnabled(False)
@@ -48,6 +52,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
             "Trial Over",
             "Your trial period is over. Please purchase Blobbackup to continue using it.",
         )
+        self.logger.info("Trial over displayed.")
         sys.exit()
 
     def accept(self, success):
@@ -55,5 +60,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.setWindowTitle("Sign In - Blobbackup")
         if not success:
             QMessageBox.warning(self, "Sign In Failed", "Invalid credentials.")
+            self.logger.info("Login failed")
             return
+        self.logger.info("Login succeded")
         super().accept()

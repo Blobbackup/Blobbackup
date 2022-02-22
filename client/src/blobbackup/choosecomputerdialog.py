@@ -4,6 +4,7 @@ from PyQt6.QtGui import QIcon
 from blobbackup.ui.choosecomputerdialog import Ui_ChooseComputerDialog
 from blobbackup.util import LOGO_PATH
 from blobbackup.api import get_computers
+from blobbackup.logger import get_logger
 
 
 class ChooseComputerDialog(QDialog, Ui_ChooseComputerDialog):
@@ -15,6 +16,7 @@ class ChooseComputerDialog(QDialog, Ui_ChooseComputerDialog):
         self.email = email
         self.password = password
         self.computer_id = None
+        self.logger = get_logger()
 
         self.setWindowIcon(QIcon(LOGO_PATH))
 
@@ -22,8 +24,10 @@ class ChooseComputerDialog(QDialog, Ui_ChooseComputerDialog):
             self.computers_combo_box.addItem(computer["name"], userData=computer["id"])
 
         self.continue_button.pressed.connect(self.accept)
+        self.logger.info("Choose computer dialog displayed.")
 
     def accept(self):
         self.computer_id = self.computers_combo_box.currentData()
         if self.computer_id:
+            self.logger.info("Computer selected")
             super().accept()
