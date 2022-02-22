@@ -1,9 +1,6 @@
 import os
 import sys
 
-from PyQt6.QtWidgets import QApplication
-from PyQt6.QtCore import Qt
-
 from blobbackup.application import Application
 from blobbackup.logindialog import LoginDialog
 from blobbackup.welcomedialog import WelcomeDialog
