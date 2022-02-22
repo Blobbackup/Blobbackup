@@ -98,7 +98,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.backup_thread = BackupThread(force_run)
         self.backup_thread.api_error.connect(self.api_error)
         self.backup_thread.start()
-        self.logger.info("backup started")
 
     def update_status(self):
         load_config()
