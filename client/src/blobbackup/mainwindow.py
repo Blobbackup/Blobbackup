@@ -1,4 +1,5 @@
 import sys
+import time
 import webbrowser
 
 from PyQt6.QtWidgets import QMainWindow
@@ -12,6 +13,7 @@ from blobbackup.util import (
     COMPUTER_PATH,
     ARROW_PATH,
     CLOUD_PATH,
+    BACKUP_STUCK_HOURS,
     get_pixmap,
     get_password_from_keyring,
 )
@@ -65,6 +67,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.backup_thread.stop_backup()
         sys.exit()
 
+    def restart_backup(self):
+        self.toggle_backup()
+        self.toggle_backup()
+
     def toggle_backup(self):
         if self.backup_thread.backup_running():
             self.backup_thread.stop_backup()
@@ -85,6 +91,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.status_thread.start()
 
     def launch_backup_thread(self, force_run=False):
+        self.last_selected_files = None
+        self.selected_files_updated_at = None
         self.backup_thread = BackupThread(force_run)
         self.backup_thread.api_error.connect(self.api_error)
         self.backup_thread.start()
@@ -92,15 +100,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def update_status(self):
         load_config()
         self.last_backed_up_label.setText(get_last_backed_up())
-        self.selected_for_backup_label.setText(get_selected_files())
+        self.update_selected_files()
         self.backup_schedule_label.setText(config["general"]["backup_schedule"])
         self.current_status_label.setText(get_current_status())
         self.email_label.setText(f"Account: {config['meta']['email']}")
         if self.backup_thread.backup_running():
             self.backup_now_button.setText("Stop Backup")
+            if self.backup_stuck():
+                self.restart_backup()
         else:
             self.backup_now_button.setText("Backup Now")
         heartbeat()
+
+    def update_selected_files(self):
+        selected_files = get_selected_files()
+        if self.last_selected_files != selected_files:
+            self.last_selected_files = selected_files
+            self.selected_files_updated_at = time.time()
+            self.selected_for_backup_label.setText(selected_files)
+
+    def backup_stuck(self):
+        return self.selected_files_updated_at and (
+            (time.time() - self.selected_files_updated_at) / (60 * 60)
+            > BACKUP_STUCK_HOURS
+        )
 
     def api_error(self):
         dialog = LoginDialog(reauth=True)

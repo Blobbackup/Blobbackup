@@ -38,6 +38,7 @@ BASE_URL = "https://blobbackup.com"
 B2_BUCKET = "blobbackup01"
 
 HEARTBEAT_SECONDS = 1
+BACKUP_STUCK_HOURS = 8
 
 
 def get_asset(path):
