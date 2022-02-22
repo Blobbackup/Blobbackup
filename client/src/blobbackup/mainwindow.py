@@ -26,6 +26,7 @@ from blobbackup.statusthread import StatusThread
 from blobbackup.backupthread import BackupThread
 from blobbackup.logindialog import LoginDialog
 from blobbackup.heartbeat import heartbeat
+from blobbackup.logger import get_logger
 
 
 PRIVACY_URL = BASE_URL + "/privacy"
@@ -37,6 +38,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
+        self.logger = get_logger()
 
         self.setWindowIcon(QIcon(LOGO_PATH))
 
@@ -96,6 +98,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.backup_thread = BackupThread(force_run)
         self.backup_thread.api_error.connect(self.api_error)
         self.backup_thread.start()
+        self.logger.info("backup started")
 
     def update_status(self):
         load_config()

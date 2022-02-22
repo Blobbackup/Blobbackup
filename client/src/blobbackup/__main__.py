@@ -11,10 +11,14 @@ from blobbackup.mainwindow import MainWindow
 from blobbackup.systemtrayicon import SystemTrayIcon
 from blobbackup.config import config
 from blobbackup.heartbeat import is_alive
+from blobbackup.logger import get_logger
 
 
 def main():
+    logger = get_logger()
+
     if not is_alive():
+        logger.info("application started")
         init_application_properties()
         application = Application()
 
@@ -38,6 +42,8 @@ def main():
         tray.setVisible(True)
 
         application.exec()
+    else:
+        logger.info("application already running")
 
 
 def client_initialized():
