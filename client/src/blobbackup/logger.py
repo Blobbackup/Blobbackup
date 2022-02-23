@@ -18,7 +18,8 @@ def get_logger():
     logger = logging.getLogger("blobbackup")
     logger.setLevel(logging.DEBUG)
 
-    if len(logger.handlers) == 0:
-        logger.addHandler(handler)
+    for h in logger.handlers:
+        logger.removeHandler(h)
+    logger.addHandler(handler)
 
     return logger
