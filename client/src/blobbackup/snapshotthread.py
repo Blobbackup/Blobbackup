@@ -13,6 +13,7 @@ from blobbackup.util import (
     get_restic_ls_command,
 )
 from blobbackup.qlazytreewidget import prepare_lazy_tree
+from blobbackup.logger import get_logger
 
 
 class SnapshotThread(QThread):
@@ -24,6 +25,7 @@ class SnapshotThread(QThread):
         self.password = password
         self.snapshot_id = snapshot_id
         self.computer_id = computer_id
+        self.logger = get_logger()
 
     def run(self):
         computer = get_computer(self.email, self.password, self.computer_id)
@@ -49,4 +51,5 @@ class SnapshotThread(QThread):
                 .split("\n")
             )
         tree = prepare_lazy_tree(nodes[1:-1])
+        self.logger.info("Snapshot loaded.")
         self.loaded.emit(tree)

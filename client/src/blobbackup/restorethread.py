@@ -14,6 +14,7 @@ from blobbackup.util import (
     get_restic_env,
     get_restic_restore_command,
 )
+from blobbackup.logger import get_logger
 
 
 class RestoreThread(QThread):
@@ -30,6 +31,7 @@ class RestoreThread(QThread):
         self.snapshot_id = snapshot_id
         self.target = target
         self.snapshot_tree_widget = snapshot_tree_widget
+        self.logger = get_logger()
 
     def run(self):
         paths = get_selected_nodes(self.snapshot_tree_widget)
@@ -50,6 +52,8 @@ class RestoreThread(QThread):
                     stderr=log_f,
                 )
         if ret.returncode == 0:
+            self.logger.info("Restore successful.")
             self.restored.emit(self.target)
         else:
+            self.logger.error("Restore failed.")
             self.failed.emit()

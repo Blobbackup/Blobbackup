@@ -10,6 +10,7 @@ from blobbackup.qlazytreewidget import QLazyTreeWidget
 from blobbackup.restorethread import RestoreThread
 from blobbackup.util import LOGO_PATH
 from blobbackup.api import get_computer
+from blobbackup.logger import get_logger
 
 
 class RestoreDialog(QDialog, Ui_RestoreDialog):
@@ -21,6 +22,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         self.email = email
         self.password = password
         self.computer_id = computer_id
+        self.logger = get_logger()
 
         self.setWindowIcon(QIcon(LOGO_PATH))
 
@@ -36,6 +38,8 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         self.snapshots_thread = SnapshotsThread(email, password, computer_id)
         self.snapshots_thread.loaded.connect(self.snapshots_loaded)
         self.snapshots_thread.start()
+
+        self.logger.info("Restore dialog displayed.")
 
     def snapshots_loaded(self, snapshots):
         if len(snapshots) == 0:

@@ -11,6 +11,7 @@ from blobbackup.util import (
     get_restic_env,
     get_restic_snapshots_command,
 )
+from blobbackup.logger import get_logger
 
 
 class SnapshotsThread(QThread):
@@ -21,6 +22,7 @@ class SnapshotsThread(QThread):
         self.email = email
         self.password = password
         self.computer_id = computer_id
+        self.logger = get_logger()
 
     def run(self):
         computer = get_computer(self.email, self.password, self.computer_id)
@@ -42,4 +44,5 @@ class SnapshotsThread(QThread):
                 ).stdout
             )
         sorted_snapshots = sorted(snapshots, key=lambda x: x["time"], reverse=True)
+        self.logger.info("Snapshots loaded.")
         self.loaded.emit(sorted_snapshots)
