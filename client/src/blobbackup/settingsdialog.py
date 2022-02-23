@@ -40,7 +40,9 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
 
     def inclusions_add(self):
         path = QFileDialog.getExistingDirectory()
-        if path and not self.inclusions_list_widget.findItems(path, Qt.MatchFlag.MatchExactly):
+        if path and not self.inclusions_list_widget.findItems(
+            path, Qt.MatchFlag.MatchExactly
+        ):
             self.inclusions_list_widget.addItem(path)
 
     def inclusions_remove(self):
@@ -51,7 +53,9 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
 
     def exclusions_add(self):
         exclusion, okay = QInputDialog.getText(self, "Add exclusion", "Path or pattern")
-        exists = self.exclusions_list_widget.findItems(exclusion, Qt.MatchFlag.MatchExactly)
+        exists = self.exclusions_list_widget.findItems(
+            exclusion, Qt.MatchFlag.MatchExactly
+        )
         if okay and exclusion and not exists:
             self.exclusions_list_widget.addItem(exclusion)
 
