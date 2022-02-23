@@ -60,7 +60,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.setWindowTitle("Sign In - Blobbackup")
         if not success:
             QMessageBox.warning(self, "Sign In Failed", "Invalid credentials.")
-            self.logger.info("Login failed")
+            self.logger.info("Login failed displayed")
             return
         self.logger.info("Login succeded")
         super().accept()

@@ -27,6 +27,7 @@ from blobbackup.status import (
     save_selected_files,
     save_current_status,
 )
+from blobbackup.logger import get_logger
 
 SLEEP_SECONDS = 60 * 60
 
@@ -43,6 +44,7 @@ class BackupThread(QThread):
         self.process = None
         self.backup_terminated = False
         self.force_run = force_run
+        self.logger = get_logger()
 
         self.status_updated_at = time.time()
 
@@ -59,6 +61,7 @@ class BackupThread(QThread):
                 self.api_error.emit()
             except requests.exceptions.ConnectionError:
                 self.update_status(current_status="Idle")
+                self.logger.error("Backup connection error.")
                 pass
             self.force_run = False
             time.sleep(SLEEP_SECONDS)
@@ -123,17 +126,13 @@ class BackupThread(QThread):
 
     def post_backup(self, files_done, bytes_done, backup_finished):
         self.update_status(current_status="Idle")
-        if (
-            files_done
-            and bytes_done
-            and not self.backup_terminated
-            and backup_finished
-        ):
+        if files_done and bytes_done and not self.backup_terminated and backup_finished:
             time_format = "%I:%M %p on %b %d %Y"
             current_pretty_time = datetime.datetime.now().strftime(time_format)
             self.update_status(last_backed_up=current_pretty_time)
             self.update_last_backed_up_online(files_done, bytes_done)
         self.process = None
+        self.logger.info("Backup process finished.")
 
     def format_selected_files(self, files_done, bytes_done):
         num = f"{files_done:,} files"
@@ -167,6 +166,7 @@ class BackupThread(QThread):
         with open(EXCLUDIONS_FILE_PATH, "w") as f:
             for path in config["exclusions"]["paths"].split(","):
                 f.write(f"{path}\n")
+        self.logger.info("Inclusion and exclusion files written.")
 
     def update_status(
         self, selected_for_backup=None, current_status=None, last_backed_up=None
@@ -192,3 +192,4 @@ class BackupThread(QThread):
                 "last_backed_up_at": time.time(),
             },
         )
+        self.logger.info("Updated online computer record.")
