@@ -6,6 +6,7 @@ from blobbackup.ui.settingsdialog import Ui_SettingsDialog
 from blobbackup.config import config, save_config
 from blobbackup.api import update_computer
 from blobbackup.util import get_password_from_keyring, LOGO_PATH
+from blobbackup.logger import get_logger
 
 
 class SettingDialog(QDialog, Ui_SettingsDialog):
@@ -13,6 +14,8 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         QDialog.__init__(self)
         Ui_SettingsDialog.__init__(self)
         self.setupUi(self)
+
+        self.logger = get_logger()
 
         self.setWindowIcon(QIcon(LOGO_PATH))
 
@@ -23,6 +26,8 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         self.exclusions_add_button.pressed.connect(self.exclusions_add)
         self.exclusions_remove_button.pressed.connect(self.exclusions_remove)
         self.save_button.pressed.connect(self.accept)
+
+        self.logger.info("Settings dialog displayed.")
 
     def populate_settings(self):
         self.computer_name_line_edit.setText(config["general"]["computer_name"])
@@ -37,6 +42,7 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         for path in config["exclusions"]["paths"].split(","):
             if path:
                 self.exclusions_list_widget.addItem(path)
+        self.logger.info("Settings populated.")
 
     def inclusions_add(self):
         path = QFileDialog.getExistingDirectory()
@@ -44,12 +50,14 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
             path, Qt.MatchFlag.MatchExactly
         ):
             self.inclusions_list_widget.addItem(path)
+            self.logger.info("Inclusion added.")
 
     def inclusions_remove(self):
         item = self.inclusions_list_widget.currentItem()
         if item:
             row = self.inclusions_list_widget.row(item)
             self.inclusions_list_widget.takeItem(row)
+            self.logger.info("Inclusion removed.")
 
     def exclusions_add(self):
         exclusion, okay = QInputDialog.getText(self, "Add exclusion", "Path or pattern")
@@ -58,12 +66,14 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         )
         if okay and exclusion and not exists:
             self.exclusions_list_widget.addItem(exclusion)
+            self.logger.info("Exclusion added.")
 
     def exclusions_remove(self):
         item = self.exclusions_list_widget.currentItem()
         if item:
             row = self.exclusions_list_widget.row(item)
             self.exclusions_list_widget.takeItem(row)
+            self.logger.info("Exclusion removed.")
 
     def accept(self):
         computer_name = self.computer_name_line_edit.text().strip()
@@ -83,6 +93,7 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         save_config()
         self.update_computer_name_online(computer_name)
 
+        self.logger.info("Settings saved.")
         super().accept()
 
     def update_computer_name_online(self, computer_name):
