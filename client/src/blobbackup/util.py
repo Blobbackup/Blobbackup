@@ -122,7 +122,7 @@ def get_restic_init_command():
     return [RESTIC_PATH, "init"]
 
 
-def get_restic_backup_command():
+def get_restic_backup_command(max_upload_kibs):
     return [
         RESTIC_PATH,
         "backup",
@@ -131,6 +131,8 @@ def get_restic_backup_command():
         INCLUSIONS_FILE_PATH,
         "--iexclude-file",
         EXCLUDIONS_FILE_PATH,
+        "--limit-upload",
+        max_upload_kibs,
     ]
 
 

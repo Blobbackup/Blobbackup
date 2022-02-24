@@ -34,6 +34,9 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         self.backup_schedule_combo_box.setCurrentText(
             config["general"]["backup_schedule"]
         )
+        self.max_upload_kibs_spin_box.setValue(
+            int(config["general"]["max_upload_kibs"])
+        )
         self.inclusions_list_widget.clear()
         for path in config["inclusions"]["paths"].split(","):
             if path:
@@ -78,9 +81,11 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
     def accept(self):
         computer_name = self.computer_name_line_edit.text().strip()
         backup_schedule = self.backup_schedule_combo_box.currentText()
+        max_upload_kibs = str(self.max_upload_kibs_spin_box.value())
 
         config["general"]["computer_name"] = computer_name
         config["general"]["backup_schedule"] = backup_schedule
+        config["general"]["max_upload_kibs"] = max_upload_kibs
         config["inclusions"]["paths"] = ",".join(
             self.inclusions_list_widget.item(i).text()
             for i in range(self.inclusions_list_widget.count())

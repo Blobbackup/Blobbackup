@@ -18,6 +18,15 @@ def save_config():
         config.write(f)
 
 
+def add_new_variables():
+    updated = False
+    if "max_upload_kibs" not in config["general"]:
+        config["general"]["max_upload_kibs"] = "0"
+        updated = True
+    if updated:
+        save_config()
+
+
 if not os.path.exists(CONFIG_PATH):
     config["meta"] = {}
     config["meta"]["initialized"] = "no"
@@ -27,6 +36,7 @@ if not os.path.exists(CONFIG_PATH):
     config["general"] = {}
     config["general"]["computer_name"] = ""
     config["general"]["backup_schedule"] = ""
+    config["general"]["max_upload_kibs"] = "0"
 
     config["inclusions"] = {}
     config["inclusions"]["paths"] = ""
@@ -36,3 +46,4 @@ if not os.path.exists(CONFIG_PATH):
     save_config()
 else:
     load_config()
+    add_new_variables()
