@@ -80,7 +80,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="backup_connected_file_systems_label">
          <property name="text">
           <string>Backup Connected File Systems</string>
          </property>

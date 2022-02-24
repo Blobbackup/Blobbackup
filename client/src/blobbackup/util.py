@@ -134,7 +134,7 @@ def get_restic_backup_command(max_upload_kibs, backup_connected_file_systems):
         "--limit-upload",
         max_upload_kibs,
     ]
-    if backup_connected_file_systems == "No":
+    if is_mac() and backup_connected_file_systems == "No":
         env += ["--one-file-system"]
     return env
 

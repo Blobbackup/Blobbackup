@@ -5,7 +5,7 @@ from PyQt6.QtCore import Qt
 from blobbackup.ui.settingsdialog import Ui_SettingsDialog
 from blobbackup.config import config, save_config
 from blobbackup.api import update_computer
-from blobbackup.util import get_password_from_keyring, LOGO_PATH
+from blobbackup.util import get_password_from_keyring, is_windows, LOGO_PATH
 from blobbackup.logger import get_logger
 
 
@@ -26,6 +26,10 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         self.exclusions_add_button.pressed.connect(self.exclusions_add)
         self.exclusions_remove_button.pressed.connect(self.exclusions_remove)
         self.save_button.pressed.connect(self.accept)
+
+        if is_windows():
+            self.backup_connected_file_systems_label.setVisible(False)
+            self.backup_connected_file_systems_combo_box.setVisible(False)
 
         self.logger.info("Settings dialog displayed.")
 
