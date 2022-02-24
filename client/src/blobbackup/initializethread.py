@@ -87,14 +87,14 @@ DEFAULT_MAC_EXCLUSIONS = ",".join(
 DEFAULT_WIN_INCLUSIONS = ",".join(["C:/"])
 DEFAULT_WIN_EXCLUSIONS = ",".join(
     [
-        "C:/windows",
-        "C:/i386",
-        "C:/recycler",
-        "C:/msocache",
-        "C:/program files",
-        "C:/program files (x86)",
-        "C:/users/all users/microsoft",
-        "C:/users/all users/microsoft help",
+        "C:/Windows",
+        "C:/I386",
+        "C:/RECYCLER",
+        "C:/MSOCache",
+        "C:/Program Files",
+        "C:/Program Files (x86)",
+        "C:/Users/All Users/Microsoft",
+        "C:/Users/All Users/Microsoft Help",
         "*.wab~",
         "*.vmc",
         "*.vhd",
