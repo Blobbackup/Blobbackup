@@ -122,8 +122,8 @@ def get_restic_init_command():
     return [RESTIC_PATH, "init"]
 
 
-def get_restic_backup_command(max_upload_kibs):
-    return [
+def get_restic_backup_command(max_upload_kibs, backup_connected_file_systems):
+    env = [
         RESTIC_PATH,
         "backup",
         "--json",
@@ -134,6 +134,9 @@ def get_restic_backup_command(max_upload_kibs):
         "--limit-upload",
         max_upload_kibs,
     ]
+    if backup_connected_file_systems == "No":
+        env += ["--one-file-system"]
+    return env
 
 
 def get_restic_unlock_command():

@@ -84,7 +84,10 @@ class BackupThread(QThread):
         with open(log_file, "a") as log_f:
             if is_windows():
                 self.process = subprocess.Popen(
-                    get_restic_backup_command(config["general"]["max_upload_kibs"]),
+                    get_restic_backup_command(
+                        config["general"]["max_upload_kibs"],
+                        config["general"]["backup_connected_file_systems"],
+                    ),
                     env=get_restic_env(computer, password),
                     stdout=subprocess.PIPE,
                     stderr=log_f,
@@ -92,7 +95,10 @@ class BackupThread(QThread):
                 )
             elif is_mac():
                 self.process = subprocess.Popen(
-                    get_restic_backup_command(config["general"]["max_upload_kibs"]),
+                    get_restic_backup_command(
+                        config["general"]["max_upload_kibs"],
+                        config["general"]["backup_connected_file_systems"],
+                    ),
                     env=get_restic_env(computer, password),
                     stdout=subprocess.PIPE,
                     stderr=log_f,

@@ -23,6 +23,9 @@ def add_new_variables():
     if "max_upload_kibs" not in config["general"]:
         config["general"]["max_upload_kibs"] = "0"
         updated = True
+    if "backup_connected_files_systems" not in config["general"]:
+        config["general"]["backup_connected_file_systems"] = "No"
+        updated = True
     if updated:
         save_config()
 
@@ -37,6 +40,7 @@ if not os.path.exists(CONFIG_PATH):
     config["general"]["computer_name"] = ""
     config["general"]["backup_schedule"] = ""
     config["general"]["max_upload_kibs"] = "0"
+    config["general"]["backup_connected_file_systems"] = "No"
 
     config["inclusions"] = {}
     config["inclusions"]["paths"] = ""
