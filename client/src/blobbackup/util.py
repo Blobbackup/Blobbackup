@@ -235,7 +235,8 @@ def load_keep_alive_script_win():
             "/rl",
             "HIGHEST",
             "/f",
-        ]
+        ],
+        creationflags=CREATE_NO_WINDOW,
     )
     subprocess.run(
         [
@@ -250,7 +251,8 @@ def load_keep_alive_script_win():
             "/rl",
             "HIGHEST",
             "/f",
-        ]
+        ],
+        creationflags=CREATE_NO_WINDOW,
     )
 
 
