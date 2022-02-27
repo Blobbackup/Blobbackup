@@ -239,4 +239,5 @@ def initialize_win_keep_alive():
 
 def initialize_mac_keep_alive():
     shutil.copyfile(KEEP_ALIVE_PLIST_PATH, KEEP_ALIVE_PLIST_DEST_PATH)
+    subprocess.run(["launchctl", "unload", KEEP_ALIVE_PLIST_DEST_PATH])
     subprocess.run(["launchctl", "load", KEEP_ALIVE_PLIST_DEST_PATH])
