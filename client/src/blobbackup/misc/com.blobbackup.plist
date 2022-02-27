@@ -10,6 +10,7 @@
             <string>/usr/bin/open</string>
             <string>--background</string>
             <string>/Applications/Blobbackup.app</string>
+			<string>--args</string>
 			<string>--open-minimized</string>
         </array>
 
