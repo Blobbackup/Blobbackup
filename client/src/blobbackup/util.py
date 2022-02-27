@@ -4,6 +4,8 @@ import hashlib
 import base64
 import platform
 import pathlib
+import subprocess
+import shutil
 
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Hash import SHA256
@@ -210,3 +212,31 @@ def pretty_bytes(num, suffix="B"):
 
 def posix_path(path):
     return pathlib.Path(path).as_posix()
+
+
+def initialize_keep_alive():
+    if is_windows():
+        initialize_win_keep_alive()
+    elif is_mac():
+        initialize_mac_keep_alive()
+
+
+def initialize_win_keep_alive():
+    subprocess.run(
+        [
+            "schtasks",
+            "/create",
+            "/tn",
+            "com.blobbackup",
+            "/tr",
+            "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
+            "/sc",
+            "HOURLY",
+            "/f",
+        ]
+    )
+
+
+def initialize_mac_keep_alive():
+    shutil.copyfile(KEEP_ALIVE_PLIST_PATH, KEEP_ALIVE_PLIST_DEST_PATH)
+    subprocess.run(["launchctl", "load", KEEP_ALIVE_PLIST_DEST_PATH])

@@ -16,14 +16,13 @@ from blobbackup.status import (
 from blobbackup.util import (
     HOME_PATH,
     CREATE_NO_WINDOW,
-    KEEP_ALIVE_PLIST_PATH,
-    KEEP_ALIVE_PLIST_DEST_PATH,
     is_windows,
     is_mac,
     save_password_in_keyring,
     get_restic_env,
     get_restic_init_command,
     posix_path,
+    initialize_keep_alive,
 )
 
 DEFAULT_MAC_INCLUSIONS = ",".join(["/"])
@@ -203,31 +202,3 @@ def create_restic_repo_or_die(computer, password):
         )
     if ret.returncode != 0:
         sys.exit()
-
-
-def initialize_keep_alive():
-    if is_windows():
-        initialize_win_keep_alive()
-    elif is_mac():
-        initialize_mac_keep_alive()
-
-
-def initialize_win_keep_alive():
-    subprocess.run(
-        [
-            "schtasks",
-            "/create",
-            "/tn",
-            "com.blobbackup",
-            "/tr",
-            "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
-            "/sc",
-            "HOURLY",
-            "/f",
-        ]
-    )
-
-
-def initialize_mac_keep_alive():
-    shutil.copyfile(KEEP_ALIVE_PLIST_PATH, KEEP_ALIVE_PLIST_DEST_PATH)
-    subprocess.run(["launchctl", "load", KEEP_ALIVE_PLIST_DEST_PATH])
