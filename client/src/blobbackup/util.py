@@ -227,6 +227,19 @@ def load_keep_alive_script_win():
             "schtasks",
             "/create",
             "/tn",
+            "com.blobbackup.login",
+            "/tr",
+            "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
+            "/sc",
+            "ONLOGON",
+            "/f",
+        ]
+    )
+    subprocess.run(
+        [
+            "schtasks",
+            "/create",
+            "/tn",
             "com.blobbackup",
             "/tr",
             "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
