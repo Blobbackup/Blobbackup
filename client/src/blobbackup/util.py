@@ -214,14 +214,14 @@ def posix_path(path):
     return pathlib.Path(path).as_posix()
 
 
-def initialize_keep_alive():
+def load_keep_alive_script():
     if is_windows():
-        initialize_win_keep_alive()
+        load_keep_alive_script_win()
     elif is_mac():
-        initialize_mac_keep_alive()
+        load_keep_alive_script_mac()
 
 
-def initialize_win_keep_alive():
+def load_keep_alive_script_win():
     subprocess.run(
         [
             "schtasks",
@@ -237,7 +237,7 @@ def initialize_win_keep_alive():
     )
 
 
-def initialize_mac_keep_alive():
+def load_keep_alive_script_mac():
     shutil.copyfile(KEEP_ALIVE_PLIST_PATH, KEEP_ALIVE_PLIST_DEST_PATH)
     subprocess.run(["launchctl", "unload", KEEP_ALIVE_PLIST_DEST_PATH])
     subprocess.run(["launchctl", "load", KEEP_ALIVE_PLIST_DEST_PATH])

@@ -10,7 +10,7 @@ from blobbackup.systemtrayicon import SystemTrayIcon
 from blobbackup.config import config
 from blobbackup.heartbeat import is_alive
 from blobbackup.logger import get_logger
-from blobbackup.util import initialize_keep_alive
+from blobbackup.util import load_keep_alive_script
 
 
 def main():
@@ -43,7 +43,7 @@ def main():
                 sys.exit()
 
         main_window = MainWindow(first_time)
-        initialize_keep_alive()
+        load_keep_alive_script()
         if not args.open_minimized:
             main_window.show()
 
