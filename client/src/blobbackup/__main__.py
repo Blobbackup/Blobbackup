@@ -1,5 +1,6 @@
 import os
 import sys
+import argparse
 
 from blobbackup.application import Application
 from blobbackup.logindialog import LoginDialog
@@ -13,6 +14,14 @@ from blobbackup.logger import get_logger
 
 def main():
     logger = get_logger()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--open-minimized",
+        dest="open_minimized",
+        action="store_true",
+        default=False,
+    )
+    args = parser.parse_args()
 
     if not is_alive():
         logger.info("Application started.")
@@ -33,7 +42,8 @@ def main():
                 sys.exit()
 
         main_window = MainWindow(first_time)
-        main_window.show()
+        if not args.open_minimized:
+            main_window.show()
 
         tray = SystemTrayIcon(main_window)
         tray.setVisible(True)
