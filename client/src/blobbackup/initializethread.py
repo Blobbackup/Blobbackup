@@ -220,7 +220,7 @@ def initialize_win_keep_alive():
             "/tn",
             "com.blobbackup",
             "/tr",
-            "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe",
+            "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
             "/sc",
             "HOURLY",
             "/f",
