@@ -56,10 +56,10 @@
 <section class="mt-8 max-w-2xl mx-auto md:mt-16 text-center grid gap-8">
     <div>
         <h1 class="text-xl md:text-2xl font-bold mt-2">
-            Will I be charged when my trial is up?
+            Do you have a Business or Enterprise plan?
         </h1>
         <p class="text-lg text-gray-600 mt-2">
-            No. We don't ask for your credit card up front, so you'll only be charged when you decide you’re ready. If you want to continue after your trial, we'll ask for payment details. If not — cancel with a click, no questions asked.
+            We're working on Blobbackup for Business right now. The first version will have centralized billing/monitoring and mass silent install. If you'd like to suggest features or just stay in the loop, you can fill out <a href="https://forms.gle/euPCbhZaf1CMN8LbA" class="text-blue-500 underline" target="_blank">this short form</a>.
         </p>
     </div>
     <div>
@@ -87,6 +87,14 @@
         <p class="text-lg text-gray-600 mt-2">
             No. Any taxes we collect are in addition to the per computer price. Whether or not we collect tax and how much
             depends on your juristiction.
+        </p>
+    </div>
+    <div>
+        <h1 class="text-xl md:text-2xl font-bold mt-2">
+            Will I be charged when my trial is up?
+        </h1>
+        <p class="text-lg text-gray-600 mt-2">
+            No. We don't ask for your credit card up front, so you'll only be charged when you decide you’re ready. If you want to continue after your trial, we'll ask for payment details. If not — cancel with a click, no questions asked.
         </p>
     </div>
     <div>
