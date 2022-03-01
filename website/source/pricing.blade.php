@@ -17,10 +17,10 @@
         </p>
     </div>
     <div>
-        <h1 class="text-2xl md:text-3xl font-bold mt-2">2 TB per Computer</h1>
+        <h1 class="text-2xl md:text-3xl font-bold mt-2">5 TB per Computer</h1>
         <p class="text-lg text-gray-600 mt-2">
-            With 2 TB of storage per computer, most people will never
-            run out of space for backups.
+            We charge you $9 / month per computer. Each computer is allowed to backup
+            up to 5 TB of data.
         </p>
     </div>
     <div>
@@ -95,14 +95,6 @@
         </h1>
         <p class="text-lg text-gray-600 mt-2">
             No. We don't ask for your credit card up front, so you'll only be charged when you decide you’re ready. If you want to continue after your trial, we'll ask for payment details. If not — cancel with a click, no questions asked.
-        </p>
-    </div>
-    <div>
-        <h1 class="text-xl md:text-2xl font-bold mt-2">
-            Do you offer discounts?
-        </h1>
-        <p class="text-lg text-gray-600 mt-2">
-            Yes, we offer free accounts for teachers & students, and discounts for non-profits. Contact <a href="/support" class="text-blue-600 underline">support</a> for details.
         </p>
     </div>
     <div>
