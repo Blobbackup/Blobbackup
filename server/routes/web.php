@@ -29,16 +29,16 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     })->name('dashboard');
 
     Route::get('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
-        if (auth()->user()->id != $computer->user_id)
-            abort(404);
+        abort_unless($computer->user->is(auth()->user()), 404);
+
         return view('deletecomputer', [
             'computer' => $computer
         ]);
     });
 
     Route::post('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
-        if (auth()->user()->id != $computer->user_id)
-            abort(404);
+        abort_unless($computer->user->is(auth()->user()), 404);
+
         $computer->delete();
         return redirect('/dashboard');
     });
