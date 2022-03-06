@@ -75,7 +75,7 @@
             Can I pay yearly? What are the payment options?
         </h1>
         <p class="text-lg text-gray-600 mt-2">
-            We only offer montly biling at this time. We will bill you $9 per computer every month after your trial ends. 
+            We only offer monthly billing at this time. We will bill you $9 per computer every month after your trial ends. 
             We accept payment via credit card, debit card and PayPal. We don't accept orders, checks, ACH/wire or 
             cryptocurrency.
         </p>
