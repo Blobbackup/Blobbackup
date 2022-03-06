@@ -86,7 +86,7 @@
         </h1>
         <p class="text-lg text-gray-600 mt-2">
             No. Any taxes we collect are in addition to the per computer price. Whether or not we collect tax and how much
-            depends on your juristiction.
+            depends on your jurisdiction.
         </p>
     </div>
     <div>
