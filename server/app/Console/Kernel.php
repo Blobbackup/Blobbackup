@@ -27,6 +27,14 @@ class Kernel extends ConsoleKernel
                     foreach ($subscription->modifiers() as $modifier)
                         $modifier->delete();
                     $subscription->newModifier($amount)->create();
+                } else if ($user->customer->trial_ends_at->diff(new \DateTime())->days == 3) {
+                    Util::sendEmail($user->email,
+                        "Your Blobbackup Trial Will Expire In 3 Days!",
+                        "Your Blobbackup trial will expire in 3 days. Please sign in and add a payment method if you'd like to continue using the service after the trial expires.");
+                } else if ($user->customer->trial_ends_at->diff(new \DateTime())->days == 0) {
+                    Util::sendEmail($user->email,
+                        "Your Blobbackup Trial Has Expired.",
+                        "Your Blobbackup trial has expired. Please sign in and add a payment method if you'd like to continue using the service.");
                 }
             }
         })->daily();
