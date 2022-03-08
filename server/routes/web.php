@@ -30,7 +30,6 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::get('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
         abort_unless($computer->user->is(auth()->user()), 404);
-
         return view('deletecomputer', [
             'computer' => $computer
         ]);
@@ -38,7 +37,6 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::post('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
         abort_unless($computer->user->is(auth()->user()), 404);
-
         $computer->delete();
         return redirect('/dashboard');
     });
