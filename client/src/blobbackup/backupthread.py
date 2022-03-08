@@ -137,7 +137,9 @@ class BackupThread(QThread):
             self.update_status(last_backed_up=current_pretty_time)
             self.update_last_backed_up_online(files_done, bytes_done)
         self.process = None
-        self.logger.info("Backup process finished.")
+        self.logger.info(
+            f"Backup process finished (backup_terminated={self.backup_terminated}, backup_finished={backup_finished})."
+        )
 
     def format_selected_files(self, files_done, bytes_done):
         num = f"{files_done:,} files"
