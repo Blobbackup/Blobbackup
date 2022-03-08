@@ -52,12 +52,14 @@ class BackupThread(QThread):
         while True:
             load_config()
             if not self.backup_recurring() and not self.force_run:
+                self.logger.info("Skipped backup (on 'Manual').")
                 time.sleep(SLEEP_SECONDS)
                 continue
             try:
                 self.backup()
             except ApiError:
                 self.update_status(current_status="Idle")
+                self.logger.error("Backup api error.")
                 self.api_error.emit()
             except requests.exceptions.ConnectionError:
                 self.update_status(current_status="Idle")
@@ -106,10 +108,13 @@ class BackupThread(QThread):
                 line = self.process.stdout.readline().rstrip()
                 if not line:
                     break
-                message = json.loads(line)
-                files_done, bytes_done, backup_finished = self.handle_backup_output(
-                    message, files_done, bytes_done
-                )
+                try:
+                    message = json.loads(line)
+                    files_done, bytes_done, backup_finished = self.handle_backup_output(
+                        message, files_done, bytes_done
+                    )
+                except json.JSONDecodeError:
+                    self.logger.error("Unable to decode json line.")
 
         self.post_backup(files_done, bytes_done, backup_finished)
 

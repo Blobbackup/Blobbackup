@@ -72,6 +72,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def restart_backup(self):
         self.toggle_backup()
         self.toggle_backup()
+        self.logger.info("Backup restarted.")
 
     def toggle_backup(self):
         if self.backup_thread.backup_running():
@@ -120,6 +121,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.last_selected_files = selected_files
             self.selected_files_updated_at = time.time()
             self.selected_for_backup_label.setText(selected_files)
+            self.logger.info("Updated selected files.")
 
     def backup_stuck(self):
         return self.selected_files_updated_at and (
