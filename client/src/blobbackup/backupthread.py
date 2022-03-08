@@ -82,12 +82,13 @@ class BackupThread(QThread):
         log_file = os.path.join(LOGS_PATH, f"backup-{datetime.date.today()}.txt")
         files_done, bytes_done, backup_finished = None, None, False
         with open(log_file, "a") as log_f:
+            restic_backup_command = get_restic_backup_command(
+                config["general"]["max_upload_kibs"],
+                config["general"]["backup_connected_file_systems"],
+            )
             if is_windows():
                 self.process = subprocess.Popen(
-                    get_restic_backup_command(
-                        config["general"]["max_upload_kibs"],
-                        config["general"]["backup_connected_file_systems"],
-                    ),
+                    restic_backup_command,
                     env=get_restic_env(computer, password),
                     stdout=subprocess.PIPE,
                     stderr=log_f,
@@ -95,14 +96,12 @@ class BackupThread(QThread):
                 )
             elif is_mac():
                 self.process = subprocess.Popen(
-                    get_restic_backup_command(
-                        config["general"]["max_upload_kibs"],
-                        config["general"]["backup_connected_file_systems"],
-                    ),
+                    restic_backup_command,
                     env=get_restic_env(computer, password),
                     stdout=subprocess.PIPE,
                     stderr=log_f,
                 )
+            self.logger.info(f'Backup command: {" ".join(restic_backup_command)}')
             while True:
                 line = self.process.stdout.readline().rstrip()
                 if not line:
