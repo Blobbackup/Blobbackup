@@ -12,6 +12,7 @@ from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Hash import SHA256
 from keyring import get_password, set_password, set_keyring
 from PyQt6.QtGui import QPixmap
+from blobbackup._version import __version__
 
 
 def is_windows():
@@ -90,6 +91,10 @@ os.makedirs(os.path.dirname(KEEP_ALIVE_PLIST_DEST_PATH), exist_ok=True)
 
 INCLUSIONS_FILE_PATH = os.path.join(HOME_PATH, "inclusions.txt")
 EXCLUDIONS_FILE_PATH = os.path.join(HOME_PATH, "exclusions.txt")
+
+VERSION_FILE_PATH = os.path.join(HOME_PATH, "version.txt")
+with open(VERSION_FILE_PATH, "w") as f:
+    f.write(__version__)
 
 CREATE_NO_WINDOW = 0x08000000
 
