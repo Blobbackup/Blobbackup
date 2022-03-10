@@ -61,10 +61,12 @@ class BackupThread(QThread):
             except ApiError:
                 self.update_status(current_status="Idle")
                 self.logger.error("Backup api error.")
+                self.backup_complete.emit()
                 self.api_error.emit()
             except requests.exceptions.ConnectionError:
                 self.update_status(current_status="Idle")
                 self.logger.error("Backup connection error.")
+                self.backup_complete.emit()
                 pass
             self.force_run = False
             time.sleep(SLEEP_SECONDS)
