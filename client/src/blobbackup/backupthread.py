@@ -28,6 +28,7 @@ from blobbackup.status import (
     save_current_status,
 )
 from blobbackup.logger import get_logger
+from blobbackup._version import __version__
 
 SLEEP_SECONDS = 60 * 60
 
@@ -206,6 +207,7 @@ class BackupThread(QThread):
                 "last_backed_up_num_files": files_done,
                 "last_backed_up_size": bytes_done,
                 "last_backed_up_at": time.time(),
+                "client_version": __version__,
             },
         )
         self.logger.info("Updated online computer record.")
