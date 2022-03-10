@@ -70,12 +70,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sys.exit()
 
     def restart_backup(self):
-        if self.backup_thread.backup_running():
-            self.toggle_backup()
-            self.toggle_backup()
-            self.logger.info("Backup restarted.")
-        else:
-            self.logger.info("Backup not restarted (not running).")
+        self.toggle_backup()
+        self.toggle_backup()
+        self.logger.info("Backup restarted.")
 
     def toggle_backup(self):
         if self.backup_thread.backup_running():
