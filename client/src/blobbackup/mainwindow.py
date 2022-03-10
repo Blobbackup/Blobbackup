@@ -94,11 +94,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.status_thread.start()
 
     def launch_backup_thread(self, force_run=False):
-        self.last_selected_files = None
-        self.selected_files_updated_at = None
+        self.reset_backup_stuck_variables()
         self.backup_thread = BackupThread(force_run)
         self.backup_thread.api_error.connect(self.api_error)
+        self.backup_thread.backup_complete.connect(self.reset_backup_stuck_variables)
         self.backup_thread.start()
+
+    def reset_backup_stuck_variables(self):
+        self.last_selected_files = None
+        self.selected_files_updated_at = None
 
     def update_status(self):
         load_config()

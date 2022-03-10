@@ -38,6 +38,7 @@ class ApiError(Exception):
 
 class BackupThread(QThread):
     api_error = pyqtSignal()
+    backup_complete = pyqtSignal()
 
     def __init__(self, force_run=False):
         QThread.__init__(self)
@@ -141,6 +142,7 @@ class BackupThread(QThread):
             current_pretty_time = datetime.datetime.now().strftime(time_format)
             self.update_status(last_backed_up=current_pretty_time)
             self.update_last_backed_up_online(files_done, bytes_done)
+        self.backup_complete.emit()
         self.process = None
         self.logger.info(
             f"Backup process finished (backup_terminated={self.backup_terminated}, backup_finished={backup_finished})."
