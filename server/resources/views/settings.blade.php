@@ -35,7 +35,7 @@
         </form>
     </div>
     <div class="shadow-lg mt-8 p-6">
-        <form method="POST" action="/changephone">
+    <form method="GET" action="/changephone">
             @csrf
             <div class="text-gray-600">Update Phone Number</div>
             <div class="text-gray-600 mt-4">

@@ -1,5 +1,6 @@
 <?php
 
+use Twilio;
 use App\Models\Computer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -98,14 +99,28 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         return back()->with('message', 'Password changed.');
     });
 
-    Route::post('/changephone', function (Request $request) {
+    Route::post('/verifyphone', function (Request $request) {
+        $request->validate([
+            'phone' => ['required', 'string', 'max:255'],
+            'code' => ['required', 'digits:6']
+        ]);
+        if ($request->code == '000000') {
+            $user = auth()->user();
+            $user->phone = $request->phone;
+            $user->save();
+            return redirect('/settings')->with('message', 'Phone number updated.');
+        }
+        return back()->withErrors('Phone number verification failed.');
+    });
+
+    Route::get('/changephone', function (Request $request) {
         $request->validate([
             'phone' => ['required', 'string', 'max:255'],
         ]);
-        $user = auth()->user();
-        $user->phone = $request->phone;
-        $user->save();
-        return back()->with('message', 'Phone number changed.');
+        Twilio::message($request->phone, 'Verification code for Blobbackup: 000000');
+        return view('verifyphone', [
+            'phone' => $request->phone
+        ]);
     });
 
     Route::get('/deleteaccount', function () {
