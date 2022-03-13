@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPhoneToUsersTable extends Migration
+class AddPhoneAndTotpSecretToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class AddPhoneToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('phone')->nullable();
+            $table->string('totp_secret')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AddPhoneToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('phone');
+            $table->dropColumn('totp_secret');
         });
     }
 }

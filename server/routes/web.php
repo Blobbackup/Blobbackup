@@ -1,5 +1,6 @@
 <?php
 
+use OTPHP\TOTP;
 use App\Models\Computer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -103,20 +104,25 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
             'phone' => ['required', 'string', 'max:255'],
             'code' => ['required', 'digits:6']
         ]);
-        if ($request->code == '000000') {
-            $user = auth()->user();
+        $user = auth()->user();
+        $otp = TOTP::create($user->totp_secret);
+        if ($otp->verify($request->code)) {
             $user->phone = $request->phone;
             $user->save();
             return redirect('/settings')->with('message', 'Phone number updated.');
         }
-        return back()->withErrors('Phone number verification failed.');
+        return back()->withErrors('Incorrect code. We sent you a new one.');
     });
 
     Route::get('/changephone', function (Request $request) {
         $request->validate([
             'phone' => ['required', 'string', 'max:255'],
         ]);
-        Twilio::message($request->phone, 'Verification code for Blobbackup: 000000');
+        $otp = TOTP::create();
+        $user = auth()->user();
+        $user->totp_secret = $otp->getSecret();
+        $user->save();
+        Twilio::message($request->phone, 'Verification code for Blobbackup: ' . $otp->now());
         return view('verifyphone', [
             'phone' => $request->phone
         ]);
