@@ -98,6 +98,16 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         return back()->with('message', 'Password changed.');
     });
 
+    Route::post('/changephone', function (Request $request) {
+        $request->validate([
+            'phone' => ['required', 'string', 'max:255'],
+        ]);
+        $user = auth()->user();
+        $user->phone = $request->phone;
+        $user->save();
+        return back()->with('message', 'Phone number changed.');
+    });
+
     Route::get('/deleteaccount', function () {
         return view('deleteaccount');
     })->name('deleteaccount');
