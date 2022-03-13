@@ -115,11 +115,13 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     });
 
     Route::get('/changephone', function (Request $request) {
-        $request->validate([
-            'phone' => ['required', 'string', 'max:255'],
-        ]);
-        $otp = TOTP::create();
         $user = auth()->user();
+        if (!$request->phone) {
+            $user->phone = null;
+            $user->save();
+            return back()->with('message', 'Phone number cleared.');
+        }
+        $otp = TOTP::create();
         $user->totp_secret = $otp->getSecret();
         $user->save();
         Twilio::message($request->phone, 'Verification code for Blobbackup: ' . $otp->now());
