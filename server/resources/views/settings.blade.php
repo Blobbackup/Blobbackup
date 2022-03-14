@@ -40,7 +40,8 @@
             <div class="text-gray-600">Update Phone Number</div>
             <div class="text-gray-600 mt-4">
                 Phone numbers must follow the <a href="https://www.twilio.com/docs/glossary/what-e164" class="text-blue-500 underline" target="_blank">E.164</a> format. 
-                Numbers without a country code are assumed to be US numbers.
+                Numbers without a country code are assumed to be US numbers. Having a verified phone number is
+                required to enable two factor authentication.
             </div>
             <input type="phone" name="phone" placeholder="Phone" value="{{ auth()->user()->phone }}" class="w-full border border-gray-400 rounded-full px-4 py-1 mt-4"/>
             <button type="submit" class="bg-gray-200 rounded-full px-4 py-2 font-bold mt-4">Update</button>
