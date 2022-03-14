@@ -52,6 +52,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function deleteAccount()
     {
+        $group = User::where('leader_id', $this->id)->get();
+        foreach ($group as $member)
+            $member->deleteAccount();
         if ($this->subscribed()) {
             $this->subscription()->cancelNow();
             $this->subscription()->delete();
