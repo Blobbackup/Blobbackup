@@ -68,6 +68,10 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         ]);
     })->name('payment');
 
+    Route::get('/group', function () {
+        return view('group');
+    })->name('group');
+
     Route::post('/deletepayment', function () {
         auth()->user()->subscription()->cancelNow();
         return back();
