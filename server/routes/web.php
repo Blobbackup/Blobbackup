@@ -69,7 +69,10 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     })->name('payment');
 
     Route::get('/group', function () {
-        return view('group');
+        return view('group', [
+            'users' => User::where('leader_id', auth()->user()->id)->get(),
+            'groupUrl' => URL::to('/') . '/group/' . auth()->user()->id
+        ]);
     })->name('group');
 
     Route::post('/deletepayment', function () {
