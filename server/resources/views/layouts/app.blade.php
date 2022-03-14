@@ -13,10 +13,12 @@
     <body>
         <header class="sticky top-0 z-50">
             @if (!auth()->user()->subscribed())
-                @if (auth()->user()->onTrial())
-                    <div class="bg-blue-100 text-center py-4">Your trial period will expire in {{ Util::timeDelta(new DateTime(), auth()->user()->customer->trial_ends_at) }}. <a href="/payment" class="text-blue-600 underline">Add Payment Method</a>.</div>
-                @else
-                    <div class="bg-red-100 text-center py-4">Your trial period has expired. <a href="/payment" class="text-blue-600 underline">Add Payment Method</a>.</div>
+                @if (!auth()->user()->leader_id)
+                    @if (auth()->user()->onTrial())
+                        <div class="bg-blue-100 text-center py-4">Your trial period will expire in {{ Util::timeDelta(new DateTime(), auth()->user()->customer->trial_ends_at) }}. <a href="/payment" class="text-blue-600 underline">Add Payment Method</a>.</div>
+                    @else
+                        <div class="bg-red-100 text-center py-4">Your trial period has expired. <a href="/payment" class="text-blue-600 underline">Add Payment Method</a>.</div>
+                    @endif
                 @endif
             @endif
             <div class="shadow-lg p-6 bg-white flex">
