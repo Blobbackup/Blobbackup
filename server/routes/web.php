@@ -123,16 +123,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::post('/deleteaccount', function () {
         $user = auth()->user();
-        if ($user->subscribed()) {
-            $user->subscription()->cancelNow();
-            $user->subscription()->delete();
-            foreach ($user->receipts as $receipt)
-                $receipt->delete();
-        }
-        foreach ($user->computers as $computer)
-            $computer->delete();
-        $user->customer()->delete();
-        $user->delete();
+        $user->deleteAccount();
         auth()->logout();
         return redirect('/login')->withErrors('Your account has been deleted.');
     });

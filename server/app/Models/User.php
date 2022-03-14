@@ -49,4 +49,18 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Computer::class);
     }
+
+    public function deleteAccount()
+    {
+        if ($this->subscribed()) {
+            $this->subscription()->cancelNow();
+            $this->subscription()->delete();
+            foreach ($this->receipts as $receipt)
+                $receipt->delete();
+        }
+        foreach ($this->computers as $computer)
+            $computer->delete();
+        $this->customer()->delete();
+        $this->delete();
+    }
 }
