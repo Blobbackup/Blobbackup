@@ -87,6 +87,19 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         }
     });
 
+    Route::get('/deleteuser/{user}', function (Request $request, User $user) {
+        abort_unless($user->leader_id == auth()->user()->id, 404);
+        return view('deleteuser', [
+            'user' => $user
+        ]);
+    })->name('deleteuser');
+
+    Route::post('/deleteuser/{user}', function (Request $request, User $user) {
+        abort_unless($user->leader_id == auth()->user()->id, 404);
+        $user->deleteAccount();
+        return redirect('/group')->with('message', 'Deleted ' . $user->email . '.');
+    })->name('deleteuser');
+
     Route::post('/deletepayment', function () {
         auth()->user()->subscription()->cancelNow();
         return back();
