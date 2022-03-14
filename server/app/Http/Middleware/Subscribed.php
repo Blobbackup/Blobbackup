@@ -16,6 +16,8 @@ class Subscribed
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!auth()->check())
+            return response('', 400);
         $user = auth()->user();
         if ($user->onTrial() || $user->subscribed())
             return $next($request);
