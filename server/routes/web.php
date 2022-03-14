@@ -77,7 +77,14 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::post('/judgeuser/{user}', function (Request $request, User $user) {
         abort_unless($user->leader_id == auth()->user()->id, 404);
-        dd($request);
+        if ($request->judgement == 'accept') {
+            $user->status = 'active';
+            $user->save();
+            return back()->with('message', 'Accepted ' . $user->email . '.');
+        } else {
+            $user->deleteAccount();
+            return back()->withErrors('Rejected ' . $user->email . '.');
+        }
     });
 
     Route::post('/deletepayment', function () {
