@@ -20,6 +20,8 @@ class Active
         $user = auth()->user();
         if ($user->status == 'active')
             return $next($request);
+        if ($user->status == 'pending' && $user->onTrial())
+            return $next($request);
         if (Str::contains($request->url(), '/api'))
             return response('Invalid credentials', 400);
         return back()->withErrors('Invalid credentials');
