@@ -3,6 +3,8 @@ from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt
 
 from blobbackup.ui.settingsdialog import Ui_SettingsDialog
+from blobbackup.choosecomputerdialog import ChooseComputerDialog
+from blobbackup.restoredialog import RestoreDialog
 from blobbackup.config import config, save_config
 from blobbackup.api import update_computer
 from blobbackup.util import get_password_from_keyring, is_windows, LOGO_PATH
@@ -25,6 +27,9 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         self.inclusions_remove_button.pressed.connect(self.inclusions_remove)
         self.exclusions_add_button.pressed.connect(self.exclusions_add)
         self.exclusions_remove_button.pressed.connect(self.exclusions_remove)
+        self.restore_different_computer_label.linkActivated.connect(
+            self.restore_different_computer
+        )
         self.save_button.pressed.connect(self.accept)
 
         if is_windows():
@@ -84,6 +89,15 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
             row = self.exclusions_list_widget.row(item)
             self.exclusions_list_widget.takeItem(row)
             self.logger.info("Exclusion removed.")
+
+    def restore_different_computer(self):
+        email = config["meta"]["email"]
+        password = get_password_from_keyring()
+        choose_computer_dialog = ChooseComputerDialog(email, password)
+        if choose_computer_dialog.exec():
+            computer_id = choose_computer_dialog.computer_id
+            dialog = RestoreDialog(email, password, computer_id)
+            dialog.exec()
 
     def accept(self):
         computer_name = self.computer_name_line_edit.text().strip()
