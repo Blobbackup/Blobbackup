@@ -66,4 +66,12 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->customer()->delete();
         $this->delete();
     }
+
+    public function computersToBill()
+    {
+        $computers = $this->computers->count();
+        foreach (User::where('leader_id', $this->id)->get() as $user)
+            $computers += $user->computers->count();
+        return $computers;
+    }
 }

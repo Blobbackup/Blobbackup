@@ -22,7 +22,7 @@
                 </div>
             @else
                 <div class="text-gray-600">
-                    You will be billed ${{ auth()->user()->computers->count() * Util::$perComputerPrice }} / month (computers: {{ auth()->user()->computers->count() }}).
+                    You will be billed ${{ auth()->user()->computersToBill() * Util::$perComputerPrice }} / month (computers: {{ auth()->user()->computersToBill() }}).
                 </div>
                 <div class="text-gray-600 mt-2">
                     @if (auth()->user()->subscription()->paymentMethod() == 'card')
