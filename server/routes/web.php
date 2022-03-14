@@ -133,18 +133,17 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::post('/toggletwofac', function () {
         $user = auth()->user();
-        if ($user->twofac) {
-            $user->backup_code = null;
-            $user->twofac = false;
-            $user->save();
-            return back()->with('message', 'Two factor authentication disabled.');
-        } else {
+        if (!$user->twofac && $user->phone) {
             $backup_code = Str::uuid()->toString();
             $user->backup_code = Hash::make($backup_code);
             $user->twofac = true;
             $user->save();
             return back()->with('message', 'Two factor authentication enabled.<br/><br/><div class="text-gray-700">Please store this backup code somewhere secure. You will need it to login in case you are unable to login with two factor.<br/><br/>' . $backup_code . '</div>');
         }
+        $user->backup_code = null;
+        $user->twofac = false;
+        $user->save();
+        return back()->with('message', 'Two factor authentication disabled.');
     });
 
     Route::get('/deleteaccount', function () {
