@@ -11,7 +11,7 @@
     @endif
     @if(session('message'))
         <div class="text-green-500 mt-8 text-sm">
-            {{ session('message') }}
+            {!! session('message') !!}
         </div>
     @endif
     <div class="shadow-lg mt-8 p-6">
@@ -35,7 +35,7 @@
         </form>
     </div>
     <div class="shadow-lg mt-8 p-6">
-    <form method="GET" action="/changephone">
+        <form method="GET" action="/changephone">
             @csrf
             <div class="text-gray-600">Update Phone Number</div>
             <div class="text-gray-600 mt-4">
@@ -46,6 +46,28 @@
             <button type="submit" class="bg-gray-200 rounded-full px-4 py-2 font-bold mt-4">Update</button>
         </form>
     </div>
+    @if(auth()->user()->phone)
+    <div class="shadow-lg my-8 p-6">
+        <div class="text-gray-600">Two Factor Authentication</div>
+        @if(auth()->user()->twofac)
+            <div class="text-gray-600 mt-4">
+                Two factor authentication is currently enabled.
+            </div>
+            <form method="POST" action="/toggletwofac">
+                @csrf
+                <button type="submit" class="bg-gray-200 rounded-full px-4 py-2 font-bold mt-4">Disable</button>
+            </form>
+        @else
+            <div class="text-gray-600 mt-4">
+                Two factor authentication is currently disabled.
+            </div>
+            <form method="POST" action="/toggletwofac">
+                @csrf
+                <button type="submit" class="bg-gray-200 rounded-full px-4 py-2 font-bold mt-4">Enable</button>
+            </form>
+        @endif
+    </div>
+    @endif
     <div class="shadow-lg my-8 p-6">
         <div class="text-gray-600">Delete Account</div>
         <div class="text-gray-600 mt-4">

@@ -3,6 +3,7 @@
 use OTPHP\TOTP;
 use App\Models\Computer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Password;
@@ -128,6 +129,22 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         return view('verifyphone', [
             'phone' => $request->phone
         ]);
+    });
+
+    Route::post('/toggletwofac', function () {
+        $user = auth()->user();
+        if ($user->twofac) {
+            $user->backup_code = null;
+            $user->twofac = false;
+            $user->save();
+            return back()->with('message', 'Two factor authentication disabled.');
+        } else {
+            $backup_code = Str::uuid()->toString();
+            $user->backup_code = Hash::make($backup_code);
+            $user->twofac = true;
+            $user->save();
+            return back()->with('message', 'Two factor authentication enabled.<br/><br/><div class="text-gray-700">Please store this backup code somewhere secure. You will need it to login in case you are unable to login with two factor.<br/><br/>' . $backup_code . '</div>');
+        }
     });
 
     Route::get('/deleteaccount', function () {
