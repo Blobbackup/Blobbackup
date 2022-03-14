@@ -70,7 +70,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::get('/group', function () {
         return view('group', [
-            'users' => User::where('leader_id', auth()->user()->id)->get(),
+            'users' => User::where('leader_id', auth()->user()->id)->orderByDesc('created_at')->get(),
             'groupUrl' => URL::to('/') . '/group/' . auth()->user()->id
         ]);
     })->name('group');
