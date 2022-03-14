@@ -118,6 +118,8 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/changephone', function (Request $request) {
         $user = auth()->user();
         if (!$request->phone) {
+            if ($user->twofac)
+                return back()->withErrors('Cannot clear phone number with two factor authentication enabled.');
             $user->phone = null;
             $user->save();
             return back()->with('message', 'Phone number cleared.');
