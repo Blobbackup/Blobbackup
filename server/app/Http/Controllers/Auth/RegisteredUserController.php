@@ -44,7 +44,10 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ];
         if ($request->leader_id)
-            $fields += ['leader_id' => $request->leader_id];
+            $fields += [
+                'leader_id' => $request->leader_id,
+                'status' => 'pending'
+            ];
         $user = User::create($fields);
 
         $user->createAsCustomer([
