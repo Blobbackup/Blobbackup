@@ -75,6 +75,11 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         ]);
     })->name('group');
 
+    Route::post('/judgeuser/{user}', function (Request $request, User $user) {
+        abort_unless($user->leader_id == auth()->user()->id, 404);
+        dd($request);
+    });
+
     Route::post('/deletepayment', function () {
         auth()->user()->subscription()->cancelNow();
         return back();
