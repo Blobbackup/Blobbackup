@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Computer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,12 @@ use Illuminate\Validation\Rules\Password;
 
 Route::get('/', function () {
     return view('auth.login');
+});
+
+Route::get('/group/{user}', function (Request $request, User $user) {
+    return view('auth.register', [
+        'leader' => $user
+    ]);
 });
 
 Route::middleware(['auth', 'verified', 'active'])->group(function () {

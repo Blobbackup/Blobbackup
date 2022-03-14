@@ -8,7 +8,13 @@
                 <img src="{{ asset('img/logo.png') }}" class="inline-block w-8 h-8" />
                 <h1 class="text-2xl font-bold mt-2">Blobbackup</h1>
             </a>
-            <h2 class="text-gray-600 mt-2">Free 30 day trial. No card required.</h2>
+            <h2 class="text-gray-600 mt-2">
+                @if(isset($leader))
+                    You're joining a group owned by '{{ $leader->email }}'.
+                @else
+                    Free 30 day trial. No card required.
+                @endif
+            </h2>
         </div>
         @if($errors->any())
             <div class="text-center text-red-600 mt-2 text-sm">
@@ -25,6 +31,9 @@
                     recover this password if you forget it.
                 </div>
                 <input type="password" name="password_confirmation" id="passwordconfirmation" placeholder="Confirm Password" class="w-full border border-gray-400 rounded-full px-4 py-1 mt-4" required />
+                @if(isset($leader))
+                    <input type="hidden" name="leader_id" value="{{ $leader->id }}"/>
+                @endif
                 <button type="submit" class="bg-gray-200 rounded-full w-full py-2 font-bold mt-4">Start Trial</button>
                 <div class="text-center mt-4 text-xs">
                     <div class="text-gray-500">By proceeding, you agree to the Blobbackup</div> 
