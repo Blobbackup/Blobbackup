@@ -2,7 +2,36 @@
     My Group
 @endsection
 <x-app-layout>
-    <h1 class="text-2xl font-bold" id="mac">My Group</h1>
+    <h1 class="text-2xl font-bold" id="mac">
+        My Group
+        <span class="font-normal text-sm ml-4 pl-4 border-l border-gray-300">
+            @if (auth()->user()->accepting_users)
+                <span class="text-green-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1 -mt-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Accepting New Users
+                </span>
+            @else
+                <span class="text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1 -mt-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                    </svg>
+                    Not Accepting New Users
+                </span>
+            @endif
+            <form method="POST" action="/toggleaccepting" class="inline-block ml-2">
+                @csrf
+                <button type="submit" class="underline text-blue-500">
+                    @if (auth()->user()->accepting_users)
+                        (Close)
+                    @else
+                        (Open)
+                    @endif
+                </button>
+            </form>
+        </span>
+    </h1>
     @if($errors->any())
         <div class="text-red-600 mt-8 text-sm">
             {{ $errors->first() }}
@@ -66,13 +95,15 @@
             @endforeach
         @endif
     </div>
-    <div class="shadow-lg mt-8 p-6">
-        <div class="text-gray-600">Invite Users</div>
-        <div class="text-gray-600 mt-4">
-            Send the link below to invite new users into your group.
+    @if (auth()->user()->accepting_users)
+        <div class="shadow-lg mt-8 p-6">
+            <div class="text-gray-600">Invite Users</div>
+            <div class="text-gray-600 mt-4">
+                Send the link below to invite new users into your group.
+            </div>
+            <div class="bg-gray-100 p-4 text-gray-600 mt-2">
+                <a href="{{ $groupUrl }}" target="_blank" class="underline text-blue-500">{{ $groupUrl }}</a>
+            </div>
         </div>
-        <div class="bg-gray-100 p-4 text-gray-600 mt-2">
-            <a href="{{ $groupUrl }}" target="_blank" class="underline text-blue-500">{{ $groupUrl }}</a>
-        </div>
-    </div>
+    @endif
 </x-app-layout>

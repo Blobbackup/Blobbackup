@@ -17,6 +17,7 @@ class AddGroupColumnsToUsersTable extends Migration
             $table->boolean('groups')->default(false);
             $table->unsignedInteger('leader_id')->nullable();
             $table->string('uuid')->nullable();
+            $table->boolean('accepting_users')->default(false);
         });
     }
 
@@ -31,6 +32,7 @@ class AddGroupColumnsToUsersTable extends Migration
             $table->dropColumn('groups');
             $table->dropColumn('leader_id');
             $table->dropColumn('uuid');
+            $table->dropColumn('accepting_users');
         });
     }
 }

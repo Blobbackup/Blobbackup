@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::get('/group/{uuid}', function (Request $request, string $uuid) {
     $user = User::where('uuid', $uuid)->first();
-    abort_unless($user && $user->groups, 404);
+    abort_unless($user && $user->groups && $user->accepting_users, 404);
     return view('auth.register', [
         'leader' => $user
     ]);
@@ -92,6 +92,13 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
             'groupUrl' => URL::to('/') . '/group/' . $user->uuid
         ]);
     })->name('group');
+
+    Route::post('/toggleaccepting', function () {
+        $user = auth()->user();
+        $user->accepting_users = !$user->accepting_users;
+        $user->save();
+        return back();
+    });
 
     Route::post('/judgeuser/{user}', function (Request $request, User $user) {
         abort_unless($user->leader_id == auth()->user()->id, 404);
