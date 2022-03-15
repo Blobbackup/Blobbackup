@@ -43,7 +43,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ];
-        if ($request->leader_id)
+        if ($request->leader_id && User::find($request->leader_id)->accepting_users)
             $fields += [
                 'leader_id' => $request->leader_id,
                 'status' => 'pending'
