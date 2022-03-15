@@ -34,21 +34,30 @@ Route::get('/group/{uuid}', function (Request $request, string $uuid) {
 Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard', [
-            'computers' => auth()->user()->computers
+            'user' => auth()->user()
         ]);
     })->name('dashboard');
 
+    Route::get('/computers/{user}', function (Request $request, User $user) {
+        return view('dashboard', [
+            'user' => $user
+        ]);
+    })->name('group');
+
     Route::get('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
-        abort_unless($computer->user->is(auth()->user()), 404);
+        abort_unless($computer->user->is(auth()->user()) || $computer->user->leader_id == auth()->user()->id, 404);
         return view('deletecomputer', [
             'computer' => $computer
         ]);
     });
 
     Route::post('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
-        abort_unless($computer->user->is(auth()->user()), 404);
+        abort_unless($computer->user->is(auth()->user()) || $computer->user->leader_id == auth()->user()->id, 404);
         $computer->delete();
-        return redirect('/dashboard');
+        if (!$computer->user->leader_id)
+            return redirect('/dashboard');
+        else
+            return redirect('/group')->with('message', 'Computer deleted.');
     });
 
     Route::get('/backup', function () {
