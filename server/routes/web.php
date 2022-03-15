@@ -3,6 +3,7 @@
 use App\Models\Computer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Password;
@@ -22,7 +23,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/group/{user}', function (Request $request, User $user) {
+Route::get('/group/{uuid}', function (Request $request, string $uuid) {
+    $user = User::where('uuid', $uuid)->first();
+    abort_unless($user, 404);
     return view('auth.register', [
         'leader' => $user
     ]);
@@ -69,9 +72,14 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     })->name('payment');
 
     Route::get('/group', function () {
+        $user = auth()->user();
+        if (!$user->uuid) {
+            $user->uuid = Str::uuid()->toString();
+            $user->save();
+        }
         return view('group', [
             'users' => User::where('leader_id', auth()->user()->id)->orderByDesc('created_at')->get(),
-            'groupUrl' => URL::to('/') . '/group/' . auth()->user()->id
+            'groupUrl' => URL::to('/') . '/group/' . $user->uuid
         ]);
     })->name('group');
 

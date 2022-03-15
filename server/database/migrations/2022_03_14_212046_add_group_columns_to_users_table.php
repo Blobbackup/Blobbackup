@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLeaderIdToUsersTable extends Migration
+class AddGroupColumnsToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class AddLeaderIdToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedInteger('leader_id')->nullable();
+            $table->string('uuid')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AddLeaderIdToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('leader_id');
+            $table->dropColumn('uuid');
         });
     }
 }
