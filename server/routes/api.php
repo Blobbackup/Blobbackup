@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Computer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +31,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
     Route::get('/login', function () {
         $user = auth()->user();
+        $leader = $user->leader_id ? User::find($user->leader_id) : $user;
         return [
-            'on_trial' => $user->onTrial(),
-            'subscribed' => $user->subscribed()
+            'on_trial' => $leader->onTrial(),
+            'subscribed' => $leader->subscribed()
         ];
     });
 
