@@ -28,6 +28,7 @@ from blobbackup.status import (
     save_current_status,
 )
 from blobbackup.logger import get_logger
+from blobbackup._version import __version__
 
 SLEEP_SECONDS = 60 * 60
 
@@ -38,6 +39,7 @@ class ApiError(Exception):
 
 class BackupThread(QThread):
     api_error = pyqtSignal()
+    backup_complete = pyqtSignal()
 
     def __init__(self, force_run=False):
         QThread.__init__(self)
@@ -60,10 +62,12 @@ class BackupThread(QThread):
             except ApiError:
                 self.update_status(current_status="Idle")
                 self.logger.error("Backup api error.")
+                self.backup_complete.emit()
                 self.api_error.emit()
             except requests.exceptions.ConnectionError:
                 self.update_status(current_status="Idle")
                 self.logger.error("Backup connection error.")
+                self.backup_complete.emit()
                 pass
             self.force_run = False
             time.sleep(SLEEP_SECONDS)
@@ -141,6 +145,7 @@ class BackupThread(QThread):
             current_pretty_time = datetime.datetime.now().strftime(time_format)
             self.update_status(last_backed_up=current_pretty_time)
             self.update_last_backed_up_online(files_done, bytes_done)
+        self.backup_complete.emit()
         self.process = None
         self.logger.info(
             f"Backup process finished (backup_terminated={self.backup_terminated}, backup_finished={backup_finished})."
@@ -202,6 +207,7 @@ class BackupThread(QThread):
                 "last_backed_up_num_files": files_done,
                 "last_backed_up_size": bytes_done,
                 "last_backed_up_at": time.time(),
+                "client_version": __version__,
             },
         )
         self.logger.info("Updated online computer record.")

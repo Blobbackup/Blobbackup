@@ -6,7 +6,7 @@
         <meta name="keywords" content="online backup, backup software, cloud backup, backup online, best backup software, online backup services, data backup, best online backup, offsite backup, online data backup"/>
         <meta name="description" content="Blobbackup is a private, open source and secure cloud computer backup service. Personal backup without compromising any privacy for $9 per month."/>
         <meta name="author" content="Blobbackup, LLC">
-        <title>    Support
+        <title>    What if I Forget My Password?
  - Blobbackup</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
@@ -61,30 +61,46 @@
             </div>
         </header>
         <main class="mx-auto max-w-5xl p-4">
-            <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">Support</h1>
-<section class="mt-4 md:mt-8 text-center">
-    <div>
-        Email Support: <a href="mailto:support@blobbackup.com" class="underline text-blue-600">support@blobbackup.com</a>
+            <style>
+#content p {
+    margin-top: 1rem;
+}
+#content h1 {
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+#content ul {
+    margin-top: 1rem;
+}
+#content li {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+#content a {
+    color: rgb(37 99 235);
+    text-decoration: underline;
+}
+</style>
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl md:text-4xl font-bold mt-4 md:mt-16 text-center">What if I Forget My Password?</h1>
+    <h2 class="text-lg md:text-xl text-gray-600 mt-2 text-center">March 13, 2022 by Bimba Shrestha</h2>
+    <div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
+        <p>Blobbackup doesn't let you reset your password if you forget it. This is by design.</p>
+
+<p>Blobbackup's design is inspired by password managers. And just like password managers,
+Blobbackup uses the "primary" password you create when registering to encrypt your important 
+data (backups in our case, passwords in the case of password managers).</p>
+
+<p>This means the only way someone can access your data is if they know your encryption
+password. We don't know your encryption password so we can't access your data or 
+"reset" your password if you forget it.</p>
+
+<p>Note: you can still change your password as long as you know your current one from 
+your account's settings.</p>
     </div>
-    <div class="mt-2">
-        Community Support: 
-            <a href="https://github.com/blobbackup/blobbackup/issues" class="underline text-blue-600">Github</a> | 
-            <a href="https://reddit.com/r/blobbackup" class="underline text-blue-600">Reddit</a>
-    </div>
-</section>
-<h1 class="text-4xl md:text-5xl font-bold mt-8 md:mt-16 text-center">Articles</h1>
-<section class="mt-4 md:my-8 text-center">
-            <a href="/support/what-if-i-forget-my-password" class="text-blue-600 underline block mt-2">What if I Forget My Password?</a>
-            <a href="/support/how-to-update-the-blobbackup-app" class="text-blue-600 underline block mt-2">How to Update the Blobbackup App</a>
-            <a href="/support/blobbackup-settings" class="text-blue-600 underline block mt-2">Blobbackup Settings</a>
-            <a href="/support/what-is-being-backed-up" class="text-blue-600 underline block mt-2">What is Being Backed Up?</a>
-            <a href="/support/handling-mounted-volumes-on-mac" class="text-blue-600 underline block mt-2">Handling Mounted Volumes on Mac</a>
-            <a href="/support/how-to-install-blobbackup-on-windows" class="text-blue-600 underline block mt-2">How to Install Blobbackup on Windows</a>
-            <a href="/support/getting-started-with-blobbackup" class="text-blue-600 underline block mt-2">Getting Started With Blobbackup</a>
-            <a href="/support/how-to-install-blobbackup-on-mac" class="text-blue-600 underline block mt-2">How to Install Blobbackup on Mac</a>
-            <a href="/support/windows-codesign-warnings" class="text-blue-600 underline block mt-2">Windows Code Sign Warnings</a>
-            <a href="/support/how-to-grant-full-disk-access-on-mac" class="text-blue-600 underline block mt-2">How to Grant Full Disk Access on Mac</a>
-    </section>
+</div>
         </main>
         <footer class="p-4 py-8 text-center">
             <div class="font-bold text-lg mt-1">
