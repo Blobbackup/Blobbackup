@@ -6,7 +6,7 @@
     <div class="shadow-lg mt-8 p-6">
         @if (auth()->user()->leader_id)
             <div class="text-gray-600">
-                Payment is handled by your group administrator.
+                Payment is handled by your group owner.
             </div>
         @else
             @if (!auth()->user()->subscribed())

@@ -19,6 +19,14 @@
                     Free 30 day trial. No card required.
                 @endif
             </h2>
+            @if(isset($leader))
+                <div class="bg-gray-100 border-gray-700 text-gray-700 text-xs border-1 text-center my-2 py-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 inline-block mr-1 -mt-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                    </svg>
+                    The group owner cannot access your data.
+                </div>
+            @endif
         </div>
         @if($errors->any())
             <div class="text-center text-red-600 mt-2 text-sm">
