@@ -1,5 +1,9 @@
 @section('title')
-    Start Trial
+    @if(isset($leader))
+        Join Group
+    @else
+        Start Trial
+    @endif
 @endsection
 <x-guest-layout>
     <x-auth-card>
