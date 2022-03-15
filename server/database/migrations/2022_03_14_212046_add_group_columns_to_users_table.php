@@ -14,6 +14,7 @@ class AddGroupColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->boolean('groups')->default(false);
             $table->unsignedInteger('leader_id')->nullable();
             $table->string('uuid')->nullable();
         });
@@ -27,6 +28,7 @@ class AddGroupColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('groups');
             $table->dropColumn('leader_id');
             $table->dropColumn('uuid');
         });

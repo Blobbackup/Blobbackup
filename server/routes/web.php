@@ -73,7 +73,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::get('/group', function () {
         $user = auth()->user();
-        abort_unless(!$user->leader_id, 404);
+        abort_unless(!$user->leader_id && $user->groups, 404);
         if (!$user->uuid) {
             $user->uuid = Str::uuid()->toString();
             $user->save();
