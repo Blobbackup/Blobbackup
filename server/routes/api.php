@@ -1,5 +1,6 @@
 <?php
 
+use App\Util\Util;
 use App\Models\Computer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Validator;
 */
 
 Route::get('/client/version', function () {
-    return "1.0.7";
+    return Util::$clientVersion;
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
