@@ -38,7 +38,7 @@
                 @if(isset($leader))
                     <input type="hidden" name="leader_id" value="{{ $leader->id }}"/>
                 @endif
-                <button type="submit" class="bg-gray-200 rounded-full w-full py-2 font-bold mt-4">Start Trial</button>
+                <button @if(auth()->check()) disabled @endif type="submit" class="bg-gray-200 rounded-full w-full py-2 font-bold mt-4">Start Trial</button>
                 <div class="text-center mt-4 text-xs">
                     <div class="text-gray-500">By proceeding, you agree to the Blobbackup</div> 
                     <a href="https://blobbackup.com/terms" class="text-blue-500">Terms of Service</a> and
