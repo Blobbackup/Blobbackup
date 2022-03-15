@@ -70,7 +70,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function computersToBill()
     {
         $computers = $this->computers->count();
-        foreach (User::where('leader_id', $this->id)->get() as $user)
+        foreach (User::where('leader_id', $this->id)->where('status', 'active')->get() as $user)
             $computers += $user->computers->count();
         return $computers;
     }
