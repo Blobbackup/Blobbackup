@@ -17,11 +17,14 @@ class Active
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!auth()->check())
+            return response('', 400);
         $user = auth()->user();
         if ($user->status == 'active')
             return $next($request);
         if ($user->status == 'pending' && $user->onTrial())
             return $next($request);
+        auth()->logout();
         if (Str::contains($request->url(), '/api'))
             return response('Invalid credentials', 400);
         return back()->withErrors('Invalid credentials');
