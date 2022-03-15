@@ -6,7 +6,7 @@
         @if (auth()->user()->is($user))
             Your Computers
         @else
-            Computers <span class="font-normal text-base ml-4 pl-4 border-l border-gray-300"> {{ $user->email }}</span>
+            Computers <span class="font-normal text-base ml-4 pl-4 border-l border-gray-300 text-gray-700"> {{ $user->email }}</span>
         @endif
     </h1>
     <section class="grid grid-cols-2 gap-8 my-8">
