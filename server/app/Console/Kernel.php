@@ -47,6 +47,10 @@ class Kernel extends ConsoleKernel
                         Util::sendEmail($computer->user->email,
                             "Computer Not Backed up for 14 Days!",
                             "It's been more than 14 days since we've backed up your computer <b>" . $computer->name . "</b>.");
+                        if ($computer->user->leader_id)
+                            Util::sendEmail(User::find($computer->user->leader_id)->email,
+                                "Computer Not Backed up for 14 Days!",
+                                "It's been more than 14 days since we've backed up " . $computer->user->email . "'s computer <b>" . $computer->name . "</b>.");
                     }
                 }
             }
