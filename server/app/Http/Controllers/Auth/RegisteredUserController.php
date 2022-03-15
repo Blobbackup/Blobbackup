@@ -36,12 +36,19 @@ class RegisteredUserController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'leader_id' => ['numeric', 'exists:users,id']
         ]);
 
-        $user = User::create([
+        $fields = [
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
+        ];
+        if ($request->leader_id)
+            $fields += [
+                'leader_id' => $request->leader_id,
+                'status' => 'pending'
+            ];
+        $user = User::create($fields);
 
         $user->createAsCustomer([
             'trial_ends_at' => now()->addDays(30)

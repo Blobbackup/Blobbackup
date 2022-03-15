@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Dashboard - Blobbackup</title>
+        <title>Payment Method - Blobbackup</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" type="image/jpg" href="img/logo.png"/>
     </head>
@@ -18,7 +18,7 @@
         </header>
         <main class="flex">
             <div class="flex-initial shadow-lg p-8 min-h-screen text-gray-600">
-                <a href="dashboard.html" class="block font-bold">
+                <a href="dashboard.html" class="block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
                     </svg>
@@ -44,7 +44,7 @@
                     </svg>
                     Payment Method
                 </a>
-                <a href="group.html" class="block">
+                <a href="group.html" class="block font-bold">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                     </svg>
@@ -65,69 +65,76 @@
             </div>
             <div class="flex-1 pt-8">
                 <div class="max-w-4xl mx-auto">
-                    <h1 class="text-2xl font-bold">Your Computers</h1>
-                    <section class="grid grid-cols-2 gap-8 mt-8">
-                        <div class="shadow-lg p-6">
-                            <h2 class="font-bold">Bimbas-MacBook-Pro.local</h2>
-                            <div class="text-gray-600">Selected for backup: 0 files / 0 MB</div>
-                            <div class="text-gray-600">Operating system: macOS-10.16-x86_64</div>
-                            <div class="text-gray-600">Last backed up: Never</div>
-                            <div class="text-gray-600 mt-2">
-                                <a href="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" />
+                    <h1 class="text-2xl font-bold">My Group</h1>
+                    <div class="shadow-lg mt-8 p-6">
+                        <div class="text-gray-600 mb-4">Users</div>
+                        <div class="text-gray-600 border-t border-gray-300 py-2 flex">
+                            <div class="flex-1">
+                                bobmarley@email.com (pending)
+                            </div>
+                            <div class="flex-initial">
+                                <a href="" class="mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block -mt-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                                     </svg>
-                                    Restore
+                                    Accept
                                 </a>
-                                <a href="" class="ml-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                <a href="" class="mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block -mt-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    Reject
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text-gray-600 border-t border-gray-300 py-2 flex">
+                            <div class="flex-1">
+                                kobebryant@email.com (pending)
+                            </div>
+                            <div class="flex-initial">
+                                <a href="" class="mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block -mt-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    Accept
+                                </a>
+                                <a href="" class="mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block -mt-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    Reject
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text-gray-600 border-t border-gray-300 py-2 flex">
+                            <div class="flex-1">
+                                lebronjames@email.com
+                            </div>
+                            <div class="flex-initial">
+                                <a href="" class="mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block -mt-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
+                                    </svg>
+                                    Computers (1)
+                                </a>
+                                <a href="" class="mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block -mt-1" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                                     </svg>
                                     Delete
                                 </a>
                             </div>
                         </div>
-                        <div class="shadow-lg p-6">
-                            <h2 class="font-bold">Bimbas-MacBook-Pro.local</h2>
-                            <div class="text-gray-600">Selected for backup: 0 files / 0 MB</div>
-                            <div class="text-gray-600">Operating system: macOS-10.16-x86_64</div>
-                            <div class="text-gray-600">Last backed up: Never</div>
-                            <div class="text-gray-600 mt-2">
-                                <a href="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" />
-                                    </svg>
-                                    Restore
-                                </a>
-                                <a href="" class="ml-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                    </svg>
-                                    Delete
-                                </a>
-                            </div>
+                    </div>
+                    <div class="shadow-lg mt-8 p-6">
+                        <div class="text-gray-600">Invite Users</div>
+                        <div class="text-gray-600 mt-4">
+                            Send the link below to invite new users into your group.
                         </div>
-                        <div class="shadow-lg p-6">
-                            <h2 class="font-bold">Bimbas-MacBook-Pro.local</h2>
-                            <div class="text-gray-600">Selected for backup: 0 files / 0 MB</div>
-                            <div class="text-gray-600">Operating system: macOS-10.16-x86_64</div>
-                            <div class="text-gray-600">Last backed up: Never</div>
-                            <div class="text-gray-600 mt-2">
-                                <a href="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" />
-                                    </svg>
-                                    Restore
-                                </a>
-                                <a href="" class="ml-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                    </svg>
-                                    Delete
-                                </a>
-                            </div>
+                        <div class="bg-gray-100 p-4 text-gray-600 mt-2">
+                            <a href="" class="underline text-blue-500">https://app.blobbackup.com/groups/ui773sahpei8oc2w6ohti8k047_91480</a>
                         </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         </main>

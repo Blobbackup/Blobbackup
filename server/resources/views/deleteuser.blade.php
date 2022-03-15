@@ -1,15 +1,16 @@
 @section('title')
-    Delete Computer
+    Delete User
 @endsection
 <x-app-layout>
-    <h1 class="text-2xl font-bold">Delete Computer</h1>
-    <form method="POST" action="/deletecomputer/{{ $computer->id }}" class="text-gray-600 my-8">
+    <h1 class="text-2xl font-bold">Delete User</h1>
+    <form method="POST" action="/deleteuser/{{ $user->id }}" class="text-gray-600 my-8">
         @csrf
         <div>
-            Are you sure you want to delete the computer "{{ $computer->name }}"?
+            Are you sure you want to delete user '{{ $user->email }}'?
         </div>
         <div class="mt-4">
-            All of the backup data for this computer will be permanently deleted!
+            This will cancel their subscription and delete all their account data (including all backups)
+            immediately. Their data will be permanently deleted and cannot be recovered!
         </div>
         <div class="mt-4">
             <button type="submit">
@@ -18,7 +19,7 @@
                 </svg>
                 Delete
             </button>
-            <a href="{{ url()->previous() }}" class="ml-4">
+            <a href="/group" class="ml-4">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z" clip-rule="evenodd" />
                 </svg>

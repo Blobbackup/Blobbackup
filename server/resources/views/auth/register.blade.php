@@ -1,5 +1,9 @@
 @section('title')
-    Start Trial
+    @if(isset($leader))
+        Start Backing Up
+    @else
+        Start Trial
+    @endif
 @endsection
 <x-guest-layout>
     <x-auth-card>
@@ -8,7 +12,21 @@
                 <img src="{{ asset('img/logo.png') }}" class="inline-block w-8 h-8" />
                 <h1 class="text-2xl font-bold mt-2">Blobbackup</h1>
             </a>
-            <h2 class="text-gray-600 mt-2">Free 30 day trial. No card required.</h2>
+            <h2 class="text-gray-600 mt-2">
+                @if(isset($leader))
+                    Group owner '{{ $leader->email }}' invited you to their group.
+                @else
+                    Free 30 day trial. No card required.
+                @endif
+            </h2>
+            @if(isset($leader))
+                <div class="bg-blue-100 border-blue-500 text-blue-600 text-sm border-1 text-center mt-2 mb-4 py-2 rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 inline-block mr-1 -mt-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                    </svg>
+                    The group owner cannot access your data.
+                </div>
+            @endif
         </div>
         @if($errors->any())
             <div class="text-center text-red-600 mt-2 text-sm">
@@ -25,7 +43,16 @@
                     recover this password if you forget it.
                 </div>
                 <input type="password" name="password_confirmation" id="passwordconfirmation" placeholder="Confirm Password" class="w-full border border-gray-400 rounded-full px-4 py-1 mt-4" required />
-                <button type="submit" class="bg-gray-200 rounded-full w-full py-2 font-bold mt-4">Start Trial</button>
+                @if(isset($leader))
+                    <input type="hidden" name="leader_id" value="{{ $leader->id }}"/>
+                @endif
+                <button @if(auth()->check()) disabled @endif type="submit" class="bg-gray-200 rounded-full w-full py-2 font-bold mt-4">
+                    @if(isset($leader))
+                        Start Backing Up
+                    @else
+                        Start Trial
+                    @endif
+                </button>
                 <div class="text-center mt-4 text-xs">
                     <div class="text-gray-500">By proceeding, you agree to the Blobbackup</div> 
                     <a href="https://blobbackup.com/terms" class="text-blue-500">Terms of Service</a> and
