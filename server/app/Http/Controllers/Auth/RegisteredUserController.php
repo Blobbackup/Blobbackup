@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Util\Util;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\URL;
 
 class RegisteredUserController extends Controller
 {
@@ -53,6 +55,13 @@ class RegisteredUserController extends Controller
         $user->createAsCustomer([
             'trial_ends_at' => now()->addDays(30)
         ]);
+
+        if ($request->leader_id) {
+            $url = URL::to('/') . '/group';
+            Util::sendEmail(User::find($request->leader_id)->email,
+                "A New User Has Requested to Join Your Group",
+                $request->email . " has requested to join your group.<br/><br/><a href='" . $url . "'>Accept Request</a>");
+        }
 
         event(new Registered($user));
 
