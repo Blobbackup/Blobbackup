@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Util\Util;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +24,21 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+    private function getNewUserFields(Request $request)
+    {
+        $fields = [
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ];
+        if ($request->leader_id && User::find($request->leader_id)->accepting_users) {
+            $fields += [
+                'leader_id' => $request->leader_id,
+                'status' => 'pending'
+            ];
+        }
+        return $fields;
+    }
+
     /**
      * Handle an incoming registration request.
      *
@@ -41,16 +55,7 @@ class RegisteredUserController extends Controller
             'leader_id' => ['numeric', 'exists:users,id']
         ]);
 
-        $fields = [
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ];
-        if ($request->leader_id && User::find($request->leader_id)->accepting_users)
-            $fields += [
-                'leader_id' => $request->leader_id,
-                'status' => 'pending'
-            ];
-        $user = User::create($fields);
+        $user = User::create($this->getNewUserFields($request));
 
         $user->createAsCustomer([
             'trial_ends_at' => now()->addDays(30)
