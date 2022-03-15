@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         return view('dashboard', [
             'user' => $user
         ]);
-    })->name('group');
+    });
 
     Route::get('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
         abort_unless($computer->user->is(auth()->user()) || $computer->user->leader_id == auth()->user()->id, 404);
@@ -123,7 +123,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         abort_unless($user->leader_id == auth()->user()->id, 404);
         $user->deleteAccount();
         return redirect('/group')->with('message', 'Deleted ' . $user->email . '.');
-    })->name('deleteuser');
+    });
 
     Route::post('/deletepayment', function () {
         auth()->user()->subscription()->cancelNow();
