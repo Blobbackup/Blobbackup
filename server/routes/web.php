@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::get('/group/{uuid}', function (Request $request, string $uuid) {
     $user = User::where('uuid', $uuid)->first();
-    abort_unless($user, 404);
+    abort_unless($user && $user->groups, 404);
     return view('auth.register', [
         'leader' => $user
     ]);
