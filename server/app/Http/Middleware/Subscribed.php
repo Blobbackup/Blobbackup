@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,13 @@ class Subscribed
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!auth()->check())
+            return response('', 400);
         $user = auth()->user();
-        if ($user->onTrial() || $user->subscribed())
+        $leader = $user->leader_id ? User::find($user->leader_id) : $user;
+        if ($leader->onTrial() || $leader->subscribed())
             return $next($request);
+        auth()->logout();
         return response('', 400);
     }
 }

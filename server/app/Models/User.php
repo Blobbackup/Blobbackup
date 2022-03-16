@@ -22,6 +22,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'leader_id',
+        'status'
     ];
 
     /**
@@ -46,5 +48,30 @@ class User extends Authenticatable implements MustVerifyEmail
     public function computers()
     {
         return $this->hasMany(Computer::class);
+    }
+
+    public function deleteAccount()
+    {
+        $group = User::where('leader_id', $this->id)->get();
+        foreach ($group as $member)
+            $member->deleteAccount();
+        if ($this->subscribed()) {
+            $this->subscription()->cancelNow();
+            $this->subscription()->delete();
+            foreach ($this->receipts as $receipt)
+                $receipt->delete();
+        }
+        foreach ($this->computers as $computer)
+            $computer->delete();
+        $this->customer()->delete();
+        $this->delete();
+    }
+
+    public function computersToBill()
+    {
+        $computers = $this->computers->count();
+        foreach (User::where('leader_id', $this->id)->where('status', 'active')->get() as $user)
+            $computers += $user->computers->count();
+        return $computers;
     }
 }

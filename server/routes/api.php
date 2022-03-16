@@ -1,6 +1,8 @@
 <?php
 
+use App\Util\Util;
 use App\Models\Computer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +22,7 @@ use Illuminate\Support\Facades\Validator;
 */
 
 Route::get('/client/version', function () {
-    return "1.0.7";
+    return Util::$clientVersion;
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -30,9 +32,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
     Route::get('/login', function () {
         $user = auth()->user();
+        $leader = $user->leader_id ? User::find($user->leader_id) : $user;
         return [
-            'on_trial' => $user->onTrial(),
-            'subscribed' => $user->subscribed()
+            'on_trial' => $leader->onTrial(),
+            'subscribed' => $leader->subscribed()
         ];
     });
 
@@ -77,7 +80,8 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
                 'operating_system' => ['string', 'max:255'],
                 'last_backed_up_at' => ['numeric'],
                 'last_backed_up_num_files' => ['integer'],
-                'last_backed_up_size' => ['integer']
+                'last_backed_up_size' => ['integer'],
+                'client_version' => ['string', 'max:5']
             ])->fails())
                 return $response->setStatusCode(400);
             if ($computer->user_id != auth()->user()->id)
@@ -87,6 +91,7 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
             if ($request->last_backed_up_at) $computer->last_backed_up_at = $request->last_backed_up_at;
             if ($request->last_backed_up_num_files) $computer->last_backed_up_num_files = $request->last_backed_up_num_files;
             if ($request->last_backed_up_size) $computer->last_backed_up_size = $request->last_backed_up_size;
+            if ($request->client_version) $computer->client_version = $request->client_version;
             $computer->save();
             return $computer;
         });

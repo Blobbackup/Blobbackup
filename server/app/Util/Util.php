@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 class Util
 {
     public static $perComputerPrice = 9;
+    public static $clientVersion = "1.0.8";
 
     public static function formatBytes($size, $precision = 2)
     {

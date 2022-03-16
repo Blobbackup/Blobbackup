@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Computer;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Password;
@@ -21,24 +23,41 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/group/{uuid}', function (Request $request, string $uuid) {
+    $user = User::where('uuid', $uuid)->first();
+    abort_unless($user && $user->groups && $user->accepting_users, 404);
+    return view('auth.register', [
+        'leader' => $user
+    ]);
+});
+
 Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard', [
-            'computers' => auth()->user()->computers
+            'user' => auth()->user()
         ]);
     })->name('dashboard');
 
+    Route::get('/computers/{user}', function (Request $request, User $user) {
+        return view('dashboard', [
+            'user' => $user
+        ]);
+    });
+
     Route::get('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
-        abort_unless($computer->user->is(auth()->user()), 404);
+        abort_unless($computer->user->is(auth()->user()) || $computer->user->leader_id == auth()->user()->id, 404);
         return view('deletecomputer', [
             'computer' => $computer
         ]);
     });
 
     Route::post('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
-        abort_unless($computer->user->is(auth()->user()), 404);
+        abort_unless($computer->user->is(auth()->user()) || $computer->user->leader_id == auth()->user()->id, 404);
         $computer->delete();
-        return redirect('/dashboard');
+        if (!$computer->user->leader_id)
+            return redirect('/dashboard');
+        else
+            return redirect('/group')->with('message', 'Computer deleted.');
     });
 
     Route::get('/backup', function () {
@@ -60,6 +79,51 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
             'payLink' => $payLink
         ]);
     })->name('payment');
+
+    Route::get('/group', function () {
+        $user = auth()->user();
+        abort_unless(!$user->leader_id && $user->groups, 404);
+        if (!$user->uuid) {
+            $user->uuid = Str::uuid()->toString();
+            $user->save();
+        }
+        return view('group', [
+            'users' => User::where('leader_id', auth()->user()->id)->orderByDesc('created_at')->get(),
+            'groupUrl' => URL::to('/') . '/group/' . $user->uuid
+        ]);
+    })->name('group');
+
+    Route::post('/toggleaccepting', function () {
+        $user = auth()->user();
+        $user->accepting_users = !$user->accepting_users;
+        $user->save();
+        return back();
+    });
+
+    Route::post('/judgeuser/{user}', function (Request $request, User $user) {
+        abort_unless($user->leader_id == auth()->user()->id, 404);
+        if ($request->judgement == 'accept') {
+            $user->status = 'active';
+            $user->save();
+            return back()->with('message', 'Accepted ' . $user->email . '.');
+        } else {
+            $user->deleteAccount();
+            return back()->withErrors('Rejected ' . $user->email . '.');
+        }
+    });
+
+    Route::get('/deleteuser/{user}', function (Request $request, User $user) {
+        abort_unless($user->leader_id == auth()->user()->id, 404);
+        return view('deleteuser', [
+            'user' => $user
+        ]);
+    })->name('deleteuser');
+
+    Route::post('/deleteuser/{user}', function (Request $request, User $user) {
+        abort_unless($user->leader_id == auth()->user()->id, 404);
+        $user->deleteAccount();
+        return redirect('/group')->with('message', 'Deleted ' . $user->email . '.');
+    });
 
     Route::post('/deletepayment', function () {
         auth()->user()->subscription()->cancelNow();
@@ -104,16 +168,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
 
     Route::post('/deleteaccount', function () {
         $user = auth()->user();
-        if ($user->subscribed()) {
-            $user->subscription()->cancelNow();
-            $user->subscription()->delete();
-            foreach ($user->receipts as $receipt)
-                $receipt->delete();
-        }
-        foreach ($user->computers as $computer)
-            $computer->delete();
-        $user->customer()->delete();
-        $user->delete();
+        $user->deleteAccount();
         auth()->logout();
         return redirect('/login')->withErrors('Your account has been deleted.');
     });
