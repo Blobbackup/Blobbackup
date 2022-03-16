@@ -6,7 +6,7 @@
         <meta name="keywords" content="online backup, backup software, cloud backup, backup online, best backup software, online backup services, data backup, best online backup, offsite backup, online data backup"/>
         <meta name="description" content="Blobbackup is a private, open source and secure cloud computer backup service. Personal backup without compromising any privacy for $9 per month."/>
         <meta name="author" content="Blobbackup, LLC">
-        <title>    The 4 Digital Safety Commandments
+        <title>    Blobbackup 1.0.8 Released
  - Blobbackup</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
@@ -84,36 +84,59 @@
 }
 </style>
 <div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl md:text-4xl font-bold mt-4 md:mt-16 text-center">The 4 Digital Safety Commandments</h1>
-    <h2 class="text-lg md:text-xl text-gray-600 mt-2 text-center">February 6, 2022 by Bimba Shrestha</h2>
+    <h1 class="text-3xl md:text-4xl font-bold mt-4 md:mt-16 text-center">Blobbackup 1.0.8 Released</h1>
+    <h2 class="text-lg md:text-xl text-gray-600 mt-2 text-center">March 15, 2022 by Bimba Shrestha</h2>
     <div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
-        <p>Digital safety is not just a concern for businesses and governments. Anyone who cares about their data should take precautions to protect it. Thankfully, you don’t need to be a computer whiz to build some good digital habits.</p>
+        <p>We released version 1.0.8 of the Blobbackup desktop app (Mac and Windows). This update contains several bug fixes and user experience improvements. We highly recommend everyone upgrade to this.</p>
 
-<p>Keep these 4 commandments and you’ll ward off most digital threats.</p>
+<h1>Bug Fixes</h1>
 
-<h1>1. Thou Shall Use a Password Manager</h1>
+<ul>
+<li>Fix backup scheduler bug that prevented automatic backups from running after computer sleeps for more than 8 hours.</li>
+<li>Fix Windows task scheduler elevated permissions bug that prevented Blobbackup from starting automatically on startup.</li>
+<li>Fix bug that caused the UI to glitch for a second when backup is terminated by network loss.</li>
+<li>Fix Windows bug where command prompt appeared for a few seconds when running some operations.</li>
+</ul>
 
-<p>Do you use the same (or similar) password on all your online accounts? If you’re like most people, you probably do. If even one of those accounts is compromised, your entire life could be turned upside down.</p>
+<h1>Other Improvements</h1>
 
-<p>You should use a unique password for every account. Doing this yourself is hard because you can’t remember fifty passwords. But doing this with a password manager (eg: <a href="https://bitwarden.com">Bitwarden</a>, <a href="https://1password.com">1Password</a>, <a href="https://lastpass.com">LastPass</a>) is extremely easy. Don’t let that sketchy and insecure website you signed up for (you know the one) ruin you. Use a password manager.</p>
+<ul>
+<li>Move advanced options into their own tab under app settings.</li>
+<li>Start Blobbackup "silently" on startup without showing the control panel.</li>
+<li>More verbose logging.</li>
+</ul>
 
-<h1>2. Thou Shall Backup Your Computer</h1>
+<h1>Upgrade Methods</h1>
 
-<p>When was the last time you backed up all your important files? Last month? Last year? Never? Losing your data is not fun. Your precious photos, financial records or homework could disappear forever in an instant without a good backup.</p>
+<p>To upgrade to version 1.0.8, just download and install it on your computer (make sure to "Quit" the current app before installing). Your existing Blobbackup installation will automatically be overridden.</p>
 
-<p>Setting up a good backup system might seem time-consuming and intimidating. But thanks to tools (eg: <a href="/">Blobbackup</a>, <a href="https://backblaze.com">Backblaze</a>, <a href="https://crashplan.com">Crashplan</a>), it’s not. You could have your entire computer securely backing up to the cloud within 5 minutes. Do it before it’s too late.</p>
+<p><strong>Mac Upgrade</strong></p>
 
-<h1>3. Thou Shall Use 2 Factor Authentication</h1>
+<p>Step 0: Quit Blobbackup if it's currently running using the menu bar icon.</p>
 
-<p>Sometimes you can do everything right and still get screwed. You can use unique passwords everywhere and a hacker might still guess your credentials. 2 factor authentication is your last line of defense. It’s what stops a hacker even if they know your password.</p>
+<p><img src="/assets/images/mac-quit.png" class="m-10"></p>
 
-<p>If a website has ever sent a numeric code to your phone before granting access, you’ve seen 2 factor authentication in action before. Some websites (like online banking) may require 2 factor authentication, but most will ask you to opt in. Opt in whenever possible so that you have a digital last line of defense.</p>
+<p>Step 1: Download version 1.0.8 (<a href="https://app.blobbackup.com/bin/blobbackup-darwin-amd-1.0.8.dmg">Intel Mac</a>, <a href="https://app.blobbackup.com/bin/blobbackup-darwin-arm-1.0.8.dmg">M1 Mac</a>) and open it.</p>
 
-<h1>4. Thou Shall Keep Your Software Updated</h1>
+<p><img src="/assets/images/mac-installer.png" class="md:w-1/2"></p>
 
-<p>You’re hard at work on your computer or phone and a message pops up saying “a software update is available.” You’re busy so you click “cancel” instead of “install now” thinking you’ll get to it when you have some time. But you never get to it. Sound familiar?</p>
+<p>Step 3: Drag the Blobbackup app into the Applications folder.</p>
 
-<p>Software updates may not seem important but they are. They often fix security issues and bugs that hackers know they can take advantage of. You don’t have to click install immediately every time (sometimes you simply have better things to do), but don’t make procrastinating on software updates a habit.</p>
+<p><img src="/assets/images/mac-drag.png" class="md:w-1/2"></p>
+
+<p>Done! Now just open Blobbackup from your Applications folder.</p>
+
+<p><strong>Windows Upgrade</strong></p>
+
+<p>Step 0: Quit Blobbackup if it's currently running using the system tray icon.</p>
+
+<p>Step 1: Download version 1.0.8 (<a href="https://app.blobbackup.com/bin/blobbackup-win-1.0.8.exe">Windows</a>) and open it.</p>
+
+<p><img src="/assets/images/win-installer1.png" class="my-8"/></p>
+
+<p>Step 2: Follow the steps on the installer and launch Blobbackup at the end.</p>
+
+<p>Done!</p>
     </div>
 </div>
         </main>
