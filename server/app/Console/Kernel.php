@@ -28,13 +28,17 @@ class Kernel extends ConsoleKernel
                         $modifier->delete();
                     $subscription->newModifier($amount)->create();
                 } else if ($user->customer->trial_ends_at->diff(new \DateTime())->days == 3) {
-                    Util::sendEmail($user->email,
-                        "Your Blobbackup Trial Will Expire In 3 Days!",
-                        "Your Blobbackup trial will expire in 3 days. Please sign in and add a payment method if you'd like to continue using the service after the trial expires.");
+                    if (new \DateTime() < $user->customer->trial_ends_at) {
+                        Util::sendEmail($user->email,
+                            "Your Blobbackup Trial Will Expire In 3 Days!",
+                            "Your Blobbackup trial will expire in 3 days. Please sign in and add a payment method if you'd like to continue using the service after the trial expires. Note that 3 days after your trial expires, all your computer backups will be deleted.");
+                    } else {
+                        $user->deleteComputers();
+                    }
                 } else if ($user->customer->trial_ends_at->diff(new \DateTime())->days == 0) {
                     Util::sendEmail($user->email,
-                        "Your Blobbackup Trial Has Expired.",
-                        "Your Blobbackup trial has expired. Please sign in and add a payment method if you'd like to continue using the service.");
+                        "Your Data Will Be Deleted In 3 Days.",
+                        "Your Blobbackup trial has expired. Please sign in and add a payment method if you'd like to continue using the service. Note that 3 days from today, all your computer backups will be deleted.");
                 }
             }
         })->daily();

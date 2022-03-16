@@ -50,6 +50,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Computer::class);
     }
 
+    public function deleteComputers()
+    {
+        foreach ($this->computers as $computer)
+            $computer->delete();
+    }
+
     public function deleteAccount()
     {
         $group = User::where('leader_id', $this->id)->get();
@@ -61,8 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail
             foreach ($this->receipts as $receipt)
                 $receipt->delete();
         }
-        foreach ($this->computers as $computer)
-            $computer->delete();
+        $this->deleteComputers();
         $this->customer()->delete();
         $this->delete();
     }
