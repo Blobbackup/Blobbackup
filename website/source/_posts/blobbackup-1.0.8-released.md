@@ -36,7 +36,7 @@ Step 1: Download version 1.0.8 ([Intel Mac](https://app.blobbackup.com/bin/blobb
 
 <img src="/assets/images/mac-installer.png" class="md:w-1/2">
 
-Step 3: Drag the Blobbackup app into the Applications folder.
+Step 2: Drag the Blobbackup app into the Applications folder.
 
 <img src="/assets/images/mac-drag.png" class="md:w-1/2">
 
