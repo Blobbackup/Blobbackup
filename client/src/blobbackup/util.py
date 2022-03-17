@@ -6,6 +6,7 @@ import platform
 import pathlib
 import subprocess
 import shutil
+import tempfile
 
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Hash import SHA256
@@ -222,34 +223,69 @@ def load_keep_alive_script():
 
 
 def load_keep_alive_script_win():
-    subprocess.run(
+    add_windows_task(
+        "com.blobbackup.login",
         [
             "schtasks",
             "/create",
-            "/tn",
-            "com.blobbackup.login",
             "/tr",
             "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
             "/sc",
             "ONLOGON",
             "/f",
         ],
-        creationflags=CREATE_NO_WINDOW,
     )
-    subprocess.run(
+    add_windows_task(
+        "com.blobbackup",
         [
             "schtasks",
             "/create",
-            "/tn",
-            "com.blobbackup",
             "/tr",
             "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
             "/sc",
             "HOURLY",
             "/f",
         ],
+    )
+
+
+def add_windows_task(name, command):
+    subprocess.run(
+        command + ["/tn", name],
         creationflags=CREATE_NO_WINDOW,
     )
+    ret = subprocess.run(
+        [
+            "schtasks",
+            "/query",
+            "/xml",
+            "/tn",
+            name,
+        ],
+        creationflags=CREATE_NO_WINDOW,
+        stdout=subprocess.PIPE,
+    )
+    xml_content = ret.stdout.decode("utf-8")
+    xml_content = xml_content.replace(
+        "<DisallowStartIfOnBatteries>true</DisallowStartIfOnBatteries>",
+        "<DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>",
+    )
+    with tempfile.TemporaryDirectory() as root:
+        xml_file = os.path.join(root, "task.xml")
+        with open(xml_file, "w") as f:
+            f.write(xml_content)
+        ret = subprocess.run(
+            [
+                "schtasks",
+                "/create",
+                "/xml",
+                xml_file,
+                "/f",
+                "/tn",
+                name,
+            ],
+            creationflags=CREATE_NO_WINDOW,
+        )
 
 
 def load_keep_alive_script_mac():
