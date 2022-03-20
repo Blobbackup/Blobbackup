@@ -21,7 +21,7 @@ from blobbackup.util import (
     get_restic_env,
     get_restic_init_command,
     posix_path,
-    load_keep_alive_script,
+    load_scripts,
 )
 
 DEFAULT_MAC_INCLUSIONS = ",".join(["/"])
@@ -175,7 +175,7 @@ def initialize_client(email, password):
     save_last_backed_up("Creating your first backup. This window can be safely closed.")
     save_selected_files("0 files / 0 B")
     save_current_status("Idle")
-    load_keep_alive_script()
+    load_scripts()
 
 
 def create_computer_or_die(email, password):

@@ -60,7 +60,7 @@ class QLazyTreeWidget(QTreeWidget):
         parent_item.setFlags(
             parent_item.flags() | Qt.ItemFlag.ItemIsAutoTristate | Qt.ItemFlag.ItemIsUserCheckable
         )
-        for node in sorted(self.tree[parent_node], key=lambda n: n not in self.tree):
+        for node in sorted(self.tree[parent_node], key=lambda n: (n not in self.tree, n)):
             item = QTreeWidgetItem([os.path.basename(node)])
             item.setWhatsThis(0, node)
             item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)

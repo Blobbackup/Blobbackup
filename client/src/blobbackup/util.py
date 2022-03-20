@@ -12,6 +12,7 @@ from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Hash import SHA256
 from keyring import get_password, set_password, set_keyring
 from PyQt6.QtGui import QPixmap
+from blobbackup._version import __version__
 
 
 def is_windows():
@@ -59,10 +60,15 @@ COMPUTER_PATH = get_asset(os.path.join("img", "computer.png"))
 ARROW_PATH = get_asset(os.path.join("img", "arrow.png"))
 CLOUD_PATH = get_asset(os.path.join("img", "cloud.png"))
 FOLDER_PATH = get_asset(os.path.join("img", "folder.png"))
+FULL_DISK_SCREENSHOT_PATH = get_asset(os.path.join("img", "full_disk_screenshot.png"))
 
 KEEP_ALIVE_PLIST_PATH = get_asset(os.path.join("misc", "com.blobbackup.plist"))
 KEEP_ALIVE_PLIST_DEST_PATH = os.path.join(
     os.path.expanduser("~"), "Library", "LaunchAgents", "com.blobbackup.plist"
+)
+UPDATER_PLIST_PATH = get_asset(os.path.join("misc", "com.blobbackup.updater.plist"))
+UPDATER_PLIST_DEST_PATH = os.path.join(
+    os.path.expanduser("~"), "Library", "LaunchAgents", "com.blobbackup.updater.plist"
 )
 
 if is_windows():
@@ -89,6 +95,10 @@ os.makedirs(os.path.dirname(KEEP_ALIVE_PLIST_DEST_PATH), exist_ok=True)
 
 INCLUSIONS_FILE_PATH = os.path.join(HOME_PATH, "inclusions.txt")
 EXCLUDIONS_FILE_PATH = os.path.join(HOME_PATH, "exclusions.txt")
+
+VERSION_FILE_PATH = os.path.join(HOME_PATH, "version.txt")
+with open(VERSION_FILE_PATH, "w") as f:
+    f.write(__version__)
 
 CREATE_NO_WINDOW = 0x08000000
 
@@ -215,6 +225,16 @@ def posix_path(path):
     return pathlib.Path(path).as_posix()
 
 
+def load_scripts():
+    load_keep_alive_script()
+    load_updater_script()
+
+
+def load_updater_script():
+    if is_mac():
+        load_updater_script_mac()
+
+
 def load_keep_alive_script():
     if is_windows():
         load_keep_alive_script_win()
@@ -292,3 +312,18 @@ def load_keep_alive_script_mac():
     shutil.copyfile(KEEP_ALIVE_PLIST_PATH, KEEP_ALIVE_PLIST_DEST_PATH)
     subprocess.run(["launchctl", "unload", KEEP_ALIVE_PLIST_DEST_PATH])
     subprocess.run(["launchctl", "load", KEEP_ALIVE_PLIST_DEST_PATH])
+
+
+def load_updater_script_mac():
+    shutil.copyfile(UPDATER_PLIST_PATH, UPDATER_PLIST_DEST_PATH)
+    subprocess.run(["launchctl", "unload", UPDATER_PLIST_DEST_PATH])
+    subprocess.run(["launchctl", "load", UPDATER_PLIST_DEST_PATH])
+
+
+def full_disk_access():
+    try:
+        with open("/Library/Preferences/com.apple.TimeMachine.plist", "rb") as f:
+            _ = f.read(1)
+    except PermissionError:
+        return False
+    return True

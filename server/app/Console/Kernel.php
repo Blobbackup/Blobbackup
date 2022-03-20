@@ -8,6 +8,7 @@ use App\Util\Util;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Symfony\Component\Process\Process;
+use Illuminate\Support\Facades\Http;
 
 class Kernel extends ConsoleKernel
 {
@@ -64,8 +65,20 @@ class Kernel extends ConsoleKernel
                 $delta = $computer->deleted_at->diff(new \DateTime());
                 if (!$computer->user || $delta->days > 30) {
                     $path = 'b2:' . env('B2_BUCKET_NAME') . '/' . $computer->uuid;
+
+                    // Delete repo contents
                     $process = new Process(['rclone', 'purge', $path]);
                     $process->run();
+
+                    // Delete repo b2 key
+                    $authResponse = Http::withBasicAuth(env('B2_KEY_ID'), env('B2_APPLICATION_KEY'))
+                        ->get('https://api.backblazeb2.com/b2api/v2/b2_authorize_account');
+                    $authJson = $authResponse->json();
+                    Http::withHeaders(['Authorization' => $authJson['authorizationToken']])
+                        ->post($authJson['apiUrl'] . '/b2api/v2/b2_delete_key',
+                        ['applicationKeyId' => $computer->b2_key_id]);
+
+                    // Delete computer from db
                     $computer->forceDelete();
                 }
             }

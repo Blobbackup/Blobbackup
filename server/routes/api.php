@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Validator;
 */
 
 Route::get('/client/version', function () {
-    return Util::$clientVersion;
+    return "1.0.9";
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
