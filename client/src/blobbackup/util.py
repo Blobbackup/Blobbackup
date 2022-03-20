@@ -59,7 +59,7 @@ COMPUTER_PATH = get_asset(os.path.join("img", "computer.png"))
 ARROW_PATH = get_asset(os.path.join("img", "arrow.png"))
 CLOUD_PATH = get_asset(os.path.join("img", "cloud.png"))
 FOLDER_PATH = get_asset(os.path.join("img", "folder.png"))
-SCREENSHOT_PATH = get_asset(os.path.join("img", "screenshot.png"))
+FULL_DISK_SCREENSHOT_PATH = get_asset(os.path.join("img", "full_disk_screenshot.png"))
 
 KEEP_ALIVE_PLIST_PATH = get_asset(os.path.join("misc", "com.blobbackup.plist"))
 KEEP_ALIVE_PLIST_DEST_PATH = os.path.join(

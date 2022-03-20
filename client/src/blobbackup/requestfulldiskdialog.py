@@ -5,7 +5,7 @@ from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.requestfulldiskdialog import Ui_RequestFullDiskDialog
 
-from blobbackup.util import BASE_URL, LOGO_PATH, SCREENSHOT_PATH, get_pixmap
+from blobbackup.util import BASE_URL, LOGO_PATH, FULL_DISK_SCREENSHOT_PATH, get_pixmap
 from blobbackup.logger import get_logger
 
 GUIDE_URL = f"{BASE_URL}/support/how-to-grant-full-disk-access-on-mac"
@@ -21,7 +21,7 @@ class RequestFullDiskDialog(QDialog, Ui_RequestFullDiskDialog):
 
         self.setWindowIcon(QIcon(LOGO_PATH))
 
-        self.screenshot_label.setPixmap(get_pixmap(SCREENSHOT_PATH, 450, 403))
+        self.screenshot_label.setPixmap(get_pixmap(FULL_DISK_SCREENSHOT_PATH, 450, 403))
         self.guide_label.linkActivated.connect(lambda: webbrowser.open(GUIDE_URL))
         self.open_button.pressed.connect(self.open_system_preferences)
 
