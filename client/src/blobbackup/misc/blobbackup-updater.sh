@@ -35,4 +35,7 @@ if [[ $LATEST_VERSION > $CURRENT_VERSION ]]; then
         cp -R /Volumes/Blobbackup/Blobbackup.app /Applications/Blobbackup.app
     fi
     hdiutil detach /Volumes/Blobbackup
+
+    echo "Open new Blobbackup"
+    /usr/bin/open --background /Applications/Blobbackup.app --args --open-minimized
 fi
