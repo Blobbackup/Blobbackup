@@ -11,7 +11,7 @@ from blobbackup.systemtrayicon import SystemTrayIcon
 from blobbackup.config import config
 from blobbackup.heartbeat import is_alive
 from blobbackup.logger import get_logger
-from blobbackup.util import is_mac, load_keep_alive_script, full_disk_access
+from blobbackup.util import is_mac, load_scripts, full_disk_access
 
 
 def main():
@@ -50,7 +50,7 @@ def main():
                 sys.exit()
 
         main_window = MainWindow(first_time)
-        load_keep_alive_script()
+        load_scripts()
         if not args.open_minimized:
             main_window.show()
 

@@ -221,6 +221,10 @@ def posix_path(path):
     return pathlib.Path(path).as_posix()
 
 
+def load_scripts():
+    load_keep_alive_script()
+
+
 def load_keep_alive_script():
     if is_windows():
         load_keep_alive_script_win()
