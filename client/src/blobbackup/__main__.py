@@ -3,6 +3,7 @@ import sys
 import argparse
 
 from blobbackup.application import Application
+from blobbackup.requestfulldiskdialog import RequestFullDiskDialog
 from blobbackup.logindialog import LoginDialog
 from blobbackup.welcomedialog import WelcomeDialog
 from blobbackup.mainwindow import MainWindow
@@ -10,7 +11,7 @@ from blobbackup.systemtrayicon import SystemTrayIcon
 from blobbackup.config import config
 from blobbackup.heartbeat import is_alive
 from blobbackup.logger import get_logger
-from blobbackup.util import load_keep_alive_script
+from blobbackup.util import is_mac, load_keep_alive_script, full_disk_access
 
 
 def main():
@@ -32,6 +33,12 @@ def main():
         first_time = False
         if not client_initialized():
             first_time = True
+
+            if is_mac() and not full_disk_access():
+                request_dialog = RequestFullDiskDialog()
+                request_dialog.exec()
+                sys.exit()
+
             login_dialog = LoginDialog()
             login_successful = login_dialog.exec()
             if not login_successful:
