@@ -21,10 +21,10 @@ if [[ $LATEST_VERSION > $CURRENT_VERSION ]]; then
 
     if [[ $(uname -m) == 'arm64' ]]; then
         echo "Downloading arm app"
-        curl https://app.blobbackup.com/bin/blobbackup-darwin-arm-{$CURRENT_VERSION}.dmg -o /tmp/Blobbackup.dmg
+        curl https://app.blobbackup.com/bin/blobbackup-darwin-arm-{$LATEST_VERSION}.dmg -o /tmp/Blobbackup.dmg
     else
         echo "Downloading amd app"
-        curl https://app.blobbackup.com/bin/blobbackup-darwin-amd-{$CURRENT_VERSION}.dmg -o /tmp/Blobbackup.dmg
+        curl https://app.blobbackup.com/bin/blobbackup-darwin-amd-{$LATEST_VERSION}.dmg -o /tmp/Blobbackup.dmg
     fi
 
     echo "Replacing existing app with downloaded one"
