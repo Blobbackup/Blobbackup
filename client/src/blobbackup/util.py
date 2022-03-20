@@ -66,6 +66,10 @@ KEEP_ALIVE_PLIST_PATH = get_asset(os.path.join("misc", "com.blobbackup.plist"))
 KEEP_ALIVE_PLIST_DEST_PATH = os.path.join(
     os.path.expanduser("~"), "Library", "LaunchAgents", "com.blobbackup.plist"
 )
+UPDATER_PLIST_PATH = get_asset(os.path.join("misc", "com.blobbackup.updater.plist"))
+UPDATER_PLIST_DEST_PATH = os.path.join(
+    os.path.expanduser("~"), "Library", "LaunchAgents", "com.blobbackup.updater.plist"
+)
 
 if is_windows():
     RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup-win.exe"))
@@ -223,6 +227,12 @@ def posix_path(path):
 
 def load_scripts():
     load_keep_alive_script()
+    load_updater_script()
+
+
+def load_updater_script():
+    if is_mac():
+        load_updater_script_mac()
 
 
 def load_keep_alive_script():
@@ -302,6 +312,12 @@ def load_keep_alive_script_mac():
     shutil.copyfile(KEEP_ALIVE_PLIST_PATH, KEEP_ALIVE_PLIST_DEST_PATH)
     subprocess.run(["launchctl", "unload", KEEP_ALIVE_PLIST_DEST_PATH])
     subprocess.run(["launchctl", "load", KEEP_ALIVE_PLIST_DEST_PATH])
+
+
+def load_updater_script_mac():
+    shutil.copyfile(UPDATER_PLIST_PATH, UPDATER_PLIST_DEST_PATH)
+    subprocess.run(["launchctl", "unload", UPDATER_PLIST_DEST_PATH])
+    subprocess.run(["launchctl", "load", UPDATER_PLIST_DEST_PATH])
 
 
 def full_disk_access():
