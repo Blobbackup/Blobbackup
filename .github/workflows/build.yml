@@ -10,7 +10,7 @@ jobs:
     strategy:
       max-parallel: 16
       matrix:
-        os: [windows-2016, macos-10.15]
+        os: [windows-2019, macos-10.15]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
@@ -25,7 +25,7 @@ jobs:
         pip install .
     - name: Install windows dependencies
       working-directory: ./client
-      if: matrix.os == 'windows-2016'
+      if: matrix.os == 'windows-2019'
       run: |
         pip install pywin32
     - name: Install osx dependencies
@@ -35,7 +35,7 @@ jobs:
         brew install create-dmg
     - name: Build executable (windows)
       working-directory: ./client
-      if: matrix.os == 'windows-2016'
+      if: matrix.os == 'windows-2019'
       shell: powershell
       run: |
         ./src/blobbackup/scripts/buildwin.ps1
@@ -63,7 +63,7 @@ jobs:
         python ../package/fix_qt_for_codesign.py Blobbackup.app
         sh ../package/macos-package-app.sh
     - uses: actions/upload-artifact@v2
-      if: matrix.os == 'windows-2016'
+      if: matrix.os == 'windows-2019'
       with:
         name: blobbackup-win
         path: client/dist
