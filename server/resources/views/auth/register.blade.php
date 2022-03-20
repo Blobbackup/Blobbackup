@@ -14,17 +14,17 @@
             </a>
             <h2 class="text-gray-600 mt-2">
                 @if(isset($leader))
-                    Group owner '{{ $leader->email }}' invited you to their group.
+                    <strong>{{ $leader->email }}</strong> has invited you to join their group and will pay for your account's computer backups.
                 @else
                     Free 30 day trial. No card required.
                 @endif
             </h2>
             @if(isset($leader))
-                <div class="bg-blue-100 border-blue-500 text-blue-600 text-sm border-1 text-center mt-2 mb-4 py-2 rounded">
+                <div class="bg-blue-100 border-blue-500 text-blue-600 text-xs border-1 text-center mt-2 mb-4 p-2 rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 inline-block mr-1 -mt-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
                     </svg>
-                    The group owner cannot access your data.
+                    <strong>{{ $leader->email }}</strong> can't access your data
                 </div>
             @endif
         </div>
@@ -48,7 +48,7 @@
                 @endif
                 <button @if(auth()->check()) disabled @endif type="submit" class="bg-gray-200 rounded-full w-full py-2 font-bold mt-4">
                     @if(isset($leader))
-                        Start Backing Up
+                        Create Account
                     @else
                         Start Trial
                     @endif
