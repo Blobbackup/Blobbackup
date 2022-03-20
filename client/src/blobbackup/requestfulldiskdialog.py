@@ -29,6 +29,6 @@ class RequestFullDiskDialog(QDialog, Ui_RequestFullDiskDialog):
 
     def open_system_preferences(self):
         webbrowser.open(
-            "x-apple.systempreferences:com.apple.preference.security?Privacy"
+            "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles"
         )
         self.reject()
