@@ -101,9 +101,20 @@
             <div class="text-gray-600 mt-4">
                 Send the link below to invite new users into your group.
             </div>
-            <div class="bg-gray-100 p-4 text-gray-600 mt-2">
-                <a href="{{ $groupUrl }}" target="_blank" class="underline text-blue-500">{{ $groupUrl }}</a>
+            <div class="bg-gray-100 p-4 text-gray-600 mt-2 flex">
+                <a href="{{ $groupUrl }}" target="_blank" class="underline text-blue-500 flex-1" id="copy_link">{{ $groupUrl }}</a>
+                <button class="inline-block flex-initial text-sm" id="copy_button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -mt-1 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                    </svg>
+                    Copy
+                </button>
             </div>
         </div>
     @endif
+    <script>
+        document.getElementById("copy_button").onclick = () => {
+            navigator.clipboard.writeText(document.getElementById("copy_link").getAttribute("href"));
+        }
+    </script>
 </x-app-layout>
