@@ -59,6 +59,7 @@ COMPUTER_PATH = get_asset(os.path.join("img", "computer.png"))
 ARROW_PATH = get_asset(os.path.join("img", "arrow.png"))
 CLOUD_PATH = get_asset(os.path.join("img", "cloud.png"))
 FOLDER_PATH = get_asset(os.path.join("img", "folder.png"))
+FULL_DISK_SCREENSHOT_PATH = get_asset(os.path.join("img", "full_disk_screenshot.png"))
 
 KEEP_ALIVE_PLIST_PATH = get_asset(os.path.join("misc", "com.blobbackup.plist"))
 KEEP_ALIVE_PLIST_DEST_PATH = os.path.join(
@@ -292,3 +293,12 @@ def load_keep_alive_script_mac():
     shutil.copyfile(KEEP_ALIVE_PLIST_PATH, KEEP_ALIVE_PLIST_DEST_PATH)
     subprocess.run(["launchctl", "unload", KEEP_ALIVE_PLIST_DEST_PATH])
     subprocess.run(["launchctl", "load", KEEP_ALIVE_PLIST_DEST_PATH])
+
+
+def full_disk_access():
+    try:
+        with open("/Library/Preferences/com.apple.TimeMachine.plist", "rb") as f:
+            _ = f.read(1)
+    except PermissionError:
+        return False
+    return True
