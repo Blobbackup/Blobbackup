@@ -267,6 +267,20 @@ def load_keep_alive_script_win():
             "/f",
         ],
     )
+    add_windows_task(
+        "com.blobbackup.updater",
+        [
+            "schtasks",
+            "/create",
+            "/tr",
+            "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -WindowStyle Hidden -File 'C:/Program Files (x86)/blobbackup/misc/blobbackup-updater.ps1'",
+            "/sc",
+            "HOURLY",
+            "/rl",
+            "HIGHEST",
+            "/f",
+        ],
+    )
 
 
 def add_windows_task(name, command):
