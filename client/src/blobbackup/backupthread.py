@@ -23,6 +23,7 @@ from blobbackup.util import (
 )
 from blobbackup.config import load_config, config
 from blobbackup.status import (
+    get_selected_files,
     save_last_backed_up,
     save_selected_files,
     save_current_status,
@@ -73,6 +74,7 @@ class BackupThread(QThread):
             time.sleep(SLEEP_SECONDS)
 
     def stop_backup(self):
+        self.update_status(selected_for_backup=self.initial_selected_files)
         self.process.terminate()
         self.backup_terminated = True
 
@@ -125,6 +127,7 @@ class BackupThread(QThread):
     def pre_backup(self):
         self.process = None
         self.backup_terminated = False
+        self.initial_selected_files = get_selected_files()
 
         self.update_status(current_status="Preparing for backup")
         self.write_inclusion_exclusion_files()
