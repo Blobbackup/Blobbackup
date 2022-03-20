@@ -199,18 +199,18 @@ class BackupThread(QThread):
             save_last_backed_up(f"You are backed up as of {last_backed_up}")
 
     def update_last_backed_up_online(self, files_done, bytes_done):
-        email = config["meta"]["email"]
-        password = get_password_from_keyring()
-        computer_id = config["meta"]["computer_id"]
-        update_computer(
-            email,
-            password,
-            computer_id,
+        self.update_computer_helper(
             {
                 "last_backed_up_num_files": files_done,
                 "last_backed_up_size": bytes_done,
                 "last_backed_up_at": time.time(),
                 "client_version": __version__,
-            },
+            }
         )
         self.logger.info("Updated online computer record.")
+
+    def update_computer_helper(self, fields):
+        email = config["meta"]["email"]
+        password = get_password_from_keyring()
+        computer_id = config["meta"]["computer_id"]
+        update_computer(email, password, computer_id, fields)
