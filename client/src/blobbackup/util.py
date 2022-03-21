@@ -7,6 +7,7 @@ import pathlib
 import subprocess
 import shutil
 import tempfile
+import stat
 
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Hash import SHA256
@@ -25,6 +26,11 @@ def is_mac():
 
 def is_arm():
     return "arm64" in platform.platform()
+
+
+def make_executable(path):
+    st = os.stat(path)
+    os.chmod(path, st.st_mode | stat.S_IEXEC)
 
 
 if is_windows():
@@ -99,6 +105,8 @@ EXCLUDIONS_FILE_PATH = os.path.join(HOME_PATH, "exclusions.txt")
 MAC_UPDATER_PATH = get_asset(os.path.join("misc", "blobbackup-updater.sh"))
 MAC_UPDATER_DEST_PATH = os.path.join(HOME_PATH, "blobbackup-updater.sh")
 shutil.copyfile(MAC_UPDATER_PATH, MAC_UPDATER_DEST_PATH)
+if is_mac():
+    make_executable(MAC_UPDATER_DEST_PATH)
 
 WIN_UPDATER_PATH = get_asset(os.path.join("misc", "blobbackup-updater.ps1"))
 WIN_UPDATER_DEST_PATH = os.path.join(HOME_PATH, "blobbackup-updater.ps1")
