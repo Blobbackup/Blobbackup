@@ -6,9 +6,11 @@
 		<string>com.blobbackup.updater</string>
 
 		<key>ProgramArguments</key>
-        <array>
-            <string>/Applications/Blobbackup.app/Contents/MacOS/misc/blobbackup-updater.sh</string>
-        </array>
+		<array>
+			<string>/bin/bash</string>
+			<string>-c</string>
+			<string>~/.bb/blobbackup-updater.sh</string>
+		</array>
 
 		<key>KeepAlive</key>
 		<true/>

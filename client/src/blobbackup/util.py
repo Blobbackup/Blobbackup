@@ -96,6 +96,14 @@ os.makedirs(os.path.dirname(KEEP_ALIVE_PLIST_DEST_PATH), exist_ok=True)
 INCLUSIONS_FILE_PATH = os.path.join(HOME_PATH, "inclusions.txt")
 EXCLUDIONS_FILE_PATH = os.path.join(HOME_PATH, "exclusions.txt")
 
+MAC_UPDATER_PATH = get_asset(os.path.join("misc", "blobbackup-updater.sh"))
+MAC_UPDATER_DEST_PATH = os.path.join(HOME_PATH, "blobbackup-updater.sh")
+shutil.copyfile(MAC_UPDATER_PATH, MAC_UPDATER_DEST_PATH)
+
+WIN_UPDATER_PATH = get_asset(os.path.join("misc", "blobbackup-updater.ps1"))
+WIN_UPDATER_DEST_PATH = os.path.join(HOME_PATH, "blobbackup-updater.ps1")
+shutil.copyfile(WIN_UPDATER_PATH, WIN_UPDATER_DEST_PATH)
+
 VERSION_FILE_PATH = os.path.join(HOME_PATH, "version.txt")
 with open(VERSION_FILE_PATH, "w") as f:
     f.write(__version__)
@@ -273,7 +281,7 @@ def load_keep_alive_script_win():
             "schtasks",
             "/create",
             "/tr",
-            "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -WindowStyle Hidden -File 'C:/Program Files (x86)/blobbackup/misc/blobbackup-updater.ps1'",
+            f"C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -WindowStyle Hidden -File '{WIN_UPDATER_DEST_PATH}'",
             "/sc",
             "HOURLY",
             "/rl",
