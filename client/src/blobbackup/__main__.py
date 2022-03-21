@@ -30,14 +30,14 @@ def main():
         init_application_properties()
         application = Application()
 
+        if is_mac() and not full_disk_access():
+            request_dialog = RequestFullDiskDialog()
+            request_dialog.exec()
+            sys.exit()
+
         first_time = False
         if not client_initialized():
             first_time = True
-
-            if is_mac() and not full_disk_access():
-                request_dialog = RequestFullDiskDialog()
-                request_dialog.exec()
-                sys.exit()
 
             login_dialog = LoginDialog()
             login_successful = login_dialog.exec()
