@@ -17,7 +17,7 @@ if ($LATEST_VERSION -gt $CURRENT_VERSION) {
     echo "Replacing existing app with new one"
     Expand-Archive -Force -Path $HOME/.bb/Blobbackup.zip -DestinationPath $HOME/.bb/blobbackup
     $SIGNED = Get-AuthenticodeSignature $HOME/.bb/blobbackup/blobbackup/blobbackup-win32.exe
-    if ($SIGNED.Status -eq "Valid") {
+    if ($SIGNED.Status -eq "Valid" -and $SIGNED.SignerCertificate.Thumbprint -eq "328D3EBA4091EAB78125FF715D2C3123EC8A8F71") {
         echo "Codesign verified. Replacing old app"
         rm -r -fo "C:/Program Files (x86)/blobbackup"
         Expand-Archive -Force -Path $HOME/.bb/Blobbackup.zip -DestinationPath "C:/Program Files (x86)"
