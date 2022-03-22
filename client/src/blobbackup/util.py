@@ -108,8 +108,8 @@ shutil.copyfile(MAC_UPDATER_PATH, MAC_UPDATER_DEST_PATH)
 if is_mac():
     make_executable(MAC_UPDATER_DEST_PATH)
 
-WIN_UPDATER_PATH = get_asset(os.path.join("misc", "blobbackup-updater.ps1"))
-WIN_UPDATER_DEST_PATH = os.path.join(HOME_PATH, "blobbackup-updater.ps1")
+WIN_UPDATER_PATH = get_asset(os.path.join("misc", "blobbackup-updater.exe"))
+WIN_UPDATER_DEST_PATH = os.path.join(HOME_PATH, "blobbackup-updater.exe")
 shutil.copyfile(WIN_UPDATER_PATH, WIN_UPDATER_DEST_PATH)
 
 VERSION_FILE_PATH = os.path.join(HOME_PATH, "version.txt")
@@ -289,7 +289,7 @@ def load_keep_alive_script_win():
             "schtasks",
             "/create",
             "/tr",
-            f"C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -WindowStyle Hidden -File '{WIN_UPDATER_DEST_PATH}'",
+            WIN_UPDATER_DEST_PATH,
             "/sc",
             "HOURLY",
             "/rl",
