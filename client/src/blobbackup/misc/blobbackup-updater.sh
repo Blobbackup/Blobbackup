@@ -29,7 +29,7 @@ if [[ $LATEST_VERSION > $CURRENT_VERSION ]]; then
 
     echo "Replacing existing app with downloaded one"
     hdiutil attach -nobrowse -mountpoint /Volumes/Blobbackup /tmp/Blobbackup.dmg
-    if codesign --verify /Volumes/Blobbackup/Blobbackup.app; then
+    if codesign --verify /Volumes/Blobbackup/Blobbackup.app && codesign -dr - /Volumes/Blobbackup/Blobbackup.app |& tail -c 11 |& grep HM9GV95TW9; then
         echo "Codesign verified. Replacing old app"
         rm -rf /Applications/Blobbackup.app
         cp -R /Volumes/Blobbackup/Blobbackup.app /Applications/Blobbackup.app
