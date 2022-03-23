@@ -1,3 +1,5 @@
+$global:ProgressPreference = "SilentlyContinue"
+
 $LATEST_VERSION = Invoke-RestMethod https://app.blobbackup.com/api/client/version
 echo "Latest version: $LATEST_VERSION"
 
