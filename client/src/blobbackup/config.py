@@ -2,7 +2,7 @@ import os
 
 from configparser import ConfigParser
 
-from blobbackup.util import HOME_PATH, save_generic, get_generic
+from blobbackup.util import HOME_PATH, BASE_APP_URL, save_generic, get_generic
 
 CONFIG_PATH = os.path.join(HOME_PATH, "config.ini")
 SERVER_PATH = os.path.join(HOME_PATH, "server.txt")
@@ -59,4 +59,6 @@ def save_server(server):
 
 
 def get_server():
-    get_generic(SERVER_PATH)
+    if not os.path.exists(SERVER_PATH):
+        return BASE_APP_URL
+    return get_generic(SERVER_PATH)
