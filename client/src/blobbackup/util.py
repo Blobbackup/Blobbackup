@@ -247,7 +247,9 @@ def load_scripts():
 
 
 def load_updater_script():
-    if is_mac():
+    if is_windows():
+        load_updater_script_win()
+    elif is_mac():
         load_updater_script_mac()
 
 
@@ -283,6 +285,9 @@ def load_keep_alive_script_win():
             "/f",
         ],
     )
+
+
+def load_updater_script_win():
     add_windows_task(
         "com.blobbackup.updater",
         [
