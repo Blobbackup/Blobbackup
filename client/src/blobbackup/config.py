@@ -2,9 +2,10 @@ import os
 
 from configparser import ConfigParser
 
-from blobbackup.util import HOME_PATH, BASE_APP_URL
+from blobbackup.util import HOME_PATH, save_generic, get_generic
 
 CONFIG_PATH = os.path.join(HOME_PATH, "config.ini")
+SERVER_PATH = os.path.join(HOME_PATH, "server.txt")
 
 config = ConfigParser()
 
@@ -20,9 +21,6 @@ def save_config():
 
 def add_new_variables():
     updated = False
-    if "server" not in config["meta"]:
-        config["meta"]["server"] = BASE_APP_URL
-        updated = True
     if "max_upload_kibs" not in config["general"]:
         config["general"]["max_upload_kibs"] = "0"
         updated = True
@@ -38,7 +36,6 @@ if not os.path.exists(CONFIG_PATH):
     config["meta"]["initialized"] = "no"
     config["meta"]["email"] = ""
     config["meta"]["computer_id"] = ""
-    config["meta"]["server"] = BASE_APP_URL
 
     config["general"] = {}
     config["general"]["computer_name"] = ""
@@ -55,3 +52,11 @@ if not os.path.exists(CONFIG_PATH):
 else:
     load_config()
     add_new_variables()
+
+
+def save_server(server):
+    save_generic(SERVER_PATH, server)
+
+
+def get_server():
+    get_generic(SERVER_PATH)

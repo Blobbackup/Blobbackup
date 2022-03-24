@@ -8,7 +8,7 @@ from blobbackup.logindialog import LoginDialog
 from blobbackup.welcomedialog import WelcomeDialog
 from blobbackup.mainwindow import MainWindow
 from blobbackup.systemtrayicon import SystemTrayIcon
-from blobbackup.config import config, save_config
+from blobbackup.config import config, save_server
 from blobbackup.heartbeat import is_alive
 from blobbackup.logger import get_logger
 from blobbackup.util import is_mac, load_scripts, full_disk_access
@@ -31,7 +31,7 @@ def main():
     args = parser.parse_args()
 
     if args.server:
-        update_server(args.server)
+        save_server(args.server)
         print(f"Set server to {args.server}. Restart app normally.")
         sys.exit()
 
@@ -78,11 +78,6 @@ def client_initialized():
 
 def init_application_properties():
     os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
-
-
-def update_server(server):
-    config["meta"]["server"] = server
-    save_config()
 
 
 if __name__ == "__main__":

@@ -8,9 +8,9 @@ from blobbackup.ui.logindialog import Ui_LoginDialog
 from blobbackup.util import LOGO_PATH, get_pixmap
 from blobbackup.loginthread import LoginThread
 from blobbackup.logger import get_logger
-from blobbackup.config import config
+from blobbackup.config import get_server
 
-REGISTER_URL = config["meta"]["server"] + "/register"
+REGISTER_URL = get_server() + "/register"
 
 
 class LoginDialog(QDialog, Ui_LoginDialog):

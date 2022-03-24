@@ -357,3 +357,13 @@ def full_disk_access():
     except PermissionError:
         return False
     return True
+
+
+def save_generic(path, data):
+    with open(path, "w") as f:
+        f.write(data)
+
+
+def get_generic(path):
+    with open(path, "r") as f:
+        return f.read()

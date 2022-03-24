@@ -2,9 +2,9 @@ import requests
 
 from blobbackup.util import hash_password
 from blobbackup.logger import get_logger
-from blobbackup.config import config
+from blobbackup.config import get_server
 
-BASE_API_URL = config["meta"]["server"] + "/api"
+BASE_API_URL = get_server() + "/api"
 
 
 def login(email, password):
