@@ -104,5 +104,5 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         self.setWindowTitle("Restore Files - Blobbackup")
         self.setEnabled(True)
         QMessageBox.information(
-            self, "Restore Failed", f"Blobbackup was unable to restore your files."
+            self, "Restore Failed", "Blobbackup was unable to restore your files."
         )
