@@ -68,7 +68,9 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         return view('restore');
     })->name('restore');
 
-    Route::get('/payment', function () {
+    Route::get('/payment', function (Request $request) {
+        if (isset($request->checkout))
+            sleep(5);
         $user = auth()->user();
         $payLink = $user->subscribed() ? 
             $user->subscription()->updateUrl() :
