@@ -174,10 +174,6 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         auth()->logout();
         return redirect('/login')->withErrors('Your account has been deleted.');
     });
-
-    Route::get('/help', function () {
-        return view('help');
-    })->name('help');
 });
 
 
