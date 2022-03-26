@@ -177,8 +177,8 @@
                 Can I restore my employee's computer backups?
             </h1>
             <p class="text-lg text-gray-600 mt-2">
-                Not unless you know the employee's account password. You need the employee's account password to restore data from their backups. You can
-                remove an employee's backups or their access to Blobbackup at any time though.
+                No. You need the employee's account password to restore data from their backups. You can
+                remove an employee's backups or their access at any time though.
             </p>
         </div>
         <div>
