@@ -27,18 +27,6 @@
     <div>
         <div class="text-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 inline-block text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd" />
-            </svg>
-        </div>
-        <h1 class="text-2xl md:text-3xl font-bold mt-2">Simple Monitoring</h1>
-        <p class="text-lg text-gray-600 mt-2">
-            Get notified via email when an employee computer hasn't been backed 
-            up for over 2 weeks.
-        </p>
-    </div>
-    <div>
-        <div class="text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 inline-block text-blue-500" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
             </svg>
         </div>
@@ -46,6 +34,18 @@
         <p class="text-lg text-gray-600 mt-2">
             Pay for and manage your employee computer backups from our
             simple web admin panel.
+        </p>
+    </div>
+    <div>
+        <div class="text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 inline-block text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-bold mt-2">Simple Monitoring</h1>
+        <p class="text-lg text-gray-600 mt-2">
+            Get notified via email when an employee computer hasn't been backed 
+            up for over 2 weeks.
         </p>
     </div>
     <div>
@@ -68,8 +68,8 @@
         </div>
         <h1 class="text-2xl md:text-3xl font-bold mt-2">Private by Design</h1>
         <p class="text-lg text-gray-600 mt-2">
-            Everything is encrypted with your password and we never store
-            or transmit your password.
+            Everything is encrypted with a master password and we never store
+            or transmit master passwords.
         </p>
     </div>
     <div>
@@ -117,8 +117,8 @@
         </div>
         <h1 class="text-2xl md:text-3xl font-bold mt-2">Smart and Automatic</h1>
         <p class="text-lg text-gray-600 mt-2">
-            Backups happen seamlessly in the background without hogging your 
-            computer's resources.
+            Backups happen seamlessly in the background without hogging 
+            computer resources.
         </p>
     </div>
     <div>

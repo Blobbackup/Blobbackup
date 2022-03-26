@@ -129,7 +129,7 @@
         </div>
         <h1 class="text-2xl md:text-3xl font-bold mt-2">Full Backups</h1>
         <p class="text-lg text-gray-600 mt-2">
-            Protect all your files including documents, photos, music, movies
+            Protect all your computer data including documents, photos, music, movies
             and more.
         </p>
     </div>
