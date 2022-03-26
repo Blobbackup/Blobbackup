@@ -56,14 +56,6 @@
 <section class="mt-8 max-w-2xl mx-auto md:mt-16 text-center grid gap-8">
     <div>
         <h1 class="text-xl md:text-2xl font-bold mt-2">
-            Do you have a Business or Enterprise plan?
-        </h1>
-        <p class="text-lg text-gray-600 mt-2">
-            We're working on Blobbackup for Business right now. The first version will have centralized billing/monitoring and mass silent install. If you'd like to suggest features or just stay in the loop, you can fill out <a href="https://forms.gle/euPCbhZaf1CMN8LbA" class="text-blue-500 underline" target="_blank">this short form</a>.
-        </p>
-    </div>
-    <div>
-        <h1 class="text-xl md:text-2xl font-bold mt-2">
             Can your employees see my files?
         </h1>
         <p class="text-lg text-gray-600 mt-2">
