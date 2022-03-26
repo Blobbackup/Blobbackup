@@ -68,7 +68,7 @@
                 <a href="/privacy" class="mx-2">Privacy</a>
                 <a href="/terms" class="mx-2">Terms</a>
                 <a href="/payment" class="mx-2">Payment</a> 
-                <a href="/support" class="mx-2">Support</a> 
+                <a href="/support" class="mx-2">Help</a> 
             </div>
             <div class="mt-2">
                 &copy; Blobbackup 2022. All rights reserved.
