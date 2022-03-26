@@ -41,7 +41,7 @@
         <h1 class="text-2xl md:text-3xl font-bold mt-2">Simple Monitoring</h1>
         <p class="text-lg text-gray-600 mt-2">
             Get notified via email when your computer hasn't been backed 
-            up for over a week.
+            up for over 2 weeks.
         </p>
     </div>
     <div>

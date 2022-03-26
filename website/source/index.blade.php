@@ -147,7 +147,7 @@
         </h4>
         <p class="text-lg text-gray-600 mt-2">
             Get notified via email when your computer hasn't been backed 
-            up for over a week.
+            up for over 2 weeks.
         </p>
     </div>
     <div>

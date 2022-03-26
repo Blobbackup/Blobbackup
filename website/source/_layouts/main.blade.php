@@ -19,8 +19,8 @@
                     Blobbackup
                 </a>
                 <div class="flex-1 text-right font-bold text-lg mt-1 hidden md:block">
-                    <a href="/features" class="ml-4">Features</a>
-                    <a href="/pricing" class="ml-4">Pricing</a>
+                    <a href="/personal" class="ml-4">Personal Backup</a>
+                    <a href="/business" class="ml-4">Business Backup</a>
                     <a href="/company" class="ml-4">About</a>
                     <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="ml-4">Github</a>
                     <a href="/blog" class="ml-4">Blog</a>

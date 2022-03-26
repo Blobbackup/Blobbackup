@@ -1,11 +1,28 @@
 @section('title')
-    Features
+    Personal Backup
 @endsection
 @extends('_layouts.main')
 
 @section('body')
-<h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">Simple Feature Set</h1>
-<h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">Just what you need and nothing more.</h2>
+<div class="mx-auto max-w-lg text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mt-0 md:mt-10">Personal Backup</h1>
+    <h2 class="text-xl md:text-2xl text-gray-600 mt-2">Securely backup your personal computers to the cloud without compromising your privacy.</h2>
+    <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try it for Free</a>
+    <div class="text-gray-400 mt-4 text-xs md:text-base">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+        Open Source
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+        </svg>
+        Encrypted
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
+        </svg>
+        Mac & Windows
+    </div>
+</div>
 <section class="mt-8 md:mt-16 text-center grid md:grid-cols-3 gap-8">
     <div>
         <div class="text-center">
@@ -29,6 +46,18 @@
         <p class="text-lg text-gray-600 mt-2">
             Everything is encrypted with your password and we never store
             or transmit your password.
+        </p>
+    </div>
+    <div>
+        <div class="text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 inline-block text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-bold mt-2">Perfect for Families</h1>
+        <p class="text-lg text-gray-600 mt-2">
+            Pay for and manage all family computer backups from 
+            our simple web admin panel.
         </p>
     </div>
     <div>
@@ -90,18 +119,6 @@
         <p class="text-lg text-gray-600 mt-2">
             Old versions of files and deleted files are kept on our secure cloud 
             for up to a full year.
-        </p>
-    </div>
-    <div>
-        <div class="text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 inline-block text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd" />
-            </svg>
-        </div>
-        <h1 class="text-2xl md:text-3xl font-bold mt-2">Simple Monitoring</h1>
-        <p class="text-lg text-gray-600 mt-2">
-            Get notified via email when your computer hasn't been backed 
-            up for over 2 weeks.
         </p>
     </div>
     <div>
