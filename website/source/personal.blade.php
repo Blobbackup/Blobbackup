@@ -5,7 +5,7 @@
 
 @section('body')
 <div class="mx-auto max-w-lg text-center">
-    <h1 class="text-4xl md:text-5xl font-bold mt-0 md:mt-10">Personal Backup</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-10">Personal Backup</h1>
     <h2 class="text-xl md:text-2xl text-gray-600 mt-2">Securely backup your personal computers to the cloud without compromising your privacy.</h2>
     <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try it for Free</a>
     <div class="text-gray-400 mt-4 text-xs md:text-base">
