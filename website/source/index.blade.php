@@ -4,7 +4,7 @@
 
 @section('announcement')
     <div class="bg-blue-100 text-center p-4" id="announcement">
-        We're launching Blobbackup for Business soon! 
+        We're launching Blobbackup for MSPs and IT providers soon!
         <a href="https://forms.gle/euPCbhZaf1CMN8LbA" target="_blank" class="text-blue-600 underline">
             Stay in the loop
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block" viewBox="0 0 20 20" fill="currentColor">
