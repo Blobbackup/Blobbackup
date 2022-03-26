@@ -174,6 +174,15 @@
         </div>
         <div>
             <h1 class="text-xl md:text-2xl font-bold mt-2">
+                Can I restore my employee's computer backups?
+            </h1>
+            <p class="text-lg text-gray-600 mt-2">
+                Not unless you know the employee's account password. You need the employee's account password to restore data from their backups. You can
+                remove an employee's backups or their access to Blobbackup at any time though.
+            </p>
+        </div>
+        <div>
+            <h1 class="text-xl md:text-2xl font-bold mt-2">
                 Can I pay yearly? What are the payment options?
             </h1>
             <p class="text-lg text-gray-600 mt-2">
