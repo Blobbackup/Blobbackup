@@ -25,7 +25,7 @@
 <section class="md:flex mt-4 md:mt-8">
     <div class="md:w-1/2 text-center md:text-left">
         <h1 class="text-4xl md:text-5xl font-bold mt-0 md:mt-10">Private, Secure Computer Backups</h1>
-        <h2 class="text-xl md:text-2xl text-gray-600 mt-2">Securely backup your computer to the cloud without compromising your privacy.</h2>
+        <h2 class="text-xl md:text-2xl text-gray-600 mt-2">Securely backup your computers to the cloud without compromising your privacy.</h2>
         <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try it for Free</a>
         <div class="text-gray-400 mt-4 text-xs md:text-base">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1" viewBox="0 0 20 20" fill="currentColor">
