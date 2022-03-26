@@ -21,7 +21,7 @@
                 <div class="flex-1 text-right font-bold text-lg mt-1 hidden md:block">
                     <a href="/features" class="ml-4">Features</a>
                     <a href="/pricing" class="ml-4">Pricing</a>
-                    <a href="/company" class="ml-4">Company</a>
+                    <a href="/company" class="ml-4">About</a>
                     <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="ml-4">Github</a>
                     <a href="/blog" class="ml-4">Blog</a>
                     <a href="https://app.blobbackup.com/login" class="ml-4">Sign in</a>
@@ -51,7 +51,7 @@
                     <div class="font-bold text-xl mt-8">
                         <a href="/features" class="block underline mt-4">Features</a>
                         <a href="/pricing" class="block underline mt-4">Pricing</a>
-                        <a href="/company" class="block underline mt-4">Company</a>
+                        <a href="/company" class="block underline mt-4">About</a>
                         <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="block underline mt-4">Github</a>
                         <a href="/blog" class="block underline mt-4">Blog</a>
                         <a href="https://app.blobbackup.com/login" class="block underline mt-4">Sign in</a>
