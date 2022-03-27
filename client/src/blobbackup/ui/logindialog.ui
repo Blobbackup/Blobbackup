@@ -54,7 +54,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="heading_label">
      <property name="text">
       <string>Sign in to your account.</string>
      </property>

@@ -24,7 +24,7 @@ from blobbackup.config import load_config, config
 from blobbackup.status import get_last_backed_up, get_selected_files, get_current_status
 from blobbackup.statusthread import StatusThread
 from blobbackup.backupthread import BackupThread
-from blobbackup.logindialog import LoginDialog
+from blobbackup.logindialog import LoginDialog, verify_password_before_restore
 from blobbackup.heartbeat import heartbeat
 from blobbackup.logger import get_logger
 
@@ -83,10 +83,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def open_restore_files(self):
         email = config["meta"]["email"]
-        password = get_password_from_keyring()
-        computer_id = config["meta"]["computer_id"]
-        dialog = RestoreDialog(email, password, computer_id)
-        dialog.exec()
+        if verify_password_before_restore(email):
+            password = get_password_from_keyring()
+            computer_id = config["meta"]["computer_id"]
+            dialog = RestoreDialog(email, password, computer_id)
+            dialog.exec()
 
     def launch_status_thread(self):
         self.status_thread = StatusThread()

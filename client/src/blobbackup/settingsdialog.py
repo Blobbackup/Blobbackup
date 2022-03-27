@@ -5,6 +5,7 @@ from PyQt6.QtCore import Qt
 from blobbackup.ui.settingsdialog import Ui_SettingsDialog
 from blobbackup.choosecomputerdialog import ChooseComputerDialog
 from blobbackup.restoredialog import RestoreDialog
+from blobbackup.logindialog import verify_password_before_restore
 from blobbackup.config import config, save_config
 from blobbackup.api import update_computer
 from blobbackup.util import get_password_from_keyring, is_windows, LOGO_PATH
@@ -92,12 +93,13 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
 
     def restore_different_computer(self):
         email = config["meta"]["email"]
-        password = get_password_from_keyring()
-        choose_computer_dialog = ChooseComputerDialog(email, password)
-        if choose_computer_dialog.exec():
-            computer_id = choose_computer_dialog.computer_id
-            dialog = RestoreDialog(email, password, computer_id)
-            dialog.exec()
+        if verify_password_before_restore(email):
+            password = get_password_from_keyring()
+            choose_computer_dialog = ChooseComputerDialog(email, password)
+            if choose_computer_dialog.exec():
+                computer_id = choose_computer_dialog.computer_id
+                dialog = RestoreDialog(email, password, computer_id)
+                dialog.exec()
 
     def accept(self):
         computer_name = self.computer_name_line_edit.text().strip()

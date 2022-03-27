@@ -13,7 +13,15 @@ REGISTER_URL = BASE_APP_URL + "/register"
 
 
 class LoginDialog(QDialog, Ui_LoginDialog):
-    def __init__(self, reauth=False):
+    def __init__(
+        self,
+        reauth=False,
+        show_register_button=True,
+        title=None,
+        heading=None,
+        sign_in_button_text=None,
+        email=None,
+    ):
         QDialog.__init__(self)
         Ui_LoginDialog.__init__(self)
 
@@ -28,17 +36,27 @@ class LoginDialog(QDialog, Ui_LoginDialog):
 
         self.logo_label.setPixmap(get_pixmap(LOGO_PATH, 32, 32))
 
+        self.register_button.setVisible(show_register_button)
         self.register_button.linkActivated.connect(
             lambda: webbrowser.open(REGISTER_URL)
         )
 
         self.sign_in_button.pressed.connect(self.login)
+        if sign_in_button_text:
+            self.sign_in_button.setText(sign_in_button_text)
+
+        if title:
+            self.setWindowTitle(title)
+        if heading:
+            self.heading_label.setText(heading)
+        if email:
+            self.email_line_edit.setText(email)
+            self.email_line_edit.setEnabled(False)
 
         self.logger.info("Login dialog displayed.")
 
     def login(self):
         self.setEnabled(False)
-        self.setWindowTitle("Signing In. Please Wait...")
         self.email = self.email_line_edit.text().strip()
         self.password = self.password_line_edit.text().strip()
         self.login_thread = LoginThread(self.email, self.password, self.reauth)
@@ -57,10 +75,20 @@ class LoginDialog(QDialog, Ui_LoginDialog):
 
     def accept(self, success):
         self.setEnabled(True)
-        self.setWindowTitle("Sign In - Blobbackup")
         if not success:
             QMessageBox.warning(self, "Sign In Failed", "Invalid credentials.")
             self.logger.info("Login failed displayed")
             return
         self.logger.info("Login succeded")
         super().accept()
+
+
+def verify_password_before_restore(email):
+    dialog = LoginDialog(
+        show_register_button=False,
+        title="Verification Required",
+        heading="Enter your password to continue.",
+        sign_in_button_text="Continue to Restore",
+        email=email,
+    )
+    return dialog.exec()
