@@ -41,13 +41,18 @@ class LoginThread(QThread):
             self.trial_over.emit()
             return
         if self.reauth:
-            update_email_and_password(self.email, self.password)
+            if not update_email_and_password(self.email, self.password):
+                self.finished.emit(False)
+                return
         self.finished.emit(True)
 
 
 def update_email_and_password(email, password):
     old_password = get_password_from_keyring()
     computer = get_computer(email, password, config["meta"]["computer_id"])
+
+    if not computer:
+        return False
 
     config["meta"]["email"] = email
     save_config()
@@ -57,6 +62,8 @@ def update_email_and_password(email, password):
         unlock_repo(computer, password)
         remove_all_but_new_password_from_repo(computer, password)
         save_password_in_keyring(password)
+
+    return True
 
 
 def add_new_password_to_repo(computer, old_password, password):
