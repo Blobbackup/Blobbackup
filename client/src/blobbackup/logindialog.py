@@ -92,3 +92,13 @@ def verify_password_before_restore(email):
         email=email,
     )
     return dialog.exec()
+
+
+def reauth_user():
+    dialog = LoginDialog(
+        reauth=True,
+        show_register_button=False,
+        heading="Enter your credentials to continue.",
+        sign_in_button_text="Continue",
+    )
+    return dialog.exec()

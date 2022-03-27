@@ -24,7 +24,7 @@ from blobbackup.config import load_config, config
 from blobbackup.status import get_last_backed_up, get_selected_files, get_current_status
 from blobbackup.statusthread import StatusThread
 from blobbackup.backupthread import BackupThread
-from blobbackup.logindialog import LoginDialog, verify_password_before_restore
+from blobbackup.logindialog import reauth_user, verify_password_before_restore
 from blobbackup.heartbeat import heartbeat
 from blobbackup.logger import get_logger
 
@@ -134,6 +134,5 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         )
 
     def api_error(self):
-        dialog = LoginDialog(reauth=True)
-        if not dialog.exec():
+        if not reauth_user():
             sys.exit()
