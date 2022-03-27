@@ -3,6 +3,17 @@
 @endsection
 <x-app-layout>
     <h1 class="text-2xl font-bold">Payment Method</h1>
+    @if (request()->get('checkout'))
+        @if (request()->get('checkout') == 'updated')
+            <div class="text-green-500 mt-8 text-sm">
+                Payment method updated. Changes may take up to a minute to take effect.
+            </div>
+        @else
+            <div class="text-green-500 mt-8 text-sm">
+                Payment method added. Changes may take up to a minute to take effect.
+            </div>
+        @endif
+    @endif
     <div class="shadow-lg mt-8 p-6">
         @if (auth()->user()->leader_id)
             <div class="text-gray-600">
