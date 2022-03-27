@@ -8,7 +8,7 @@
             <div class="text-green-500 mt-8 text-sm">
                 Payment method updated. Changes may take some time to take effect. Refresh to check.
             </div>
-        @else
+        @elseif (!auth()->user()->subscribed())
             <div class="text-green-500 mt-8 text-sm">
                 Payment method added. Changes may take some time to take effect. Refresh to check.
             </div>
