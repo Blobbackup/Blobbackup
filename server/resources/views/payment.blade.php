@@ -6,11 +6,11 @@
     @if (request()->get('checkout'))
         @if (request()->get('checkout') == 'updated')
             <div class="text-green-500 mt-8 text-sm">
-                Payment method updated. Changes may take up to a minute to take effect.
+                Payment method updated. Changes may take some time to take effect. Refresh to check.
             </div>
         @else
             <div class="text-green-500 mt-8 text-sm">
-                Payment method added. Changes may take up to a minute to take effect.
+                Payment method added. Changes may take some time to take effect. Refresh to check.
             </div>
         @endif
     @endif
@@ -22,15 +22,17 @@
         @else
             @if (!auth()->user()->subscribed())
                 <div class="text-gray-600">You haven't added a payment method yet.</div>
-                <div class="text-gray-600 mt-2">
-                    <x-paddle-button :url="$payLink" data-theme="none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                            <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
-                        </svg>
-                        Add Payment Method
-                    </x-paddle-button>
-                </div>
+                @if (!request()->get('checkout'))
+                    <div class="text-gray-600 mt-2">
+                        <x-paddle-button :url="$payLink" data-theme="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                                <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
+                            </svg>
+                            Add Payment Method
+                        </x-paddle-button>
+                    </div>
+                @endif
             @else
                 <div class="text-gray-600">
                     You will be billed ${{ auth()->user()->computersToBill() * Util::$perComputerPrice }} / month (computers: {{ auth()->user()->computersToBill() }}).
