@@ -7,6 +7,7 @@ from PyQt6.QtCore import QThread, pyqtSignal
 
 from blobbackup.api import login, get_computer
 from blobbackup.config import config, save_config
+from blobbackup.logger import get_logger
 from blobbackup.util import (
     CREATE_NO_WINDOW,
     is_windows,
@@ -30,20 +31,26 @@ class LoginThread(QThread):
         self.email = email
         self.password = password
         self.reauth = reauth
+        self.logger = get_logger()
 
     def run(self):
         user = login(self.email, self.password)
         if not user:
+            self.logger.error("User login failed.")
             self.finished.emit(False)
             return
         allowed_to_backup = user["subscribed"] or user["on_trial"]
         if not allowed_to_backup:
+            self.logger.error("User trial expired.")
             self.trial_over.emit()
             return
         if self.reauth:
             if not update_email_and_password(self.email, self.password):
+                self.logger.error("User attempted reauth with different account.")
                 self.finished.emit(False)
                 return
+            else:
+                self.logger.info("User reauth successful.")
         self.finished.emit(True)
 
 
