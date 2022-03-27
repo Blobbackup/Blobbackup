@@ -20,7 +20,7 @@
                 Payment is handled by your group owner ({{ \App\Models\User::find(auth()->user()->leader_id)->email }}).
             </div>
         @else
-            @if (!auth()->user()->subscribed())
+            @if (!(auth()->user()->subscribed() && auth()->user()->subscription()->paddle_status == 'active'))
                 <div class="text-gray-600">You haven't added a payment method yet.</div>
                 @if (!request()->get('checkout'))
                     <div class="text-gray-600 mt-2">
