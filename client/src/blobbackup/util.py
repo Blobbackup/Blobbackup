@@ -257,6 +257,7 @@ def load_keep_alive_script():
 
 
 def load_keep_alive_script_win():
+    remove_windows_task("com.blobbackup.login")
     add_windows_task(
         "com.blobbackup",
         [
@@ -328,6 +329,13 @@ def add_windows_task(name, command):
             ],
             creationflags=CREATE_NO_WINDOW,
         )
+
+
+def remove_windows_task(name):
+    subprocess.run(
+        ["schtasks", "/delete", "/tn", name, "/f"],
+        creationflags=CREATE_NO_WINDOW,
+    )
 
 
 def load_keep_alive_script_mac():
