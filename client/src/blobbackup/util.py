@@ -104,13 +104,9 @@ EXCLUDIONS_FILE_PATH = os.path.join(HOME_PATH, "exclusions.txt")
 
 MAC_UPDATER_PATH = get_asset(os.path.join("misc", "blobbackup-updater.sh"))
 MAC_UPDATER_DEST_PATH = os.path.join(HOME_PATH, "blobbackup-updater.sh")
-shutil.copyfile(MAC_UPDATER_PATH, MAC_UPDATER_DEST_PATH)
-if is_mac():
-    make_executable(MAC_UPDATER_DEST_PATH)
 
 WIN_UPDATER_PATH = get_asset(os.path.join("misc", "blobbackup-updater.exe"))
 WIN_UPDATER_DEST_PATH = os.path.join(HOME_PATH, "blobbackup-updater.exe")
-shutil.copyfile(WIN_UPDATER_PATH, WIN_UPDATER_DEST_PATH)
 
 VERSION_FILE_PATH = os.path.join(HOME_PATH, "version.txt")
 with open(VERSION_FILE_PATH, "w") as f:
@@ -288,6 +284,7 @@ def load_keep_alive_script_win():
 
 
 def load_updater_script_win():
+    shutil.copyfile(WIN_UPDATER_PATH, WIN_UPDATER_DEST_PATH)
     add_windows_task(
         "com.blobbackup.updater",
         [
@@ -350,6 +347,8 @@ def load_keep_alive_script_mac():
 
 
 def load_updater_script_mac():
+    shutil.copyfile(MAC_UPDATER_PATH, MAC_UPDATER_DEST_PATH)
+    make_executable(MAC_UPDATER_DEST_PATH)
     shutil.copyfile(UPDATER_PLIST_PATH, UPDATER_PLIST_DEST_PATH)
     subprocess.run(["launchctl", "unload", UPDATER_PLIST_DEST_PATH])
     subprocess.run(["launchctl", "load", UPDATER_PLIST_DEST_PATH])
