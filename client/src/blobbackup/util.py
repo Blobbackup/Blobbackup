@@ -258,20 +258,6 @@ def load_keep_alive_script():
 
 def load_keep_alive_script_win():
     add_windows_task(
-        "com.blobbackup.login",
-        [
-            "schtasks",
-            "/create",
-            "/tr",
-            "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
-            "/sc",
-            "ONLOGON",
-            "/rl",
-            "HIGHEST",
-            "/f",
-        ],
-    )
-    add_windows_task(
         "com.blobbackup",
         [
             "schtasks",
