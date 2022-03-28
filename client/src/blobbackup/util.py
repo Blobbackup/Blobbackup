@@ -266,6 +266,8 @@ def load_keep_alive_script_win():
             "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
             "/sc",
             "ONLOGON",
+            "/rl",
+            "HIGHEST",
             "/f",
         ],
     )
@@ -278,6 +280,8 @@ def load_keep_alive_script_win():
             "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
             "/sc",
             "HOURLY",
+            "/rl",
+            "HIGHEST",
             "/f",
         ],
     )
