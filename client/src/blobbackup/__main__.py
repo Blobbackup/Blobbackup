@@ -50,7 +50,10 @@ def main():
                 sys.exit()
 
         main_window = MainWindow(first_time)
-        load_scripts()
+        try:
+            load_scripts()
+        except PermissionError:
+            logger.error("Failed to load scripts because of permission error.")
         if not args.open_minimized:
             main_window.show()
 
