@@ -4,14 +4,11 @@ from PyQt6.QtWidgets import QDialog
 from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.welcomedialog import Ui_WelcomeDialog
-from blobbackup.util import BASE_URL, LOGO_PATH, get_pixmap
+from blobbackup.util import TERMS_URL, LOGO_PATH, get_pixmap
 from blobbackup.initializethread import InitializeThread
 from blobbackup.choosecomputerdialog import ChooseComputerDialog
 from blobbackup.restoredialog import RestoreDialog
 from blobbackup.logger import get_logger
-
-
-TERMS_URL = BASE_URL + "/terms"
 
 
 class WelcomeDialog(QDialog, Ui_WelcomeDialog):

@@ -45,6 +45,11 @@ elif is_mac():
 
 BASE_APP_URL = "https://app.blobbackup.com"
 BASE_URL = "https://blobbackup.com"
+PRIVACY_URL = BASE_URL + "/privacy"
+SUPPORT_URL = BASE_URL + "/support"
+TERMS_URL = BASE_URL + "/terms"
+GUIDE_URL = BASE_URL + "/support/how-to-grant-full-disk-access-on-mac"
+
 B2_BUCKET = "blobbackup01"
 
 HEARTBEAT_SECONDS = 1

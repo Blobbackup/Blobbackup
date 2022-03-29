@@ -1,7 +1,9 @@
+import webbrowser
+
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QSystemTrayIcon, QMenu
 
-from blobbackup.util import LOGO_PADDED_PATH
+from blobbackup.util import LOGO_PADDED_PATH, SUPPORT_URL
 from blobbackup._version import __version__
 
 
@@ -16,9 +18,18 @@ class SystemTrayIcon(QSystemTrayIcon):
         self.menu = QMenu()
         self.version_action = self.menu.addAction(f"Version {__version__}")
         self.version_action.setEnabled(False)
-        self.open_action = self.menu.addAction("Open", self.show_main_window)
+        self.menu.addSeparator()
+        self.open_action = self.menu.addAction(
+            "Open Control Panel", self.show_main_window
+        )
+        self.restore_action = self.menu.addAction(
+            "Restore Files", self.main_window.open_restore_files
+        )
         self.settings_action = self.menu.addAction(
             "Settings", self.main_window.open_settings
+        )
+        self.help_action = self.menu.addAction(
+            "Help", lambda: webbrowser.open(SUPPORT_URL)
         )
         self.quit_action = self.menu.addAction(
             "Quit", self.main_window.quit_application

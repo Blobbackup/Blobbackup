@@ -5,10 +5,8 @@ from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.requestfulldiskdialog import Ui_RequestFullDiskDialog
 
-from blobbackup.util import BASE_URL, LOGO_PATH, FULL_DISK_SCREENSHOT_PATH, get_pixmap
+from blobbackup.util import GUIDE_URL, LOGO_PATH, FULL_DISK_SCREENSHOT_PATH, get_pixmap
 from blobbackup.logger import get_logger
-
-GUIDE_URL = f"{BASE_URL}/support/how-to-grant-full-disk-access-on-mac"
 
 
 class RequestFullDiskDialog(QDialog, Ui_RequestFullDiskDialog):

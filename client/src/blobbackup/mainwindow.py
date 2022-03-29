@@ -8,7 +8,8 @@ from PyQt6.QtGui import QIcon
 from blobbackup.ui.mainwindow import Ui_MainWindow
 
 from blobbackup.util import (
-    BASE_URL,
+    PRIVACY_URL,
+    SUPPORT_URL,
     LOGO_PATH,
     COMPUTER_PATH,
     ARROW_PATH,
@@ -27,10 +28,6 @@ from blobbackup.backupthread import BackupThread
 from blobbackup.logindialog import reauth_user, verify_password_before_restore
 from blobbackup.heartbeat import heartbeat
 from blobbackup.logger import get_logger
-
-
-PRIVACY_URL = BASE_URL + "/privacy"
-SUPPORT_URL = BASE_URL + "/support"
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):

@@ -81,7 +81,7 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
                 'last_backed_up_at' => ['numeric'],
                 'last_backed_up_num_files' => ['integer'],
                 'last_backed_up_size' => ['integer'],
-                'client_version' => ['string', 'max:5']
+                'client_version' => ['string', 'max:8']
             ])->fails())
                 return $response->setStatusCode(400);
             if ($computer->user_id != auth()->user()->id)
