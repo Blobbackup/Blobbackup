@@ -67,6 +67,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def quit_application(self):
         if self.backup_thread.backup_running():
             self.backup_thread.stop_backup()
+        self.logger.info("Quit application.")
         sys.exit()
 
     def restart_backup(self):
