@@ -71,6 +71,7 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
             $computer->b2_application_key = $createKeyJson['applicationKey'];
             $computer->user_id = auth()->user()->id;
             $computer->save();
+            $computer->b2_bucket_name = env('B2_BUCKET_NAME');
             return $computer;
         });
     
@@ -93,6 +94,7 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
             if ($request->last_backed_up_size) $computer->last_backed_up_size = $request->last_backed_up_size;
             if ($request->client_version) $computer->client_version = $request->client_version;
             $computer->save();
+            $computer->b2_bucket_name = env('B2_BUCKET_NAME');
             return $computer;
         });
     
