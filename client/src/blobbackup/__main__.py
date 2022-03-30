@@ -8,7 +8,7 @@ from blobbackup.logindialog import LoginDialog
 from blobbackup.welcomedialog import WelcomeDialog
 from blobbackup.mainwindow import MainWindow
 from blobbackup.systemtrayicon import SystemTrayIcon
-from blobbackup.config import config
+from blobbackup.config import config, save_config
 from blobbackup.heartbeat import is_alive
 from blobbackup.logger import get_logger
 from blobbackup.util import is_mac, load_scripts, full_disk_access
@@ -23,7 +23,17 @@ def main():
         action="store_true",
         default=False,
     )
+    parser.add_argument(
+        "--set-server",
+        dest="server",
+        default=None,
+    )
     args = parser.parse_args()
+
+    if args.server:
+        config["meta"]["server"] = args.server
+        save_config()
+        sys.exit()
 
     if not is_alive():
         logger.info("Application started.")
