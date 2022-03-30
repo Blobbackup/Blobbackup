@@ -5,11 +5,12 @@ from PyQt6.QtWidgets import QDialog, QMessageBox
 from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.logindialog import Ui_LoginDialog
-from blobbackup.util import LOGO_PATH, BASE_APP_URL, get_pixmap
+from blobbackup.util import LOGO_PATH, get_pixmap
+from blobbackup.config import config
 from blobbackup.loginthread import LoginThread
 from blobbackup.logger import get_logger
 
-REGISTER_URL = BASE_APP_URL + "/register"
+REGISTER_URL = config["meta"]["server"] + "/register"
 
 
 class LoginDialog(QDialog, Ui_LoginDialog):
