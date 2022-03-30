@@ -50,8 +50,6 @@ SUPPORT_URL = BASE_URL + "/support"
 TERMS_URL = BASE_URL + "/terms"
 GUIDE_URL = BASE_URL + "/support/how-to-grant-full-disk-access-on-mac"
 
-B2_BUCKET = "blobbackup01"
-
 HEARTBEAT_SECONDS = 1
 BACKUP_STUCK_HOURS = 8
 
@@ -207,7 +205,7 @@ def get_restic_restore_command(snapshot_id, target, paths):
 def get_restic_env(computer, password):
     env = {
         "RESTIC_PASSWORD": password,
-        "RESTIC_REPOSITORY": f"b2:{B2_BUCKET}:{computer['uuid']}",
+        "RESTIC_REPOSITORY": f"b2:{computer['b2_bucket_name']}:{computer['uuid']}",
         "B2_ACCOUNT_KEY": computer["b2_application_key"],
         "B2_ACCOUNT_ID": computer["b2_key_id"],
         "RESTIC_CACHE_DIR": CACHE_PATH,
