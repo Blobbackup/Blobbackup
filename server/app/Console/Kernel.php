@@ -63,7 +63,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             foreach (Computer::onlyTrashed()->get() as $computer) {
                 $delta = $computer->deleted_at->diff(new \DateTime());
-                if (!$computer->user || $delta->days > 30) {
+                if ((!$computer->user || $delta->days > 30) || env('APP_ENV') == 'local') {
                     $path = 'b2:' . env('B2_BUCKET_NAME') . '/' . $computer->uuid;
 
                     // Delete repo contents
