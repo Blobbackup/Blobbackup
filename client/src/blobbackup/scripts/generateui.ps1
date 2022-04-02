@@ -5,3 +5,4 @@ pyuic6 src/blobbackup/ui/settingsdialog.ui -o src/blobbackup/ui/settingsdialog.p
 pyuic6 src/blobbackup/ui/mainwindow.ui -o src/blobbackup/ui/mainwindow.py
 pyuic6 src/blobbackup/ui/restoredialog.ui -o src/blobbackup/ui/restoredialog.py
 pyuic6 src/blobbackup/ui/requestfulldiskdialog.ui -o src/blobbackup/ui/requestfulldiskdialog.py
+pyuic6 src/blobbackup/ui/loadingdialog.ui -o src/blobbackup/ui/loadingdialog.py

@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import QDialog, QFileDialog, QMessageBox
 from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.restoredialog import Ui_RestoreDialog
+from blobbackup.loadingdialog import LoadingDialog
 from blobbackup.snapshotsthread import SnapshotsThread
 from blobbackup.snapshotthread import SnapshotThread
 from blobbackup.qlazytreewidget import QLazyTreeWidget
@@ -39,6 +40,11 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         self.snapshots_thread.loaded.connect(self.snapshots_loaded)
         self.snapshots_thread.start()
 
+        self.loading_backups_dialog = LoadingDialog(
+            self, "Loading Backups. Please Wait..."
+        )
+        self.loading_backups_dialog.show()
+
         self.logger.info("Restore dialog displayed.")
 
     def snapshots_loaded(self, snapshots):
@@ -52,6 +58,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
 
     def load_current_snapshot(self):
         self.setEnabled(False)
+        self.loading_backups_dialog.show()
         self.setWindowTitle("Loading File Tree. Please Wait...")
         self.snapshot_tree_widget.clear()
         snapshot_id = self.snapshots_combo_box.currentData()
@@ -65,6 +72,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         computer = get_computer(self.email, self.password, self.computer_id)
         self.snapshot_tree_widget.initialize(tree, computer["name"])
         self.setWindowTitle("Restore Files - Blobbackup")
+        self.loading_backups_dialog.hide()
         self.setEnabled(True)
 
     def restore(self):
