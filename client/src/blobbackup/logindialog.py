@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import QDialog, QMessageBox
 from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.logindialog import Ui_LoginDialog
+from blobbackup.loadingdialog import LoadingDialog
 from blobbackup.util import LOGO_PATH, get_pixmap
 from blobbackup.config import config
 from blobbackup.loginthread import LoginThread
@@ -31,6 +32,10 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.reauth = reauth
         self.title = title
         self.logger = get_logger()
+        self.loading_dialog = LoadingDialog(
+            self,
+            "Re-authenticating. This might take a moment...",
+        )
 
         self.setupUi(self)
 
@@ -58,6 +63,8 @@ class LoginDialog(QDialog, Ui_LoginDialog):
 
     def login(self):
         self.setEnabled(False)
+        if self.reauth:
+            self.loading_dialog.show()
         self.setWindowTitle("Signing In. Please Wait...")
         self.email = self.email_line_edit.text().strip()
         self.password = self.password_line_edit.text().strip()
@@ -77,6 +84,8 @@ class LoginDialog(QDialog, Ui_LoginDialog):
 
     def accept(self, success):
         self.setWindowTitle(self.title)
+        if self.reauth:
+            self.loading_dialog.hide()
         self.setEnabled(True)
         if not success:
             QMessageBox.warning(self, "Sign In Failed", "Invalid credentials.")
