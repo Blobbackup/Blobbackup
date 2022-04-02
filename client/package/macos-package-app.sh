@@ -27,6 +27,7 @@ create-dmg \
   --window-size 410 300 \
   --icon-size 100 \
   --icon "Blobbackup.app" 70 150 \
+  --background ../package/background.png \
   --hide-extension "Blobbackup.app" \
   --app-drop-link 240 150 \
   "Blobbackup.dmg" \
