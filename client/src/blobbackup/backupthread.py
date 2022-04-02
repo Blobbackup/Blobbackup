@@ -94,10 +94,11 @@ class BackupThread(QThread):
                 config["general"]["max_upload_kibs"],
                 config["general"]["backup_connected_file_systems"],
             )
+            num_threads = config["general"]["num_threads"]
             if is_windows():
                 self.process = subprocess.Popen(
                     restic_backup_command,
-                    env=get_restic_env(computer, password),
+                    env=get_restic_env(computer, password, num_threads),
                     stdout=subprocess.PIPE,
                     stderr=log_f,
                     creationflags=CREATE_NO_WINDOW,
@@ -105,7 +106,7 @@ class BackupThread(QThread):
             elif is_mac():
                 self.process = subprocess.Popen(
                     restic_backup_command,
-                    env=get_restic_env(computer, password),
+                    env=get_restic_env(computer, password, num_threads),
                     stdout=subprocess.PIPE,
                     stderr=log_f,
                 )

@@ -202,7 +202,7 @@ def get_restic_restore_command(snapshot_id, target, paths):
     return command
 
 
-def get_restic_env(computer, password):
+def get_restic_env(computer, password, num_threads=None):
     env = {
         "RESTIC_PASSWORD": password,
         "RESTIC_REPOSITORY": f"b2:{computer['b2_bucket_name']}:{computer['uuid']}",
@@ -210,6 +210,8 @@ def get_restic_env(computer, password):
         "B2_ACCOUNT_ID": computer["b2_key_id"],
         "RESTIC_CACHE_DIR": CACHE_PATH,
     }
+    if num_threads:
+        env.update({"GOMAXPROCS": num_threads})
     if is_windows():
         env.update(
             {
