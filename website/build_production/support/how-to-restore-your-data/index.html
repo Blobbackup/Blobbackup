@@ -6,7 +6,7 @@
         <meta name="keywords" content="online backup, backup software, cloud backup, backup online, best backup software, online backup services, data backup, best online backup, offsite backup, online data backup"/>
         <meta name="description" content="Blobbackup is a private, open source and secure cloud computer backup service. Personal backup without compromising any privacy for $9 per month."/>
         <meta name="author" content="Blobbackup, LLC">
-        <title>    Support
+        <title>    How to Restore Your Data
  - Blobbackup</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
@@ -75,51 +75,59 @@
             </div>
         </header>
         <main class="mx-auto max-w-5xl p-4">
-            <div class="grid md:grid-cols-2 text-center">
-    <div>
-        <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-500 h-12 w-12 inline-block mt-4 md:mt-10" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-        </svg>
-        <h1 class="text-4xl md:text-5xl font-bold md:mt-4">How-to Guides</h1>
-        <h2 class="text-xl md:text-2xl text-gray-600 mt-4 text-center">New to Blobbackup? Start here.</h2>
-        <a href="/support/getting-started-with-blobbackup" class="text-xl text-blue-600 underline mt-2 block">Getting Started With Blobbackup</a>
-        <a href="/support/what-is-being-backed-up" class="text-xl text-blue-600 underline mt-2 block">What is Being Backed Up</a>
-        <a href="/support/blobbackup-settings" class="text-xl text-blue-600 underline mt-2 block">Change Blobbackup App Settings</a>
+            <style>
+#content p {
+    margin-top: 1rem;
+}
+#content h1 {
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+#content ul {
+    margin-top: 1rem;
+}
+#content li {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+#content a {
+    color: rgb(37 99 235);
+    text-decoration: underline;
+}
+</style>
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl md:text-4xl font-bold mt-4 md:mt-16 text-center">How to Restore Your Data</h1>
+    <h2 class="text-lg md:text-xl text-gray-600 mt-2 text-center">April 1, 2022 by Bimba Shrestha</h2>
+    <div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
+        <p>There are two main ways to restore your data using Blobbackup.</p>
+
+<h1>Restore to the Computer You Installed Blobbackup On</h1>
+
+<p>If you need to restore to the computer where you already have Blobbackup installed, follow these steps. This is useful if you accidentally delete / overwrite a file or if you need to access an older version of a file.</p>
+
+<ul>
+<li>Step 1: Open the Blobbackup control panel.</li>
+<li>Step 2: Click the Restore Files button (see below).</li>
+<li>Step 3: Select the data you want restored.</li>
+</ul>
+
+<p><img src="/assets/images/restore-installed.png" alt="" /></p>
+
+<h1>Restore to a Computer Where You Don’t Have Blobbackup Installed</h1>
+
+<p>If you need to restore to a computer where you don't have Blobbackup installed, follow these steps. This is useful if the computer you had Blobbackup installed on became compromised (eg: hard drive crash, theft, ransomware, coffee spill, etc).</p>
+
+<ul>
+<li>Step 1: Download and install Blobbackup.</li>
+<li>Step 2: Sign in and click the Restore Files button (see below).</li>
+<li>Step 3: Select the computer you want to restore from.</li>
+<li>Step 4: Select the data you want restored.</li>
+</ul>
+
+<p><img src="/assets/images/restore-uninstalled.png" alt="" /></p>
     </div>
-    <div>
-        <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-500 h-12 w-12 inline-block mt-8 md:mt-10" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-        </svg>
-        <h1 class="text-4xl md:text-5xl font-bold md:mt-4">Support</h1>
-        <h2 class="text-xl md:text-2xl text-gray-600 mt-4 text-center">
-            We are here to help! Email us at <a href="mailto:support@blobbackup.com" class="underline">support@blobbackup.com</a>.
-        </h2>
-        <h2 class="text-xl md:text-2xl text-gray-600 mt-4">
-            You can also check out one of our community driven support fourms: 
-            <a href="https://reddit.com/r/blobbackup" target="_blank" class="underline">Reddit</a>, 
-            <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="underline">Github</a>.
-        </h2>
-    </div>
-</div>
-<div class="text-center">
-    <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-500 h-12 w-12 inline-block mt-8 md:mt-16" viewBox="0 0 20 20" fill="currentColor">
-        <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
-    </svg>
-    <h1 class="text-4xl md:text-5xl font-bold md:mt-4">All Articles</h1>
-    <section class="text-xl mt-4 md:my-8 grid md:grid-cols-3 md:gap-y-2 md:gap-x-4">
-                    <a href="/support/how-to-restore-your-data" class="text-ellipsis truncate text-blue-600 underline block mt-2">How to Restore Your Data</a>
-                    <a href="/support/what-if-i-forget-my-password" class="text-ellipsis truncate text-blue-600 underline block mt-2">What if I Forget My Password?</a>
-                    <a href="/support/how-to-update-the-blobbackup-app" class="text-ellipsis truncate text-blue-600 underline block mt-2">How to Update the Blobbackup App</a>
-                    <a href="/support/blobbackup-settings" class="text-ellipsis truncate text-blue-600 underline block mt-2">Blobbackup Settings</a>
-                    <a href="/support/what-is-being-backed-up" class="text-ellipsis truncate text-blue-600 underline block mt-2">What is Being Backed Up?</a>
-                    <a href="/support/handling-mounted-volumes-on-mac" class="text-ellipsis truncate text-blue-600 underline block mt-2">Handling Mounted Volumes on Mac</a>
-                    <a href="/support/how-to-install-blobbackup-on-windows" class="text-ellipsis truncate text-blue-600 underline block mt-2">How to Install Blobbackup on Windows</a>
-                    <a href="/support/getting-started-with-blobbackup" class="text-ellipsis truncate text-blue-600 underline block mt-2">Getting Started With Blobbackup</a>
-                    <a href="/support/how-to-install-blobbackup-on-mac" class="text-ellipsis truncate text-blue-600 underline block mt-2">How to Install Blobbackup on Mac</a>
-                    <a href="/support/windows-codesign-warnings" class="text-ellipsis truncate text-blue-600 underline block mt-2">Windows Code Sign Warnings</a>
-                    <a href="/support/how-to-grant-full-disk-access-on-mac" class="text-ellipsis truncate text-blue-600 underline block mt-2">How to Grant Full Disk Access on Mac</a>
-            </section>
 </div>
         </main>
         <footer class="p-4 py-8 text-center">
