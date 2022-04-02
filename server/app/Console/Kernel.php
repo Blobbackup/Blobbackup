@@ -21,7 +21,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            foreach (User::whereNull('leader_id')->get() as $user) {
+            foreach (User::whereNull('leader_id')->whereNotNull('email_verified_at')->get() as $user) {
                 if ($user->subscribed()) {
                     $subscription = $user->subscription();
                     $amount = Util::$perComputerPrice * $user->computersToBill();
