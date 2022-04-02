@@ -54,7 +54,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::post('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
         abort_unless($computer->user->is(auth()->user()) || $computer->user->leader_id == auth()->user()->id, 404);
         $computer->delete();
-        if (!$computer->user->leader_id)
+        if ($computer->user->id == auth()->user()->id)
             return redirect('/dashboard');
         else
             return redirect('/group')->with('message', 'Computer deleted.');

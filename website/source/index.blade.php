@@ -2,23 +2,6 @@
     Private, Secure Computer Backups
 @endsection
 
-@section('announcement')
-    <div class="bg-blue-100 text-center p-4" id="announcement">
-        We're launching Blobbackup for MSPs and IT providers soon!
-        <a href="https://forms.gle/euPCbhZaf1CMN8LbA" target="_blank" class="text-blue-600 underline">
-            Stay in the loop
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-        </a>
-        <a href="" id="announcement-close" class="absolute right-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </a>
-    </div>
-@endsection
-
 @extends('_layouts.main')
 
 @section('body')
