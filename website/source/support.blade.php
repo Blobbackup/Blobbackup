@@ -12,7 +12,7 @@
         <h1 class="text-4xl md:text-5xl font-bold md:mt-4">How-to Guides</h1>
         <h2 class="text-xl md:text-2xl text-gray-600 mt-4 text-center">New to Blobbackup? Start here.</h2>
         <a href="/support/getting-started-with-blobbackup" class="text-xl text-blue-600 underline mt-2 block">Getting Started With Blobbackup</a>
-        <a href="/support/what-is-being-backed-up" class="text-xl text-blue-600 underline mt-2 block">What is Being Backed Up</a>
+        <a href="/support/how-to-restore-your-data" class="text-xl text-blue-600 underline mt-2 block">How to Restore Your Data</a>
         <a href="/support/blobbackup-settings" class="text-xl text-blue-600 underline mt-2 block">Change Blobbackup App Settings</a>
     </div>
     <div>
