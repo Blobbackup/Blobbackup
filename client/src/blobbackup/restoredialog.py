@@ -43,6 +43,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         self.loading_backup_dialog = LoadingDialog(
             self, "Loading File Tree. Please Wait..."
         )
+        self.restoring_dialog = LoadingDialog(self, "Restoring. Please Wait...")
 
         self.logger.info("Restore dialog displayed.")
 
@@ -87,6 +88,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
             if reply == QMessageBox.StandardButton.Yes:
                 snapshot_id = self.snapshots_combo_box.currentData()
                 self.setEnabled(False)
+                self.restoring_dialog.show()
                 self.setWindowTitle("Restoring. Please Wait...")
                 self.restore_thread = RestoreThread(
                     self.email,
@@ -102,6 +104,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
 
     def restored(self, target):
         self.setWindowTitle("Restore Files - Blobbackup")
+        self.restoring_dialog.hide()
         self.setEnabled(True)
         QMessageBox.information(
             self, "Restore Complete", f"Your files have been restored to {target}."
