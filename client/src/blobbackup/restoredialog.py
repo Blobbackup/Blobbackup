@@ -71,7 +71,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         computer = get_computer(self.email, self.password, self.computer_id)
         self.snapshot_tree_widget.initialize(tree, computer["name"])
         self.setWindowTitle("Restore Files - Blobbackup")
-        self.loading_backups_dialog.hide()
+        self.loading_backup_dialog.hide()
         self.setEnabled(True)
 
     def restore(self):
