@@ -94,7 +94,7 @@ class BackupThread(QThread):
                 config["general"]["max_upload_kibs"],
                 config["general"]["backup_connected_file_systems"],
             )
-            num_threads = config["general"]["num_threads"]
+            num_threads = config["general"]["num_backup_threads"]
             if is_windows():
                 self.process = subprocess.Popen(
                     restic_backup_command,
