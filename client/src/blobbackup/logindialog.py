@@ -18,7 +18,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self,
         reauth=False,
         show_register_button=True,
-        title=None,
+        title="Sign In - Blobbackup",
         heading=None,
         sign_in_button_text=None,
         email=None,
@@ -29,11 +29,13 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.email = None
         self.password = None
         self.reauth = reauth
+        self.title = title
         self.logger = get_logger()
 
         self.setupUi(self)
 
         self.setWindowIcon(QIcon(LOGO_PATH))
+        self.setWindowTitle(self.title)
 
         self.logo_label.setPixmap(get_pixmap(LOGO_PATH, 32, 32))
 
@@ -46,8 +48,6 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         if sign_in_button_text:
             self.sign_in_button.setText(sign_in_button_text)
 
-        if title:
-            self.setWindowTitle(title)
         if heading:
             self.heading_label.setText(heading)
         if email:
@@ -58,6 +58,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
 
     def login(self):
         self.setEnabled(False)
+        self.setWindowTitle("Signing In. Please Wait...")
         self.email = self.email_line_edit.text().strip()
         self.password = self.password_line_edit.text().strip()
         self.login_thread = LoginThread(self.email, self.password, self.reauth)
@@ -75,6 +76,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         sys.exit()
 
     def accept(self, success):
+        self.setWindowTitle(self.title)
         self.setEnabled(True)
         if not success:
             QMessageBox.warning(self, "Sign In Failed", "Invalid credentials.")
