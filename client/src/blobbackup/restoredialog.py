@@ -40,10 +40,9 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         self.snapshots_thread.loaded.connect(self.snapshots_loaded)
         self.snapshots_thread.start()
 
-        self.loading_backups_dialog = LoadingDialog(
-            self, "Loading Backups. Please Wait..."
+        self.loading_backup_dialog = LoadingDialog(
+            self, "Loading File Tree. Please Wait..."
         )
-        self.loading_backups_dialog.show()
 
         self.logger.info("Restore dialog displayed.")
 
@@ -58,7 +57,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
 
     def load_current_snapshot(self):
         self.setEnabled(False)
-        self.loading_backups_dialog.show()
+        self.loading_backup_dialog.show()
         self.setWindowTitle("Loading File Tree. Please Wait...")
         self.snapshot_tree_widget.clear()
         snapshot_id = self.snapshots_combo_box.currentData()
