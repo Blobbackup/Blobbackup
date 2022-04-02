@@ -1,0 +1,69 @@
+name: Server code tests
+
+on:
+  pull_request:
+    branches:
+      - dev
+    paths:
+      - 'server/**'
+  push:
+    branches:
+      - dev
+    paths:
+      - 'server/**'
+
+jobs:
+  tests:
+    name: Test the application
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
+
+    #Do not run if commit starts with 'wip:'
+    if: "! startsWith(github.event.head_commit.message, 'wip:')"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
+          coverage: none
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer files
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: dependencies-composer-${{ runner.os }}-${{ hashFiles('composer.lock') }}
+          restore-keys: dependencies-composer-${{ runner.os }}-
+
+      - name: Install Composer dependencies
+        run: composer install -q --no-interaction --prefer-dist
+
+      # Lines commented bellow are related to front-end assets compilation.
+      # This is not required for the current stage of the project, but should
+      # be added. Leaving here to make it easier once needed.
+      #
+      #      - name: Cache node files
+      #        uses: actions/cache@v3
+      #        with:
+      #          path: ~/.npm
+      #          key: dependencies-node-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      #          restore-keys: dependencies-node-${{ runner.os }}-
+
+      #      - name: Install NPM dependencies
+      #        run: npm ci
+
+      #      - name: Compile assets
+      #        run: npm run production
+
+      - name: Execute tests
+        run: ./vendor/bin/phpunit
