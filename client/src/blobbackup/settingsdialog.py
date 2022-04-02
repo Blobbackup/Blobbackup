@@ -50,6 +50,9 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         self.backup_connected_file_systems_combo_box.setCurrentText(
             config["general"]["backup_connected_file_systems"]
         )
+        self.number_of_backup_threads_spin_box.setValue(
+            int(config["general"]["num_backup_threads"])
+        )
         self.inclusions_list_widget.clear()
         for path in config["inclusions"]["paths"].split(","):
             if path:
@@ -108,10 +111,12 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         backup_connected_file_systems = (
             self.backup_connected_file_systems_combo_box.currentText()
         )
+        num_backup_threads = str(self.number_of_backup_threads_spin_box.value())
 
         config["general"]["computer_name"] = computer_name
         config["general"]["backup_schedule"] = backup_schedule
         config["general"]["max_upload_kibs"] = max_upload_kibs
+        config["general"]["num_backup_threads"] = num_backup_threads
         config["general"][
             "backup_connected_file_systems"
         ] = backup_connected_file_systems
