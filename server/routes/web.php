@@ -2,6 +2,7 @@
 
 use App\Models\Computer;
 use App\Models\User;
+use App\Util\Util;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -54,6 +55,7 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::post('/deletecomputer/{computer}', function (Request $request, Computer $computer) {
         abort_unless($computer->user->is(auth()->user()) || $computer->user->leader_id == auth()->user()->id, 404);
         $computer->delete();
+        Util::sendEmail($computer->user->email, "Your Computer Has Been Deleted", "Your computer <b>" . $computer->name . "</b> has been deleted.");
         if ($computer->user->id == auth()->user()->id)
             return redirect('/dashboard');
         else
