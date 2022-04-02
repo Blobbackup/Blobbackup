@@ -41,9 +41,13 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         self.snapshots_thread.start()
 
         self.loading_backup_dialog = LoadingDialog(
-            self, "Loading File Tree. Please Wait..."
+            self,
+            "Loading File Tree. Please Wait...",
         )
-        self.restoring_dialog = LoadingDialog(self, "Restoring. Please Wait...")
+        self.restoring_dialog = LoadingDialog(
+            self,
+            "Restoring. Please Wait...",
+        )
 
         self.logger.info("Restore dialog displayed.")
 
