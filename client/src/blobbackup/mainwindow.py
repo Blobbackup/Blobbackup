@@ -2,7 +2,7 @@ import sys
 import time
 import webbrowser
 
-from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QMainWindow, QMessageBox
 from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.mainwindow import Ui_MainWindow
@@ -62,10 +62,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         dialog.exec()
 
     def quit_application(self):
-        if self.backup_thread.backup_running():
-            self.backup_thread.stop_backup()
-        self.logger.info("Quit application.")
-        sys.exit()
+        reply = QMessageBox.information(
+            self,
+            "Quit Blobbackup?",
+            "Are you sure you want to quit Blobbackup?",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
+        )
+        if reply == QMessageBox.StandardButton.Yes:
+            if self.backup_thread.backup_running():
+                self.backup_thread.stop_backup()
+            self.logger.info("Quit application.")
+            sys.exit()
 
     def restart_backup(self):
         self.toggle_backup()
