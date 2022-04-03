@@ -61,9 +61,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
             self.snapshots_combo_box.addItem(pretty_time, userData=snapshot["id"])
 
     def load_current_snapshot(self):
-        self.setEnabled(False)
-        self.loading_backup_dialog.show()
-        self.setWindowTitle("Loading File Tree. Please Wait...")
+        self.loading_backups_gui_state()
         self.snapshot_tree_widget.clear()
         snapshot_id = self.snapshots_combo_box.currentData()
         self.snapshot_thread = SnapshotThread(
@@ -75,9 +73,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
     def snapshot_loaded(self, tree):
         computer = get_computer(self.email, self.password, self.computer_id)
         self.snapshot_tree_widget.initialize(tree, computer["name"])
-        self.setWindowTitle("Restore Files - Blobbackup")
-        self.loading_backup_dialog.hide()
-        self.setEnabled(True)
+        self.reset_gui_state()
 
     def restore(self):
         path = QFileDialog.getExistingDirectory()
@@ -91,9 +87,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
             )
             if reply == QMessageBox.StandardButton.Yes:
                 snapshot_id = self.snapshots_combo_box.currentData()
-                self.setEnabled(False)
-                self.restoring_dialog.show()
-                self.setWindowTitle("Restoring. Please Wait...")
+                self.restoring_gui_state()
                 self.restore_thread = RestoreThread(
                     self.email,
                     self.password,
@@ -107,12 +101,26 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
                 self.restore_thread.start()
 
     def restored(self, target):
-        self.setWindowTitle("Restore Files - Blobbackup")
-        self.restoring_dialog.hide()
-        self.setEnabled(True)
+        self.reset_gui_state()
         QMessageBox.information(
             self, "Restore Complete", f"Your files have been restored to {target}."
         )
+
+    def loading_backups_gui_state(self):
+        self.setEnabled(False)
+        self.loading_backup_dialog.show()
+        self.setWindowTitle("Loading File Tree. Please Wait...")
+
+    def restoring_gui_state(self):
+        self.setEnabled(False)
+        self.restoring_dialog.show()
+        self.setWindowTitle("Restoring. Please Wait...")
+
+    def reset_gui_state(self):
+        self.setWindowTitle("Restore Files - Blobbackup")
+        self.restoring_dialog.hide()
+        self.loading_backup_dialog.hide()
+        self.setEnabled(True)
 
     def restore_failed(self):
         self.setWindowTitle("Restore Files - Blobbackup")
