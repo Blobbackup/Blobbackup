@@ -24,12 +24,13 @@ codesign --verify --force --verbose --deep \
 rm -rf $APP_BUNDLE.dmg
 create-dmg \
   --volname "Blobbackup Installer" \
-  --window-size 410 300 \
-  --icon-size 100 \
-  --icon "Blobbackup.app" 70 150 \
+  --window-pos 100 100 \
+  --window-size 300 400 \
+  --icon-size 75 \
+  --icon "Blobbackup.app" 150 90 \
   --background ../package/background.png \
   --hide-extension "Blobbackup.app" \
-  --app-drop-link 240 150 \
+  --app-drop-link 150 240 \
   "Blobbackup.dmg" \
   "Blobbackup.app"
 
