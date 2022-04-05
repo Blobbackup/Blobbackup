@@ -187,4 +187,57 @@ class ComputersTest extends TestCase
 
         $response->assertStatus(Response::HTTP_UNAUTHORIZED);
     }
+
+    public function test_it_can_update_a_computer_correctly()
+    {
+        $base64_credentials = base64_encode('test@email.com:b6yOfA0cIthbuYerlb/KodNcJlp1aO4uW8hOpXydBdk=');
+
+        $headers = [
+            'Authorization' => 'Basic ' . $base64_credentials,
+            'Accept' => 'application/json',
+        ];
+
+        $data = [
+            'name' => 'computer-name',
+            'operating_system' => 'FAKE_TEST_OS',
+            'last_backed_up_at' => '1649199766',
+            'last_backed_up_num_files' => '17',
+            'last_backed_up_size' => '84033019',
+            'client_version' => Util::$clientVersion,
+        ];
+
+        $response = $this->withHeaders($headers)
+            ->post('api/computers/1', $data);
+
+        $expected_result = [
+            'id' => 1,
+            'name' => 'computer-name',
+            'operating_system' => 'FAKE_TEST_OS',
+            'last_backed_up_at' => '2022-04-05 23:02:46',
+            'last_backed_up_num_files' => '17',
+            'last_backed_up_size' => '84033019',
+            'client_version' => Util::$clientVersion,
+        ];
+
+        $response->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure(array_keys($expected_result));
+
+        $this->assertDatabaseHas('computers', $expected_result);
+    }
+
+    public function test_it_can_not_update_a_computer_without_authentication()
+    {
+        $headers = [
+            'Accept' => 'application/json',
+        ];
+
+        $data = [
+            'client_version' => Util::$clientVersion,
+        ];
+
+        $response = $this->withHeaders($headers)
+            ->post('api/computers/1', $data);
+
+        $response->assertStatus(Response::HTTP_UNAUTHORIZED);
+    }
 }
