@@ -1,14 +1,14 @@
 <?php
 
-use App\Util\Util;
 use App\Models\Computer;
 use App\Models\User;
+use App\Services\B2Client;
+use App\Util\Util;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,24 +43,33 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
         Route::post('/computers', function (Request $request, Response $response) {
             if (Validator::make($request->all(), [
                 'name' => ['required', 'string', 'max:255'],
-                'operating_system' => ['required', 'string', 'max:255']
-            ])->fails())
+                'operating_system' => ['required', 'string', 'max:255'],
+            ])->fails()) {
                 return $response->setStatusCode(400);
-            
+            }
+
             // Create backblaze credentials
-            $authResponse = Http::withBasicAuth(env('B2_KEY_ID'), env('B2_APPLICATION_KEY'))
-                ->get('https://api.backblazeb2.com/b2api/v2/b2_authorize_account');
-            if ($authResponse->status() != 200)
+            $b2 = new B2Client();
+
+            $authResponse = $b2->authorizeAccount();
+
+            if ($authResponse->status() != 200) {
                 return $response->setStatusCode(400);
+            }
+
             $uuid = Str::uuid()->toString();
             $authJson = $authResponse->json();
-            $createKeyResponse = Http::withHeaders(['Authorization' => $authJson['authorizationToken']])
-                ->post($authJson['apiUrl'] . '/b2api/v2/b2_create_key', [
-                    'keyName' => $uuid, 'namePrefix' => $uuid, 'bucketId' => env('B2_BUCKET_ID'), 'accountId' => env('B2_ACCOUNT_ID'),
-                    'capabilities' => ['listFiles', 'readFiles', 'writeFiles', 'deleteFiles', 'listBuckets']]);
-            if ($createKeyResponse->status() != 200)
+
+            $createKeyResponse = $b2->createKey(
+                $authJson['authorizationToken'],
+                $authJson['apiUrl'],
+                $uuid
+            );
+
+            if ($createKeyResponse->status() != 200) {
                 return $response->setStatusCode(400);
-    
+            }
+
             // Create computer
             $createKeyJson = $createKeyResponse->json();
             $computer = new Computer();
@@ -74,7 +83,7 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
             $computer->b2_bucket_name = env('B2_BUCKET_NAME');
             return $computer;
         });
-    
+
         Route::post('/computers/{computer}', function (Request $request, Response $response, Computer $computer) {
             if (Validator::make($request->all(), [
                 'name' => ['string', 'max:255'],
@@ -97,14 +106,14 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
             $computer->b2_bucket_name = env('B2_BUCKET_NAME');
             return $computer;
         });
-    
+
         Route::get('/computers/{computer}', function (Request $request, Response $response, Computer $computer) {
             if ($computer->user_id != auth()->user()->id)
                 return $response->setStatusCode(400);
             $computer->b2_bucket_name = env('B2_BUCKET_NAME');
             return $computer;
         });
-    
+
         Route::get('/computers', function (Request $request, Response $response) {
             return auth()->user()->computers;
         });
