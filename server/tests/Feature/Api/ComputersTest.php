@@ -6,6 +6,7 @@ use App\Models\Computer;
 use App\Models\User;
 use App\Util\Util;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
@@ -112,6 +113,77 @@ class ComputersTest extends TestCase
 
         $response = $this->withHeaders($headers)
             ->get('/api/computers/1');
+
+        $response->assertStatus(Response::HTTP_UNAUTHORIZED);
+    }
+
+    public function test_it_can_create_a_computer_correctly()
+    {
+        $this->withoutExceptionHandling();
+
+        $fake_response_authorization = [
+            'authorizationToken' => 'fake-api-token',
+            'apiUrl' => 'http://fake.test',
+        ];
+
+        $fake_response_create_key = [
+            'applicationKeyId' => 'fake-app-key-id',
+            'applicationKey' => 'fake-app-key',
+        ];
+
+        Http::fake([
+            'https://api.backblazeb2.com/*' => Http::response($fake_response_authorization),
+            'http://fake.test/*' => Http::response($fake_response_create_key),
+        ]);
+
+        $base64_credentials = base64_encode('test@email.com:b6yOfA0cIthbuYerlb/KodNcJlp1aO4uW8hOpXydBdk=');
+
+        $headers = [
+            'Authorization' => 'Basic ' . $base64_credentials,
+            'Accept' => 'application/json',
+        ];
+
+        $data = [
+            'name' => 'computer-name',
+            'operating_system' => 'FAKE_TEST_OS',
+        ];
+
+        $response = $this->withHeaders($headers)
+            ->post('api/computers', $data);
+
+        $expected_response = [
+            'name' => 'computer-name',
+            'operating_system' => 'FAKE_TEST_OS',
+            "b2_key_id" => "fake-app-key-id",
+            "b2_application_key" => "fake-app-key",
+            "user_id" => 1,
+        ];
+
+        $response->assertStatus(Response::HTTP_CREATED)
+            ->assertJson($expected_response);
+
+        $this->assertDatabaseHas('computers', $expected_response);
+    }
+
+    public function test_it_can_not_create_a_computer_without_authentication()
+    {
+        Http::fake([
+            '*' => Http::response([], Response::HTTP_BAD_REQUEST),
+        ]);
+
+        $headers = [
+            'Accept' => 'application/json',
+        ];
+
+        $data = [
+            'name' => 'computer-name',
+            'operating_system' => 'FAKE_TEST_OS',
+        ];
+
+        $response = $this->withHeaders($headers)
+            ->post('api/computers', $data);
+
+        Http::assertNothingSent();
 
         $response->assertStatus(Response::HTTP_UNAUTHORIZED);
     }
