@@ -28,5 +28,10 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="B2_ACCOUNT_ID" value="fake-b2-acc-id"/>
+        <env name="B2_BUCKET_NAME" value="fake-b2-bucket-name"/>
+        <env name="B2_BUCKET_ID" value="fake-b2-bucket-id"/>
+        <env name="B2_KEY_ID" value="fake-b2-key-id"/>
+        <env name="B2_APPLICATION_KEY" value="fake-b2-app-key"/>
     </php>
 </phpunit>
