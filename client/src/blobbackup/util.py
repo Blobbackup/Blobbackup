@@ -63,10 +63,7 @@ def get_asset(path):
 
 
 LOGO_PATH = get_asset(os.path.join("img", "logo.png"))
-if is_mac():
-    LOGO_PADDED_PATH = get_asset(os.path.join("img", "logo_padded_white.png"))
-elif is_windows():
-    LOGO_PADDED_PATH = get_asset(os.path.join("img", "logo_padded.png"))
+LOGO_PADDED_PATH = get_asset(os.path.join("img", "logo_padded.png"))
 CHECK_PATH = get_asset(os.path.join("img", "check.png"))
 COMPUTER_PATH = get_asset(os.path.join("img", "computer.png"))
 ARROW_PATH = get_asset(os.path.join("img", "arrow.png"))
