@@ -38,11 +38,6 @@ class RegisteredUserController extends Controller
                 'groups' => false,
             ];
         }
-        if (env('APP_ENV') == 'local') {
-            $fields += [
-                'email_verified_at' => new \DateTime()
-            ];
-        }
         return $fields;
     }
 
