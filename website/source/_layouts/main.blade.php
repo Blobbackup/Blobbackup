@@ -7,7 +7,7 @@
         <meta name="description" content="Blobbackup is a private, open source and secure cloud computer backup service. Personal backup without compromising any privacy for $9 per month."/>
         <meta name="author" content="Blobbackup, LLC">
         <title>@yield('title') - Blobbackup</title>
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
     </head>
     <body>
@@ -97,10 +97,6 @@
             };
             document.getElementById("responsive-close").onclick = () => {
                 document.getElementById("responsive-menu").classList.add("hidden");
-                return false;
-            };
-            document.getElementById("announcement-close").onclick = () => {
-                document.getElementById("announcement").classList.add("hidden");
                 return false;
             };
         </script>

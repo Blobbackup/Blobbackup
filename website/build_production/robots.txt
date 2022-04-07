@@ -1,0 +1,2 @@
+User-agent: *
+sitemap: https://blobbackup.com/sitemap.xml

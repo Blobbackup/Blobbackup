@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="md:w-1/2 px-4 md:px-16 mt-8 md:mt-0">
-        <img src="/assets/images/hero.png"/>
+        <img src="/assets/images/hero.webp"/>
     </div>
 </section>
 <section class="mt-4 md:mt-8 grid md:grid-cols-3 gap-8 text-center md:text-left">

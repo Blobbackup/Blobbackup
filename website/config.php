@@ -2,7 +2,7 @@
 
 return [
     'production' => false,
-    'baseUrl' => '',
+    'baseUrl' => 'https://blobbackup.com',
     'title' => 'Blobbackup',
     'description' => 'Private, Secure Computer Backups.',
     'collections' => [
