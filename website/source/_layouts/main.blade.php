@@ -59,7 +59,7 @@
                 </div>
             </div>
         </header>
-        <main class="mx-auto max-w-5xl p-4">
+        <main>
             @yield('body')
         </main>
         <footer class="p-4 py-8 text-center">
