@@ -11,7 +11,7 @@ class GenerateSitemap
         $sitemap = new Sitemap($jigsaw->getDestinationPath() . '/sitemap.xml');
 
         collect($jigsaw->getOutputPaths())->each(function ($path) use ($baseUrl, $sitemap) {
-            if (!$this->isAsset($path)) {
+            if (!$this->isAsset($path) && !$this->isAd($path)) {
                 $sitemap->addItem($baseUrl . $path);
             }
         });
@@ -24,6 +24,11 @@ class GenerateSitemap
         $robotsFile = fopen($robotsPath, "w");
         fwrite($robotsFile, $robots);
         fclose($robotsFile);
+    }
+
+    public function isAd($path)
+    {
+        return str_starts_with($path, '/ads');
     }
 
     public function isAsset($path)
