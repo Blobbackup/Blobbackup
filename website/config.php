@@ -5,6 +5,7 @@ return [
     'baseUrl' => 'https://blobbackup.com',
     'title' => 'Blobbackup',
     'description' => 'Private, Secure Computer Backups.',
+    'trialLengthDays' => 15,
     'collections' => [
         'posts' => [
             'path' => '/blog/{filename}',

@@ -8,7 +8,7 @@
     <div class="mx-auto max-w-lg text-center">
         <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-10">Personal Backup</h1>
         <h2 class="text-xl md:text-2xl text-gray-600 mt-2">Securely backup your personal computers to the cloud without compromising your privacy.</h2>
-        <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try it for Free</a>
+        <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for {{ $page->trialLengthDays }} Days</a>
         <div class="text-gray-400 mt-4 text-xs md:text-base">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -138,7 +138,7 @@
     <section class="text-center md:mt-16">
         <h1 class="text-4xl md:text-5xl font-bold mt-8 md:mt-16 text-center">$9 / Month Flat</h1>
         <h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">Per computer. All features included.</h2>
-        <div class="text-center"><a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for 30 Days</a></div>
+        <div class="text-center"><a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for {{ $page->trialLengthDays }} Days</a></div>
         <p class="text-center text-gray-600 text-sm mt-2">No card required. Cancel anytime.</p>
         <section class="mt-8 md:mt-16 text-center grid md:grid-cols-3 gap-8">
             <div>

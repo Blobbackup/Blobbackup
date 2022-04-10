@@ -121,7 +121,7 @@
     <section class="text-center mt-16">
         <h3 class="text-3xl font-bold">$9 / Month / Computer</h3>
         <h4 class="text-lg text-gray-600 mt-2">Start protecting your computer data today.</h4>
-        <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try it for Free</a>
+        <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for {{ $page->trialLengthDays }} Days</a>
     </section>
 </div>
 @endsection
