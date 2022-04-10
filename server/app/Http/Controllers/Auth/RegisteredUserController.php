@@ -60,7 +60,7 @@ class RegisteredUserController extends Controller
         $user = User::create($this->getNewUserFields($request));
 
         $user->createAsCustomer([
-            'trial_ends_at' => now()->addDays(30)
+            'trial_ends_at' => now()->addDays(Util::$trialLengthDays)
         ]);
 
         if ($request->leader_id) {

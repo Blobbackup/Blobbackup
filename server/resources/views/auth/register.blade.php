@@ -16,7 +16,7 @@
                 @if(isset($leader))
                     <strong>{{ $leader->email }}</strong> has invited you to join their group and will pay for your account's computer backups.
                 @else
-                    Free 30 day trial. No card required.
+                    Free {{ Util::$trialLengthDays }} day trial. No card required.
                 @endif
             </h2>
             @if(isset($leader))
