@@ -162,6 +162,132 @@
             </p>
         </div>
     </section>
+    <div class="max-w-4xl mx-auto text-center mt-8 md:mt-16">
+        <h1 class="text-2xl md:text-4xl font-bold">How Blobbackup Works</h1>
+        <h2 class="text-xl md:text-2xl text-gray-600 mt-2">
+            Blobbackup is an app for your Mac or PC that protects you from data loss by 
+            automatically backing up your files to the cloud. Unlike others, we're built 
+            on a foundation of <strong>Privacy, Security and Open Source Transparency.</strong>
+        </h2>
+    </div>
+    <section class="mt-8 md:mt-16 grid md:grid-cols-3 gap-8 text-center md:text-left">
+        <div>
+            <h4 class="text-xl font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
+                </svg>
+                Secure Offsite Cloud
+            </h4>
+            <p class="text-lg text-gray-600 mt-2">
+                Data is stored in datacenters with 24/7 staff, 
+                biometric security and redundant power.
+            </p>
+        </div>
+        <div>
+            <h4 class="text-xl font-bold">
+                <a href="/blog/what-is-end-to-end-encryption">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                    </svg>
+                    Private by Design
+                </a>
+            </h4>
+            <p class="text-lg text-gray-600 mt-2">
+                Everything is encrypted with your password and we never store
+                or transmit your password.
+            </p>
+        </div>
+        <div>
+            <h4 class="text-xl font-bold">
+                <a href="/blog/open-source-software-vs-open-source-development">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Fully Open Source
+                </a>
+            </h4>
+            <p class="text-lg text-gray-600 mt-2">
+                All code is available for analysis, audit and review.
+                There are no tricks under our sleeves.
+            </p>
+        </div>
+        <div>
+            <h4 class="text-xl font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
+                </svg>
+                Full Computer Backups
+            </h4>
+            <p class="text-lg text-gray-600 mt-2">
+                Protect all your files including documents, photos, music, movies
+                and more.
+            </p>
+        </div>
+        <div>
+            <h4 class="text-xl font-bold">
+                <a href="/blog/getting-started-with-blobbackup">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                    </svg>
+                    Perfect for Famililes
+                </a>
+            </h4>
+            <p class="text-lg text-gray-600 mt-2">
+                Pay for and manage your family's computer backups 
+                from our simple web admin panel.
+            </p>
+        </div>
+        <div>
+            <h4 class="text-xl font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                </svg>
+                Perfect for Small Business
+            </h4>
+            <p class="text-lg text-gray-600 mt-2">
+                Easily protect your employees' computers while respecting 
+                their personal privacy.
+            </p>
+        </div>
+        <div>
+            <h4 class="text-xl font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                </svg>
+                Blazing Fast Restores
+            </h4>
+            <p class="text-lg text-gray-600 mt-2">
+                Restore from our app as fast as your internet
+                allows. No download limits or wait times.
+            </p>
+        </div>
+        <div>
+            <h4 class="text-xl font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h6a2 2 0 002-2V6.414A2 2 0 0016.414 5L14 2.586A2 2 0 0012.586 2H9z" />
+                    <path d="M3 8a2 2 0 012-2v10h8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+                </svg>
+                Extended File History
+            </h4>
+            <p class="text-lg text-gray-600 mt-2">
+                Old versions of files and deleted files are kept on our secure cloud 
+                for as long as you need.
+            </p>
+        </div>
+        <div>
+            <h4 class="text-xl font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd" />
+                </svg>
+                Simple Monitoring
+            </h4>
+            <p class="text-lg text-gray-600 mt-2">
+                Get notified via email when your computer hasn't been backed 
+                up for over 2 weeks.
+            </p>
+        </div>
+    </section>
     <section class="text-center mt-16">
         <h3 class="text-3xl font-bold">${{ $page->perComputerPrice }} / Month / Computer</h3>
         <h4 class="text-lg text-gray-600 mt-2">Start protecting your computer data today.</h4>
