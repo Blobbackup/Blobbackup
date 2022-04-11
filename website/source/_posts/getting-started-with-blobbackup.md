@@ -4,12 +4,12 @@ title: Getting Started With Blobbackup
 author: Bimba Shrestha
 date: 2022-02-10
 section: content
-description: What is Blobbackup? Blobbackup is a tool for backing up your computer. For $9 / month, Blobbackup will backup all user-created data on your Mac or Windows device. Blobbackup creates a mirror clone of the current...
+description: What is Blobbackup? Blobbackup is a tool for backing up your computer. For $6 / month, Blobbackup will backup all user-created data on your Mac or Windows device. Blobbackup creates a mirror clone of the current...
 ---
 
 # What is Blobbackup?
 
-Blobbackup is a tool for backing up your computer. For $9 / month, Blobbackup will backup all user-created data on your Mac or Windows device. (Please note that there is a 5 TB limit per computer; we’ve found that this limit is well above what most people need).
+Blobbackup is a tool for backing up your computer. For $6 / month, Blobbackup will backup all user-created data on your Mac or Windows device. (Please note that there is a 5 TB limit per computer; we’ve found that this limit is well above what most people need).
 
 Blobbackup creates a mirror clone of the current state of your computer every hour (we call this a snapshot). Snapshots are kept for a year. This means that you can recover deleted files or old versions of files going back as far as 1 year.
 

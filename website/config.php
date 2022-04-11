@@ -6,7 +6,7 @@ return [
     'title' => 'Blobbackup',
     'description' => 'Private, Secure Computer Backups.',
     'trialLengthDays' => 15,
-    'perComputerPrice' => 9,
+    'perComputerPrice' => 6,
     'collections' => [
         'posts' => [
             'path' => '/blog/{filename}',

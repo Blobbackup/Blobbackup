@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Mail;
 
 class Util
 {
-    public static $perComputerPrice = 9;
+    public static $perComputerPrice = 6;
     public static $clientVersion = "1.1.7";
     public static $trialLengthDays = 15;
 
