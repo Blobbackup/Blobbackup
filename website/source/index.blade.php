@@ -139,7 +139,7 @@
                 8. Corrupt Software
             </h4>
             <p class="text-lg text-gray-600 mt-2">
-                Improper software failures and shutdowns at the wrong time can 
+                Improper software shutdowns and failures at the wrong time can 
                 cause serious issues for your data.
             </p>
         </div>
