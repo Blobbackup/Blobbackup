@@ -7,12 +7,12 @@
 @section('body')
 <div class="mx-auto max-w-5xl p-4">
     <section class="md:flex mt-4 md:mt-8">
-        <div class="md:w-1/2 text-center md:text-left">
-            <h1 class="text-3xl md:text-5xl font-bold mt-0 md:mt-10">Simple Cloud Backup</h1>
+        <div class="md:w-1/2 text-center md:text-left my-auto">
+            <h1 class="text-3xl md:text-5xl font-bold">Simple Cloud Backup</h1>
             <h2 class="text-xl md:text-2xl text-gray-600 mt-2">
                 We back up your entire computer to the cloud for 
-                ${{ $page->perComputerPrice }}/month. All of your files. 
-                For the price of a cup of coffee. Your privacy, guaranteed.
+                ${{ $page->perComputerPrice }}/month flat. No hidden fees or price tiers. All of your files. 
+                For the price of a cup of coffee. <strong>Your privacy, guaranteed.</strong>
             </h2>
             <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for {{ $page->trialLengthDays }} Days</a>
             <div class="text-gray-600 mt-4 text-xs md:text-base">
@@ -30,20 +30,17 @@
                 Mac & Windows
             </div>
         </div>
-        <div class="md:w-1/2 px-4 md:px-16 mt-8 md:mt-0">
+        <div class="md:w-1/2 px-4 md:px-16 mt-8 md:my-auto">
             <img src="/assets/images/hero.webp"/>
         </div>
     </section>
-    <div class="max-w-4xl mx-auto text-center mt-8">
+    <div class="max-w-4xl mx-auto text-center mt-4 md:mt-8">
         <h1 class="text-2xl md:text-4xl font-bold">Don't Risk Losing Your Files</h1>
         <h2 class="text-xl md:text-2xl text-gray-600 mt-2">
             Remember that time you almost spilled coffee on your keyboard?
-            Or that time you left your laptop in your car? Liquid damange and
+            Or that time you left your laptop in your car? Liquid damage and
             computer theft are just two of the many ways you could lose your 
-            important files. Here are the
-            <span class="border-b-4 border-blue-500">
-                Top 9 Causes of Data Loss:
-            </span>
+            important files. Here are the <strong>Top 9 Causes of Data Loss.</strong>
         </h2>
     </div>
     <section class="mt-8 md:mt-16 grid md:grid-cols-3 gap-8 text-center md:text-left">
