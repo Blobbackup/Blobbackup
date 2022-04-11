@@ -5,7 +5,7 @@
 
 @section('body')
 <div class="mx-auto max-w-5xl p-4">
-    <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">$9 / Month</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">${{ $page->perComputerPrice }} / Month</h1>
     <h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">Per computer. All features included.</h2>
     <div class="text-center"><a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for {{ $page->trialLengthDays }} Days</a></div>
     <p class="text-center text-gray-600 text-sm mt-2">No card required. Cancel anytime.</p>
@@ -20,7 +20,7 @@
         <div>
             <h1 class="text-2xl md:text-3xl font-bold mt-2">5 TB per Computer</h1>
             <p class="text-lg text-gray-600 mt-2">
-                We charge you $9 / month per computer. Each computer is allowed to backup
+                We charge you ${{ $page->perComputerPrice }} / month per computer. Each computer is allowed to backup
                 up to 5 TB of data.
             </p>
         </div>
@@ -68,7 +68,7 @@
                 Can I pay yearly? What are the payment options?
             </h1>
             <p class="text-lg text-gray-600 mt-2">
-                We only offer monthly billing at this time. We will bill you $9 per computer every month after your trial ends. 
+                We only offer monthly billing at this time. We will bill you ${{ $page->perComputerPrice }} per computer every month after your trial ends. 
                 We accept payment via credit card, debit card and PayPal. We don't accept orders, checks, ACH/wire or 
                 cryptocurrency.
             </p>
