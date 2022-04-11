@@ -58,12 +58,10 @@
         </div>
         <div>
             <h4 class="text-xl font-bold">
-                <a href="/blog/what-is-end-to-end-encryption">
-                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 100 100" fill="currentColor" width="100" height="100" xml:space="preserve">
-                        <path d="M50 10c-5.521 0-10 4.479-10 10v5h20v-5c0-5.521-4.479-10-10-10zM90 56.666V50H69.434c.146-1.199.257-2.396.342-3.602 9.567-1.494 16.892-9.748 16.892-19.732H80c0 6.205-4.261 11.373-10 12.861V30H30v9.527c-5.742-1.488-10-6.656-10-12.861h-6.667c0 9.984 7.324 18.238 16.892 19.732A69.07 69.07 0 0 0 30.567 50H10v6.666h21.722a69.396 69.396 0 0 0 1.403 5.367c-9.658 4.008-16.458 13.523-16.458 24.633h6.666c0-8.236 4.98-15.299 12.084-18.365C38.747 76.184 43.581 83.58 50 90c6.419-6.42 11.253-13.816 14.583-21.699 7.104 3.068 12.084 10.133 12.084 18.365h6.666c0-11.109-6.8-20.625-16.458-24.633.55-1.773.999-3.564 1.403-5.367H90z"/>
-                    </svg>
-                    2. Virus & Ransomware
-                </a>
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 100 100" fill="currentColor" width="100" height="100" xml:space="preserve">
+                    <path d="M50 10c-5.521 0-10 4.479-10 10v5h20v-5c0-5.521-4.479-10-10-10zM90 56.666V50H69.434c.146-1.199.257-2.396.342-3.602 9.567-1.494 16.892-9.748 16.892-19.732H80c0 6.205-4.261 11.373-10 12.861V30H30v9.527c-5.742-1.488-10-6.656-10-12.861h-6.667c0 9.984 7.324 18.238 16.892 19.732A69.07 69.07 0 0 0 30.567 50H10v6.666h21.722a69.396 69.396 0 0 0 1.403 5.367c-9.658 4.008-16.458 13.523-16.458 24.633h6.666c0-8.236 4.98-15.299 12.084-18.365C38.747 76.184 43.581 83.58 50 90c6.419-6.42 11.253-13.816 14.583-21.699 7.104 3.068 12.084 10.133 12.084 18.365h6.666c0-11.109-6.8-20.625-16.458-24.633.55-1.773.999-3.564 1.403-5.367H90z"/>
+                </svg>
+                2. Virus & Ransomware
             </h4>
             <p class="text-lg text-gray-600 mt-2">
                 Downloading the wrong file or using insecure Wifi 
@@ -72,13 +70,11 @@
         </div>
         <div>
             <h4 class="text-xl font-bold">
-                <a href="/blog/open-source-software-vs-open-source-development">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M13 7H7v6h6V7z" />
-                        <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clip-rule="evenodd" />
-                    </svg>
-                    3. Hard Drive Crash
-                </a>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M13 7H7v6h6V7z" />
+                    <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clip-rule="evenodd" />
+                </svg>
+                3. Hard Drive Crash
             </h4>
             <p class="text-lg text-gray-600 mt-2">
                 Both classic hard drives and modern solid
@@ -88,12 +84,10 @@
         </div>
         <div>
             <h4 class="text-xl font-bold">
-                <a href="/blog/getting-started-with-blobbackup">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
-                    </svg>
-                    4. Power Outages
-                </a>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                </svg>
+                4. Power Outages
             </h4>
             <p class="text-lg text-gray-600 mt-2">
                 Sudden power outages can corrupt your files
