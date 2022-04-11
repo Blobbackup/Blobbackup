@@ -282,10 +282,13 @@
             </p>
         </div>
     </section>
-    <section class="text-center mt-16">
+    <section class="text-center mt-16 mx-auto max-w-lg">
         <h3 class="text-3xl font-bold">${{ $page->perComputerPrice }} / Month / Computer</h3>
-        <h4 class="text-lg text-gray-600 mt-2">Start protecting your computer data today.</h4>
+        <h4 class="text-lg text-gray-600 mt-2">
+            Fast email support and 5,000 GB of storage per computer included. Start protecting your computer data today.
+        </h4>
         <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for {{ $page->trialLengthDays }} Days</a>
+        <p class="text-center text-gray-600 text-sm mt-2">No card required. Cancel anytime.</p>
     </section>
 </div>
 @endsection
