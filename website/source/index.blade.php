@@ -8,7 +8,7 @@
 <div class="mx-auto max-w-5xl p-4">
     <section class="md:flex mt-4 md:mt-8">
         <div class="md:w-1/2 text-center md:text-left">
-            <h1 class="text-4xl md:text-5xl font-bold mt-0 md:mt-10">Simple Cloud Backup</h1>
+            <h1 class="text-3xl md:text-5xl font-bold mt-0 md:mt-10">Simple Cloud Backup</h1>
             <h2 class="text-xl md:text-2xl text-gray-600 mt-2">
                 We back up your entire computer to the cloud for 
                 ${{ $page->perComputerPrice }}/month. All of your files. 
