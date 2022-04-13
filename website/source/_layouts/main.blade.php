@@ -21,6 +21,7 @@
                     <a href="/personal" class="ml-4">Personal</a>
                     <a href="/business" class="ml-4">Business</a>
                     <a href="/pricing" class="ml-4">Pricing</a>
+                    <a href="/security" class="ml-4">Security</a>
                     <a href="/company" class="ml-4">About</a>
                     <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="ml-4">Github</a>
                     <a href="/blog" class="ml-4">Blog</a>
@@ -52,6 +53,7 @@
                         <a href="/personal" class="block underline mt-4">Personal</a>
                         <a href="/business" class="block underline mt-4">Business</a>
                         <a href="/pricing" class="block underline mt-4">Pricing</a>
+                        <a href="/security" class="block underline mt-4">Security</a>
                         <a href="/company" class="block underline mt-4">About</a>
                         <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="block underline mt-4">Github</a>
                         <a href="/blog" class="block underline mt-4">Blog</a>
