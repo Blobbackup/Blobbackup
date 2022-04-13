@@ -361,7 +361,7 @@
             <p class="text-lg text-gray-600 mt-2">
                 Services like Dropbox and Google Drive synchronize folders between devices. While it's better than nothing, 
                 it's not a computer backup. Only data inside a few folders are in the cloud (not the entire computer), ransomware 
-                and accidental deletions are still issues, there's no end-to-end encryption, and you'll pay roughly 4 times 
+                and accidental deletions are still issues, there's no end-to-end encryption, and you'll pay roughly 2-3 times 
                 as much for the amount of storage Blobbackup offers. Sync services are designed for collaboration while backup services are 
                 designed for disaster recovery.
             </p>

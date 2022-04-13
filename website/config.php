@@ -7,7 +7,7 @@ return [
     'description' => 'Private, Secure Computer Backups.',
     'trialLengthDays' => 15,
     'perComputerPrice' => 6,
-    'perComputerGB' => "5,000",
+    'perComputerGB' => "2,000",
     'collections' => [
         'posts' => [
             'path' => '/blog/{filename}',
