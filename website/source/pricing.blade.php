@@ -18,7 +18,7 @@
             </p>
         </div>
         <div>
-            <h1 class="text-2xl md:text-3xl font-bold mt-2">{{ $page->perComputerGB }} GB per Computer</h1>
+            <h1 class="text-2xl md:text-3xl font-bold mt-2">{{ $page->perComputerGB }} GB Storage</h1>
             <p class="text-lg text-gray-600 mt-2">
                 We charge you ${{ $page->perComputerPrice }} / month per computer. Each computer is allowed to backup
                 up to {{ $page->perComputerGB }} GB of data.
