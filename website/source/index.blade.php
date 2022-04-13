@@ -1,5 +1,5 @@
 @section('title')
-    Private, Secure Computer Backups
+    Cloud Backup: Simple, Secure Online Computer Backup
 @endsection
 
 @extends('_layouts.main')
