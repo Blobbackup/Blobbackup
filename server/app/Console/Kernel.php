@@ -48,7 +48,7 @@ class Kernel extends ConsoleKernel
                 $last_backed_up = $computer->last_backed_up_at;
                 if ($last_backed_up) {
                     $delta = $last_backed_up->diff(new \DateTime());
-                    if ($delta->y == 0 && $delta->m == 0 && $delta->d >= 14 && $delta->d <= 16) {
+                    if ($delta->y == 0 && $delta->m == 0 && $delta->d == 14) {
                         Util::sendEmail($computer->user->email,
                             "Computer Not Backed up for 14 Days!",
                             "It's been more than 14 days since we've backed up your computer <b>" . $computer->name . "</b>.");
