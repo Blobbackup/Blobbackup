@@ -74,14 +74,13 @@
         <div>
             <div class="text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 inline-block text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd" />
                 </svg>
             </div>
-            <h1 class="text-2xl md:text-3xl font-bold mt-2">Regular Pen Testing</h1>
+            <h1 class="text-2xl md:text-3xl font-bold mt-2">Regular Monitoring</h1>
             <p class="text-lg text-gray-600 mt-2">
-                We engage trusted, world-class, third-party security firms to conduct 
-                routine audits and testing.
+                We follow best practices to monitor our servers, databases, 
+                and cloud storage for anomalies.
             </p>
         </div>
         <div>
