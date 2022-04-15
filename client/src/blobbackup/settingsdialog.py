@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QDialog, QFileDialog, QInputDialog
+from PyQt6.QtWidgets import QDialog, QFileDialog, QInputDialog, QMessageBox
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt
 
@@ -7,7 +7,7 @@ from blobbackup.choosecomputerdialog import ChooseComputerDialog
 from blobbackup.restoredialog import RestoreDialog
 from blobbackup.logindialog import verify_password
 from blobbackup.config import config, save_config
-from blobbackup.api import update_computer
+from blobbackup.api import update_computer, get_computer, delete_computer
 from blobbackup.util import get_password_from_keyring, is_windows, LOGO_PATH
 from blobbackup.logger import get_logger
 
@@ -122,7 +122,26 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
             )
             if choose_computer_dialog.exec():
                 computer_id = choose_computer_dialog.computer_id
-                print(computer_id)
+                computer = get_computer(email, password, computer_id)
+                computer_name = computer["name"]
+                reply = QMessageBox.information(
+                    self,
+                    "Inherit Backup History?",
+                    f"You are about to inherit the backup history of the computer '{computer_name}'. This is an irreversible operation. Continue?",
+                    QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                    QMessageBox.StandardButton.No,
+                )
+                if reply == QMessageBox.StandardButton.Yes:
+                    current_computer_id = config["meta"]["computer_id"]
+                    delete_computer(email, password, current_computer_id)
+                    config["meta"]["computer_id"] = str(computer_id)
+                    save_config()
+                    QMessageBox.information(
+                        self,
+                        "Inherited Backup History",
+                        "Successfully inherited backup history.",
+                    )
+                    self.reject()
 
     def accept(self):
         computer_name = self.computer_name_line_edit.text().strip()

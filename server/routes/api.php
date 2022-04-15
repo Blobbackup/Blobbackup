@@ -104,6 +104,12 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
             $computer->b2_bucket_name = env('B2_BUCKET_NAME');
             return $computer;
         });
+
+        Route::post('/deletecomputer/{computer}', function (Request $request, Response $response, Computer $computer) {
+            if ($computer->user_id != auth()->user()->id)
+                return $response->setStatusCode(400);
+            $computer->delete();
+        });
     
         Route::get('/computers', function (Request $request, Response $response) {
             return auth()->user()->computers;

@@ -82,6 +82,16 @@ def get_computers(email, password):
         return None
 
 
+def delete_computer(email, password, computer_id):
+    url = BASE_API_URL + "/deletecomputer/" + str(computer_id)
+    logger, hashed_password = get_logger_and_password(email, password)
+    response = requests.post(url, auth=(email, hashed_password))
+    if response.status_code != 200:
+        logger.error("Computer delete failed.")
+        return False
+    return True
+
+
 def get_logger_and_password(email, password):
     hashed_password = hash_password(password, email)
     logger = get_logger()
