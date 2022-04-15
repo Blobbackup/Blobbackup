@@ -95,12 +95,12 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         super().accept()
 
 
-def verify_password_before_restore(email):
+def verify_password(email):
     dialog = LoginDialog(
         show_register_button=False,
         title="Verification Required",
         heading="Enter your password to continue.",
-        sign_in_button_text="Continue to Restore",
+        sign_in_button_text="Continue",
         email=email,
     )
     return dialog.exec()

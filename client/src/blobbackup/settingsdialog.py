@@ -5,7 +5,7 @@ from PyQt6.QtCore import Qt
 from blobbackup.ui.settingsdialog import Ui_SettingsDialog
 from blobbackup.choosecomputerdialog import ChooseComputerDialog
 from blobbackup.restoredialog import RestoreDialog
-from blobbackup.logindialog import verify_password_before_restore
+from blobbackup.logindialog import verify_password
 from blobbackup.config import config, save_config
 from blobbackup.api import update_computer
 from blobbackup.util import get_password_from_keyring, is_windows, LOGO_PATH
@@ -99,7 +99,7 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
 
     def restore_different_computer(self):
         email = config["meta"]["email"]
-        if verify_password_before_restore(email):
+        if verify_password(email):
             password = get_password_from_keyring()
             choose_computer_dialog = ChooseComputerDialog(email, password)
             if choose_computer_dialog.exec():
@@ -109,7 +109,7 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
 
     def inherit_backup_history(self):
         email = config["meta"]["email"]
-        if verify_password_before_restore(email):
+        if verify_password(email):
             password = get_password_from_keyring()
             choose_computer_dialog = ChooseComputerDialog(email, password)
             if choose_computer_dialog.exec():
