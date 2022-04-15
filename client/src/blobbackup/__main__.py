@@ -48,8 +48,8 @@ def main():
 
         if is_mac() and not full_disk_access():
             request_dialog = RequestFullDiskDialog()
-            request_dialog.exec()
-            sys.exit()
+            if not request_dialog.exec():
+                sys.exit()
 
         first_time = False
         if not client_initialized():

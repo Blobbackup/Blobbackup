@@ -22,6 +22,7 @@ class RequestFullDiskDialog(QDialog, Ui_RequestFullDiskDialog):
         self.screenshot_label.setPixmap(get_pixmap(FULL_DISK_SCREENSHOT_PATH, 450, 403))
         self.guide_label.linkActivated.connect(lambda: webbrowser.open(GUIDE_URL))
         self.open_button.pressed.connect(self.open_system_preferences)
+        self.skip_button.linkActivated.connect(self.accept)
 
         self.logger.info("Request full disk dialog displayed")
 
