@@ -12,8 +12,8 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_RequestFullDiskDialog(object):
     def setupUi(self, RequestFullDiskDialog):
         RequestFullDiskDialog.setObjectName("RequestFullDiskDialog")
-        RequestFullDiskDialog.resize(500, 350)
-        RequestFullDiskDialog.setMinimumSize(QtCore.QSize(500, 350))
+        RequestFullDiskDialog.resize(500, 400)
+        RequestFullDiskDialog.setMinimumSize(QtCore.QSize(500, 400))
         self.verticalLayout = QtWidgets.QVBoxLayout(RequestFullDiskDialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label_3 = QtWidgets.QLabel(RequestFullDiskDialog)
@@ -47,6 +47,14 @@ class Ui_RequestFullDiskDialog(object):
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem3)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem4)
+        self.skip_button = QtWidgets.QLabel(RequestFullDiskDialog)
+        self.skip_button.setObjectName("skip_button")
+        self.horizontalLayout_3.addWidget(self.skip_button)
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
 
         self.retranslateUi(RequestFullDiskDialog)
         QtCore.QMetaObject.connectSlotsByName(RequestFullDiskDialog)
@@ -57,3 +65,4 @@ class Ui_RequestFullDiskDialog(object):
         self.label_3.setText(_translate("RequestFullDiskDialog", "Blobbackup requires \"Full Disk Access\" to work properly."))
         self.guide_label.setText(_translate("RequestFullDiskDialog", "Please grant it from System Preferences and restart the app (<a href=\"https://blobbackup.com\" style=\"color: blue; text-decoration: underline\">Guide</a>)."))
         self.open_button.setText(_translate("RequestFullDiskDialog", "Open System Preferences"))
+        self.skip_button.setText(_translate("RequestFullDiskDialog", "<html><head/><body><p><a href=\"#\"><span style=\" text-decoration: underline; color:#0068da;\">I\'m just restoring</span></a></p></body></html>"))
