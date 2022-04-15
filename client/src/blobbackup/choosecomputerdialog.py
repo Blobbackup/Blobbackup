@@ -9,7 +9,7 @@ from blobbackup.config import config
 
 
 class ChooseComputerDialog(QDialog, Ui_ChooseComputerDialog):
-    def __init__(self, email, password):
+    def __init__(self, email, password, heading):
         QDialog.__init__(self)
         Ui_ChooseComputerDialog.__init__(self)
         self.setupUi(self)
@@ -20,6 +20,7 @@ class ChooseComputerDialog(QDialog, Ui_ChooseComputerDialog):
         self.logger = get_logger()
 
         self.setWindowIcon(QIcon(LOGO_PATH))
+        self.heading_label.setText(heading)
 
         for computer in get_computers(email, password):
             if str(computer["id"]) != config["meta"]["computer_id"]:

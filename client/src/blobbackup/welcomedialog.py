@@ -44,7 +44,11 @@ class WelcomeDialog(QDialog, Ui_WelcomeDialog):
         self.initialize_thread.start()
 
     def restore_files(self):
-        choose_computer_dialog = ChooseComputerDialog(self.email, self.password)
+        choose_computer_dialog = ChooseComputerDialog(
+            self.email,
+            self.password,
+            "Choose the computer you want to restore from.",
+        )
         if choose_computer_dialog.exec():
             computer_id = choose_computer_dialog.computer_id
             dialog = RestoreDialog(self.email, self.password, computer_id)

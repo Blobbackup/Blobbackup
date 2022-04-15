@@ -16,10 +16,10 @@ class Ui_ChooseComputerDialog(object):
         ChooseComputerDialog.setMinimumSize(QtCore.QSize(400, 150))
         self.verticalLayout = QtWidgets.QVBoxLayout(ChooseComputerDialog)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.label_4 = QtWidgets.QLabel(ChooseComputerDialog)
-        self.label_4.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.label_4.setObjectName("label_4")
-        self.verticalLayout.addWidget(self.label_4)
+        self.heading_label = QtWidgets.QLabel(ChooseComputerDialog)
+        self.heading_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.heading_label.setObjectName("heading_label")
+        self.verticalLayout.addWidget(self.heading_label)
         self.computers_combo_box = QtWidgets.QComboBox(ChooseComputerDialog)
         self.computers_combo_box.setObjectName("computers_combo_box")
         self.verticalLayout.addWidget(self.computers_combo_box)
@@ -41,5 +41,5 @@ class Ui_ChooseComputerDialog(object):
     def retranslateUi(self, ChooseComputerDialog):
         _translate = QtCore.QCoreApplication.translate
         ChooseComputerDialog.setWindowTitle(_translate("ChooseComputerDialog", "Choose Computer - Blobbackup"))
-        self.label_4.setText(_translate("ChooseComputerDialog", "Choose the computer you want to restore from."))
+        self.heading_label.setText(_translate("ChooseComputerDialog", "Choose the computer you want to restore from."))
         self.continue_button.setText(_translate("ChooseComputerDialog", "Continue"))

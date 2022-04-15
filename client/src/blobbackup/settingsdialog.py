@@ -101,7 +101,11 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         email = config["meta"]["email"]
         if verify_password(email):
             password = get_password_from_keyring()
-            choose_computer_dialog = ChooseComputerDialog(email, password)
+            choose_computer_dialog = ChooseComputerDialog(
+                email,
+                password,
+                "Choose the computer you want to restore from.",
+            )
             if choose_computer_dialog.exec():
                 computer_id = choose_computer_dialog.computer_id
                 dialog = RestoreDialog(email, password, computer_id)
@@ -111,7 +115,11 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         email = config["meta"]["email"]
         if verify_password(email):
             password = get_password_from_keyring()
-            choose_computer_dialog = ChooseComputerDialog(email, password)
+            choose_computer_dialog = ChooseComputerDialog(
+                email,
+                password,
+                "Choose the computer to inherit backup history from.",
+            )
             if choose_computer_dialog.exec():
                 computer_id = choose_computer_dialog.computer_id
                 print(computer_id)

@@ -21,7 +21,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="heading_label">
      <property name="text">
       <string>Choose the computer you want to restore from.</string>
      </property>
