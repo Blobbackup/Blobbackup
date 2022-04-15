@@ -2,7 +2,7 @@
 extends: _layouts.post
 title: Spilled Liquid on Your Computer?
 author: Bimba Shrestha
-date: 2022-04-15
+date: 2022-04-14
 section: content
 description: You accidentally spilled coffee, tea, or another beverage on your computer. Unfortunately, liquid and electronics don't mix well, but if you act fast, you might be able to save yourself from data loss (and having to purchase another computer).
 ---
