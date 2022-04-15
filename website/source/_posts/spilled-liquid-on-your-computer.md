@@ -39,7 +39,7 @@ If some liquid got on the power cable, you should also leave that out to dry.
 
 After you've given your computer ample time to dry off (again, you should err on the side of waiting longer), attempt to turn it on. Plug your computer into an outlet and press the power button. If you're lucky, you'll see your screen light up, and you can breathe a deep sigh of relief. 
 
-To reduce the likelihood of data loss in the future, consider keeping backups of your data. You can do this manually by copying files to an external hard drive or thumb drive. Or better yet, you can use an automatic cloud backup tool. In our humble (albeit biased) opinion, [Blobbackup](/) is an excellent option. :-) 
+To reduce the likelihood of data loss in the future, consider keeping backups of your data. You can do this manually by copying files to an external hard drive or thumb drive. Or better yet, you can use an automatic cloud backup tool. In my humble (albeit biased) opinion, [Blobbackup](/) is an excellent option. :-) 
 
 # Computer Didn't Turn On?
 
