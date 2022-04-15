@@ -31,6 +31,9 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
         self.restore_different_computer_label.linkActivated.connect(
             self.restore_different_computer
         )
+        self.inherit_backup_history_label.linkActivated.connect(
+            self.inherit_backup_history
+        )
         self.save_button.pressed.connect(self.accept)
 
         if is_windows():
@@ -103,6 +106,15 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
                 computer_id = choose_computer_dialog.computer_id
                 dialog = RestoreDialog(email, password, computer_id)
                 dialog.exec()
+
+    def inherit_backup_history(self):
+        email = config["meta"]["email"]
+        if verify_password_before_restore(email):
+            password = get_password_from_keyring()
+            choose_computer_dialog = ChooseComputerDialog(email, password)
+            if choose_computer_dialog.exec():
+                computer_id = choose_computer_dialog.computer_id
+                print(computer_id)
 
     def accept(self):
         computer_name = self.computer_name_line_edit.text().strip()
