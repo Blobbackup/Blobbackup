@@ -19,7 +19,7 @@ from blobbackup.util import (
     get_password_from_keyring,
 )
 from blobbackup.backupstarteddialog import BackupStartedDialog
-from blobbackup.settingsdialog import SettingDialog
+from blobbackup.settingsdialog import SettingsDialog
 from blobbackup.restoredialog import RestoreDialog
 from blobbackup.config import load_config, config
 from blobbackup.status import get_last_backed_up, get_selected_files, get_current_status
@@ -58,7 +58,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             dialog.exec()
 
     def open_settings(self):
-        dialog = SettingDialog(self)
+        dialog = SettingsDialog(self)
         dialog.exec()
 
     def quit_application(self):

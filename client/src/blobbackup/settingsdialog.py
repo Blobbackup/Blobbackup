@@ -12,7 +12,7 @@ from blobbackup.util import get_password_from_keyring, is_windows, LOGO_PATH
 from blobbackup.logger import get_logger
 
 
-class SettingDialog(QDialog, Ui_SettingsDialog):
+class SettingsDialog(QDialog, Ui_SettingsDialog):
     def __init__(self, main_window):
         QDialog.__init__(self)
         Ui_SettingsDialog.__init__(self)
