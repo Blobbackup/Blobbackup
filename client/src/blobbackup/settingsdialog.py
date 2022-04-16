@@ -7,7 +7,7 @@ from blobbackup.choosecomputerdialog import ChooseComputerDialog
 from blobbackup.restoredialog import RestoreDialog
 from blobbackup.logindialog import verify_password
 from blobbackup.config import config, save_config
-from blobbackup.status import save_selected_files
+from blobbackup.status import save_selected_files, save_last_backed_up
 from blobbackup.api import update_computer, get_computer, delete_computer
 from blobbackup.util import (
     format_selected_files,
@@ -148,6 +148,9 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                         self,
                         "Inherited Backup History",
                         "Successfully inherited backup history.",
+                    )
+                    save_last_backed_up(
+                        "Backup history inherited. Creating first backup of this computer."
                     )
                     save_selected_files(
                         format_selected_files(
