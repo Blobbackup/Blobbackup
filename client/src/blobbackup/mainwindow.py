@@ -58,7 +58,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             dialog.exec()
 
     def open_settings(self):
-        dialog = SettingDialog()
+        dialog = SettingDialog(self)
         dialog.exec()
 
     def quit_application(self):
@@ -86,6 +86,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             self.backup_thread.terminate()
             self.launch_backup_thread(force_run=True)
+
+    def stop_backup(self):
+        if self.backup_thread.backup_running():
+            self.backup_thread.stop_backup()
 
     def open_restore_files(self):
         email = config["meta"]["email"]

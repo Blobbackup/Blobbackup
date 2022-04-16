@@ -13,12 +13,13 @@ from blobbackup.logger import get_logger
 
 
 class SettingDialog(QDialog, Ui_SettingsDialog):
-    def __init__(self):
+    def __init__(self, main_window):
         QDialog.__init__(self)
         Ui_SettingsDialog.__init__(self)
         self.setupUi(self)
 
         self.logger = get_logger()
+        self.main_window = main_window
 
         self.setWindowIcon(QIcon(LOGO_PATH))
 
@@ -136,6 +137,7 @@ class SettingDialog(QDialog, Ui_SettingsDialog):
                     delete_computer(email, password, current_computer_id)
                     config["meta"]["computer_id"] = str(computer_id)
                     save_config()
+                    self.main_window.stop_backup()
                     QMessageBox.information(
                         self,
                         "Inherited Backup History",
