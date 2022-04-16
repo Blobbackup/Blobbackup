@@ -119,7 +119,7 @@
             <h1 class="text-2xl md:text-3xl font-bold mt-2">Extended File History</h1>
             <p class="text-lg text-gray-600 mt-2">
                 Old versions of files and deleted files are kept on our secure cloud 
-                for up to a full year.
+                for as long as you need.
             </p>
         </div>
         <div>
