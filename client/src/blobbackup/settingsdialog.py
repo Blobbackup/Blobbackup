@@ -139,11 +139,11 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                     QMessageBox.StandardButton.No,
                 )
                 if reply == QMessageBox.StandardButton.Yes:
+                    self.main_window.stop_backup()
                     current_computer_id = config["meta"]["computer_id"]
                     delete_computer(email, password, current_computer_id)
                     config["meta"]["computer_id"] = str(computer_id)
                     save_config()
-                    self.main_window.stop_backup()
                     QMessageBox.information(
                         self,
                         "Inherited Backup History",
@@ -155,6 +155,7 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                             int(computer["last_backed_up_size"]),
                         )
                     )
+                    self.main_window.toggle_backup()
                     self.reject()
 
     def accept(self):
