@@ -19,7 +19,7 @@ from blobbackup.util import (
     get_password_from_keyring,
     get_restic_backup_command,
     get_restic_env,
-    pretty_bytes,
+    format_selected_files,
 )
 from blobbackup.config import load_config, config
 from blobbackup.status import (
@@ -157,17 +157,12 @@ class BackupThread(QThread):
             f"Backup process finished (backup_terminated={self.backup_terminated}, backup_finished={backup_finished})."
         )
 
-    def format_selected_files(self, files_done, bytes_done):
-        num = f"{files_done:,} files"
-        den = f"{pretty_bytes(bytes_done)}"
-        return f"{num} / {den}"
-
     def handle_backup_output(self, message, files_done, bytes_done):
         selected, status, backup_finished = None, None, False
         if "files_done" in message and "bytes_done" in message:
             files_done = int(message["files_done"])
             bytes_done = int(message["bytes_done"])
-            selected = self.format_selected_files(files_done, bytes_done)
+            selected = format_selected_files(files_done, bytes_done)
         if "current_files" in message:
             basename = os.path.basename(message["current_files"][0])
             basename = basename.replace("%", "%%")
@@ -175,7 +170,7 @@ class BackupThread(QThread):
         if "message_type" in message and message["message_type"] == "summary":
             files_done = int(message["total_files_processed"])
             bytes_done = int(message["total_bytes_processed"])
-            selected = self.format_selected_files(files_done, bytes_done)
+            selected = format_selected_files(files_done, bytes_done)
             backup_finished = True
         if time.time() - self.status_updated_at > HEARTBEAT_SECONDS or backup_finished:
             self.update_status(selected, status)
