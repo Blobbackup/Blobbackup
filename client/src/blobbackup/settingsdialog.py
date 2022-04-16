@@ -7,8 +7,14 @@ from blobbackup.choosecomputerdialog import ChooseComputerDialog
 from blobbackup.restoredialog import RestoreDialog
 from blobbackup.logindialog import verify_password
 from blobbackup.config import config, save_config
+from blobbackup.status import save_selected_files
 from blobbackup.api import update_computer, get_computer, delete_computer
-from blobbackup.util import get_password_from_keyring, is_windows, LOGO_PATH
+from blobbackup.util import (
+    format_selected_files,
+    get_password_from_keyring,
+    is_windows,
+    LOGO_PATH,
+)
 from blobbackup.logger import get_logger
 
 
@@ -142,6 +148,12 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                         self,
                         "Inherited Backup History",
                         "Successfully inherited backup history.",
+                    )
+                    save_selected_files(
+                        format_selected_files(
+                            int(computer["last_backed_up_num_files"]),
+                            int(computer["last_backed_up_size"]),
+                        )
                     )
                     self.reject()
 
