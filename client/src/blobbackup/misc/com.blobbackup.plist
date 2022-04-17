@@ -12,6 +12,7 @@
             <string>/Applications/Blobbackup.app</string>
 			<string>--args</string>
 			<string>--open-minimized</string>
+			<string>--no-reload-scripts</string>
         </array>
 
 		<key>KeepAlive</key>
