@@ -282,7 +282,7 @@ def load_keep_alive_script_win():
             "schtasks",
             "/create",
             "/tr",
-            "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized",
+            "C:/Program Files (x86)/blobbackup/blobbackup-win32.exe --open-minimized --no-reload-scripts",
             "/sc",
             "HOURLY",
             "/rl",
