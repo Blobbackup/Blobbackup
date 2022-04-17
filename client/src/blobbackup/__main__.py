@@ -28,6 +28,12 @@ def main():
         dest="server",
         default=None,
     )
+    parser.add_argument(
+        "--no-reload-scripts",
+        dest="reload_scripts",
+        action="store_false",
+        default=True,
+    )
     args = parser.parse_args()
 
     if args.server:
@@ -60,10 +66,11 @@ def main():
                 sys.exit()
 
         main_window = MainWindow(first_time)
-        try:
-            load_scripts()
-        except PermissionError:
-            logger.error("Failed to load scripts because of permission error.")
+        if args.reload_scripts:
+            try:
+                load_scripts()
+            except PermissionError:
+                logger.error("Failed to load scripts because of permission error.")
         if not args.open_minimized:
             main_window.show()
 
