@@ -316,7 +316,7 @@ def add_windows_task(name, command):
     xml_content = ret.stdout.decode("utf-8")
     xml_content = xml_content.replace(
         "<DisallowStartIfOnBatteries>true</DisallowStartIfOnBatteries>",
-        "<DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>",
+        "<DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries><ExecutionTimeLimit>PT0S</ExecutionTimeLimit>",
     )
     with tempfile.TemporaryDirectory() as root:
         xml_file = os.path.join(root, "task.xml")
