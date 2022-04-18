@@ -261,7 +261,28 @@ def load_keep_alive_script():
         load_keep_alive_script_mac()
 
 
+# Taken from https://stackoverflow.com/questions/42605055/creating-new-value-inside-registry-run-key-with-python
+def set_windows_run_key(key, value):
+    import winreg
+
+    reg_key = winreg.OpenKey(
+        winreg.HKEY_CURRENT_USER,
+        r"Software\Microsoft\Windows\CurrentVersion\Run",
+        0,
+        winreg.KEY_SET_VALUE,
+    )
+    with reg_key:
+        if value is None:
+            winreg.DeleteValue(reg_key, key)
+        else:
+            winreg.SetValueEx(reg_key, key, 0, winreg.REG_SZ, value)
+
+
 def load_keep_alive_script_win():
+    set_windows_run_key(
+        "Blobbackup",
+        "C:\\Program Files (x86)\\blobbackup\\blobbackup-win32.exe --open-minimized --no-reload-scripts",
+    )
     add_windows_task(
         "com.blobbackup",
         [
