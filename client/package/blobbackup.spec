@@ -39,7 +39,6 @@ exe = EXE(pyz,
           console=False,
           debug=False,
           strip=False,
-          uac_admin=True,
           upx=True)
 
 coll = COLLECT(exe,
