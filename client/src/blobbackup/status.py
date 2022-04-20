@@ -10,12 +10,12 @@ CURRENT_STATUS_PATH = os.path.join(HOME_PATH, "currentstatus.txt")
 
 
 def save_generic(path, data):
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:
         f.write(data)
 
 
 def get_generic(path):
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
 

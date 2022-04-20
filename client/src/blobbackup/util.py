@@ -112,7 +112,7 @@ WIN_UPDATER_PATH = get_asset(os.path.join("misc", "blobbackup-updater.exe"))
 WIN_UPDATER_DEST_PATH = os.path.join(HOME_PATH, "blobbackup-updater.exe")
 
 VERSION_FILE_PATH = os.path.join(HOME_PATH, "version.txt")
-with open(VERSION_FILE_PATH, "w") as f:
+with open(VERSION_FILE_PATH, "w", encoding="utf-8") as f:
     f.write(__version__)
 
 CREATE_NO_WINDOW = 0x08000000
@@ -338,7 +338,7 @@ def add_windows_task(name, command):
     )
     with tempfile.TemporaryDirectory() as root:
         xml_file = os.path.join(root, "task.xml")
-        with open(xml_file, "w") as f:
+        with open(xml_file, "w", encoding="utf-8") as f:
             f.write(xml_content)
         ret = subprocess.run(
             [

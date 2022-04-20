@@ -7,7 +7,7 @@ HEARTBEAT_PATH = os.path.join(HOME_PATH, "heartbeat.txt")
 
 
 def heartbeat():
-    with open(HEARTBEAT_PATH, "w") as f:
+    with open(HEARTBEAT_PATH, "w", encoding="utf-8") as f:
         f.write(str(time.time()))
 
 
@@ -15,7 +15,7 @@ def is_alive():
     if not os.path.exists(HEARTBEAT_PATH):
         return False
     try:
-        with open(HEARTBEAT_PATH, "r") as f:
+        with open(HEARTBEAT_PATH, "r", encoding="utf-8") as f:
             delta_seconds = time.time() - float(f.read())
     except ValueError:
         heartbeat()

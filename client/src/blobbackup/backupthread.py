@@ -180,10 +180,10 @@ class BackupThread(QThread):
         return files_done, bytes_done, backup_finished
 
     def write_inclusion_exclusion_files(self):
-        with open(INCLUSIONS_FILE_PATH, "w") as f:
+        with open(INCLUSIONS_FILE_PATH, "w", encoding="utf-8") as f:
             for path in config["inclusions"]["paths"].split(","):
                 f.write(f"{path}\n")
-        with open(EXCLUDIONS_FILE_PATH, "w") as f:
+        with open(EXCLUDIONS_FILE_PATH, "w", encoding="utf-8") as f:
             for path in config["exclusions"]["paths"].split(","):
                 f.write(f"{path}\n")
         self.logger.info("Inclusion and exclusion files written.")

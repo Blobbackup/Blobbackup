@@ -14,7 +14,7 @@ def load_config():
 
 
 def save_config():
-    with open(CONFIG_PATH, "w") as f:
+    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
         config.write(f)
 
 

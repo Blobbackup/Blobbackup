@@ -76,7 +76,7 @@ def update_email_and_password(email, password):
 def add_new_password_to_repo(computer, old_password, password):
     with tempfile.TemporaryDirectory() as root:
         password_file = os.path.join(root, "password.txt")
-        with open(password_file, "w") as f:
+        with open(password_file, "w", encoding="utf-8") as f:
             f.write(password)
         if is_windows():
             subprocess.run(
