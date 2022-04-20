@@ -308,6 +308,8 @@ def load_updater_script_win():
             WIN_UPDATER_DEST_PATH,
             "/sc",
             "HOURLY",
+            "/rl",
+            "HIGHEST",
             "/f",
         ],
     )

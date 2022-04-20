@@ -70,8 +70,7 @@ class BackupThread(QThread):
                 self.logger.error("Backup connection error.")
                 self.backup_complete.emit()
             except Exception as exception:
-                self.logger.error(exception)
-                raise exception
+                self.logger.error(f"{exception.__class__.__name__} {exception}")
             self.force_run = False
             time.sleep(SLEEP_SECONDS)
 
