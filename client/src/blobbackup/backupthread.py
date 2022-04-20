@@ -71,6 +71,7 @@ class BackupThread(QThread):
                 self.backup_complete.emit()
             except Exception as exception:
                 self.logger.error(f"{exception.__class__.__name__} {exception}")
+                raise exception
             self.force_run = False
             time.sleep(SLEEP_SECONDS)
 
