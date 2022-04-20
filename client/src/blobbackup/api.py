@@ -82,12 +82,12 @@ def get_computers(email, password):
         return None
 
 
-def delete_computer(email, password, computer_id):
-    url = BASE_API_URL + "/deletecomputer/" + str(computer_id)
+def inherit_computer(email, password, from_computer_id, to_computer_id):
+    url = BASE_API_URL + "/inherit/" + str(from_computer_id) + "/" + str(to_computer_id)
     logger, hashed_password = get_logger_and_password(email, password)
     response = requests.post(url, auth=(email, hashed_password))
     if response.status_code != 200:
-        logger.error("Computer delete failed.")
+        logger.error("Computer inherit failed.")
         return False
     return True
 

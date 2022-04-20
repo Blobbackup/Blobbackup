@@ -8,7 +8,7 @@ from blobbackup.restoredialog import RestoreDialog
 from blobbackup.logindialog import verify_password
 from blobbackup.config import config, save_config
 from blobbackup.status import save_selected_files, save_last_backed_up
-from blobbackup.api import update_computer, get_computer, delete_computer
+from blobbackup.api import update_computer, get_computer, inherit_computer
 from blobbackup.util import (
     format_selected_files,
     get_password_from_keyring,
@@ -141,9 +141,7 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                 if reply == QMessageBox.StandardButton.Yes:
                     self.main_window.stop_backup()
                     current_computer_id = config["meta"]["computer_id"]
-                    delete_computer(email, password, current_computer_id)
-                    config["meta"]["computer_id"] = str(computer_id)
-                    save_config()
+                    inherit_computer(email, password, computer_id, current_computer_id)
                     QMessageBox.information(
                         self,
                         "Inherited Backup History",

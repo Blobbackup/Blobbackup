@@ -105,10 +105,32 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
             return $computer;
         });
 
-        Route::post('/deletecomputer/{computer}', function (Request $request, Response $response, Computer $computer) {
-            if ($computer->user_id != auth()->user()->id)
+        Route::post('/inherit/{fromComputer}/{toComputer}', function (Request $request, Response $response, Computer $fromComputer, Computer $toComputer) {
+            if ($fromComputer->user_id != auth()->user()->id || $toComputer->user_id != auth()->user()->id)
                 return $response->setStatusCode(400);
-            $computer->delete();
+
+            // Swap computer repos
+            $tmpUuid = $toComputer->uuid;
+            $tmpB2KeyId = $toComputer->b2_key_id;
+            $tmpB2ApplicationKey = $toComputer->b2_application_key;
+            $toComputer->uuid = $fromComputer->uuid;
+            $toComputer->b2_key_id = $fromComputer->b2_key_id;
+            $toComputer->b2_application_key = $fromComputer->b2_application_key;
+            $fromComputer->uuid = $tmpUuid;
+            $fromComputer->b2_key_id = $tmpB2KeyId;
+            $fromComputer->b2_application_key = $tmpB2ApplicationKey;
+
+            // Copy some additional fields over
+            $toComputer->last_backed_up_at = $fromComputer->last_backed_up_at;
+            $toComputer->last_backed_up_num_files = $fromComputer->last_backed_up_num_files;
+            $toComputer->last_backed_up_size = $fromComputer->last_backed_up_size;
+
+            // Save changes
+            $fromComputer->save();
+            $toComputer->save();
+
+            // Delete fromComputer
+            $fromComputer->delete();
         });
     
         Route::get('/computers', function (Request $request, Response $response) {
