@@ -308,6 +308,8 @@ def load_updater_script_win():
             WIN_UPDATER_DEST_PATH,
             "/sc",
             "HOURLY",
+            "/rl",
+            "HIGHEST",
             "/f",
         ],
     )
@@ -380,9 +382,3 @@ def full_disk_access():
     except PermissionError:
         return False
     return True
-
-
-def format_selected_files(files_done, bytes_done):
-    num = f"{files_done:,} files"
-    den = f"{pretty_bytes(bytes_done)}"
-    return f"{num} / {den}"
