@@ -70,7 +70,7 @@ class BackupThread(QThread):
                 self.logger.error("Backup connection error.")
                 self.backup_complete.emit()
             except Exception as exception:
-                self.logger.error(exception)
+                self.logger.error(f"{exception.__class__.__name__} {exception}")
                 raise exception
             self.force_run = False
             time.sleep(SLEEP_SECONDS)
@@ -91,7 +91,7 @@ class BackupThread(QThread):
 
         log_file = os.path.join(LOGS_PATH, f"backup-{datetime.date.today()}.txt")
         files_done, bytes_done, backup_finished = None, None, False
-        with open(log_file, "a") as log_f:
+        with open(log_file, "a", encoding="utf-8") as log_f:
             restic_backup_command = get_restic_backup_command(
                 config["general"]["max_upload_kibs"],
                 config["general"]["backup_connected_file_systems"],

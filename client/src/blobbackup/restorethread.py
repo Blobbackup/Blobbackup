@@ -37,7 +37,7 @@ class RestoreThread(QThread):
         paths = get_selected_nodes(self.snapshot_tree_widget)
         computer = get_computer(self.email, self.password, self.computer_id)
         log_file = os.path.join(LOGS_PATH, f"restore-{datetime.date.today()}.txt")
-        with open(log_file, "a") as log_f:
+        with open(log_file, "a", encoding="utf-8") as log_f:
             if is_windows():
                 ret = subprocess.run(
                     get_restic_restore_command(self.snapshot_id, self.target, paths),
