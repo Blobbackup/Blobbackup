@@ -6,7 +6,7 @@ from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.logindialog import Ui_LoginDialog
 from blobbackup.loadingdialog import LoadingDialog
-from blobbackup.util import LOGO_PATH, get_pixmap
+from blobbackup.util import LOGO_PATH, BASE_APP_URL, get_pixmap
 from blobbackup.config import config
 from blobbackup.loginthread import LoginThread
 from blobbackup.logger import get_logger
@@ -38,6 +38,9 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         )
 
         self.setupUi(self)
+
+        if not is_prod():
+            self.title = self.title + " (Test)"
 
         self.setWindowIcon(QIcon(LOGO_PATH))
         self.setWindowTitle(self.title)
@@ -114,3 +117,7 @@ def reauth_user():
         sign_in_button_text="Continue",
     )
     return dialog.exec()
+
+
+def is_prod():
+    return config["meta"]["server"] == BASE_APP_URL
