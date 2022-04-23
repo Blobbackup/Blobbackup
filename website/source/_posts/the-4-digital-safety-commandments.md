@@ -4,7 +4,7 @@ title: The 4 Digital Safety Commandments
 author: Bimba Shrestha
 date: 2022-02-06
 section: content
-description: Digital safety is not just a concern for businesses and governments. Anyone who cares about their data should take precautions to protect it. Thankfully, you don’t need to be a computer whiz to build some good digital habits.
+description: Digital safety is not just a concern for businesses and governments. Anyone who cares about their data should take precautions to protect it. Thankfully, you don’t need to be a computer whiz to build some good digital habits. Keep these 4...
 ---
 
 Digital safety is not just a concern for businesses and governments. Anyone who cares about their data should take precautions to protect it. Thankfully, you don’t need to be a computer whiz to build some good digital habits.

@@ -4,7 +4,7 @@ title: Blobbackup 1.0.8 Released
 author: Bimba Shrestha
 date: 2022-03-15
 section: content
-description: We released version 1.0.8 of the Blobbackup desktop app (Mac and Windows). This update contains several bug fixes and user experience improvements. We highly recommend everyone upgrade to this.
+description: We released version 1.0.8 of the Blobbackup desktop app (Mac and Windows). This update contains several bug fixes and user experience improvements. We highly recommend everyone upgrade to this. Download the latest version from...
 ---
 
 We released version 1.0.8 of the Blobbackup desktop app (Mac and Windows). This update contains several bug fixes and user experience improvements. We highly recommend everyone upgrade to this.

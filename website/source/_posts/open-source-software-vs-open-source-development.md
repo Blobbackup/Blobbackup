@@ -4,7 +4,7 @@ title: Open Source Software vs. Development
 author: Bimba Shrestha
 date: 2022-02-13
 section: content
-description: Open source software is not automatically better than closed source software. It's the quality of the underlying code that matters. And bad code can be written in public just as easily as it can behind closed doors.
+description: Open source software is not automatically better than closed source software. It's the quality of the underlying code that matters. And bad code can be written in public just as easily as it can behind closed doors. So why do we still stand behind open...
 ---
 
 Open source software is not automatically better than closed source software. It's the quality of the underlying code that matters. And bad code can be written in public just as easily as it can behind closed doors.

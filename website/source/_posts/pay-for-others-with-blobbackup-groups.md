@@ -4,7 +4,7 @@ title: Pay For Others With Blobbackup Groups
 author: Bimba Shrestha
 date: 2022-03-29
 section: content
-description: With our new Group feature, you can pay for other users' backups. It includes simple monitoring and email alerts, so it's well suited for families and small businesses. Have new users register with your Group link to get started.
+description: With our new Group feature, you can pay for other users' backups. It includes simple monitoring and email alerts, so it's well suited for families and small businesses. Have new users register with your Group link to start using the Group feature.
 ---
 
 If you [sign in](https://app.blobbackup.com) to your Blobbackup account, you'll notice a new menu item.

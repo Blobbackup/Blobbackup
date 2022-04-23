@@ -5,7 +5,7 @@
 
 @section('body')
 <div class="mx-auto max-w-5xl p-4">
-    <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-16 text-center">${{ $page->perComputerPrice }} / Month</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mt-4 md:mt-10 text-center">${{ $page->perComputerPrice }} / Month Flat</h1>
     <h2 class="text-xl md:text-2xl text-gray-600 mt-2 text-center">Per computer. All features included.</h2>
     <div class="text-center"><a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for {{ $page->trialLengthDays }} Days</a></div>
     <p class="text-center text-gray-600 text-sm mt-2">No card required. Cancel anytime.</p>

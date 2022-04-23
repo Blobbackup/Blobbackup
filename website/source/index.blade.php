@@ -40,7 +40,7 @@
             Remember that time you almost spilled coffee on your keyboard?
             Or that time you left your laptop in your car? Liquid damage and
             computer theft are just two of the many ways you could lose your 
-            important files. Here are the <strong>Top 9 Causes of Data Loss.</strong>
+            files. Here are the <strong>Top 9 Causes of Data Loss.</strong>
         </h2>
     </div>
     <section class="mt-8 md:mt-16 grid md:grid-cols-3 gap-8 text-center md:text-left">
@@ -347,7 +347,7 @@
         </div>
         <div>
             <h1 class="text-xl md:text-2xl font-bold mt-2">
-                I bought external storage (hard drive, SSD, NAS). Am I safe?
+                I bought external storage (HD, SSD, NAS). Am I safe?
             </h1>
             <p class="text-lg text-gray-600 mt-2">
                 It's a good start. But do you back up your data every day (Blobbackup backs up every hour)? Or do you sometimes forget? Are you sure you're backing up the right files? 
