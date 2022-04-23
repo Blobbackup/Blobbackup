@@ -4,7 +4,7 @@ title: What is End to End Encryption?
 author: Bimba Shrestha
 date: 2022-02-02
 section: content
-description: End to end encryption (E2E) is a phrase that gets thrown around often. Look through the website of any company that handles sensitive data and you’ll see it. But what does end to end encryption actually mean? Let’s look at plain old encryption first...
+description: End to end encryption (E2E) is a phrase that gets thrown around often. Look through the website of any company that handles sensitive data and you’ll see it. But what does end to end encryption actually mean? Let’s look at plain old encryption...
 ---
 
 End to end encryption (E2E) is a phrase that gets thrown around often. Look through the website of any company that handles sensitive data and you’ll see it. But what does end to end encryption actually mean? 
