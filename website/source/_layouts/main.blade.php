@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
     </head>
-    <body>
+    <body class="font-sans">
         <header class="shadow-lg bg-white sticky top-0 z-50">
             <div class="mx-auto flex max-w-7xl p-6">
                 <a href="/" class="flex-initial font-bold text-2xl block">

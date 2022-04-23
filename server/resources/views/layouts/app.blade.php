@@ -10,7 +10,7 @@
         <script src="{{ asset('js/utils.js') }}"></script>
         @paddleJS
     </head>
-    <body>
+    <body class="font-sans">
         <header class="sticky top-0 z-50">
             @if (!auth()->user()->subscribed() && !request()->get('checkout'))
                 @if (!auth()->user()->leader_id)
