@@ -33,7 +33,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         self.snapshots_combo_box.currentTextChanged.connect(self.load_current_snapshot)
         self.restore_button.pressed.connect(self.restore)
 
-        self.setEnabled(False)
+        self.set_elements_enabled(False)
         self.setWindowTitle("Loading Backups. Please Wait...")
         self.snapshots_combo_box.clear()
         self.snapshots_thread = SnapshotsThread(email, password, computer_id)
@@ -104,12 +104,12 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         )
 
     def loading_backups_gui_state(self):
-        self.setEnabled(False)
+        self.set_elements_enabled(False)
         self.loading_backup_dialog.show()
         self.setWindowTitle("Loading File Tree. Please Wait...")
 
     def restoring_gui_state(self):
-        self.setEnabled(False)
+        self.set_elements_enabled(False)
         self.restoring_dialog.show()
         self.setWindowTitle("Restoring. Please Wait...")
 
@@ -118,7 +118,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         self.restoring_dialog.hide()
         self.loading_backup_dialog.hide()
         self.reset_loading_backup_dialog()
-        self.setEnabled(True)
+        self.set_elements_enabled(True)
 
     def reset_loading_backup_dialog(self):
         title = "Loading File Tree. Please Wait..."
@@ -128,9 +128,14 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
             message = "We're retrieving your backups for the first time on this computer. Depending on your backup size and internet speed, this may take up to an hour. Thanks for your patience :-)"
         self.loading_backup_dialog = LoadingDialog(self, title, message)
 
+    def set_elements_enabled(self, value):
+        self.snapshots_combo_box.setEnabled(value)
+        self.snapshot_tree_widget.setEnabled(value)
+        self.restore_button.setEnabled(value)
+
     def restore_failed(self):
         self.setWindowTitle("Restore Files - Blobbackup")
-        self.setEnabled(True)
+        self.set_elements_enabled(True)
         QMessageBox.information(
             self, "Restore Failed", "Blobbackup was unable to restore your files."
         )
