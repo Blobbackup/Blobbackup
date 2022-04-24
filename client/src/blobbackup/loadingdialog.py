@@ -19,7 +19,6 @@ class LoadingDialog(QDialog, Ui_LoadingDialog):
         self.setParent(parent, Qt.WindowType.Sheet)
         self.setWindowIcon(QIcon(LOGO_PATH))
         self.setWindowTitle(message)
-        self.setEnabled(False)
         self.setWindowFlag(Qt.WindowType.WindowCloseButtonHint, False)
         self.message_label.setText(message)
 
