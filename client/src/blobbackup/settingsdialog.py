@@ -8,7 +8,12 @@ from blobbackup.restoredialog import RestoreDialog
 from blobbackup.logindialog import verify_password
 from blobbackup.config import config, save_config
 from blobbackup.status import save_selected_files, save_last_backed_up
-from blobbackup.api import update_computer, get_computer, inherit_computer
+from blobbackup.api import (
+    update_computer,
+    get_computer,
+    get_computers,
+    inherit_computer,
+)
 from blobbackup.util import (
     format_selected_files,
     get_password_from_keyring,
@@ -42,6 +47,10 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
             self.inherit_backup_history
         )
         self.save_button.pressed.connect(self.accept)
+
+        if not self.has_other_computers():
+            self.restore_different_computer_label.setVisible(False)
+            self.inherit_backup_history_label.setVisible(False)
 
         if is_windows():
             self.backup_connected_file_systems_label.setVisible(False)
@@ -195,3 +204,11 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
         email = config["meta"]["email"]
         password = get_password_from_keyring()
         update_computer(email, password, computer_id, {"name": computer_name})
+
+    def has_other_computers(self):
+        email = config["meta"]["email"]
+        password = get_password_from_keyring()
+        computers = get_computers(email, password)
+        if computers:
+            return len(computers) > 1
+        return False

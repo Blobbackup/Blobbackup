@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import QDialog
 from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.welcomedialog import Ui_WelcomeDialog
+from blobbackup.api import get_computers
 from blobbackup.util import TERMS_URL, LOGO_PATH, get_pixmap
 from blobbackup.initializethread import InitializeThread
 from blobbackup.choosecomputerdialog import ChooseComputerDialog
@@ -36,6 +37,9 @@ class WelcomeDialog(QDialog, Ui_WelcomeDialog):
         )
         self.restore_files_label.linkActivated.connect(self.restore_files)
 
+        if not self.has_computers():
+            self.restore_files_label.setVisible(False)
+
         self.logger.info("Welcome dialog displayed.")
 
     def initialize(self):
@@ -53,3 +57,9 @@ class WelcomeDialog(QDialog, Ui_WelcomeDialog):
             computer_id = choose_computer_dialog.computer_id
             dialog = RestoreDialog(self.email, self.password, computer_id)
             dialog.exec()
+
+    def has_computers(self):
+        computers = get_computers(self.email, self.password)
+        if computers:
+            return len(computers) > 0
+        return False
