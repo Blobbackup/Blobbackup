@@ -134,7 +134,7 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                 reply = QMessageBox.information(
                     self,
                     "Inherit Backup History?",
-                    f"You are about to inherit the backup history of the computer '{computer_name}'. This is an irreversible operation. Continue?",
+                    f"You are about to inherit the backup history of the computer '{computer_name}'. Your current computer's backups will be replaced by the backups of '{computer_name}'. This is an irreversible operation. Continue?",
                     QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
                     QMessageBox.StandardButton.No,
                 )
