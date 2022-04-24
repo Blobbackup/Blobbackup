@@ -60,7 +60,8 @@ class LoginDialog(QDialog, Ui_LoginDialog):
             self.heading_label.setText(heading)
         if email:
             self.email_line_edit.setText(email)
-            self.email_line_edit.setEnabled(False)
+            self.email_line_edit.setReadOnly(True)
+            self.password_line_edit.setFocus()
 
         self.logger.info("Login dialog displayed.")
 
