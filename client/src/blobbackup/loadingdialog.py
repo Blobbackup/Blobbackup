@@ -9,7 +9,7 @@ from blobbackup.logger import get_logger
 
 
 class LoadingDialog(QDialog, Ui_LoadingDialog):
-    def __init__(self, parent=None, message="Loading. Please Wait..."):
+    def __init__(self, parent=None, title="Loading. Please Wait...", message=None):
         QDialog.__init__(self, parent)
         Ui_LoadingDialog.__init__(self)
         self.setupUi(self)
@@ -18,8 +18,11 @@ class LoadingDialog(QDialog, Ui_LoadingDialog):
 
         self.setParent(parent, Qt.WindowType.Sheet)
         self.setWindowIcon(QIcon(LOGO_PATH))
-        self.setWindowTitle(message)
+        self.setWindowTitle(title)
         self.setWindowFlag(Qt.WindowType.WindowCloseButtonHint, False)
+
+        if message == None:
+            message = title
         self.message_label.setText(message)
 
         self.logger.info("Loading dialog displayed")

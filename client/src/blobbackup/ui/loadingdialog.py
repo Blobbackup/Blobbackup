@@ -18,6 +18,7 @@ class Ui_LoadingDialog(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.message_label = QtWidgets.QLabel(LoadingDialog)
         self.message_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.message_label.setWordWrap(True)
         self.message_label.setObjectName("message_label")
         self.verticalLayout.addWidget(self.message_label)
         self.progressBar = QtWidgets.QProgressBar(LoadingDialog)

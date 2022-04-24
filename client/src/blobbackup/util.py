@@ -388,3 +388,7 @@ def format_selected_files(files_done, bytes_done):
     num = f"{files_done:,} files"
     den = f"{pretty_bytes(bytes_done)}"
     return f"{num} / {den}"
+
+
+def restic_cache_ready():
+    return len(os.listdir(CACHE_PATH)) != 0
