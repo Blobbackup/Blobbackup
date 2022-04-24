@@ -12,8 +12,8 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_LoadingDialog(object):
     def setupUi(self, LoadingDialog):
         LoadingDialog.setObjectName("LoadingDialog")
-        LoadingDialog.resize(400, 80)
-        LoadingDialog.setMinimumSize(QtCore.QSize(400, 80))
+        LoadingDialog.resize(400, 100)
+        LoadingDialog.setMinimumSize(QtCore.QSize(400, 100))
         self.verticalLayout = QtWidgets.QVBoxLayout(LoadingDialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.message_label = QtWidgets.QLabel(LoadingDialog)
