@@ -18,6 +18,7 @@ from blobbackup.logger import get_logger
 
 class SnapshotThread(QThread):
     loaded = pyqtSignal(defaultdict)
+    failed = pyqtSignal()
 
     def __init__(self, email, password, snapshot_id, computer_id):
         QThread.__init__(self)
@@ -30,26 +31,23 @@ class SnapshotThread(QThread):
     def run(self):
         computer = get_computer(self.email, self.password, self.computer_id)
         if is_windows():
-            nodes = (
-                subprocess.run(
-                    get_restic_ls_command(self.snapshot_id),
-                    env=get_restic_env(computer, self.password),
-                    stdout=subprocess.PIPE,
-                    creationflags=CREATE_NO_WINDOW,
-                )
-                .stdout.decode("utf-8")
-                .split("\n")
+            process = subprocess.run(
+                get_restic_ls_command(self.snapshot_id),
+                env=get_restic_env(computer, self.password),
+                stdout=subprocess.PIPE,
+                creationflags=CREATE_NO_WINDOW,
             )
         elif is_mac():
-            nodes = (
-                subprocess.run(
-                    get_restic_ls_command(self.snapshot_id),
-                    env=get_restic_env(computer, self.password),
-                    stdout=subprocess.PIPE,
-                )
-                .stdout.decode("utf-8")
-                .split("\n")
+            process = subprocess.run(
+                get_restic_ls_command(self.snapshot_id),
+                env=get_restic_env(computer, self.password),
+                stdout=subprocess.PIPE,
             )
-        tree = prepare_lazy_tree(nodes[1:-1])
-        self.logger.info("Snapshot loaded.")
-        self.loaded.emit(tree)
+        if process.returncode == 0:
+            nodes = process.stdout.decode("utf-8").split("\n")
+            tree = prepare_lazy_tree(nodes[1:-1])
+            self.logger.info("Snapshot loaded.")
+            self.loaded.emit(tree)
+        else:
+            self.logger.error("Snapshot load failed.")
+            self.failed.emit()

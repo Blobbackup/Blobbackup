@@ -65,11 +65,16 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
             self.email, self.password, snapshot_id, self.computer_id
         )
         self.snapshot_thread.loaded.connect(self.snapshot_loaded)
+        self.snapshot_thread.failed.connect(self.snapshot_load_failed)
         self.snapshot_thread.start()
 
     def snapshot_loaded(self, tree):
         computer = get_computer(self.email, self.password, self.computer_id)
         self.snapshot_tree_widget.initialize(tree, computer["name"])
+        self.reset_gui_state()
+
+    def snapshot_load_failed(self):
+        QMessageBox.warning(self, "Load failed", "Failed to load backups.")
         self.reset_gui_state()
 
     def restore(self):
