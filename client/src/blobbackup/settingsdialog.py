@@ -154,7 +154,7 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                     QMessageBox.information(
                         self,
                         "Inherited Backup History",
-                        "Successfully inherited backup history.",
+                        f"Successfully inherited the backup history of '{computer_name}'. Note that settings like inclusions, exclusions, schedule, etc. were not inherited.",
                     )
                     save_last_backed_up(
                         "Backup history inherited. Creating first backup of this computer."
