@@ -21,4 +21,7 @@ class ChangePasswordThread(QThread):
         ):
             self.finished.emit(False)
             return
-        self.finished.emit(changepassword(self.email, self.password, self.new_password))
+        if not changepassword(self.email, self.password, self.new_password):
+            self.finished.emit(False)
+            return
+        self.finished.emit(True)
