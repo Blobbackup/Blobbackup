@@ -159,12 +159,13 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                     save_last_backed_up(
                         "Backup history inherited. Creating first backup of this computer."
                     )
-                    save_selected_files(
-                        format_selected_files(
-                            int(computer["last_backed_up_num_files"]),
-                            int(computer["last_backed_up_size"]),
+                    if computer["last_backed_up_at"]:
+                        save_selected_files(
+                            format_selected_files(
+                                int(computer["last_backed_up_num_files"]),
+                                int(computer["last_backed_up_size"]),
+                            )
                         )
-                    )
                     self.main_window.toggle_backup()
                     self.reject()
 
