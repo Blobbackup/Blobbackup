@@ -5,7 +5,7 @@ import tempfile
 
 from PyQt6.QtCore import QThread, pyqtSignal
 
-from blobbackup.api import login, get_computer
+from blobbackup.api import login, get_computer, get_computers
 from blobbackup.config import config, save_config
 from blobbackup.logger import get_logger
 from blobbackup.util import (
@@ -64,11 +64,11 @@ def update_email_and_password(email, password):
     config["meta"]["email"] = email
     save_config()
 
-    if old_password != password:
-        add_new_password_to_repo(computer, old_password, password)
-        unlock_repo(computer, password)
-        remove_all_but_new_password_from_repo(computer, password)
-        save_password_in_keyring(password)
+    for computer in get_computers(email, password):
+        if add_new_password_to_repo(computer, old_password, password):
+            unlock_repo(computer, password)
+            remove_all_but_new_password_from_repo(computer, password)
+            save_password_in_keyring(password)
 
     return True
 
@@ -79,16 +79,17 @@ def add_new_password_to_repo(computer, old_password, password):
         with open(password_file, "w", encoding="utf-8") as f:
             f.write(password)
         if is_windows():
-            subprocess.run(
+            process = subprocess.run(
                 get_restic_add_password_command(password_file),
                 env=get_restic_env(computer, old_password),
                 creationflags=CREATE_NO_WINDOW,
             )
         elif is_mac():
-            subprocess.run(
+            process = subprocess.run(
                 get_restic_add_password_command(password_file),
                 env=get_restic_env(computer, old_password),
             )
+        return process.returncode == 0
 
 
 def unlock_repo(computer, password):
