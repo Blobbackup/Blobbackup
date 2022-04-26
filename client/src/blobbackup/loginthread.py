@@ -68,7 +68,8 @@ def update_email_and_password(email, password):
         if add_new_password_to_repo(computer, old_password, password):
             unlock_repo(computer, password)
             remove_all_but_new_password_from_repo(computer, password)
-            save_password_in_keyring(password)
+    
+    save_password_in_keyring(password)
 
     return True
 
