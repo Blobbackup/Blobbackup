@@ -168,7 +168,7 @@ def get_restic_backup_command(max_upload_kibs, backup_connected_file_systems):
 
 
 def get_restic_unlock_command():
-    return [RESTIC_PATH, "unlock"]
+    return [RESTIC_PATH, "unlock", "--remove-all"]
 
 
 def get_restic_list_passwords_command():
