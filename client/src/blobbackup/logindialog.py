@@ -70,7 +70,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.logger.info("Login dialog displayed.")
 
     def login(self):
-        self.setEnabled(False)
+        self.set_elements_enabled(False)
         if self.reauth:
             self.loading_dialog.show()
         self.setWindowTitle("Signing In. Please Wait...")
@@ -98,13 +98,18 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.setWindowTitle(self.title)
         if self.reauth:
             self.loading_dialog.hide()
-        self.setEnabled(True)
+        self.set_elements_enabled(True)
         if not success:
             QMessageBox.warning(self, "Sign In Failed", "Invalid credentials.")
             self.logger.info("Login failed displayed")
             return
         self.logger.info("Login succeded")
         super().accept()
+
+    def set_elements_enabled(self, value):
+        self.email_line_edit.setEnabled(value)
+        self.password_line_edit.setEnabled(value)
+        self.sign_in_button.setEnabled(value)
 
 
 def verify_password(email):
