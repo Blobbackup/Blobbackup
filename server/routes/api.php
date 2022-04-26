@@ -136,7 +136,10 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
         });
     
         Route::get('/computers', function (Request $request, Response $response) {
-            return auth()->user()->computers;
+            $computers = auth()->user()->computers;
+            foreach ($computers as $computer)
+                $computer->b2_bucket_name = env('B2_BUCKET_NAME');
+            return $computers;
         });
 
         Route::post('/changepassword', function (Request $request) {
