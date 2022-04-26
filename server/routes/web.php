@@ -150,19 +150,6 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
         $user->save();
         return back()->with('message', 'Email updated.');
     });
-    
-    Route::post('/changepassword', function (Request $request) {
-        $request->validate([
-            'password' => ['required', 'confirmed', Password::defaults()],
-            'old_password' => ['required', Password::defaults()],
-        ]);
-        $user = auth()->user();
-        if (!Hash::check($request->old_password, $user->password))
-            return back()->withErrors('Password incorrect.');
-        $user->password = Hash::make($request->password);
-        $user->save();
-        return back()->with('message', 'Password changed.');
-    });
 
     Route::get('/deleteaccount', function () {
         return view('deleteaccount');

@@ -25,14 +25,11 @@
         </form>
     </div>
     <div class="shadow-lg mt-8 p-6">
-        <form method="POST" action="/changepassword" id="changepasswordform">
-            @csrf
-            <div class="text-gray-600">Change Password</div>
-            <input type="password" name="old_password" id="changepasswordoldpassword" placeholder="Current Password" class="w-full border border-gray-400 rounded-full px-4 py-1 mt-4" required />
-            <input type="password" name="password" id="changepasswordpassword" placeholder="New Password" class="w-full border border-gray-400 rounded-full px-4 py-1 mt-4" required />
-            <input type="password" name="password_confirmation" id="changepasswordpasswordconfirmation" placeholder="Confirm New Password" class="w-full border border-gray-400 rounded-full px-4 py-1 mt-4" required />
-            <button type="submit" class="bg-gray-200 rounded-full px-4 py-2 font-bold mt-4">Change</button>
-        </form>
+        <div class="text-gray-600">Change Password</div>
+        <div class="text-gray-600 mt-4">
+            You can only change your password from the Blobbbackup desktop application.
+        </div>
+        <a href="#" class="bg-gray-200 rounded-full px-4 py-2 font-bold mt-4 inline-block">Instructions</a>
     </div>
     <div class="shadow-lg my-8 p-6">
         <div class="text-gray-600">Delete Account</div>
