@@ -35,7 +35,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.loading_dialog = LoadingDialog(
             self,
             "Re-authenticating. Please Wait...",
-            "Looks like you changed your password recently. We're syncing your changes right now. This might take a minute. Thanks for your patience :-)",
+            "Looks like you changed your password or email recently. We're syncing your changes right now. This might take a minute. Thanks for your patience :-)",
         )
 
         self.setupUi(self)
