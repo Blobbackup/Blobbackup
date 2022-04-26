@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -135,6 +137,16 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
     
         Route::get('/computers', function (Request $request, Response $response) {
             return auth()->user()->computers;
+        });
+
+        Route::post('/changepassword', function (Request $request) {
+            if (Validator::make($request->all(), [
+                'password' => ['required', Password::defaults()]
+            ])->fails())
+                return $response->setStatusCode(400);
+            $user = auth()->user();
+            $user->password = Hash::make($request->password);
+            $user->save();
         });
     });
 });

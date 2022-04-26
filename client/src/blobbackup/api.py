@@ -22,6 +22,26 @@ def login(email, password):
         return None
 
 
+def changepassword(email, password, new_password):
+    url = BASE_API_URL + "/changepassword"
+    logger, hashed_password = get_logger_and_password(email, password)
+    hashed_new_password = hash_password(new_password, email)
+    try:
+        response = requests.post(
+            url,
+            auth=(email, hashed_password),
+            data={"password": hashed_new_password, "old_password": hashed_password},
+        )
+        if response.status_code != 200:
+            print(response.status_code)
+            logger.error("Change password failed")
+            return False
+        return True
+    except requests.exceptions.ConnectionError:
+        logger.error("Change password connection error.")
+        return False
+
+
 def create_new_computer(email, password, name, operating_system):
     url = BASE_API_URL + "/computers"
     logger, hashed_password = get_logger_and_password(email, password)
