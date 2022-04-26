@@ -19,6 +19,7 @@ class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
         self.loading_dialog = LoadingDialog(
             self,
             "Changing Password. Please Wait...",
+            "We're changing the password on your account and your backups. This might take a minute. Thanks for your patience :-)"
         )
         self.change_password_button.pressed.connect(self.change_password)
 
