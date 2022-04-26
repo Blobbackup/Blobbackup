@@ -1,6 +1,11 @@
 from PyQt6.QtCore import QThread, pyqtSignal
 
-from blobbackup.api import changepassword
+from blobbackup.loginthread import (
+    add_new_password_to_repo,
+    unlock_repo,
+    remove_all_but_new_password_from_repo,
+)
+from blobbackup.api import changepassword, get_computers
 
 
 class ChangePasswordThread(QThread):
@@ -24,4 +29,8 @@ class ChangePasswordThread(QThread):
         if not changepassword(self.email, self.password, self.new_password):
             self.finished.emit(False)
             return
+        for computer in get_computers(self.email, self.new_password):
+            unlock_repo(computer, self.password)
+            add_new_password_to_repo(computer, self.password, self.new_password)
+            remove_all_but_new_password_from_repo(computer, self.new_password)
         self.finished.emit(True)
