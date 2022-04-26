@@ -52,3 +52,4 @@ class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
         self.password_line_edit.setEnabled(value)
         self.new_password_line_edit.setEnabled(value)
         self.confirm_new_password_line_edit.setEnabled(value)
+        self.change_password_button.setEnabled(value)
