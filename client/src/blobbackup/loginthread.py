@@ -64,12 +64,12 @@ def update_email_and_password(email, password):
     config["meta"]["email"] = email
     save_config()
 
-    for computer in get_computers(email, password):
-        add_new_password_to_repo(computer, old_password, password)
-        unlock_repo(computer, password)
-        remove_all_but_new_password_from_repo(computer, password)
-
-    save_password_in_keyring(password)
+    if old_password != password:
+        for computer in get_computers(email, password):
+            add_new_password_to_repo(computer, old_password, password)
+            unlock_repo(computer, password)
+            remove_all_but_new_password_from_repo(computer, password)
+        save_password_in_keyring(password)
 
     return True
 
