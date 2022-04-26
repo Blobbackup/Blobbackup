@@ -22,7 +22,7 @@ def login(email, password):
         return None
 
 
-def changepassword(email, password, new_password):
+def change_password(email, password, new_password):
     url = BASE_API_URL + "/changepassword"
     logger, hashed_password = get_logger_and_password(email, password)
     hashed_new_password = hash_password(new_password, email)

@@ -5,7 +5,7 @@ import tempfile
 
 from PyQt6.QtCore import QThread, pyqtSignal
 
-from blobbackup.api import changepassword, get_computers
+from blobbackup.api import change_password, get_computers
 from blobbackup.util import (
     CREATE_NO_WINDOW,
     is_windows,
@@ -36,7 +36,7 @@ class ChangePasswordThread(QThread):
         ):
             self.finished.emit(False)
             return
-        if not changepassword(self.email, self.password, self.new_password):
+        if not change_password(self.email, self.password, self.new_password):
             self.finished.emit(False)
             return
         for computer in get_computers(self.email, self.new_password):
