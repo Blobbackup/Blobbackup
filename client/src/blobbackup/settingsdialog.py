@@ -174,8 +174,6 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
     def change_password(self):
         change_password_dialog = ChangePasswordDialog()
         if change_password_dialog.exec():
-            self.main_window.stop_backup()
-            self.main_window.toggle_backup()
             self.reject()
 
     def accept(self):
