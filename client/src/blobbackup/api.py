@@ -33,7 +33,6 @@ def changepassword(email, password, new_password):
             data={"password": hashed_new_password, "old_password": hashed_password},
         )
         if response.status_code != 200:
-            print(response.status_code)
             logger.error("Change password failed")
             return False
         return True
