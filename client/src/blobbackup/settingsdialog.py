@@ -172,8 +172,11 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                     self.reject()
 
     def change_password(self):
-        dialog = ChangePasswordDialog()
-        dialog.exec()
+        change_password_dialog = ChangePasswordDialog()
+        if change_password_dialog.exec():
+            self.main_window.stop_backup()
+            self.main_window.toggle_backup()
+            self.reject()
 
     def accept(self):
         computer_name = self.computer_name_line_edit.text().strip()
