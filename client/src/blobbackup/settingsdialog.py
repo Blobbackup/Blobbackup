@@ -5,6 +5,7 @@ from PyQt6.QtCore import Qt
 from blobbackup.ui.settingsdialog import Ui_SettingsDialog
 from blobbackup.choosecomputerdialog import ChooseComputerDialog
 from blobbackup.restoredialog import RestoreDialog
+from blobbackup.changepassworddialog import ChangePasswordDialog
 from blobbackup.logindialog import verify_password
 from blobbackup.config import config, save_config
 from blobbackup.status import save_selected_files, save_last_backed_up
@@ -46,6 +47,7 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
         self.inherit_backup_history_label.linkActivated.connect(
             self.inherit_backup_history
         )
+        self.change_password_label.linkActivated.connect(self.change_password)
         self.save_button.pressed.connect(self.accept)
 
         if not self.has_other_computers():
@@ -168,6 +170,10 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                         )
                     self.main_window.toggle_backup()
                     self.reject()
+
+    def change_password(self):
+        dialog = ChangePasswordDialog()
+        dialog.exec()
 
     def accept(self):
         computer_name = self.computer_name_line_edit.text().strip()
