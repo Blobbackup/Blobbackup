@@ -48,6 +48,10 @@ class Ui_LoginDialog(object):
         self.register_button.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.register_button.setObjectName("register_button")
         self.verticalLayout.addWidget(self.register_button)
+        self.change_password_button = QtWidgets.QLabel(LoginDialog)
+        self.change_password_button.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.change_password_button.setObjectName("change_password_button")
+        self.verticalLayout.addWidget(self.change_password_button)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout.addItem(spacerItem1)
 
@@ -62,4 +66,5 @@ class Ui_LoginDialog(object):
         self.email_line_edit.setPlaceholderText(_translate("LoginDialog", "Email"))
         self.password_line_edit.setPlaceholderText(_translate("LoginDialog", "Password"))
         self.sign_in_button.setText(_translate("LoginDialog", "Sign In"))
-        self.register_button.setText(_translate("LoginDialog", "<html><head/><body><p><a href=\"https://blobbackup.com\"><span style=\" text-decoration: underline; color:#0068da;\">Don\'t have an account yet?</span></a></p></body></html>"))
+        self.register_button.setText(_translate("LoginDialog", "<html><head/><body><p><a href=\"https://blobbackup.com\"><span style=\" color:#0068da;\">Don\'t have an account yet?</span></a></p></body></html>"))
+        self.change_password_button.setText(_translate("LoginDialog", "<html><head/><body><p><a href=\"https://blobbackup.com\"><span style=\" text-decoration: underline; color:#0068da;\">Change Password</span></a></p></body></html>"))
