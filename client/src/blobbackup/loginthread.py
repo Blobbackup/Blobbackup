@@ -66,8 +66,8 @@ def update_email_and_password(email, password):
 
     if old_password != password:
         for computer in get_computers(email, password):
-            add_new_password_to_repo(computer, old_password, password)
             unlock_repo(computer, password)
+            add_new_password_to_repo(computer, old_password, password)
             remove_all_but_new_password_from_repo(computer, password)
         save_password_in_keyring(password)
 
