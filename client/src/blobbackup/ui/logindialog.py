@@ -67,4 +67,4 @@ class Ui_LoginDialog(object):
         self.password_line_edit.setPlaceholderText(_translate("LoginDialog", "Password"))
         self.sign_in_button.setText(_translate("LoginDialog", "Sign In"))
         self.register_button.setText(_translate("LoginDialog", "<html><head/><body><p><a href=\"https://blobbackup.com\"><span style=\" color:#0068da;\">Don\'t have an account yet?</span></a></p></body></html>"))
-        self.change_password_button.setText(_translate("LoginDialog", "<html><head/><body><p><a href=\"https://blobbackup.com\"><span style=\" text-decoration: underline; color:#0068da;\">Change Password</span></a></p></body></html>"))
+        self.change_password_button.setText(_translate("LoginDialog", "<html><head/><body><p><a href=\"https://blobbackup.com\"><span style=\" text-decoration: underline; color:#0068da;\">Change your password</span></a></p></body></html>"))

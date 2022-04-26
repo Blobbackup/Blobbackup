@@ -6,6 +6,7 @@ from PyQt6.QtGui import QIcon
 
 from blobbackup.ui.logindialog import Ui_LoginDialog
 from blobbackup.loadingdialog import LoadingDialog
+from blobbackup.changepassworddialog import ChangePasswordDialog
 from blobbackup.util import LOGO_PATH, BASE_APP_URL, get_pixmap
 from blobbackup.config import config
 from blobbackup.loginthread import LoginThread
@@ -52,6 +53,9 @@ class LoginDialog(QDialog, Ui_LoginDialog):
             lambda: webbrowser.open(REGISTER_URL)
         )
 
+        self.change_password_button.setVisible(show_register_button)
+        self.change_password_button.linkActivated.connect(self.change_password)
+
         self.sign_in_button.pressed.connect(self.login)
         if sign_in_button_text:
             self.sign_in_button.setText(sign_in_button_text)
@@ -85,6 +89,10 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         )
         self.logger.info("Trial over displayed.")
         sys.exit()
+
+    def change_password(self):
+        dialog = ChangePasswordDialog()
+        dialog.exec()
 
     def accept(self, success):
         self.setWindowTitle(self.title)
