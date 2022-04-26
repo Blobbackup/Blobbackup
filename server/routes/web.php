@@ -6,6 +6,7 @@ use App\Util\Util;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Password;
 
@@ -156,11 +157,39 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
             'password' => ['required', 'confirmed', Password::defaults()],
             'old_password' => ['required', Password::defaults()],
         ]);
+
+        // Change password in db
         $user = auth()->user();
         if (!Hash::check($request->old_password, $user->password))
             return back()->withErrors('Password incorrect.');
         $user->password = Hash::make($request->password);
         $user->save();
+
+        // Replace b2 keys for all computers
+        foreach ($user->computers as $computer) {
+            // Authorize b2
+            $authResponse = Http::withBasicAuth(env('B2_KEY_ID'), env('B2_APPLICATION_KEY'))
+                ->get('https://api.backblazeb2.com/b2api/v2/b2_authorize_account');
+            $authJson = $authResponse->json();
+
+            // Delete old b2 keys
+            Http::withHeaders(['Authorization' => $authJson['authorizationToken']])
+                ->post($authJson['apiUrl'] . '/b2api/v2/b2_delete_key',
+                ['applicationKeyId' => $computer->b2_key_id]);
+
+            // Create new b2 keys
+            $createKeyResponse = Http::withHeaders(['Authorization' => $authJson['authorizationToken']])
+                ->post($authJson['apiUrl'] . '/b2api/v2/b2_create_key', [
+                    'keyName' => $computer->uuid, 'namePrefix' => $computer->uuid, 'bucketId' => env('B2_BUCKET_ID'), 'accountId' => env('B2_ACCOUNT_ID'),
+                    'capabilities' => ['listFiles', 'readFiles', 'writeFiles', 'deleteFiles', 'listBuckets']]);
+            $createKeyJson = $createKeyResponse->json();
+
+            // Replace b2 keys in db
+            $computer->b2_key_id = $createKeyJson['applicationKeyId'];
+            $computer->b2_application_key = $createKeyJson['applicationKey'];
+            $computer->save();
+        }
+
         return back()->with('message', 'Password changed.');
     });
 
