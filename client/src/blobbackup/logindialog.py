@@ -112,8 +112,9 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.sign_in_button.setEnabled(value)
 
 
-def verify_password(email):
+def verify_password(email, reauth=False):
     dialog = LoginDialog(
+        reauth=reauth,
         show_register_button=False,
         title="Verification Required",
         heading="Enter your password to continue.",

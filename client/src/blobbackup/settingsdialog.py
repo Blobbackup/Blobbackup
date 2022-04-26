@@ -174,7 +174,10 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
     def change_password(self):
         change_password_dialog = ChangePasswordDialog()
         if change_password_dialog.exec():
-            self.reject()
+            self.main_window.stop_backup()
+            if verify_password(config["meta"]["email"], reauth=True):
+                self.main_window.toggle_backup()
+                self.reject()
 
     def accept(self):
         computer_name = self.computer_name_line_edit.text().strip()
