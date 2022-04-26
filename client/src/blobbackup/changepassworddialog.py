@@ -9,7 +9,7 @@ from blobbackup.changepasswordthread import ChangePasswordThread
 
 
 class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
-    def __init__(self):
+    def __init__(self, email=None):
         QDialog.__init__(self)
         Ui_ChangePasswordDialog.__init__(self)
         self.setupUi(self)
@@ -19,9 +19,13 @@ class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
         self.loading_dialog = LoadingDialog(
             self,
             "Changing Password. Please Wait...",
-            "We're changing the password on your account and your backups. This might take a minute. Thanks for your patience :-)"
+            "We're changing the password on your account and your backups. This might take a minute. Thanks for your patience :-)",
         )
         self.change_password_button.pressed.connect(self.change_password)
+
+        if email:
+            self.email_line_edit.setText(email)
+            self.email_line_edit.setReadOnly(True)
 
         self.logger.info("Change password dialog displayed.")
 
@@ -45,7 +49,9 @@ class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
             self.logger.info("Change password failed displayed")
             return
         self.logger.info("Changed password")
-        QMessageBox.information(self, "Password Changed", "Password successfully changed.")
+        QMessageBox.information(
+            self, "Password Changed", "Password successfully changed."
+        )
         super().accept()
 
     def set_elements_enabled(self, value):

@@ -172,10 +172,11 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
                     self.reject()
 
     def change_password(self):
-        change_password_dialog = ChangePasswordDialog()
+        email = config["meta"]["email"]
+        change_password_dialog = ChangePasswordDialog(email)
         if change_password_dialog.exec():
             self.main_window.stop_backup()
-            if verify_password(config["meta"]["email"], reauth=True):
+            if verify_password(email, reauth=True):
                 self.main_window.toggle_backup()
                 self.reject()
 
