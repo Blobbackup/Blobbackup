@@ -147,9 +147,36 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
                 'password' => ['required', Password::defaults()]
             ])->fails())
                 return $response->setStatusCode(400);
+
+            // Change pasword in db
             $user = auth()->user();
             $user->password = Hash::make($request->password);
             $user->save();
+
+            // Replace b2 keys for all computers
+            foreach ($user->computers as $computer) {
+                // Authorize b2
+                $authResponse = Http::withBasicAuth(env('B2_KEY_ID'), env('B2_APPLICATION_KEY'))
+                    ->get('https://api.backblazeb2.com/b2api/v2/b2_authorize_account');
+                $authJson = $authResponse->json();
+
+                // Delete old b2 keys
+                Http::withHeaders(['Authorization' => $authJson['authorizationToken']])
+                    ->post($authJson['apiUrl'] . '/b2api/v2/b2_delete_key',
+                    ['applicationKeyId' => $computer->b2_key_id]);
+
+                // Create new b2 keys
+                $createKeyResponse = Http::withHeaders(['Authorization' => $authJson['authorizationToken']])
+                    ->post($authJson['apiUrl'] . '/b2api/v2/b2_create_key', [
+                        'keyName' => $computer->uuid, 'namePrefix' => $computer->uuid, 'bucketId' => env('B2_BUCKET_ID'), 'accountId' => env('B2_ACCOUNT_ID'),
+                        'capabilities' => ['listFiles', 'readFiles', 'writeFiles', 'deleteFiles', 'listBuckets']]);
+                $createKeyJson = $createKeyResponse->json();
+
+                // Replace b2 keys in db
+                $computer->b2_key_id = $createKeyJson['applicationKeyId'];
+                $computer->b2_application_key = $createKeyJson['applicationKey'];
+                $computer->save();
+            }
         });
     });
 });
