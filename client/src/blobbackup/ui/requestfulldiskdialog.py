@@ -65,4 +65,4 @@ class Ui_RequestFullDiskDialog(object):
         self.label_3.setText(_translate("RequestFullDiskDialog", "Blobbackup requires \"Full Disk Access\" to work properly."))
         self.guide_label.setText(_translate("RequestFullDiskDialog", "Please grant it from System Preferences and restart the app (<a href=\"https://blobbackup.com\" style=\"color: blue; text-decoration: underline\">Guide</a>)."))
         self.open_button.setText(_translate("RequestFullDiskDialog", "Open System Preferences"))
-        self.skip_button.setText(_translate("RequestFullDiskDialog", "<html><head/><body><p><a href=\"#\"><span style=\" text-decoration: underline; color:#0068da;\">I\'m just restoring</span></a></p></body></html>"))
+        self.skip_button.setText(_translate("RequestFullDiskDialog", "<html><head/><body><p><a href=\"#\"><span style=\" text-decoration: underline; color:#0068da;\">Skip</span></a></p></body></html>"))
