@@ -34,19 +34,26 @@ class ChangePasswordThread(QThread):
             or not self.password
             or self.new_password != self.new_password_confirmation
         ):
+            # Invalid credentials
             self.finished.emit(False, False)
             return
         status = change_password(self.email, self.password, self.new_password)
         if status == None:
+            # Invalid credentials
             self.finished.emit(False, False)
             return
         elif status == False:
+            # Password change already in progress
             self.finished.emit(False, True)
             return
+
+        # Change repo keys
         for computer in get_computers(self.email, self.new_password):
             unlock_repo(computer, self.password)
             add_new_password_to_repo(computer, self.password, self.new_password)
             remove_all_but_new_password_from_repo(computer, self.new_password)
+
+        # Mark password change as complete
         change_password(self.email, self.new_password, "", change_complete=True)
         self.finished.emit(True, False)
 

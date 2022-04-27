@@ -143,13 +143,12 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
         });
 
         Route::post('/changepassword', function (Request $request, Response $response) {
+            // Mark changing password as complete
             if ($request->change_complete) {
                 $user = auth()->user();
                 $user->changing_password = false;
                 $user->save();
                 return true;
-            } else if (auth()->user()->changing_password) {
-                return false;
             }
 
             if (Validator::make($request->all(), [
@@ -157,8 +156,12 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
             ])->fails())
                 return $response->setStatusCode(400);
 
-            // Change pasword in db
+            // Return false if password change already in progress    
             $user = auth()->user();
+            if ($user->changing_password)
+                return false;
+
+            // Change pasword in db
             $user->password = Hash::make($request->password);
             $user->changing_password = true;
             $user->save();
