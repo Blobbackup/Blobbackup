@@ -47,7 +47,7 @@ class ChangePasswordThread(QThread):
             unlock_repo(computer, self.password)
             add_new_password_to_repo(computer, self.password, self.new_password)
             remove_all_but_new_password_from_repo(computer, self.new_password)
-        change_password(self.email, self.new_password, None, change_complete=True)
+        change_password(self.email, self.new_password, "", change_complete=True)
         self.finished.emit(True, False)
 
 
