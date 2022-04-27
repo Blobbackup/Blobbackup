@@ -142,7 +142,16 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
             return $computers;
         });
 
-        Route::post('/changepassword', function (Request $request) {
+        Route::post('/changepassword', function (Request $request, Response $response) {
+            if ($request->change_complete) {
+                $user = auth()->user();
+                $user->changing_password = false;
+                $user->save();
+                return true;
+            } else if (auth()->user()->changing_password) {
+                return false;
+            }
+
             if (Validator::make($request->all(), [
                 'password' => ['required', Password::defaults()]
             ])->fails())
@@ -151,6 +160,7 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
             // Change pasword in db
             $user = auth()->user();
             $user->password = Hash::make($request->password);
+            $user->changing_password = true;
             $user->save();
 
             // Replace b2 keys for all computers
@@ -177,6 +187,8 @@ Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
                 $computer->b2_application_key = $createKeyJson['applicationKey'];
                 $computer->save();
             }
+
+            return true;
         });
     });
 });

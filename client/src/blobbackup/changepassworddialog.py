@@ -41,12 +41,22 @@ class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
         self.change_password_thread.finished.connect(self.accept)
         self.change_password_thread.start()
 
-    def accept(self, success):
+    def accept(self, success, changing_password):
         self.set_elements_enabled(True)
         self.loading_dialog.hide()
         if not success:
-            QMessageBox.warning(self, "Change Password Failed", "Invalid credentials.")
-            self.logger.info("Change password failed displayed")
+            if not changing_password:
+                QMessageBox.warning(
+                    self, "Change Password Failed", "Invalid credentials."
+                )
+                self.logger.info("Change password failed displayed")
+            else:
+                QMessageBox.warning(
+                    self,
+                    "Change Password Failed",
+                    "A password change is already in progress. Please wait for it to complete.",
+                )
+                self.logger.info("Change password failed displayed")
             return
         self.logger.info("Changed password")
         QMessageBox.information(

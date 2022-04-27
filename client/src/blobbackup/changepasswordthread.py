@@ -19,7 +19,7 @@ from blobbackup.util import (
 
 
 class ChangePasswordThread(QThread):
-    finished = pyqtSignal(bool)
+    finished = pyqtSignal(bool, bool)
 
     def __init__(self, email, password, new_password, new_password_confirmation):
         QThread.__init__(self)
@@ -34,16 +34,23 @@ class ChangePasswordThread(QThread):
             or not self.password
             or self.new_password != self.new_password_confirmation
         ):
-            self.finished.emit(False)
+            self.finished.emit(False, False)
             return
-        if not change_password(self.email, self.password, self.new_password):
-            self.finished.emit(False)
+        status = change_password(self.email, self.password, self.new_password)
+        if status == None:
+            self.finished.emit(False, False)
+            return
+        elif status == False:
+            self.finished.emit(False, True)
             return
         for computer in get_computers(self.email, self.new_password):
             unlock_repo(computer, self.password)
             add_new_password_to_repo(computer, self.password, self.new_password)
             remove_all_but_new_password_from_repo(computer, self.new_password)
-        self.finished.emit(True)
+        change_password(
+            self.email, self.password, self.new_password, change_complete=True
+        )
+        self.finished.emit(True, False)
 
 
 def add_new_password_to_repo(computer, old_password, password):
