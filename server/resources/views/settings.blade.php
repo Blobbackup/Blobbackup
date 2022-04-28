@@ -29,7 +29,7 @@
         <div class="text-gray-600 mt-4">
             You can only change your password from the Blobbbackup desktop application.
         </div>
-        <a href="#" class="bg-gray-200 rounded-full px-4 py-2 font-bold mt-4 inline-block">Instructions</a>
+        <a href="https://blobbackup.com/support/how-to-change-your-password" target="_blank" class="bg-gray-200 rounded-full px-4 py-2 font-bold mt-4 inline-block">Instructions</a>
     </div>
     <div class="shadow-lg my-8 p-6">
         <div class="text-gray-600">Delete Account</div>
