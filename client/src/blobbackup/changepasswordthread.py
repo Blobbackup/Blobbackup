@@ -34,16 +34,13 @@ class ChangePasswordThread(QThread):
             or not self.password
             or self.new_password != self.new_password_confirmation
         ):
-            # Invalid credentials
             self.finished.emit(False, "Invalid credentials.")
             return
         status = change_password(self.email, self.password, self.new_password)
         if status == None:
-            # Invalid credentials
             self.finished.emit(False, "Invalid credentials.")
             return
         elif status == False:
-            # Password change already in progress
             self.finished.emit(False, "A password change is already in progress. Please wait for it to complete.")
             return
 
