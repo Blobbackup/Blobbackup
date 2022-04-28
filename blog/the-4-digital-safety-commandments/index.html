@@ -4,23 +4,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="online backup, backup software, cloud backup, backup online, best backup software, online backup services, data backup, best online backup, offsite backup, online data backup"/>
-        <meta name="description" content="Blobbackup is a private, open source and secure cloud computer backup service. Personal backup without compromising any privacy for $9 per month."/>
+        <meta name="description" content="Blobbackup is a private, open source and secure cloud computer backup service. Personal backup without compromising any privacy for $6 per month."/>
         <meta name="author" content="Blobbackup, LLC">
         <title>    The 4 Digital Safety Commandments
  - Blobbackup</title>
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=a2bd1d5be308fac8d4cbf63407cc3d1e">
         <link rel="shortcut icon" href="/assets/images/logo.png"/>
     </head>
-    <body>
+    <body class="font-sans">
         <header class="shadow-lg bg-white sticky top-0 z-50">
-                        <div class="mx-auto flex max-w-7xl p-6">
+            <div class="mx-auto flex max-w-7xl p-6">
                 <a href="/" class="flex-initial font-bold text-2xl block">
                     <img src="/assets/images/logo.png" class="w-8 h-8 -mt-1 mr-1 inline-block"/>
                     Blobbackup
                 </a>
                 <div class="flex-1 text-right font-bold text-lg mt-1 hidden md:block">
-                    <a href="/personal" class="ml-4">Personal Backup</a>
-                    <a href="/business" class="ml-4">Business Backup</a>
+                    <a href="/personal" class="ml-4">Personal</a>
+                    <a href="/business" class="ml-4">Business</a>
+                    <a href="/pricing" class="ml-4">Pricing</a>
+                    <a href="/security" class="ml-4">Security</a>
                     <a href="/company" class="ml-4">About</a>
                     <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="ml-4">Github</a>
                     <a href="/blog" class="ml-4">Blog</a>
@@ -49,8 +51,10 @@
                         </div>
                     </div>
                     <div class="font-bold text-xl mt-8">
-                        <a href="/personal" class="block underline mt-4">Personal Backup</a>
-                        <a href="/business" class="block underline mt-4">Business Backup</a>
+                        <a href="/personal" class="block underline mt-4">Personal</a>
+                        <a href="/business" class="block underline mt-4">Business</a>
+                        <a href="/pricing" class="block underline mt-4">Pricing</a>
+                        <a href="/security" class="block underline mt-4">Security</a>
                         <a href="/company" class="block underline mt-4">About</a>
                         <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="block underline mt-4">Github</a>
                         <a href="/blog" class="block underline mt-4">Blog</a>
@@ -60,7 +64,7 @@
                 </div>
             </div>
         </header>
-        <main class="mx-auto max-w-5xl p-4">
+        <main>
             <style>
 #content p {
     margin-top: 1rem;
@@ -83,11 +87,12 @@
     text-decoration: underline;
 }
 </style>
-<div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl md:text-4xl font-bold mt-4 md:mt-16 text-center">The 4 Digital Safety Commandments</h1>
-    <h2 class="text-lg md:text-xl text-gray-600 mt-2 text-center">February 6, 2022 by Bimba Shrestha</h2>
-    <div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
-        <p>Digital safety is not just a concern for businesses and governments. Anyone who cares about their data should take precautions to protect it. Thankfully, you don’t need to be a computer whiz to build some good digital habits.</p>
+<div class="mx-auto max-w-5xl p-4">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-bold mt-4 md:mt-16 text-center">The 4 Digital Safety Commandments</h1>
+        <h2 class="text-lg md:text-xl text-gray-600 mt-2 text-center">February 6, 2022 by Bimba Shrestha</h2>
+        <div class="mx-auto max-w-4xl text-gray-600 text-lg mt-8 md:mt-16" id="content">
+            <p>Digital safety is not just a concern for businesses and governments. Anyone who cares about their data should take precautions to protect it. Thankfully, you don’t need to be a computer whiz to build some good digital habits.</p>
 
 <p>Keep these 4 commandments and you’ll ward off most digital threats.</p>
 
@@ -114,6 +119,7 @@
 <p>You’re hard at work on your computer or phone and a message pops up saying “a software update is available.” You’re busy so you click “cancel” instead of “install now” thinking you’ll get to it when you have some time. But you never get to it. Sound familiar?</p>
 
 <p>Software updates may not seem important but they are. They often fix security issues and bugs that hackers know they can take advantage of. You don’t have to click install immediately every time (sometimes you simply have better things to do), but don’t make procrastinating on software updates a habit.</p>
+        </div>
     </div>
 </div>
         </main>
@@ -152,10 +158,6 @@
             };
             document.getElementById("responsive-close").onclick = () => {
                 document.getElementById("responsive-menu").classList.add("hidden");
-                return false;
-            };
-            document.getElementById("announcement-close").onclick = () => {
-                document.getElementById("announcement").classList.add("hidden");
                 return false;
             };
         </script>
