@@ -33,10 +33,10 @@ class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
         self.set_elements_enabled(False)
         self.loading_dialog.show()
         self.change_password_thread = ChangePasswordThread(
-            self.email_line_edit.text(),
-            self.password_line_edit.text(),
-            self.new_password_line_edit.text(),
-            self.confirm_new_password_line_edit.text(),
+            self.email_line_edit.text().strip(),
+            self.password_line_edit.text().strip(),
+            self.new_password_line_edit.text().strip(),
+            self.confirm_new_password_line_edit.text().strip(),
         )
         self.change_password_thread.finished.connect(self.accept)
         self.change_password_thread.start()
