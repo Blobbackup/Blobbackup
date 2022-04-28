@@ -51,14 +51,13 @@ class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
                     "Change Password Failed",
                     "Invalid credentials.",
                 )
-                self.logger.info("Change password failed displayed")
             else:
                 QMessageBox.warning(
                     self,
                     "Change Password Failed",
                     "A password change is already in progress. Please wait for it to complete.",
                 )
-                self.logger.info("Change password failed displayed")
+            self.logger.info("Change password failed displayed")
             return
         self.logger.info("Changed password")
         QMessageBox.information(
