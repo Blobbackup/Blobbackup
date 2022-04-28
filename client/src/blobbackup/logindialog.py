@@ -128,7 +128,8 @@ def reauth_user():
     dialog = LoginDialog(
         reauth=True,
         show_register_button=False,
-        heading="Enter your credentials to continue.",
+        title="Verification Required",
+        heading="Credentials changed. Please re-enter.",
         sign_in_button_text="Continue",
     )
     return dialog.exec()
