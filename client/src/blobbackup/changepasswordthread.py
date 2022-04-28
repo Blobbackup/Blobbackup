@@ -32,16 +32,30 @@ class ChangePasswordThread(QThread):
         if (
             not self.email
             or not self.password
-            or self.new_password != self.new_password_confirmation
+            or not self.new_password
+            or not self.new_password_confirmation
         ):
-            self.finished.emit(False, "Invalid credentials.")
+            self.finished.emit(False, "Please fill out all fields.")
             return
+
+        if self.new_password != self.new_password_confirmation:
+            self.finished.emit(False, "New passwords do not match.")
+            return
+
+        if self.password == self.new_password:
+            self.finished.emit(False, "New password is the same as the old.")
+            return
+
         status = change_password(self.email, self.password, self.new_password)
         if status == None:
             self.finished.emit(False, "Invalid credentials.")
             return
+
         elif status == False:
-            self.finished.emit(False, "A password change is already in progress. Please wait for it to complete.")
+            self.finished.emit(
+                False,
+                "A password change is already in progress. Please wait for it to complete.",
+            )
             return
 
         # Change repo keys
