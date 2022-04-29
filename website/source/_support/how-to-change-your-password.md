@@ -15,4 +15,4 @@ you can only change your password from there.
 
 **Option 2: From The Login Dialog**
 
-![](/assets/images/mac-change-password2.png)
+<img src="/assets/images/mac-change-password2.png" class="md:w-1/2">
