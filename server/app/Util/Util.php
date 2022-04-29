@@ -9,6 +9,7 @@ class Util
     public static $perComputerPrice = 6;
     public static $clientVersion = "1.2.1";
     public static $trialLengthDays = 15;
+    public static $deletedComputerRetentionDays = 15;
 
     public static function formatBytes($size, $precision = 2)
     {
