@@ -11,8 +11,8 @@
             <h1 class="text-3xl md:text-5xl font-bold">Simple Cloud Backup</h1>
             <h2 class="text-xl md:text-2xl text-gray-600 mt-2">
                 We back up your entire computer to the cloud for 
-                ${{ $page->perComputerPrice }} / month flat. No hidden fees or price tiers. All of your files. 
-                For the price of a cup of coffee. <strong>Your privacy, guaranteed.</strong>
+                ${{ $page->perComputerPrice }} / month. No hidden fees or price tiers. All of your files. 
+                For the price of a couple cups of coffee. <strong>Your privacy, guaranteed.</strong>
             </h2>
             <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for {{ $page->trialLengthDays }} Days</a>
             <div class="text-gray-600 mt-4 text-xs md:text-base">
@@ -387,7 +387,7 @@
             <p class="text-lg text-gray-600 mt-2">
                 Sometimes, but it will be very expensive. Data recovery companies will charge up to $3,000 to 
                 attempt to recover your data with no guarantee that you'll glean anything from it. For the price 
-                of one attempted $3,000 recovery, we can back up your computer for 42 years at $6 per month.
+                of one attempted $3,000 recovery, we can back up your computer for {{ round(3000/(12*$page->perComputerPrice)) }} years at ${{ $page->perComputerPrice }} per month.
             </p>
         </div>
         <div>
