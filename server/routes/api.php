@@ -31,7 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['auth.basic', 'verified', 'active'])->group(function () {
+Route::middleware(['auth.basic', 'active'])->group(function () {
     Route::get('/login', function () {
         $user = auth()->user();
         $leader = $user->leader_id ? User::find($user->leader_id) : $user;

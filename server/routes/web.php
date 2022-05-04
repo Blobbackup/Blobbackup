@@ -32,7 +32,7 @@ Route::get('/group/{uuid}', function (Request $request, string $uuid) {
     ]);
 });
 
-Route::middleware(['auth', 'verified', 'active'])->group(function () {
+Route::middleware(['auth', 'active'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard', [
             'user' => auth()->user()
