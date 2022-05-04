@@ -13,6 +13,9 @@ git commit -m "Build for production"
 git pull --commit
 git push origin gh-pages -f
 git reset --hard HEAD
-git checkout master
+git checkout dev
 cp /tmp/database.sqlite server/database/database.sqlite
 cp /tmp/.env server/.env
+cd server
+composer install && npm install && npm run dev
+php artisan migrate
