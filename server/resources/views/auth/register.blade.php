@@ -37,7 +37,7 @@
             <form method="POST" action="/register" id="register_form" class="hidden" accept-charset="utf-8">
                 @csrf
                 <input type="email" name="email" id="email" placeholder="Email" class="w-full border border-gray-400 rounded-full px-4 py-1" value="{{ old('email') }}" required />
-                <input type="password" name="password" id="password" placeholder="Password" class="w-full border border-gray-400 rounded-full px-4 py-1 mt-4" required />
+                <input type="password" name="password" id="password" placeholder="Password" class="w-full border border-gray-400 rounded-full px-4 py-1 mt-4" minlength="8" required />
                 <div class="text-center mt-4 text-xs text-gray-500">
                     All your backups will be encrypted using this password. Pick a good one and don't forget it. There is no way to
                     recover this password (or your backups) if you do.
