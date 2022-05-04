@@ -1,5 +1,7 @@
 #!/bin/bash 
 
+cp server/.env /tmp/.env
+cp server/database/database.sqlite /tmp/database.sqlite
 git checkout gh-pages
 rm -rf **
 git checkout master -- website
@@ -12,3 +14,5 @@ git pull --commit
 git push origin gh-pages -f
 git reset --hard HEAD
 git checkout master
+cp /tmp/database.sqlite server/database/database.sqlite
+cp /tmp/.env server/.env
