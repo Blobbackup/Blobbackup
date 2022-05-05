@@ -27,7 +27,7 @@
                         <div class="bg-white p-6 mx-auto my-auto shadow-lg max-w-lg">
                             <div class="text-center">
                                 <div class="rounded-full overflow-hidden inline-block">
-                                    <img src="img/bimba.jpeg" width="72"/>
+                                    <img src="{{ asset('img/bimba.jpeg') }}" width="72"/>
                                 </div>
                             </div>
                             <div class="text-center">
