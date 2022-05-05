@@ -74,6 +74,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('backup'));
+        return redirect(route('backup'))->with('welcome', true);
     }
 }

@@ -22,58 +22,60 @@
                 @endif
             @endif
             <div class="shadow-lg p-6 bg-white flex">
-                <div id="welcome" class="fixed w-full h-screen top-0 left-0 flex" style="background-color: rgba(0,0,0,0.5)">
-                    <div class="bg-white p-6 mx-auto my-auto shadow-lg max-w-lg">
-                        <div class="text-center">
-                            <div class="rounded-full overflow-hidden inline-block">
-                                <img src="img/bimba.jpeg" width="72"/>
+                @if (session('welcome'))
+                    <div id="welcome" class="fixed w-full h-screen top-0 left-0 flex" style="background-color: rgba(0,0,0,0.5)">
+                        <div class="bg-white p-6 mx-auto my-auto shadow-lg max-w-lg">
+                            <div class="text-center">
+                                <div class="rounded-full overflow-hidden inline-block">
+                                    <img src="img/bimba.jpeg" width="72"/>
+                                </div>
                             </div>
+                            <div class="text-center">
+                                Welcome from Bimba, Blobbackup's Founder
+                            </div>
+                            <div class="font-bold mt-8">
+                                Thanks for signing up — your account's ready to go!
+                            </div>
+                            <div class="mt-4">
+                                Now you just have to install Blobbackup on your computer. Download
+                                the installer for your operating system below, follow some easy instructions,
+                                and that's it! Your computer data will start backing up to our secure cloud.
+                            </div>
+                            <div class="mt-4">
+                                <a href="{{ asset('bin/blobbackup-darwin-amd-' . Util::$clientVersion . '.dmg') }}" class="bg-gray-200 rounded-full px-4 py-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    Intel Mac
+                                </a>
+                                <a href="{{ asset('bin/blobbackup-darwin-arm-' . Util::$clientVersion . '.dmg') }}" class="bg-gray-200 rounded-full px-4 py-2 ml-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    M1 Mac
+                                </a>
+                                <a href="{{ asset('bin/blobbackup-win-' . Util::$clientVersion . '.exe') }}" class="bg-gray-200 rounded-full px-4 py-2 ml-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    Windows
+                                </a>
+                            </div>
+                            <div class="mt-4">
+                                If you ever need a hand, please contact me directly at 
+                                <a href="mailto:bimba@blobbackup.com" target="_blank" class="underline text-blue-600">bimba@blobbackup.com</a>. 
+                                I'm always happy to help!
+                            </div>
+                            <div class="mt-4">
+                                Thanks again and all the best,
+                            </div>
+                            <div>
+                                Bimba, Founder, Blobbackup
+                            </div>
+                            <a href="" class="font-bold text-lg text-white bg-blue-500 rounded-full text-center mt-8 py-2 block mt-4" id="start-backing-up">Go to My Account</a>
                         </div>
-                        <div class="text-center">
-                            Welcome from Bimba, Blobbackup's Founder
-                        </div>
-                        <div class="font-bold mt-8">
-                            Thanks for signing up — your account's ready to go!
-                        </div>
-                        <div class="mt-4">
-                            Now you just have to install Blobbackup on your computer. Download
-                            the installer for your operating system below, follow some easy instructions,
-                            and that's it! Your computer data will start backing up to our secure cloud.
-                        </div>
-                        <div class="mt-4">
-                            <a href="{{ asset('bin/blobbackup-darwin-amd-' . Util::$clientVersion . '.dmg') }}" class="bg-gray-200 rounded-full px-4 py-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                                Intel Mac
-                            </a>
-                            <a href="{{ asset('bin/blobbackup-darwin-arm-' . Util::$clientVersion . '.dmg') }}" class="bg-gray-200 rounded-full px-4 py-2 ml-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                                M1 Mac
-                            </a>
-                            <a href="{{ asset('bin/blobbackup-win-' . Util::$clientVersion . '.exe') }}" class="bg-gray-200 rounded-full px-4 py-2 ml-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                                Windows
-                            </a>
-                        </div>
-                        <div class="mt-4">
-                            If you ever need a hand, please contact me directly at 
-                            <a href="mailto:bimba@blobbackup.com" target="_blank" class="underline text-blue-600">bimba@blobbackup.com</a>. 
-                            I'm always happy to help!
-                        </div>
-                        <div class="mt-4">
-                            Thanks again and all the best,
-                        </div>
-                        <div>
-                            Bimba, Founder, Blobbackup
-                        </div>
-                        <a href="" class="font-bold text-lg text-white bg-blue-500 rounded-full text-center mt-8 py-2 block mt-4" id="start-backing-up">Go to My Account</a>
                     </div>
-                </div>
+                @endif
                 <a href="/dashboard" class="flex-initial font-bold text-2xl block">
                     <img src="{{ asset('img/logo.png') }}" class="w-8 h-8 -mt-1 mr-1 inline-block"/>
                     Blobbackup
@@ -142,11 +144,13 @@
                 </div>
             </div>
         </main>
-        <script>
-            document.getElementById("start-backing-up").onclick = () => {
-                document.getElementById("welcome").classList.add("hidden");
-                return false;
-            };
-        </script>
+        @if (session('welcome'))
+            <script>
+                document.getElementById("start-backing-up").onclick = () => {
+                    document.getElementById("welcome").classList.add("hidden");
+                    return false;
+                };
+            </script>
+        @endif
     </body>
 </html>
