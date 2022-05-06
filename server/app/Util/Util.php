@@ -2,6 +2,7 @@
 
 namespace App\Util;
 
+use Twilio;
 use Illuminate\Support\Facades\Mail;
 
 class Util
@@ -41,5 +42,10 @@ class Util
         Mail::send(['html' => 'genericemail'], ['content' => $content], function ($message) use ($email, $subject) {
             $message->to($email)->subject($subject);
         });
+    }
+
+    public static function sendNotification(string $message)
+    {
+        Twilio::message(env('NOTIFICATION_NUMBER'), $message);
     }
 }

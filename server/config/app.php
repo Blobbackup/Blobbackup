@@ -226,6 +226,7 @@ return [
         'Session' => Illuminate\Support\Facades\Session::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'Str' => Illuminate\Support\Str::class,
+        'Twilio' => Aloha\Twilio\Support\Laravel\Facade::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Util' => App\Util\Util::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
