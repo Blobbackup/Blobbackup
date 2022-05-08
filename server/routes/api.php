@@ -64,6 +64,7 @@ Route::middleware(['auth.basic', 'active'])->group(function () {
                 return $response->setStatusCode(400);
     
             // Create computer
+            $user = auth()->user();
             $createKeyJson = $createKeyResponse->json();
             $computer = new Computer();
             $computer->name = $request->name;
@@ -71,9 +72,12 @@ Route::middleware(['auth.basic', 'active'])->group(function () {
             $computer->operating_system = $request->operating_system;
             $computer->b2_key_id = $createKeyJson['applicationKeyId'];
             $computer->b2_application_key = $createKeyJson['applicationKey'];
-            $computer->user_id = auth()->user()->id;
+            $computer->user_id = $user->id;
             $computer->save();
             $computer->b2_bucket_name = env('B2_BUCKET_NAME');
+
+            Util::sendNotification($user->email . ' added computer.');
+
             return $computer;
         });
     
