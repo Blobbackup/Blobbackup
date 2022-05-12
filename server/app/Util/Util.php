@@ -37,11 +37,16 @@ class Util
         else return $delta->i . ' minutes';
     }
 
+    public static function sendEmailFrom(string $from, string $email, string $subject, string $content)
+    {
+        Mail::send(['html' => 'genericemail'], ['content' => $content], function ($message) use ($from, $email, $subject) {
+            $message->from(env('MAIL_FROM_ADDRESS'), $from)->to($email)->subject($subject);
+        });
+    }
+
     public static function sendEmail(string $email, string $subject, string $content)
     {
-        Mail::send(['html' => 'genericemail'], ['content' => $content], function ($message) use ($email, $subject) {
-            $message->to($email)->subject($subject);
-        });
+        Util::sendEmailFrom(env('MAIL_FROM_NAME'), $email, $subject, $content);
     }
 
     public static function sendNotification(string $message)

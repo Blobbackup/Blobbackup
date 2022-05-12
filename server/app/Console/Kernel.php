@@ -28,18 +28,31 @@ class Kernel extends ConsoleKernel
                     foreach ($subscription->modifiers() as $modifier)
                         $modifier->delete();
                     $subscription->newModifier($amount)->create();
-                } else if ($user->customer->trial_ends_at->diff(new \DateTime())->days == 3) {
-                    if (new \DateTime() < $user->customer->trial_ends_at) {
+                }
+            }
+        })->daily();
+        $schedule->call(function () {
+            foreach (User::whereNull('leader_id')->get() as $user) {
+                if ($user->subscribed())
+                    continue;
+
+                $daysSinceTrialStart = $user->created_at->diff(new \DateTime())->days;
+                $daysTillTrialEnd = $user->customer->trial_ends_at->diff(new \DateTime())->days;
+
+                if ($daysTillTrialEnd == 0) {
+                    Util::sendEmail($user->email,
+                        "Your Data Will Be Deleted In 3 Days.",
+                        "<p>Your Blobbackup trial has expired.</p><p>Please <a href='https://app.blobbackup.com/payment'>sign in and add a payment method</a> if you'd like to continue using the service.</p><p>Note that 3 days from today, all your computer backups will be deleted.</p>");
+                }
+
+                if ($daysTillTrialEnd == 3) {
+                    if ($user->onTrial()) {
                         Util::sendEmail($user->email,
                             "Your Blobbackup Trial Will Expire In 3 Days!",
-                            "Your Blobbackup trial will expire in 3 days. Please sign in and add a payment method if you'd like to continue using the service after the trial expires. Note that 3 days after your trial expires, all your computer backups will be deleted.");
+                            "<p>Your Blobbackup trial will expire in 3 days.</p><p>Please <a href='https://app.blobbackup.com/payment'>sign in and add a payment method</a> if you'd like to continue using the service after the trial expires.</p><p>Note that 3 days after your trial expires, all your computer backups will be deleted.</p>");
                     } else {
                         $user->deleteComputers();
                     }
-                } else if ($user->customer->trial_ends_at->diff(new \DateTime())->days == 0) {
-                    Util::sendEmail($user->email,
-                        "Your Data Will Be Deleted In 3 Days.",
-                        "Your Blobbackup trial has expired. Please sign in and add a payment method if you'd like to continue using the service. Note that 3 days from today, all your computer backups will be deleted.");
                 }
             }
         })->daily();
