@@ -54,6 +54,23 @@ class Kernel extends ConsoleKernel
                         $user->deleteComputers();
                     }
                 }
+
+                if ($daysSinceTrialStart == 7) {
+                    $firstBackupComplete = false;
+                    foreach ($user->computers as $computer) {
+                        if ($computer->last_backed_up_at) {
+                            $firstBackupComplete = true;
+                            break;
+                        }
+                    }
+                    if (!$firstBackupComplete) {
+                        Util::sendEmailFrom(
+                            'Bimba at Blobbackup',
+                            $user->email,
+                            "You Haven’t Made a Backup Yet - Need Help?",
+                            "<p>Hi there!</p><p>Thanks again for trying Blobbackup.</p><p>I noticed that you hadn't completed a full backup yet. I just wanted to check in to see how things are going. Is there anything that I can help you with?</p><p>Bimba,</p><p>Founder, Blobbackup</p>");
+                    }
+                }
             }
         })->daily();
         $schedule->call(function () {
