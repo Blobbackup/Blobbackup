@@ -129,7 +129,7 @@ def reauth_user():
         reauth=True,
         show_register_button=False,
         title="Verification Required",
-        heading="Credentials changed. Please re-enter.",
+        heading="Please sign in to continue.",
         sign_in_button_text="Continue",
     )
     return dialog.exec()
