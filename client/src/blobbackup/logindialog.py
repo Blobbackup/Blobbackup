@@ -13,6 +13,7 @@ from blobbackup.loginthread import LoginThread
 from blobbackup.logger import get_logger
 
 REGISTER_URL = config["meta"]["server"] + "/register"
+PAYMENT_URL = config["meta"]["server"] + "/payment"
 
 
 class LoginDialog(QDialog, Ui_LoginDialog):
@@ -88,6 +89,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
             "Your trial period is over. Please purchase Blobbackup to continue using it.",
         )
         self.logger.info("Trial over displayed.")
+        webbrowser.open(PAYMENT_URL)
         sys.exit()
 
     def change_password(self):
