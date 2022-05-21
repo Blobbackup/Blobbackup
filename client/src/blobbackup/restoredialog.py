@@ -2,6 +2,7 @@ import datetime
 
 from PyQt6.QtWidgets import QDialog, QFileDialog, QMessageBox
 from PyQt6.QtGui import QIcon
+from PyQt6.QtCore import QEvent, Qt
 
 from blobbackup.ui.restoredialog import Ui_RestoreDialog
 from blobbackup.loadingdialog import LoadingDialog
@@ -120,10 +121,14 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
 
     def reset_gui_state(self):
         self.setWindowTitle("Restore Files - Blobbackup")
+        if self.windowState() != Qt.WindowState.WindowMinimized:
+            self.reset_loading_dialogs()
+        self.set_elements_enabled(True)
+
+    def reset_loading_dialogs(self):
         self.restoring_dialog.hide()
         self.loading_backup_dialog.hide()
         self.reset_loading_backup_dialog()
-        self.set_elements_enabled(True)
 
     def reset_loading_backup_dialog(self):
         title = "Loading File Tree. Please Wait..."
@@ -144,3 +149,11 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
         QMessageBox.information(
             self, "Restore Failed", "Blobbackup was unable to restore your files."
         )
+
+    def changeEvent(self, event):
+        if (
+            event.type() == QEvent.Type.WindowStateChange
+            and self.restore_button.isEnabled()
+        ):
+            self.reset_loading_dialogs()
+        return super().changeEvent(event)
