@@ -29,6 +29,8 @@ from blobbackup.logindialog import reauth_user, verify_password
 from blobbackup.heartbeat import heartbeat
 from blobbackup.logger import get_logger
 
+PAYMENT_URL = config["meta"]["server"] + "/payment"
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, first_time=False):
@@ -108,6 +110,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.reset_backup_stuck_variables()
         self.backup_thread = BackupThread(force_run)
         self.backup_thread.api_error.connect(self.api_error)
+        self.backup_thread.trial_over.connect(self.trial_over)
         self.backup_thread.backup_complete.connect(self.reset_backup_stuck_variables)
         self.backup_thread.start()
 
@@ -146,3 +149,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def api_error(self):
         if not reauth_user():
             sys.exit()
+
+    def trial_over(self):
+        QMessageBox.information(
+            self,
+            "Trial Expired",
+            "Thanks for trying Blobbackup. Your trial period has expired. Please purchase Blobbackup to continue using it.",
+        )
+        webbrowser.open(PAYMENT_URL)
+        sys.exit()

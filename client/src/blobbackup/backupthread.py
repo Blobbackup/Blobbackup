@@ -7,7 +7,7 @@ import requests
 
 from PyQt6.QtCore import QThread, pyqtSignal
 
-from blobbackup.api import get_computer, update_computer
+from blobbackup.api import get_computer, update_computer, login
 from blobbackup.util import (
     INCLUSIONS_FILE_PATH,
     EXCLUDIONS_FILE_PATH,
@@ -40,6 +40,7 @@ class ApiError(Exception):
 
 class BackupThread(QThread):
     api_error = pyqtSignal()
+    trial_over = pyqtSignal()
     backup_complete = pyqtSignal()
 
     def __init__(self, force_run=False):
@@ -64,7 +65,10 @@ class BackupThread(QThread):
                 self.update_status(current_status="Idle")
                 self.logger.error("Backup api error.")
                 self.backup_complete.emit()
-                self.api_error.emit()
+                if self.allowed_to_backup():
+                    self.api_error.emit()
+                else:
+                    self.trial_over.emit()
             except requests.exceptions.ConnectionError:
                 self.update_status(current_status="Idle")
                 self.logger.error("Backup connection error.")
@@ -216,3 +220,9 @@ class BackupThread(QThread):
         password = get_password_from_keyring()
         computer_id = config["meta"]["computer_id"]
         update_computer(email, password, computer_id, fields)
+
+    def allowed_to_backup(self):
+        email = config["meta"]["email"]
+        password = get_password_from_keyring()
+        user = login(email, password)
+        return user["subscribed"] or user["on_trial"]
