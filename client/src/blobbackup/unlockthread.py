@@ -29,13 +29,11 @@ class UnlockThread(QThread):
             ret = subprocess.run(
                 get_restic_unlock_command(),
                 env=get_restic_env(computer, password),
-                stdout=subprocess.PIPE,
                 creationflags=CREATE_NO_WINDOW,
             ).returncode
         elif is_mac():
             ret = subprocess.run(
                 get_restic_unlock_command(),
                 env=get_restic_env(computer, password),
-                stdout=subprocess.PIPE,
             ).returncode
         self.unlocked.emit(ret == 0)
