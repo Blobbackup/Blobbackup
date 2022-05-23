@@ -142,8 +142,7 @@ class BackupThread(QThread):
         self.update_status(current_status="Preparing for backup")
         self.write_inclusion_exclusion_files()
 
-        email = config["meta"]["email"]
-        password = get_password_from_keyring()
+        email, password = self.get_credentials()
         computer = get_computer(email, password, config["meta"]["computer_id"])
 
         if not computer:
@@ -217,13 +216,16 @@ class BackupThread(QThread):
         self.update_computer_helper({"client_version": __version__})
 
     def update_computer_helper(self, fields):
-        email = config["meta"]["email"]
-        password = get_password_from_keyring()
+        email, password = self.get_credentials()
         computer_id = config["meta"]["computer_id"]
         update_computer(email, password, computer_id, fields)
 
     def allowed_to_backup(self):
-        email = config["meta"]["email"]
-        password = get_password_from_keyring()
+        email, password = self.get_credentials()
         user = login(email, password)
         return user["subscribed"] or user["on_trial"]
+
+    def get_credentials(self):
+        email = config["meta"]["email"]
+        password = get_password_from_keyring()
+        return email, password
