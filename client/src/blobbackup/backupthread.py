@@ -68,6 +68,7 @@ class BackupThread(QThread):
                 if self.allowed_to_backup():
                     self.api_error.emit()
                 else:
+                    self.logger.info("Trial expired.")
                     self.trial_over.emit()
             except requests.exceptions.ConnectionError:
                 self.update_status(current_status="Idle")
