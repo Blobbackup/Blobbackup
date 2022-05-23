@@ -65,11 +65,12 @@ class BackupThread(QThread):
                 self.update_status(current_status="Idle")
                 self.logger.error("Backup api error.")
                 self.backup_complete.emit()
-                if self.allowed_to_backup():
-                    self.api_error.emit()
-                else:
+                if self.is_trial_over():
                     self.logger.info("Trial expired.")
                     self.trial_over.emit()
+                else:
+                    self.api_error.emit()
+
             except requests.exceptions.ConnectionError:
                 self.update_status(current_status="Idle")
                 self.logger.error("Backup connection error.")
@@ -220,10 +221,10 @@ class BackupThread(QThread):
         computer_id = config["meta"]["computer_id"]
         update_computer(email, password, computer_id, fields)
 
-    def allowed_to_backup(self):
+    def is_trial_over(self):
         email, password = self.get_credentials()
         user = login(email, password)
-        return user["subscribed"] or user["on_trial"]
+        return user and not user["subscribed"] and not user["on_trial"]
 
     def get_credentials(self):
         email = config["meta"]["email"]
