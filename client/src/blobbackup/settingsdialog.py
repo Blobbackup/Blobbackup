@@ -121,7 +121,7 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
 
     def open_developer_dialog(self):
         self.main_window.stop_backup()
-        developer_dialog = DeveloperDialog(self.main_window)
+        developer_dialog = DeveloperDialog()
         developer_dialog.exec()
 
     def restore_different_computer(self):
