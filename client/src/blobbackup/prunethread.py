@@ -15,7 +15,6 @@ from blobbackup.util import (
 
 
 class PruneThread(QThread):
-    pruning = pyqtSignal(str)
     pruned = pyqtSignal(bool)
 
     def __init__(self):
@@ -28,21 +27,16 @@ class PruneThread(QThread):
         )
         num_threads = config["general"]["num_backup_threads"]
         if is_windows():
-            process = subprocess.Popen(
+            ret = subprocess.run(
                 get_restic_prune_command(),
                 env=get_restic_env(computer, password, num_threads),
                 stdout=subprocess.PIPE,
                 creationflags=CREATE_NO_WINDOW,
-            )
+            ).returncode
         elif is_mac():
-            process = subprocess.Popen(
+            ret = subprocess.run(
                 get_restic_prune_command(),
                 env=get_restic_env(computer, password, num_threads),
                 stdout=subprocess.PIPE,
-            )
-        while True:
-            line = process.stdout.readline().rstrip()
-            if not line:
-                break
-            self.pruning.emit(line.decode("utf-8"))
-        self.pruned.emit(process.wait() == 0)
+            ).returncode
+        self.pruned.emit(ret == 0)

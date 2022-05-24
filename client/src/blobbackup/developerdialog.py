@@ -48,7 +48,6 @@ class DeveloperDialog(QDialog, Ui_DeveloperDialog):
             "Pruning repository. This is likely going to take a while.",
         )
         self.prune_thread = PruneThread()
-        self.prune_thread.pruning.connect(lambda title: self.setWindowTitle(title))
         self.prune_thread.pruned.connect(self.pruned)
         self.prune_thread.start()
 
