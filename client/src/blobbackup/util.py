@@ -172,7 +172,7 @@ def get_restic_unlock_command():
 
 
 def get_restic_prune_command():
-    return [RESTIC_PATH, "prune", "--dry-run"]
+    return [RESTIC_PATH, "prune"]
 
 
 def get_restic_list_passwords_command():

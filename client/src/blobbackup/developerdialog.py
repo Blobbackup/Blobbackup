@@ -42,6 +42,11 @@ class DeveloperDialog(QDialog, Ui_DeveloperDialog):
     def prune(self):
         self.setEnabled(False)
         self.setWindowTitle("Pruning. Please Wait...")
+        QMessageBox.information(
+            self,
+            "Pruning Repository",
+            "Pruning repository. This is likely going to take a while.",
+        )
         self.prune_thread = PruneThread()
         self.prune_thread.pruning.connect(lambda title: self.setWindowTitle(title))
         self.prune_thread.pruned.connect(self.pruned)
