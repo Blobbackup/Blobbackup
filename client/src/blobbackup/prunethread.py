@@ -26,17 +26,18 @@ class PruneThread(QThread):
         computer = get_computer(
             config["meta"]["email"], password, config["meta"]["computer_id"],
         )
+        num_threads = config["general"]["num_backup_threads"]
         if is_windows():
             process = subprocess.Popen(
                 get_restic_prune_command(),
-                env=get_restic_env(computer, password),
+                env=get_restic_env(computer, password, num_threads),
                 stdout=subprocess.PIPE,
                 creationflags=CREATE_NO_WINDOW,
             )
         elif is_mac():
             process = subprocess.Popen(
                 get_restic_prune_command(),
-                env=get_restic_env(computer, password),
+                env=get_restic_env(computer, password, num_threads),
                 stdout=subprocess.PIPE,
             )
         while True:
