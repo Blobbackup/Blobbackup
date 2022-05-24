@@ -1,10 +1,9 @@
 from PyQt6.QtWidgets import QDialog, QFileDialog, QInputDialog, QMessageBox
-from PyQt6.QtGui import QIcon, QKeySequence, QShortcut
+from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt
 
 from blobbackup.ui.settingsdialog import Ui_SettingsDialog
 from blobbackup.choosecomputerdialog import ChooseComputerDialog
-from blobbackup.developerdialog import DeveloperDialog
 from blobbackup.restoredialog import RestoreDialog
 from blobbackup.changepassworddialog import ChangePasswordDialog
 from blobbackup.logindialog import verify_password
@@ -58,9 +57,6 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
         if is_windows():
             self.backup_connected_file_systems_label.setVisible(False)
             self.backup_connected_file_systems_combo_box.setVisible(False)
-
-        self.developer_dialog_shortcut = QShortcut(QKeySequence("Ctrl+Shift+D"), self)
-        self.developer_dialog_shortcut.activated.connect(self.open_developer_dialog)
 
         self.logger.info("Settings dialog displayed.")
 
@@ -118,11 +114,6 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
             row = self.exclusions_list_widget.row(item)
             self.exclusions_list_widget.takeItem(row)
             self.logger.info("Exclusion removed.")
-
-    def open_developer_dialog(self):
-        self.main_window.stop_backup()
-        developer_dialog = DeveloperDialog()
-        developer_dialog.exec()
 
     def restore_different_computer(self):
         email = config["meta"]["email"]

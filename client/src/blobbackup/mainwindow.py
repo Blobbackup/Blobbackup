@@ -3,7 +3,7 @@ import time
 import webbrowser
 
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
-from PyQt6.QtGui import QIcon
+from PyQt6.QtGui import QIcon, QKeySequence, QShortcut
 
 from blobbackup.ui.mainwindow import Ui_MainWindow
 
@@ -21,6 +21,7 @@ from blobbackup.util import (
 from blobbackup.backupstarteddialog import BackupStartedDialog
 from blobbackup.settingsdialog import SettingsDialog
 from blobbackup.restoredialog import RestoreDialog
+from blobbackup.developerdialog import DeveloperDialog
 from blobbackup.config import load_config, config
 from blobbackup.status import get_last_backed_up, get_selected_files, get_current_status
 from blobbackup.statusthread import StatusThread
@@ -51,6 +52,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.restore_button.pressed.connect(self.open_restore_files)
         self.privacy_label.linkActivated.connect(lambda: webbrowser.open(PRIVACY_URL))
         self.support_label.linkActivated.connect(lambda: webbrowser.open(SUPPORT_URL))
+
+        self.developer_dialog_shortcut = QShortcut(QKeySequence("Ctrl+Shift+D"), self)
+        self.developer_dialog_shortcut.activated.connect(self.open_developer_dialog)
 
         self.launch_status_thread()
         self.launch_backup_thread()
@@ -100,6 +104,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             computer_id = config["meta"]["computer_id"]
             dialog = RestoreDialog(email, password, computer_id)
             dialog.exec()
+
+    def open_developer_dialog(self):
+        self.stop_backup()
+        developer_dialog = DeveloperDialog()
+        developer_dialog.exec()
 
     def launch_status_thread(self):
         self.status_thread = StatusThread()
