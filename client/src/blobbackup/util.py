@@ -171,6 +171,10 @@ def get_restic_unlock_command():
     return [RESTIC_PATH, "unlock", "--remove-all"]
 
 
+def get_restic_prune_command():
+    return [RESTIC_PATH, "prune", "--dry-run"]
+
+
 def get_restic_list_passwords_command():
     return [RESTIC_PATH, "key", "list", "--json"]
 

@@ -6,6 +6,7 @@ from blobbackup.ui.developerdialog import Ui_DeveloperDialog
 from blobbackup.util import LOGO_PATH
 from blobbackup.logger import get_logger
 from blobbackup.unlockthread import UnlockThread
+from blobbackup.prunethread import PruneThread
 
 
 class DeveloperDialog(QDialog, Ui_DeveloperDialog):
@@ -39,5 +40,19 @@ class DeveloperDialog(QDialog, Ui_DeveloperDialog):
             self.logger.error("Unlock failed.")
 
     def prune(self):
-        print("Prune")
+        self.setEnabled(False)
+        self.setWindowTitle("Pruning. Please Wait...")
+        self.prune_thread = PruneThread()
+        self.prune_thread.pruning.connect(lambda title: self.setWindowTitle(title))
+        self.prune_thread.pruned.connect(self.pruned)
+        self.prune_thread.start()
+
+    def pruned(self, success):
+        self.setWindowTitle("Developer - Blobbackup")
+        self.setEnabled(True)
+        if success:
+            QMessageBox.information(self, "Repository Pruned", "Repository pruned.")
+        else:
+            QMessageBox.warning(self, "Prune Failed", "Prune failed.")
+            self.logger.error("Prune failed.")
 
