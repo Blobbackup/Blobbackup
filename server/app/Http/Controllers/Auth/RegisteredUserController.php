@@ -30,6 +30,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'groups' => true,
+            'accepting_users' => true,
         ];
         if ($request->leader_id && User::find($request->leader_id)->accepting_users) {
             $fields += [
