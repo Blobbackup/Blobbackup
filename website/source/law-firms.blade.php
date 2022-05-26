@@ -1,80 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="online backup, backup software, cloud backup, backup online, best backup software, online backup services, data backup, best online backup, offsite backup, online data backup"/>
-        <meta name="description" content="Blobbackup is a private, open source and secure cloud computer backup service. Personal backup without compromising any privacy for $9 per month."/>
-        <meta name="author" content="Blobbackup, LLC">
-        <title>    Cloud Backup: Simple, Secure Online Computer Backup
- - Blobbackup</title>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=9752ef23ad3eb9c1f81f0ce99229cf72">
-        <link rel="shortcut icon" href="/assets/images/logo.png"/>
-    </head>
-    <body class="font-sans">
-        <header class="shadow-lg bg-white sticky top-0 z-50">
-            <div class="mx-auto flex max-w-7xl p-6">
-                <a href="/" class="flex-initial font-bold text-2xl block">
-                    <img src="/assets/images/logo.png" class="w-8 h-8 -mt-1 mr-1 inline-block"/>
-                    Blobbackup
-                </a>
-                <div class="flex-1 text-right font-bold text-lg mt-1 hidden md:block">
-                    <a href="/personal" class="ml-4">Personal</a>
-                    <a href="/business" class="ml-4">Business</a>
-                    <a href="/pricing" class="ml-4">Pricing</a>
-                    <a href="/security" class="ml-4">Security</a>
-                    <a href="/company" class="ml-4">About</a>
-                    <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="ml-4">Github</a>
-                    <a href="/blog" class="ml-4">Blog</a>
-                    <a href="https://app.blobbackup.com/login" class="ml-4">Sign in</a>
-                    <a href="https://app.blobbackup.com/register" class="ml-4 text-white bg-blue-500 rounded-full px-4 py-2">Try it Free</a>
-                </div>
-                <div class="flex-1 text-right mt-1 block md:hidden">
-                    <a href="" id="responsive-open">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                </div>
-                <div id="responsive-menu" class="hidden absolute top-0 left-0 w-full h-screen p-6 bg-white">
-                    <div class="flex">
-                        <a href="/" class="flex-initial font-bold text-2xl block">
-                            <img src="/assets/images/logo.png" class="w-8 h-8 -mt-1 mr-1 inline-block"/>
-                            Blobbackup
-                        </a>
-                        <div class="flex-1 text-right">
-                            <a href="" id="responsive-close">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="font-bold text-xl mt-8">
-                        <a href="/personal" class="block underline mt-4">Personal</a>
-                        <a href="/business" class="block underline mt-4">Business</a>
-                        <a href="/pricing" class="block underline mt-4">Pricing</a>
-                        <a href="/security" class="block underline mt-4">Security</a>
-                        <a href="/company" class="block underline mt-4">About</a>
-                        <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="block underline mt-4">Github</a>
-                        <a href="/blog" class="block underline mt-4">Blog</a>
-                        <a href="https://app.blobbackup.com/login" class="block underline mt-4">Sign in</a>
-                        <a href="https://app.blobbackup.com/register" class="block mt-4 text-center text-white bg-blue-500 rounded-full px-4 py-2">Try it free</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <main>
-            <div class="mx-auto max-w-5xl p-4">
+
+@section('title')
+    Cloud Backup for Small Law Firms
+@endsection
+
+@extends('_layouts.main')
+
+@section('body')
+<div class="mx-auto max-w-5xl p-4">
     <section class="md:flex mt-4 md:mt-8">
-        <div class="md:w-1/2 text-center md:text-left my-auto">
-            <h1 class="text-3xl md:text-5xl font-bold">Simple Cloud Backup</h1>
+        <div class="md:w-1/2 text-center md:text-left my-6">
+            <h1 class="text-3xl md:text-5xl font-bold">Cloud Backup for Small Law Firms</h1>
             <h2 class="text-xl md:text-2xl text-gray-600 mt-2">
                 We back up your entire computer to the cloud for 
-                $9 / month. No hidden fees or price tiers. All of your files. 
+                ${{ $page->perComputerPrice }} / month. No hidden fees or price tiers. All of your files. 
                 For the price of a couple cups of coffee. <strong>Your privacy, guaranteed.</strong>
             </h2>
-            <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for 15 Days</a>
+            <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for {{ $page->trialLengthDays }} Days</a>
             <div class="text-gray-600 mt-4 text-xs md:text-base">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -91,7 +32,7 @@
             </div>
         </div>
         <div class="md:w-1/2 px-4 md:px-16 mt-8 md:my-auto">
-            <img src="/assets/images/hero.webp"/>
+            <img src="/assets/images/laptop.png"/>
         </div>
     </section>
     <div class="max-w-4xl mx-auto text-center mt-4 md:mt-8">
@@ -386,11 +327,11 @@
         </div>
     </section>
     <section class="text-center mt-8 md:mt-16 mx-auto max-w-lg">
-        <h3 class="text-3xl font-bold">$9 / Month / Computer</h3>
+        <h3 class="text-3xl font-bold">${{ $page->perComputerPrice }} / Month / Computer</h3>
         <h4 class="text-lg text-gray-600 mt-2">
-            Fast email support and 2,000 GB of storage per computer included. Start protecting your computer data today.
+            Fast email support and {{ $page->perComputerGB }} GB of storage per computer included. Start protecting your computer data today.
         </h4>
-        <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for 15 Days</a>
+        <a href="https://app.blobbackup.com/register" class="font-bold text-lg text-white bg-blue-500 rounded-full px-4 py-2 inline-block mt-4">Try Free for {{ $page->trialLengthDays }} Days</a>
         <p class="text-center text-gray-600 text-sm mt-2">No card required. Cancel anytime.</p>
     </section>
     <h1 class="text-center mt-8 md:mt-16 text-2xl md:text-4xl font-bold">Frequently Asked Questions</h1>
@@ -447,7 +388,7 @@
             <p class="text-lg text-gray-600 mt-2">
                 Sometimes, but it will be very expensive. Data recovery companies will charge up to $3,000 to 
                 attempt to recover your data with no guarantee that you'll glean anything from it. For the price 
-                of one attempted $3,000 recovery, we can back up your computer for 28 years at $9 per month.
+                of one attempted $3,000 recovery, we can back up your computer for {{ round(3000/(12*$page->perComputerPrice)) }} years at ${{ $page->perComputerPrice }} per month.
             </p>
         </div>
         <div>
@@ -463,7 +404,7 @@
                 Can I pay yearly? What are the payment options?
             </h1>
             <p class="text-lg text-gray-600 mt-2">
-                We only offer monthly billing at this time. We will bill you $9 per computer every month after your trial ends. 
+                We only offer monthly billing at this time. We will bill you ${{ $page->perComputerPrice }} per computer every month after your trial ends. 
                 We accept payment via credit card, debit card and PayPal. We don't accept orders, checks, ACH/wire or 
                 cryptocurrency.
             </p>
@@ -495,44 +436,4 @@
         </div>
     </section>
 </div>
-        </main>
-        <footer class="p-4 py-8 text-center">
-            <div class="font-bold text-lg mt-1">
-                <a href="/privacy" class="mx-2">Privacy</a>
-                <a href="/terms" class="mx-2">Terms</a>
-                <a href="/payment" class="mx-2">Payment</a> 
-                <a href="/support" class="mx-2">Help</a> 
-            </div>
-            <div class="mt-2">
-                &copy; Blobbackup 2022. All rights reserved.
-            </div>
-            <div class="mt-2">
-                <a href="https://reddit.com/r/blobbackup" target="_blank">
-                    <svg class="w-4 h-4 text-gray-500 fill-current inline-block" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">   
-                        <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/> 
-                    </svg> 
-                </a>
-                <a href="https://github.com/blobbackup/blobbackup" target="_blank" class="ml-2">
-                    <svg class="w-4 h-4 text-gray-500 fill-current inline-block" viewBox="0 0 256 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
-                        <g><path d="M128.00106,0 C57.3172926,0 0,57.3066942 0,128.00106 C0,184.555281 36.6761997,232.535542 87.534937,249.460899 C93.9320223,250.645779 96.280588,246.684165 96.280588,243.303333 C96.280588,240.251045 96.1618878,230.167899 96.106777,219.472176 C60.4967585,227.215235 52.9826207,204.369712 52.9826207,204.369712 C47.1599584,189.574598 38.770408,185.640538 38.770408,185.640538 C27.1568785,177.696113 39.6458206,177.859325 39.6458206,177.859325 C52.4993419,178.762293 59.267365,191.04987 59.267365,191.04987 C70.6837675,210.618423 89.2115753,204.961093 96.5158685,201.690482 C97.6647155,193.417512 100.981959,187.77078 104.642583,184.574357 C76.211799,181.33766 46.324819,170.362144 46.324819,121.315702 C46.324819,107.340889 51.3250588,95.9223682 59.5132437,86.9583937 C58.1842268,83.7344152 53.8029229,70.715562 60.7532354,53.0843636 C60.7532354,53.0843636 71.5019501,49.6441813 95.9626412,66.2049595 C106.172967,63.368876 117.123047,61.9465949 128.00106,61.8978432 C138.879073,61.9465949 149.837632,63.368876 160.067033,66.2049595 C184.49805,49.6441813 195.231926,53.0843636 195.231926,53.0843636 C202.199197,70.715562 197.815773,83.7344152 196.486756,86.9583937 C204.694018,95.9223682 209.660343,107.340889 209.660343,121.315702 C209.660343,170.478725 179.716133,181.303747 151.213281,184.472614 C155.80443,188.444828 159.895342,196.234518 159.895342,208.176593 C159.895342,225.303317 159.746968,239.087361 159.746968,243.303333 C159.746968,246.709601 162.05102,250.70089 168.53925,249.443941 C219.370432,232.499507 256,184.536204 256,128.00106 C256,57.3066942 198.691187,0 128.00106,0 Z M47.9405593,182.340212 C47.6586465,182.976105 46.6581745,183.166873 45.7467277,182.730227 C44.8183235,182.312656 44.2968914,181.445722 44.5978808,180.80771 C44.8734344,180.152739 45.876026,179.97045 46.8023103,180.409216 C47.7328342,180.826786 48.2627451,181.702199 47.9405593,182.340212 Z M54.2367892,187.958254 C53.6263318,188.524199 52.4329723,188.261363 51.6232682,187.366874 C50.7860088,186.474504 50.6291553,185.281144 51.2480912,184.70672 C51.8776254,184.140775 53.0349512,184.405731 53.8743302,185.298101 C54.7115892,186.201069 54.8748019,187.38595 54.2367892,187.958254 Z M58.5562413,195.146347 C57.7719732,195.691096 56.4895886,195.180261 55.6968417,194.042013 C54.9125733,192.903764 54.9125733,191.538713 55.713799,190.991845 C56.5086651,190.444977 57.7719732,190.936735 58.5753181,192.066505 C59.3574669,193.22383 59.3574669,194.58888 58.5562413,195.146347 Z M65.8613592,203.471174 C65.1597571,204.244846 63.6654083,204.03712 62.5716717,202.981538 C61.4524999,201.94927 61.1409122,200.484596 61.8446341,199.710926 C62.5547146,198.935137 64.0575422,199.15346 65.1597571,200.200564 C66.2704506,201.230712 66.6095936,202.705984 65.8613592,203.471174 Z M75.3025151,206.281542 C74.9930474,207.284134 73.553809,207.739857 72.1039724,207.313809 C70.6562556,206.875043 69.7087748,205.700761 70.0012857,204.687571 C70.302275,203.678621 71.7478721,203.20382 73.2083069,203.659543 C74.6539041,204.09619 75.6035048,205.261994 75.3025151,206.281542 Z M86.046947,207.473627 C86.0829806,208.529209 84.8535871,209.404622 83.3316829,209.4237 C81.8013,209.457614 80.563428,208.603398 80.5464708,207.564772 C80.5464708,206.498591 81.7483088,205.631657 83.2786917,205.606221 C84.8005962,205.576546 86.046947,206.424403 86.046947,207.473627 Z M96.6021471,207.069023 C96.7844366,208.099171 95.7267341,209.156872 94.215428,209.438785 C92.7295577,209.710099 91.3539086,209.074206 91.1652603,208.052538 C90.9808515,206.996955 92.0576306,205.939253 93.5413813,205.66582 C95.054807,205.402984 96.4092596,206.021919 96.6021471,207.069023 Z" fill="#161614"></path></g>
-                    </svg>
-                </a>
-                <a href="https://twitter.com/blobbackup" target="_blank" class="ml-2">
-                    <svg class="w-4 h-4 text-gray-500 fill-current inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                    </svg>
-                </a>
-            </div>
-        </footer>
-        <script>
-            document.getElementById("responsive-open").onclick = () => {
-                document.getElementById("responsive-menu").classList.remove("hidden");
-                return false;
-            };
-            document.getElementById("responsive-close").onclick = () => {
-                document.getElementById("responsive-menu").classList.add("hidden");
-                return false;
-            };
-        </script>
-    </body>
-</html>
+@endsection
