@@ -1,3 +1,5 @@
+import os
+import shutil
 import subprocess
 
 from PyQt6.QtCore import QThread, pyqtSignal
@@ -5,6 +7,7 @@ from PyQt6.QtCore import QThread, pyqtSignal
 from blobbackup.config import config
 from blobbackup.api import get_computer
 from blobbackup.util import (
+    CACHE_PATH,
     CREATE_NO_WINDOW,
     is_mac,
     is_windows,
@@ -39,4 +42,6 @@ class PruneThread(QThread):
                 env=get_restic_env(computer, password, num_threads),
                 stdout=subprocess.PIPE,
             ).returncode
+        if os.path.exists(CACHE_PATH):
+            shutil.rmtree(CACHE_PATH)
         self.pruned.emit(ret == 0)
