@@ -172,7 +172,7 @@ def get_restic_unlock_command():
 
 
 def get_restic_prune_command():
-    return [RESTIC_PATH, "prune"]
+    return [RESTIC_PATH, "prune", "--no-cache"]
 
 
 def get_restic_list_passwords_command():
