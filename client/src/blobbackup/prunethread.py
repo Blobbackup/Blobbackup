@@ -26,7 +26,9 @@ class PruneThread(QThread):
     def run(self):
         password = get_password_from_keyring()
         computer = get_computer(
-            config["meta"]["email"], password, config["meta"]["computer_id"],
+            config["meta"]["email"],
+            password,
+            config["meta"]["computer_id"],
         )
         num_threads = config["general"]["num_backup_threads"]
         if is_windows():
