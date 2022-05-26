@@ -45,5 +45,5 @@ class PruneThread(QThread):
                 stdout=subprocess.PIPE,
             ).returncode
         if os.path.exists(CACHE_PATH):
-            shutil.rmtree(CACHE_PATH)
+            shutil.rmtree(CACHE_PATH, ignore_errors=True)
         self.pruned.emit(ret == 0)
