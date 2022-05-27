@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Mail;
 class Util
 {
     public static $perComputerPrice = 9;
-    public static $clientVersion = "1.2.2";
+    public static $clientVersion = "1.2.4";
     public static $trialLengthDays = 15;
     public static $deletedComputerRetentionDays = 15;
 
