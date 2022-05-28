@@ -5,25 +5,25 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" type="image/jpg" href="img/logo.png"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet"> 
     </head>
-    <body>
-        <header class="shadow-lg p-6 bg-white sticky top-0 z-50">
+    <body class="bg-gradient-to-b from-gray-100 to-white font-extralight">
+        <header class="shadow p-6 bg-white sticky top-0 z-50">
             <div class="mx-auto flex max-w-7xl">
-                <a href="index.html" class="flex-initial font-bold text-2xl block">
-                    <img src="img/logo.png" class="w-8 h-8 -mt-1 mr-1 inline-block"/>
+                <a href="index.html" class="flex-initial font-normal text-xl block">
+                    <img src="img/logo.png" class="w-6 h-6 -mt-1 mr-1 inline-block"/>
                     Blobbackup
                 </a>
-                <div class="flex-1 text-left font-bold text-lg mt-1 hidden md:block">
-                    <a href="features.html" class="ml-8">Personal Backup</a>
-                    <a href="features.html" class="ml-4">Business Backup</a>
-                    <a href="pricing.html" class="ml-4">Pricing</a>
-                    <a href="about.html" class="ml-4">Privacy</a>
-                    <a href="about.html" class="ml-4">Security</a>
-                </div>
-                <div class="flex-initial text-right font-bold text-lg mt-1 hidden md:block">
-                    <a href="blog.html" class="ml-4">Blog</a>
-                    <a href="#" class="ml-4">Sign in</a>
-                    <a href="#" class="ml-4 text-white bg-blue-500 rounded-full px-4 py-2">Try it free</a>
+                <div class="flex-1 text-right mt-1 hidden md:block">
+                    <a href="features.html" class="ml-6">Personal Backup</a>
+                    <a href="features.html" class="ml-6">Business Backup</a>
+                    <a href="pricing.html" class="ml-6">Partner Program</a>
+                    <a href="about.html" class="ml-6">Blog</a>
+                    <a href="about.html" class="ml-6">Help</a>
+                    <a href="about.html" class="ml-6">Sign In</a>
+                    <a href="#" class="ml-6 text-white bg-blue-500 rounded-full px-4 py-2">Try Free</a>
                 </div>
                 <div class="flex-1 text-right mt-1 block md:hidden">
                     <a href="" id="responsive-open">
@@ -52,39 +52,68 @@
                         <a href="about.html" class="block underline mt-4">Company</a>
                         <a href="https://github.com/blobbackup" class="block underline mt-4">Github</a>
                         <a href="blog.html" class="block underline mt-4">Blog</a>
-                        <a href="#" class="block underline mt-4">Sign in</a>
-                        <a href="#" class="block mt-4 text-center text-white bg-blue-500 rounded-full px-4 py-2">Try it free</a>
+                        <a href="#" class="block mt-4 text-center text-white bg-blue-500 rounded-full px-4 py-2">Sign In</a>
                     </div>
                 </div>
             </div>
         </header>
-        <main class="mx-auto">
-            <div class="bg-blue-600 p-4 pb-12 text-white">
-                <div class="max-w-6xl mx-auto">
-                    <section class="md:flex py-8 md:py-20">
-                        <div class="flex-1 text-center md:text-left my-auto">
-                            <h1 class="text-3xl md:text-6xl font-bold">Don't Risk Losing Your Most Important Files</h1>
-                            <h2 class="text-lg md:text-2xl text-gray-100 mt-2">Easily and securely back up your Mac or PC to the cloud for just $9/month. <span class="border-b-2 border-white">Your privacy, guaranteed.</span></h2>
-                            <a href="#" class="font-bold text-lg text-black bg-white rounded-full px-4 py-2 inline-block my-8">Try Free for 30 Days</a>
-                            <div class="text-gray-100 text-xs md:text-base">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                                Open source.
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                                </svg>
-                                Encrypted.
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                                </svg>
-                                Made with care.
-                            </div>
-                        </div>
-                        <div class="flex-initial max-w-lg px-4 md:px-16 mt-8 md:my-auto">
-                            <img src="img/hero.png"/>
-                        </div>
-                    </section>
+        <main class="mx-6">
+            <div class="my-8 md:my-16 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-40 w-40 text-blue-500 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                <h1  class="text-4xl md:text-5xl mt-8">
+                    The Most Secure Cloud Backup
+                </h1>
+                <p class="text-blue-500 text-lg md:text-2xl mt-4 max-w-3xl mx-auto">
+                    Cloud backup for individuals and small businesses that you can trust. Uses end to end military grade AES encryption. Your privacy guaranteed.
+                </p>
+            </div>
+            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
+                <div class="shadow p-6 bg-white rounded">
+                    <h2  class="text-xl">Personal Backup</h2>
+                    <p class="text-gray-600 mt-2">
+                        Never lose a file again. Get 2,000 GB of cloud backup for just $9/month.
+                    </p>
+                    <a href="" class="text-blue-500 mt-2 inline-block">
+                        Try Personal Backup
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <div class="overflow-hidden h-72 mt-4">
+                        <img src="img/personal-backup-hero.jpg">
+                    </div>
+                </div>
+                <div class="shadow p-6 bg-white rounded">
+                    <h2  class="text-xl">Business Backup</h2>
+                    <p class="text-gray-600 mt-2">
+                        Protect your business laptops and desktop computers. Just $90/year flat.
+                    </p>
+                    <a href="" class="text-blue-500 mt-2 inline-block">
+                        Try Business Backup
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <div class="overflow-hidden h-72 mt-4">
+                        <img src="img/business-backup-hero.jpg">
+                    </div>
+                </div>
+                <div class="shadow p-6 bg-white rounded">
+                    <h2  class="text-xl">Partner Program</h2>
+                    <p class="text-gray-600 mt-2">
+                        Resell the most secure computer backup to your clients (white label).
+                    </p>
+                    <a href="" class="text-blue-500 mt-2 inline-block">
+                        Become a Partner
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <div class="overflow-hidden h-72 mt-4">
+                        <img src="img/partner-program-hero.jpg">
+                    </div>
                 </div>
             </div>
             <div class="max-w-5xl mx-auto p-4">
