@@ -43,9 +43,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setWindowIcon(QIcon(LOGO_PATH))
 
         self.logo_label.setPixmap(get_pixmap(LOGO_PATH, 20, 20))
-        self.computer_label.setPixmap(get_pixmap(COMPUTER_PATH, 20, 20))
-        self.arrow_label.setPixmap(get_pixmap(ARROW_PATH, 20, 20))
-        self.cloud_label.setPixmap(get_pixmap(CLOUD_PATH, 20, 20))
+        self.computer_label.setPixmap(get_pixmap(COMPUTER_PATH, 28, 28))
+        self.arrow_label.setPixmap(get_pixmap(ARROW_PATH, 38, 38))
+        self.cloud_label.setPixmap(get_pixmap(CLOUD_PATH, 40, 40))
 
         self.settings_button.pressed.connect(self.open_settings)
         self.backup_now_button.pressed.connect(self.toggle_backup)
