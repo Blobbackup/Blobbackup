@@ -13,6 +13,7 @@ from blobbackup.util import (
     LOGO_PATH,
     COMPUTER_PATH,
     ARROW_PATH,
+    CHECK_PATH,
     CLOUD_PATH,
     BACKUP_STUCK_HOURS,
     get_pixmap,
@@ -43,8 +44,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setWindowIcon(QIcon(LOGO_PATH))
 
         self.logo_label.setPixmap(get_pixmap(LOGO_PATH, 20, 20))
-        self.computer_label.setPixmap(get_pixmap(COMPUTER_PATH, 28, 28))
-        self.arrow_label.setPixmap(get_pixmap(ARROW_PATH, 38, 38))
+        self.computer_label.setPixmap(get_pixmap(COMPUTER_PATH, 30, 30))
+        self.arrow_label.setPixmap(get_pixmap(ARROW_PATH, 50, 50))
         self.cloud_label.setPixmap(get_pixmap(CLOUD_PATH, 40, 40))
 
         self.settings_button.pressed.connect(self.open_settings)
@@ -136,10 +137,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.email_label.setText(f"Account: {config['meta']['email']}")
         if self.backup_thread.backup_running():
             self.backup_now_button.setText("Stop Backup")
+            self.arrow_label.setPixmap(get_pixmap(ARROW_PATH, 50, 50))
             if self.backup_stuck():
                 self.restart_backup()
         else:
             self.backup_now_button.setText("Backup Now")
+            self.arrow_label.setPixmap(get_pixmap(CHECK_PATH, 22, 22))
         heartbeat()
 
     def update_selected_files(self):
