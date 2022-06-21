@@ -240,7 +240,7 @@ class Ui_SettingsDialog(object):
         self.backup_connected_file_systems_combo_box.setItemText(0, _translate("SettingsDialog", "No"))
         self.backup_connected_file_systems_combo_box.setItemText(1, _translate("SettingsDialog", "Yes"))
         self.label_3.setText(_translate("SettingsDialog", "Number of Backup Threads"))
-        self.use_cache_checkbox.setText(_translate("SettingsDialog", "Use cache to speed up backups and restores."))
+        self.use_cache_checkbox.setText(_translate("SettingsDialog", "Use cache to speed up backups and restores (recommended)."))
         self.restore_different_computer_label.setText(_translate("SettingsDialog", "<html><head/><body><p><a href=\"https://blobbackup.com\"><span style=\" text-decoration: underline; color:#0000ff;\">Restore Different Computer</span></a></p></body></html>"))
         self.inherit_backup_history_label.setText(_translate("SettingsDialog", "<html><head/><body><p><a href=\"https://blobbackup.com\"><span style=\" text-decoration: underline; color:#0000ff;\">Inherit Backup History</span></a></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("SettingsDialog", "Advanced"))

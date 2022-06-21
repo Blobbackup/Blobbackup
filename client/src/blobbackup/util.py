@@ -150,8 +150,10 @@ def get_restic_init_command():
     return [RESTIC_PATH, "init"]
 
 
-def get_restic_backup_command(max_upload_kibs, backup_connected_file_systems):
-    env = [
+def get_restic_backup_command(
+    max_upload_kibs, backup_connected_file_systems, use_cache
+):
+    command = [
         RESTIC_PATH,
         "backup",
         "--json",
@@ -162,9 +164,11 @@ def get_restic_backup_command(max_upload_kibs, backup_connected_file_systems):
         "--limit-upload",
         max_upload_kibs,
     ]
+    if not use_cache:
+        command.append("--no-cache")
     if is_mac() and backup_connected_file_systems == "No":
-        env += ["--one-file-system"]
-    return env
+        command.append("--one-file-system")
+    return command
 
 
 def get_restic_unlock_command():
@@ -187,16 +191,24 @@ def get_restic_delete_password_command(password_id):
     return [RESTIC_PATH, "key", "remove", password_id]
 
 
-def get_restic_snapshots_command():
-    return [RESTIC_PATH, "snapshots", "--json"]
+def get_restic_snapshots_command(use_cache):
+    command = [RESTIC_PATH, "snapshots", "--json"]
+    if not use_cache:
+        command.append("--no-cache")
+    return command
 
 
-def get_restic_ls_command(snapshot_id):
-    return [RESTIC_PATH, "ls", snapshot_id]
+def get_restic_ls_command(snapshot_id, use_cache):
+    command = [RESTIC_PATH, "ls", snapshot_id]
+    if not use_cache:
+        command.append("--no-cache")
+    return command
 
 
-def get_restic_restore_command(snapshot_id, target, paths):
+def get_restic_restore_command(snapshot_id, target, paths, use_cache):
     command = [RESTIC_PATH, "restore", "--target", target]
+    if not use_cache:
+        command.append("--no-cache")
     includes = []
     for path in paths:
         includes.append("--include")
@@ -218,11 +230,18 @@ def get_restic_env(computer, password, num_threads=None):
         env.update({"GOMAXPROCS": num_threads})
     if is_windows():
         env.update(
-            {"SYSTEMROOT": os.environ["SYSTEMROOT"], "TMP": TMP_PATH, "TEMP": TMP_PATH,}
+            {
+                "SYSTEMROOT": os.environ["SYSTEMROOT"],
+                "TMP": TMP_PATH,
+                "TEMP": TMP_PATH,
+            }
         )
     elif is_mac():
         env.update(
-            {"HOME": os.environ["HOME"], "TMPDIR": TMP_PATH,}
+            {
+                "HOME": os.environ["HOME"],
+                "TMPDIR": TMP_PATH,
+            }
         )
     return env
 
@@ -314,10 +333,17 @@ def load_updater_script_win():
 
 def add_windows_task(name, command):
     subprocess.run(
-        command + ["/tn", name], creationflags=CREATE_NO_WINDOW,
+        command + ["/tn", name],
+        creationflags=CREATE_NO_WINDOW,
     )
     ret = subprocess.run(
-        ["schtasks", "/query", "/xml", "/tn", name,],
+        [
+            "schtasks",
+            "/query",
+            "/xml",
+            "/tn",
+            name,
+        ],
         creationflags=CREATE_NO_WINDOW,
         stdout=subprocess.PIPE,
     )
@@ -331,14 +357,23 @@ def add_windows_task(name, command):
         with open(xml_file, "w", encoding="utf-8") as f:
             f.write(xml_content)
         ret = subprocess.run(
-            ["schtasks", "/create", "/xml", xml_file, "/f", "/tn", name,],
+            [
+                "schtasks",
+                "/create",
+                "/xml",
+                xml_file,
+                "/f",
+                "/tn",
+                name,
+            ],
             creationflags=CREATE_NO_WINDOW,
         )
 
 
 def remove_windows_task(name):
     subprocess.run(
-        ["schtasks", "/delete", "/tn", name, "/f"], creationflags=CREATE_NO_WINDOW,
+        ["schtasks", "/delete", "/tn", name, "/f"],
+        creationflags=CREATE_NO_WINDOW,
     )
 
 

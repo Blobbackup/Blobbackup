@@ -4,6 +4,7 @@ import subprocess
 from PyQt6.QtCore import QThread, pyqtSignal
 
 from blobbackup.api import get_computer
+from blobbackup.config import config
 from blobbackup.util import (
     CREATE_NO_WINDOW,
     is_mac,
@@ -29,7 +30,9 @@ class SnapshotsThread(QThread):
         if is_windows():
             snapshots = json.loads(
                 subprocess.run(
-                    get_restic_snapshots_command(),
+                    get_restic_snapshots_command(
+                        config["general"].getboolean("use_cache")
+                    ),
                     env=get_restic_env(computer, self.password),
                     stdout=subprocess.PIPE,
                     creationflags=CREATE_NO_WINDOW,
@@ -38,7 +41,9 @@ class SnapshotsThread(QThread):
         elif is_mac():
             snapshots = json.loads(
                 subprocess.run(
-                    get_restic_snapshots_command(),
+                    get_restic_snapshots_command(
+                        config["general"].getboolean("use_cache")
+                    ),
                     env=get_restic_env(computer, self.password),
                     stdout=subprocess.PIPE,
                 ).stdout

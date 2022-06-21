@@ -328,7 +328,7 @@
          <item>
           <widget class="QCheckBox" name="use_cache_checkbox">
            <property name="text">
-            <string>Use cache to speed up backups and restores.</string>
+            <string>Use cache to speed up backups and restores (recommended).</string>
            </property>
            <property name="checked">
             <bool>true</bool>

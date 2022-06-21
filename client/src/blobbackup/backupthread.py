@@ -101,6 +101,7 @@ class BackupThread(QThread):
             restic_backup_command = get_restic_backup_command(
                 config["general"]["max_upload_kibs"],
                 config["general"]["backup_connected_file_systems"],
+                config["general"].getboolean("use_cache"),
             )
             num_threads = config["general"]["num_backup_threads"]
             if is_windows():

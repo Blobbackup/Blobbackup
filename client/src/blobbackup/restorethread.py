@@ -6,6 +6,7 @@ from PyQt6.QtCore import QThread, pyqtSignal
 
 from blobbackup.qlazytreewidget import get_selected_nodes
 from blobbackup.api import get_computer
+from blobbackup.config import config
 from blobbackup.util import (
     CREATE_NO_WINDOW,
     LOGS_PATH,
@@ -40,14 +41,24 @@ class RestoreThread(QThread):
         with open(log_file, "a", encoding="utf-8") as log_f:
             if is_windows():
                 ret = subprocess.run(
-                    get_restic_restore_command(self.snapshot_id, self.target, paths),
+                    get_restic_restore_command(
+                        self.snapshot_id,
+                        self.target,
+                        paths,
+                        config["general"].getboolean("use_cache"),
+                    ),
                     env=get_restic_env(computer, self.password),
                     stderr=log_f,
                     creationflags=CREATE_NO_WINDOW,
                 )
             elif is_mac():
                 ret = subprocess.run(
-                    get_restic_restore_command(self.snapshot_id, self.target, paths),
+                    get_restic_restore_command(
+                        self.snapshot_id,
+                        self.target,
+                        paths,
+                        config["general"].getboolean("use_cache"),
+                    ),
                     env=get_restic_env(computer, self.password),
                     stderr=log_f,
                 )
