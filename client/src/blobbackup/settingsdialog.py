@@ -74,6 +74,7 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
         self.number_of_backup_threads_spin_box.setValue(
             int(config["general"]["num_backup_threads"])
         )
+        self.use_cache_checkbox.setChecked(config["general"].getboolean("use_cache"))
         self.inclusions_list_widget.clear()
         for path in config["inclusions"]["paths"].split(","):
             if path:
@@ -120,7 +121,9 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
         if verify_password(email):
             password = get_password_from_keyring()
             choose_computer_dialog = ChooseComputerDialog(
-                email, password, "Choose the computer you want to restore from.",
+                email,
+                password,
+                "Choose the computer you want to restore from.",
             )
             if choose_computer_dialog.exec():
                 computer_id = choose_computer_dialog.computer_id
@@ -132,7 +135,9 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
         if verify_password(email):
             password = get_password_from_keyring()
             choose_computer_dialog = ChooseComputerDialog(
-                email, password, "Choose the computer to inherit backup history from.",
+                email,
+                password,
+                "Choose the computer to inherit backup history from.",
             )
             if choose_computer_dialog.exec():
                 computer_id = choose_computer_dialog.computer_id
@@ -184,11 +189,13 @@ class SettingsDialog(QDialog, Ui_SettingsDialog):
             self.backup_connected_file_systems_combo_box.currentText()
         )
         num_backup_threads = str(self.number_of_backup_threads_spin_box.value())
+        use_cache = self.use_cache_checkbox.isChecked()
 
         config["general"]["computer_name"] = computer_name
         config["general"]["backup_schedule"] = backup_schedule
         config["general"]["max_upload_kibs"] = max_upload_kibs
         config["general"]["num_backup_threads"] = num_backup_threads
+        config["general"]["use_cache"] = str(use_cache)
         config["general"][
             "backup_connected_file_systems"
         ] = backup_connected_file_systems

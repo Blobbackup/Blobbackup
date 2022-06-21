@@ -32,6 +32,9 @@ def add_new_variables():
     if "num_backup_threads" not in config["general"]:
         config["general"]["num_backup_threads"] = "1"
         updated = True
+    if "use_cache" not in config["general"]:
+        config["general"]["use_cache"] = "True"
+        updated = True
     if updated:
         save_config()
 
@@ -49,6 +52,7 @@ if not os.path.exists(CONFIG_PATH):
     config["general"]["max_upload_kibs"] = "0"
     config["general"]["backup_connected_file_systems"] = "No"
     config["general"]["num_backup_threads"] = "1"
+    config["general"]["use_cache"] = "True"
 
     config["inclusions"] = {}
     config["inclusions"]["paths"] = ""
