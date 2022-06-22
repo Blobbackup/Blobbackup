@@ -52,6 +52,12 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
     def snapshots_loaded(self, snapshots):
         if len(snapshots) == 0:
             self.setWindowTitle("No Backups Found")
+            QMessageBox.information(
+                self,
+                "No Backups Found",
+                "Your first backup hasn't finished yet. You'll be able to restore files once that happens.",
+            )
+            self.reject()
             return
         for snapshot in snapshots:
             time_obj = datetime.datetime.fromisoformat(snapshot["time"][:19])
