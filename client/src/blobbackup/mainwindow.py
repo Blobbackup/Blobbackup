@@ -44,9 +44,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setWindowIcon(QIcon(LOGO_PATH))
 
         self.logo_label.setPixmap(get_pixmap(LOGO_PATH, 20, 20))
-        self.computer_label.setPixmap(get_pixmap(COMPUTER_PATH, 30, 30))
+        self.computer_label.setPixmap(get_pixmap(COMPUTER_PATH, 24, 24))
         self.arrow_label.setPixmap(get_pixmap(ARROW_PATH, 50, 50))
-        self.cloud_label.setPixmap(get_pixmap(CLOUD_PATH, 40, 40))
+        self.cloud_label.setPixmap(get_pixmap(CLOUD_PATH, 24, 24))
 
         self.settings_button.pressed.connect(self.open_settings)
         self.backup_now_button.pressed.connect(self.toggle_backup)
@@ -142,7 +142,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.restart_backup()
         else:
             self.backup_now_button.setText("Backup Now")
-            self.arrow_label.setPixmap(get_pixmap(CHECK_PATH, 22, 22))
+            self.arrow_label.setPixmap(get_pixmap(CHECK_PATH, 20, 20))
         heartbeat()
 
     def update_selected_files(self):
