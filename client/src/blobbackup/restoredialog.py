@@ -12,6 +12,7 @@ from blobbackup.qlazytreewidget import QLazyTreeWidget
 from blobbackup.restorethread import RestoreThread
 from blobbackup.util import LOGO_PATH, restic_cache_ready
 from blobbackup.api import get_computer
+from blobbackup.config import config
 from blobbackup.logger import get_logger
 
 
@@ -139,7 +140,7 @@ class RestoreDialog(QDialog, Ui_RestoreDialog):
     def reset_loading_backup_dialog(self):
         title = "Loading File Tree. Please Wait..."
         message = None
-        if not restic_cache_ready():
+        if not restic_cache_ready() and config["general"].getboolean("use_cache"):
             title = "Retrieving Backups. Please Wait..."
             message = "We're retrieving your backups for the first time on this computer. Depending on your backup size and internet speed, this may take up to an hour. Thanks for your patience :-)"
         self.loading_backup_dialog = LoadingDialog(self, title, message)
