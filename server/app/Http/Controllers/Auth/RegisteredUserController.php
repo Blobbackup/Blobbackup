@@ -77,7 +77,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        Util::sendNotification('New user: ' . $user->email . ' (' . $user->name . ')');
+        Util::sendNotification('New user: ' . $user->email . ' (' . htmlspecialchars($user->name) . ')');
 
         return redirect(route('backup'))->with('welcome', true);
     }
