@@ -155,10 +155,12 @@ Route::middleware(['auth', 'active'])->group(function () {
         return view('deleteaccount');
     })->name('deleteaccount');
 
-    Route::post('/deleteaccount', function () {
+    Route::post('/deleteaccount', function (Request $request) {
         $user = auth()->user();
         $user->deleteAccount();
         auth()->logout();
+        $reasonStr = $request->reason ? ' Reason: ' . htmlspecialchars($request->reason) : '';
+        Util::sendNotification($user->email . ' deleted account.' . $reasonStr);
         return redirect('/login')->withErrors('Your account has been deleted.');
     });
 });

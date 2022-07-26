@@ -12,6 +12,12 @@
             This will cancel your subscription and delete all your account data (including all backups)
             immediately. Your data will be permanently deleted and cannot be recovered!
         </div>
+        <div class="bg-gray-100 p-4 mt-4">
+            <div class="text-xs text-gray-500">
+                Why was Blobbackup not a good fit for you? We want to continually improve our product so every bit of feedback matters a lot to us. :-)
+            </div>
+            <input type="text" name="reason" placeholder="Reason for deleting (eg: not enough features, too expensive, didn't work, poor support, etc.)" class="w-full border border-gray-400 rounded-full px-4 py-1 mt-2" />
+        </div>
         <div class="mt-4">
             <button type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
