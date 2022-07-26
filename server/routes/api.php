@@ -75,11 +75,6 @@ Route::middleware(['auth.basic', 'active'])->group(function () {
             $firstComputer = $user->computers->count() == 1;
             if ($firstComputer) {
                 Util::sendNotification($user->email . ' added first computer.');
-                Util::sendEmailFrom(
-                    'Bimba from Blobbackup',
-                    $user->email,
-                    'Welcome to Blobbackup - Let me know if I can help',
-                    "<p>Hi there,</p><p>Thanks for trying out Blobbackup! My name is Bimba and I'm here to help you keep your computer data safe. If you ever have any questions or need assistance, you can always reach me by replying to this email.</p><p><b>Sit Back and Relax</b></p><p>Depending on your upload speeds, backups can take a while. Don't worry, you're on your way to backup peace of mind. You can turn off your computer at any time and Blobbackup will resume right where it left off when it's back on and connected to the internet.</p><p><b>Backup All Data</b></p><p>Notice how easy it was to get set up? Blobbackup ensures you don't have to worry about what gets backed up because we do it for you. (Learn more about <a href='https://blobbackup.com/support/what-is-being-backed-up/'>what gets backed up</a>).</p><p><b>Easy Restores</b></p><p>Once your first backup completes, you'll be able to restore your data from our secure cloud. We keep all old versions of your files and restoring is super simple. (Learn more about <a href='https://blobbackup.com/support/how-to-restore-your-data/'>how to restore your data</a>).</p><p>Thanks again for giving Blobbackup a shot—please don't hesitate to get in touch if there's anything I can do to help you get started!</p><p>Thanks,</p><p>Bimba</p>");
             }
 
             return $computer;
@@ -101,11 +96,6 @@ Route::middleware(['auth.basic', 'active'])->group(function () {
             $firstComputer = $computer->user->computers->count() == 1;
             if ($firstComputer && $firstBackup) {
                 Util::sendNotification($computer->user->email . ' made first backup.');
-                Util::sendEmailFrom(
-                    'Bimba from Blobbackup',
-                    $computer->user->email,
-                    'You Made a Backup - Try Restoring',
-                    "<p>Hi there,</p><p>It looks like you made your first backup. Congrats! You're already way ahead of most people. But a backup service is only as good as its restore. Give our restore a try! It's super simple.</p><p>Click on the 'Restore Files' button from your control panel.</p><p><img src='https://app.blobbackup.com/img/email-mac-restore1.png'></p><p>Select the files you want to restore by checking them. Then hit restore!</p><p><img src='https://app.blobbackup.com/img/email-mac-restore2.png'></p><p>If you want to restore files from a different time (e.g., yesterday), click on the backups dropdown to find the point in time you want to restore.</p><p><img src='https://app.blobbackup.com/img/email-mac-restore3.png'></p><p>Thanks again for giving Blobbackup a shot—please don't hesitate to get in touch if there's anything I can do to help you get started!</p><p>Thanks,</p><p>Bimba</p>");
             }
             if ($request->name) $computer->name = $request->name;
             if ($request->operating_system) $computer->operating_system = $request->operating_system;
