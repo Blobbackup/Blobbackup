@@ -80,10 +80,7 @@ UPDATER_PLIST_DEST_PATH = os.path.join(
     os.path.expanduser("~"), "Library", "LaunchAgents", "com.blobbackup.updater.plist"
 )
 
-if is_windows():
-    RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup-win.exe"))
-elif is_mac():
-    RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup.exe"))
+RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup.exe"))
 
 HOME_PATH = os.path.join(os.path.expanduser("~"), ".bb")
 os.makedirs(HOME_PATH, exist_ok=True)
