@@ -24,6 +24,10 @@ def is_mac():
     return sys.platform == "darwin"
 
 
+def is_linux():
+    return sys.platform == "linux"
+
+
 def is_arm():
     return "arm64" in platform.platform()
 
