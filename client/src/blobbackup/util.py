@@ -83,10 +83,7 @@ UPDATER_PLIST_DEST_PATH = os.path.join(
 if is_windows():
     RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup-win.exe"))
 elif is_mac():
-    if is_arm():
-        RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup-darwin-arm"))
-    else:
-        RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup-darwin-amd"))
+    RESTIC_PATH = get_asset(os.path.join("bin", "blobbackup.exe"))
 
 HOME_PATH = os.path.join(os.path.expanduser("~"), ".bb")
 os.makedirs(HOME_PATH, exist_ok=True)
