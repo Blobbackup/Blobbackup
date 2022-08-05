@@ -16,6 +16,7 @@ from blobbackup.util import (
     HEARTBEAT_SECONDS,
     is_windows,
     is_mac,
+    is_linux,
     get_password_from_keyring,
     get_restic_backup_command,
     get_restic_env,
@@ -112,7 +113,7 @@ class BackupThread(QThread):
                     stderr=log_f,
                     creationflags=CREATE_NO_WINDOW,
                 )
-            elif is_mac():
+            elif is_mac() or is_linux():
                 self.process = subprocess.Popen(
                     restic_backup_command,
                     env=get_restic_env(computer, password, num_threads),

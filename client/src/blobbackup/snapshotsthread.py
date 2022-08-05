@@ -8,6 +8,7 @@ from blobbackup.config import config
 from blobbackup.util import (
     CREATE_NO_WINDOW,
     is_mac,
+    is_linux,
     is_windows,
     get_restic_env,
     get_restic_snapshots_command,
@@ -38,7 +39,7 @@ class SnapshotsThread(QThread):
                     creationflags=CREATE_NO_WINDOW,
                 ).stdout
             )
-        elif is_mac():
+        elif is_mac() or is_linux():
             snapshots = json.loads(
                 subprocess.run(
                     get_restic_snapshots_command(

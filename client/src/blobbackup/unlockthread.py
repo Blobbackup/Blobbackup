@@ -7,6 +7,7 @@ from blobbackup.api import get_computer
 from blobbackup.util import (
     CREATE_NO_WINDOW,
     is_mac,
+    is_linux,
     is_windows,
     get_restic_env,
     get_restic_unlock_command,
@@ -31,7 +32,7 @@ class UnlockThread(QThread):
                 env=get_restic_env(computer, password),
                 creationflags=CREATE_NO_WINDOW,
             ).returncode
-        elif is_mac():
+        elif is_mac() or is_linux():
             ret = subprocess.run(
                 get_restic_unlock_command(),
                 env=get_restic_env(computer, password),

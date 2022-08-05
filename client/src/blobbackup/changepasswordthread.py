@@ -10,6 +10,7 @@ from blobbackup.util import (
     CREATE_NO_WINDOW,
     is_windows,
     is_mac,
+    is_linux,
     get_restic_add_password_command,
     get_restic_list_passwords_command,
     get_restic_delete_password_command,
@@ -80,7 +81,7 @@ def add_new_password_to_repo(computer, old_password, password):
                 env=get_restic_env(computer, old_password),
                 creationflags=CREATE_NO_WINDOW,
             )
-        elif is_mac():
+        elif is_mac() or is_linux():
             subprocess.run(
                 get_restic_add_password_command(password_file),
                 env=get_restic_env(computer, old_password),
@@ -94,7 +95,7 @@ def unlock_repo(computer, password):
             env=get_restic_env(computer, password),
             creationflags=CREATE_NO_WINDOW,
         )
-    elif is_mac():
+    elif is_mac() or is_linux():
         subprocess.run(
             get_restic_unlock_command(),
             env=get_restic_env(computer, password),
@@ -109,7 +110,7 @@ def remove_all_but_new_password_from_repo(computer, password):
             stdout=subprocess.PIPE,
             creationflags=CREATE_NO_WINDOW,
         ).stdout
-    elif is_mac():
+    elif is_mac() or is_linux():
         ret = subprocess.run(
             get_restic_list_passwords_command(),
             env=get_restic_env(computer, password),
@@ -123,7 +124,7 @@ def remove_all_but_new_password_from_repo(computer, password):
                 env=get_restic_env(computer, password),
                 creationflags=CREATE_NO_WINDOW,
             )
-        elif is_mac():
+        elif is_mac() or is_linux():
             subprocess.run(
                 get_restic_delete_password_command(key["id"]),
                 env=get_restic_env(computer, password),

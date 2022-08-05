@@ -46,6 +46,10 @@ elif is_mac():
     import keyring.backends.OS_X
 
     set_keyring(keyring.backends.OS_X.Keyring())
+elif is_linux():
+    import keyring.backends.SecretService
+
+    set_keyring(keyring.backends.SecretService.Keyring())
 
 BASE_APP_URL = "https://app.blobbackup.com"
 BASE_URL = "https://blobbackup.com"
@@ -164,7 +168,7 @@ def get_restic_backup_command(
     ]
     if not use_cache:
         command.append("--no-cache")
-    if is_mac() and backup_connected_file_systems == "No":
+    if (is_mac() or is_linux()) and backup_connected_file_systems == "No":
         command.append("--one-file-system")
     return command
 
@@ -234,7 +238,7 @@ def get_restic_env(computer, password, num_threads=None):
                 "TEMP": TMP_PATH,
             }
         )
-    elif is_mac():
+    elif is_mac() or is_linux():
         env.update(
             {
                 "HOME": os.environ["HOME"],

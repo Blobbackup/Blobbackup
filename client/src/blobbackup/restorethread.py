@@ -12,6 +12,7 @@ from blobbackup.util import (
     LOGS_PATH,
     is_windows,
     is_mac,
+    is_linux,
     get_restic_env,
     get_restic_restore_command,
 )
@@ -51,7 +52,7 @@ class RestoreThread(QThread):
                     stderr=log_f,
                     creationflags=CREATE_NO_WINDOW,
                 )
-            elif is_mac():
+            elif is_mac() or is_linux():
                 ret = subprocess.run(
                     get_restic_restore_command(
                         self.snapshot_id,
