@@ -2,6 +2,7 @@
 /src/blobbackup/ui/__pycache__
 /src/blobbackup.egg-info
 /src/blobbackup/.DS_Store
+/src/blobbackup/bin/blobbackup.exe
 /.vscode
 /dist
 /build
