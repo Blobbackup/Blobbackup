@@ -11,7 +11,7 @@ import stat
 
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Hash import SHA256
-from keyring import get_password, set_password, set_keyring
+from keyring import get_password, set_password
 from PyQt6.QtGui import QPixmap
 from blobbackup._version import __version__
 
@@ -36,20 +36,6 @@ def make_executable(path):
     st = os.stat(path)
     os.chmod(path, st.st_mode | stat.S_IEXEC)
 
-
-if is_windows():
-    import keyring.backends.Windows
-    import win32timezone
-
-    set_keyring(keyring.backends.Windows.WinVaultKeyring())
-elif is_mac():
-    import keyring.backends.OS_X
-
-    set_keyring(keyring.backends.OS_X.Keyring())
-elif is_linux():
-    import keyring.backends.SecretService
-
-    set_keyring(keyring.backends.SecretService.Keyring())
 
 BASE_APP_URL = "https://app.blobbackup.com"
 BASE_URL = "https://blobbackup.com"
