@@ -53,6 +53,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        return back()->withErrors("Blobbackup is not currently accepting new users.");
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
